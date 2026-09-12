@@ -64,6 +64,19 @@ python3 -m http.server 8899
 
 Lalu buka <http://localhost:8899>.
 
+## Menguji tur
+
+Tur produk punya uji regresi Playwright: 98 pemeriksaan meliputi dua belas langkah,
+tombol kembali, lewati, ulang, papan tik, empat langkah interaktif, kurungan kartu
+di dalam layar, layar ponsel, dan kebersihan konsol.
+
+```bash
+npm i playwright && npx playwright install chromium
+PW_HEADLESS=true TARGET_URL=https://pramana-flax.vercel.app/ node tests/tur.test.js
+```
+
+Hilangkan `TARGET_URL` untuk menguji berkas lokal.
+
 ## Struktur
 
 | Berkas | Isi |
@@ -72,7 +85,8 @@ Lalu buka <http://localhost:8899>.
 | `app.css` | Token warna monokrom hangat, tipografi, komponen, gaya cetak |
 | `data.js` | PRNG berbenih, 1.184 klaim sintetis, perakit bukti, enam kasus yang ditulis tangan |
 | `docs.js` | Pembangkit tanda tangan dan lembar klaim sebagai SVG |
-| `app.js` | Perute, tampilan, indikator, pembuat PDF |
+| `app.js` | Perute, tampilan, indikator, mesin tur, pembuat PDF |
+| `tests/tur.test.js` | Uji regresi tur produk |
 
 ### Catatan teknis yang tidak terlihat dari kode
 
