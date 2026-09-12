@@ -1,7 +1,7 @@
-/* PRAMANA — pembangkit berkas sintetis.
+/* PRAMANA: pembangkit berkas sintetis.
    Tanda tangan dan lembar klaim dibangun runtime dari benih, bukan gambar jadi.
    Konsekuensinya: skor kemiripan yang muncul di layar benar-benar dihitung dari
-   selisih titik pada kurva — bukan angka yang ditulis tangan di berkas data. */
+   selisih titik pada kurva, bukan angka yang ditulis tangan di berkas data. */
 
 (function (global) {
   "use strict";
@@ -146,14 +146,14 @@
       "<div><dt>No. Kartu BPJS</dt><dd>" + d(tulis(k.kartu, "mono-hw")) + "</dd></div>" +
       "<div><dt>No. SEP</dt><dd>" + d(tulis(k.sep, "mono-hw")) + "</dd></div>" +
       "<div><dt>Diagnosis</dt><dd>" + tulis(k.diagnosa + " (" + k.icd + ")") + "</dd></div>" +
-      "<div><dt>DPJP</dt><dd>" + tulis(k.dpjp || "—") + "</dd></div>" +
-      "<div><dt>Pelaksana</dt><dd>" + tulis(k.pelaksana || "—") + "</dd></div></dl>";
+      "<div><dt>DPJP</dt><dd>" + tulis(k.dpjp || "-") + "</dd></div>" +
+      "<div><dt>Pelaksana</dt><dd>" + tulis(k.pelaksana || "-") + "</dd></div></dl>";
   }
 
   function kaki(k, label) {
     return '<footer class="kertas-kaki"><div><span>Mengetahui,</span><strong>' + esc(label) + "</strong>" +
       tandaTangan(k.sigSeed + 501, 0.09, 1, { tinta: "#20365E" }) +
-      "<em>" + esc(k.dpjp || "—") + "</em></div>" +
+      "<em>" + esc(k.dpjp || "-") + "</em></div>" +
       '<div class="kertas-stempel">' + stempel(k.faskes.toUpperCase()) + "</div></footer>";
   }
 
@@ -163,7 +163,7 @@
     return '<figure class="kertas' + rusak + '" style="--miring:' + (opts.miring || "-0.35deg") + '">' +
       '<div class="kertas-lubang" aria-hidden="true"><i></i><i></i></div>' +
       '<div class="kertas-isi">' + isi + "</div>" +
-      (k.mutuBerkas ? '<figcaption class="kertas-rusak-label">Hasil pindai ' + esc(k.mutuBerkas) + " — tidak layak audit</figcaption>" : "") +
+      (k.mutuBerkas ? '<figcaption class="kertas-rusak-label">Hasil pindai ' + esc(k.mutuBerkas) + " · tidak layak audit</figcaption>" : "") +
       "</figure>";
   }
 

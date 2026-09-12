@@ -1,4 +1,4 @@
-# PRAMANA — Konsol Telaah Klaim JKN
+# PRAMANA: Konsol Telaah Klaim JKN
 
 Prototipe untuk **BPJS Kesehatan Healthkathon 2026**
 Kategori: *Efisiensi Risiko pada Fasilitas Kesehatan*
@@ -6,7 +6,7 @@ Kategori: *Efisiensi Risiko pada Fasilitas Kesehatan*
 **Demo langsung: <https://pramana-flax.vercel.app>**
 
 > BPJS Kesehatan memeriksa apakah berkas klaim lengkap, bukan apakah layanannya diberikan.
-> PRAMANA membaca citra berkasnya, menjejak alur obatnya, lalu bertanya ke pesertanya —
+> PRAMANA membaca citra berkasnya, menjejak alur obatnya, lalu bertanya ke pesertanya,
 > dan menyilangkan ketiganya jadi satu keputusan.
 
 ---
@@ -15,7 +15,7 @@ Kategori: *Efisiensi Risiko pada Fasilitas Kesehatan*
 
 Modus kecurangan yang paling terbukti di Indonesia bukan klaim mahal yang rumit, melainkan klaim
 kecil yang berulang. Pada temuan KPK di tiga rumah sakit, **3.269 dari 4.341 tagihan fisioterapi
-tidak punya catatan medis pendukung** — sekitar 75% kasus phantom billing berasal dari satu jenis
+tidak punya catatan medis pendukung** . Sekitar 75% kasus phantom billing berasal dari satu jenis
 layanan saja.
 
 Bukti kunci pada klaim seperti ini berbentuk lembaran hasil pindai: jadwal terapi, lembar bukti
@@ -34,20 +34,20 @@ mudah digandakan dan paling jarang diperiksa keasliannya. Audit konvensional han
 | 18  | Pengurangan jumlah obat |
 | 20  | Manipulasi hasil pemeriksaan |
 
-## Tiga lapisan bukti — kerangka Tri Pramana
+## Tiga lapisan bukti , kerangka Tri Pramana
 
 | Lapisan | Makna | Yang diperiksa |
 |---------|-------|----------------|
-| **Pratyaksa** — Bukti Lihat | kebenaran dari pengamatan langsung | Keragaman tanda tangan, kloning lembar antar pasien, jejak tulisan & media, nilai klinis pada lembar monitoring, selisih penyerahan obat |
-| **Anumana** — Bukti Jejak | kebenaran dari penalaran atas tanda | Denyut ritme perawatan, ketimpangan antar-obat dalam satu resep, uji kehadiran terapi, beban kapasitas pelaksana |
-| **Sabda** — Bukti Saksi | kebenaran dari kesaksian yang tepercaya | Konfirmasi mikro satu ketuk kepada peserta lewat Mobile JKN |
+| **Pratyaksa** · Bukti Lihat | kebenaran dari pengamatan langsung | Keragaman tanda tangan, kloning lembar antar pasien, jejak tulisan & media, nilai klinis pada lembar monitoring, selisih penyerahan obat |
+| **Anumana** · Bukti Jejak | kebenaran dari penalaran atas tanda | Denyut ritme perawatan, ketimpangan antar-obat dalam satu resep, uji kehadiran terapi, beban kapasitas pelaksana |
+| **Sabda** · Bukti Saksi | kebenaran dari kesaksian yang tepercaya | Konfirmasi mikro satu ketuk kepada peserta lewat Mobile JKN |
 
 Keduanya disilangkan pada **Matriks Bukti Ganda** menjadi empat rute tindak lanjut yang berbeda:
 
 |                              | Bukti visual sahih            | Bukti visual cacat / gandaan     |
 |------------------------------|-------------------------------|----------------------------------|
-| **Jejak konsisten**          | K1 — lolos cepat              | K2 — cacat administrasi          |
-| **Jejak janggal / kosong**   | K3 — audit penyerahan obat    | K4 — dugaan phantom / cloning    |
+| **Jejak konsisten**          | K1 lolos cepat              | K2 cacat administrasi          |
+| **Jejak janggal / kosong**   | K3 audit penyerahan obat    | K4 dugaan phantom / cloning    |
 
 Kuadran K2 adalah alasan produk ini ada: berkas yang sekadar berantakan tidak boleh diperlakukan
 sama seperti klaim fiktif.

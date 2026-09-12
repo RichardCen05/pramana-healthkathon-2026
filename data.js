@@ -1,4 +1,4 @@
-/* PRAMANA — dataset sintetis.
+/* PRAMANA: dataset sintetis.
    Seluruh nama, nomor, dan angka dibangkitkan dari benih tetap.
    Tidak ada data peserta JKN yang nyata di berkas ini.
 
@@ -75,7 +75,7 @@
       diagnosa: [["N18.5", "Penyakit ginjal kronik stadium 5"], ["N18.4", "Penyakit ginjal kronik stadium 4"]]
     },
     obat: {
-      kode: "M-3-11-0", label: "Kontrol kronis + obat", unit: "kunjungan", icd9: "—",
+      kode: "M-3-11-0", label: "Kontrol kronis + obat", unit: "kunjungan", icd9: "-",
       lembar: "Bukti Serah Terima Obat Kronis",
       diagnosa: [["I50.0", "Gagal jantung kongestif"], ["I11.0", "Penyakit jantung hipertensi"], ["E11.9", "Diabetes melitus tipe 2"]]
     }
@@ -92,13 +92,13 @@
     IKAO: { nama: "Indeks Ketimpangan Antar-Obat", lapisan: "jejak", ambang: "≤ 0,40" },
     UKT: { nama: "Uji Kehadiran Terapi", lapisan: "jejak", ambang: "≥ 1 jejak" },
     BKF: { nama: "Beban Kapasitas Fisik", lapisan: "jejak", ambang: "≤ 24 sesi/hari" },
-    SBD: { nama: "Konfirmasi Peserta", lapisan: "saksi", ambang: "—" }
+    SBD: { nama: "Konfirmasi Peserta", lapisan: "saksi", ambang: "-" }
   };
 
   const KUADRAN = {
     K1: { kode: "K1", nama: "Lolos cepat", rute: "Jalur cepat menuju pembayaran" },
     K2: { kode: "K2", nama: "Cacat administrasi", rute: "Permintaan perbaikan berkas" },
-    K3: { kode: "K3", nama: "Audit penyerahan obat", rute: "Audit farmasi — modus No. 17 & 18" },
+    K3: { kode: "K3", nama: "Audit penyerahan obat", rute: "Audit farmasi, modus No. 17 dan 18" },
     K4: { kode: "K4", nama: "Dugaan phantom / cloning", rute: "Eskalasi Tim Anti-Kecurangan" },
     TLA: { kode: "TLA", nama: "Tidak layak audit", rute: "Permintaan pindai ulang" }
   };
@@ -152,7 +152,7 @@
   KLAIM.forEach((k) => { PETA[k.id] = k; });
 
   /* =====================================================================
-     Perakit bukti — berlaku untuk SETIAP klaim, bukan hanya kasus contoh.
+     Perakit bukti: berlaku untuk SETIAP klaim, bukan hanya kasus contoh.
      ===================================================================== */
 
   function rakit(k) {
@@ -321,7 +321,7 @@
     ringkas: "Klaim memuat lima jenis obat untuk tiga puluh hari, tetapi bukti serah terima hanya memuat tiga baris yang terisi dan ditandatangani peserta. Dua obat sisanya juga hampir tidak pernah muncul pada riwayat pengambilan selama enam bulan.",
     dualitas: {
       a: "Peserta tidak mengonsumsi seluruh obatnya. Pola konsumsi timpang, bukan kecurangan.",
-      b: "Fasilitas kesehatan menagihkan lima obat tetapi menyerahkan tiga. Modus No. 18 — pengurangan jumlah obat."
+      b: "Fasilitas kesehatan menagihkan lima obat tetapi menyerahkan tiga. Modus No. 18, pengurangan jumlah obat."
     }
   });
 
@@ -333,7 +333,7 @@
     dpjp: "dr. H. Suparman, Sp.KFR", pelaksana: "R. Anggraini, S.Ft",
     jumlah: 6, nilai: 930000, tanggal: new Date(2026, 7, 5),
     judul: "Berkasnya salah, terapinya nyata",
-    ringkas: "Enam tanda tangan pada lembar bukti pelayanan memang hasil gandaan — peserta diminta menandatangani satu kali untuk seluruh sesi. Tetapi jejak obat dan kunjungannya lengkap dan konsisten. Perawatannya nyata; yang keliru administrasinya."
+    ringkas: "Enam tanda tangan pada lembar bukti pelayanan memang hasil gandaan: peserta diminta menandatangani satu kali untuk seluruh sesi. Tetapi jejak obat dan kunjungannya lengkap dan konsisten. Perawatannya nyata; yang keliru administrasinya."
   });
 
   KASUS["RJ-2608-00874"] = jadikanKasus("RJ-2608-00874", {
@@ -355,7 +355,7 @@
     dpjp: "dr. Bimo Aryasatya, Sp.KFR", pelaksana: "R. Anggraini, S.Ft",
     jumlah: 5, nilai: 775000, tanggal: new Date(2026, 7, 9),
     judul: "Belum bisa dinilai",
-    ringkas: "Hasil pindai tidak terbaca penuh. Berkas dikembalikan untuk dipindai ulang — tidak dinilai, tidak dituduh. Fasilitas kesehatan dengan pemindai seadanya tidak boleh jatuh ke kuadran kecurangan hanya karena keterbatasan alat."
+    ringkas: "Hasil pindai tidak terbaca penuh. Berkas dikembalikan untuk dipindai ulang, tidak dinilai dan tidak dituduh. Fasilitas kesehatan dengan pemindai seadanya tidak boleh jatuh ke kuadran kecurangan hanya karena keterbatasan alat."
   });
 
   KLAIM.forEach(rakit);
@@ -374,9 +374,9 @@
 
   const LAPISAN = [
     { kode: "L0", nama: "Gerbang Mutu Berkas", detail: "Menguji keterbacaan, halaman hilang, orientasi, dan resolusi sebelum apa pun dinilai.", hasil: "1.166 layak audit · 18 dikembalikan untuk pindai ulang" },
-    { kode: "L1", nama: "Pratyaksa — Bukti Lihat", detail: "Membaca citra berkas: keragaman tanda tangan, kloning lembar, jejak tulisan, nilai klinis pada lembar monitoring.", hasil: "115 berkas bukti visual cacat · 41 di antaranya kloning lintas-pasien" },
-    { kode: "L2", nama: "Anumana — Bukti Jejak", detail: "Menilai denyut perawatan, ketimpangan antar-obat, kapasitas fisik pelaksana, dan jejak lintas faskes.", hasil: "41 tanpa jejak perawatan · 89 selisih penyerahan obat" },
-    { kode: "L3", nama: "Sabda — Bukti Saksi", detail: "Konfirmasi mikro satu ketuk kepada peserta melalui Mobile JKN, hanya untuk kasus yang sudah bersinyal.", hasil: "130 konfirmasi terkirim · 31 dibantah peserta" },
+    { kode: "L1", nama: "Pratyaksa · Bukti Lihat", detail: "Membaca citra berkas: keragaman tanda tangan, kloning lembar, jejak tulisan, nilai klinis pada lembar monitoring.", hasil: "115 berkas bukti visual cacat · 41 di antaranya kloning lintas-pasien" },
+    { kode: "L2", nama: "Anumana · Bukti Jejak", detail: "Menilai denyut perawatan, ketimpangan antar-obat, kapasitas fisik pelaksana, dan jejak lintas faskes.", hasil: "41 tanpa jejak perawatan · 89 selisih penyerahan obat" },
+    { kode: "L3", nama: "Sabda · Bukti Saksi", detail: "Konfirmasi mikro satu ketuk kepada peserta melalui Mobile JKN, hanya untuk kasus yang sudah bersinyal.", hasil: "130 konfirmasi terkirim · 31 dibantah peserta" },
     { kode: "L4", nama: "Matriks Bukti Ganda", detail: "Menyilangkan dua sumbu bukti menjadi empat rute tindak lanjut yang berbeda.", hasil: "962 K1 · 74 K2 · 89 K3 · 41 K4" },
     { kode: "L5", nama: "Penyusun Dosir", detail: "Merakit potongan bukti, kalimat temuan, rujukan modus, dan rantai bukti digital.", hasil: "130 berkas temuan siap ditelaah" }
   ];
