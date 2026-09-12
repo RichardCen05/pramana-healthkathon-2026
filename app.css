@@ -529,7 +529,11 @@ mark.diff { background: #ffeb99; color: inherit; padding: 0 2px; border-radius: 
   .rail-nav a { white-space: nowrap; }
   .rail-kaki { margin-top: 0; border-top: 0; padding: 0 0 0 8px; margin-left: auto; }
   .rail-akun b, .rail-akun span { display: none; }
-  .bar, .laman, .bukti-tata, .bukti-atas, .pandu-atas, .pandu-bagian { padding-left: 16px; padding-right: 16px; }
+  .bar, .laman, .bukti-tata, .bukti-atas { padding-left: 16px; padding-right: 16px; }
+  .bar { gap: 10px; }
+  .bar-jejak { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; display: block; }
+  .bar-jejak svg, .bar-jejak > :not(b):not(svg) { display: none; }
+  .bar-kanan .tanda-sintetis { display: none; }
   .bukti-atas { position: static; }
   .pandu-atas h1 { font-size: 1.875rem; }
   .matriks { grid-template-columns: 92px 1fr 1fr; }
