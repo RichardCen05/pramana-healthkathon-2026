@@ -825,74 +825,74 @@
   const TUR = [
     {
       tengah: true,
-      judul: "Selamat datang di meja telaah Anda",
-      teks: "Anda verifikator di Kantor Cabang Jakarta Pusat. Pagi ini 1.184 klaim rawat jalan masuk dari lima rumah sakit. Kita akan menelusuri satu klaim dari berkas mentah sampai berita acara, memakai data sintetis. Sekitar dua menit."
+      judul: "Satu klaim, dari berkas sampai putusan",
+      teks: "Anda verifikator di Kantor Cabang Jakarta Pusat. Pagi ini 1.184 klaim masuk. Kita telusuri satu yang fiktif. Dua menit."
     },
     {
       rute: "#/antrean", sel: ".mesin", posisi: "bawah",
       coba: '[data-aksi="putar-mesin"]',
-      judul: "Mesin sudah membaca semua berkas",
-      teks: "Bukan sampel 5 sampai 10 persen seperti audit konvensional, tetapi seluruh populasi klaim. Enam lapisan berjalan dalam 4,2 detik.",
-      cobaTeks: "Tekan Putar ulang proses untuk melihatnya bekerja"
+      judul: "Semua klaim dibaca, bukan sampel",
+      teks: "Enam lapisan, 4,2 detik. Audit konvensional hanya menyentuh 5 sampai 10 persen klaim.",
+      cobaTeks: "Tekan Putar ulang proses"
     },
     {
       rute: "#/antrean", sel: ".matriks", posisi: "bawah",
-      coba: '.sel--k4',
+      coba: ".sel--k4",
       siap: function () { state.mesinTerbuka = false; },
-      judul: "Hasilnya empat rute, bukan satu skor",
-      teks: "Dua sumbu disilangkan: keaslian berkas dan jejak perawatan. Klaim yang berkasnya cuma berantakan jatuh ke K2, terpisah dari yang benar-benar fiktif di K4. Pemisahan inilah alasan produk ini ada.",
-      cobaTeks: "Klik kuadran K4 untuk menyaring tabel"
+      judul: "Empat rute, bukan satu skor",
+      teks: "Berkas yang cuma berantakan jatuh ke K2. Yang benar-benar fiktif ke K4.",
+      cobaTeks: "Klik kuadran K4"
     },
     {
       rute: "#/antrean", sel: ".tabel-bungkus", posisi: "atas",
       siap: function () { state.filter = "K4"; state.halaman = 1; },
       judul: "41 klaim tersaring",
-      teks: "Setiap klaim di antrean punya bukti lengkap, bukan hanya baris tabel. Kita buka satu yang bertanda contoh."
+      teks: "Setiap klaim punya bukti lengkap, bukan cuma baris tabel. Kita buka satu."
     },
     {
       rute: "#/klaim/" + KASUS_TUR + "/lihat", sel: ".sig-deret", posisi: "bawah",
       judul: "Delapan sesi, delapan tanda tangan identik",
-      teks: "Tanda tangan manusia tidak pernah berulang sama persis. Skor di bawah tiap kotak dihitung dari selisih titik pada kurvanya, bukan diambil dari tabel. Arahkan kursor ke satu kotak untuk memperbesar goresannya."
+      teks: "Skornya dihitung dari selisih titik pada kurva. Tangan manusia tidak pernah setepat ini."
     },
     {
       rute: "#/klaim/" + KASUS_TUR + "/lihat", sel: ".sig-kendali .kelompok-tombol", posisi: "kanan",
       coba: '[data-aksi="sig"][data-mode="pembanding"]',
-      judul: "Bandingkan dengan berkas yang wajar",
-      teks: "Berkas sah punya kemiripan di bawah 0,90 karena goresannya selalu bergeser sedikit. Berkas ini 0,995.",
+      judul: "Bandingkan dengan berkas sah",
+      teks: "Berkas asli selalu di bawah 0,90. Yang ini 0,995.",
       cobaTeks: "Tekan Pembanding: berkas wajar"
     },
     {
       rute: "#/klaim/" + KASUS_TUR + "/lihat", sel: ".kertas-panggung", posisi: "atas",
       siap: function () { state.sigMode = "kasus"; },
-      judul: "Lembarnya juga dipakai pasien lain",
-      teks: "Dua berkas milik pasien berbeda identik pada tata letak, tanggal, jam, dan seluruh tanda tangan. Yang berbeda hanya blok identitas, disorot kuning. Ini modus No. 5 Cloning."
+      judul: "Lembar yang sama dipakai pasien lain",
+      teks: "Hanya blok identitas yang berbeda. Ini modus No. 5 Cloning."
     },
     {
       rute: "#/klaim/" + KASUS_TUR + "/jejak", sel: ".denyut", posisi: "bawah",
-      judul: "Sekarang jejaknya",
-      teks: "Lajur atas berongga karena itu yang diklaim rumah sakit. Dua lajur di bawahnya terisi kalau perawatan benar-benar terjadi. Di sini keduanya kosong: peserta tidak pernah mengambil obat dan tidak pernah datang lagi selama 90 hari."
+      judul: "Perawatannya tidak meninggalkan jejak",
+      teks: "Lajur berongga itu yang diklaim rumah sakit. Dua lajur di bawahnya kosong: tidak ada obat, tidak ada kunjungan, selama 90 hari."
     },
     {
       rute: "#/klaim/" + KASUS_TUR + "/saksi", sel: ".ponsel", posisi: "kanan",
-      judul: "Orang yang paling tahu akhirnya ditanya",
-      teks: "Pada modus phantom billing, nama peserta dipakai tanpa ia tahu. Satu pertanyaan netral lewat Mobile JKN, dan jawabannya tidak."
+      judul: "Pesertanya ditanya langsung",
+      teks: "Satu pertanyaan netral lewat Mobile JKN. Jawabannya tidak."
     },
     {
       rute: "#/klaim/" + KASUS_TUR + "/saksi", sel: ".aksi-panel", posisi: "kanan",
       coba: '[data-aksi="pilih-aksi"][data-key="eskalasi"]',
-      judul: "Keputusan tetap di tangan Anda",
-      teks: "Sistem tidak pernah menutup atau membatalkan klaim sendiri. Pilihannya menyesuaikan kuadran, dan tiap pilihan punya konsekuensi yang dijelaskan sebelum dikonfirmasi.",
+      judul: "Putusan tetap di tangan verifikator",
+      teks: "Sistem hanya memprioritaskan dan menjelaskan. Pilihannya menyesuaikan kuadran.",
       cobaTeks: "Tekan Setujui eskalasi"
     },
     {
       rute: "#/dosir/" + KASUS_TUR, sel: ".dosir-atas", posisi: "bawah",
       judul: "Berita acara terbit sendiri",
-      teks: "Uraian temuan, lampiran potongan tanda tangan, rujukan modus Permenkes 16/2019, dan rantai bukti digital. Siap dibawa ke audit lapangan, dan bisa diunduh sebagai PDF."
+      teks: "Uraian temuan, lampiran tanda tangan, rujukan Permenkes 16/2019, rantai bukti. Bisa diunduh sebagai PDF."
     },
     {
       tengah: true,
-      judul: "Itu satu klaim dari 1.184",
-      teks: "962 klaim lain lolos dua sumbu bukti dan langsung dipercepat pembayarannya tanpa pernah dibuka. Silakan telusuri sendiri: buka klaim mana pun di antrean, semuanya punya bukti lengkap. Panduan ini bisa diputar ulang kapan saja lewat tombol di kanan atas.",
+      judul: "Itu satu dari 1.184",
+      teks: "962 klaim bersih dipercepat tanpa pernah dibuka. Silakan telusuri sendiri, semua klaim punya bukti lengkap.",
       akhir: true
     }
   ];
