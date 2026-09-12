@@ -621,6 +621,9 @@ mark.diff { background: #ffeb99; color: inherit; padding: 0 2px; border-radius: 
 body.tur-jalan { overflow: hidden; }
 
 @media (max-width: 900px) {
-  .tur-kartu { width: calc(100vw - 24px); left: 12px !important; right: 12px; }
-  .tur-kartu--tengah { width: calc(100vw - 24px); }
+  .tur-kartu { width: calc(100vw - 24px); }
+  .tur-kartu:not(.tur-kartu--tengah) { left: 12px !important; }
+  .tur-kartu--tengah { left: 50%; width: calc(100vw - 24px); padding: 22px 20px; }
+  .tur-kartu--tengah h3 { font-size: 1.5rem; }
+  .tur-kartu--tengah p { font-size: .875rem; }
 }

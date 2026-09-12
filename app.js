@@ -1002,8 +1002,8 @@
         top = Math.max(M, window.innerHeight - H - M);
         left = r.right + 16 + W < window.innerWidth ? r.right + 16 : Math.max(M, r.left);
       }
-      kartu.style.top = top + "px";
-      kartu.style.left = left + "px";
+      kartu.style.top = Math.max(M, Math.min(top, window.innerHeight - H - M)) + "px";
+      kartu.style.left = Math.max(M, Math.min(left, window.innerWidth - W - M)) + "px";
     } else {
       turBlok(null);
     }
