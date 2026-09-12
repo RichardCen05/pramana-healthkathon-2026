@@ -3,6 +3,8 @@
 Prototipe untuk **BPJS Kesehatan Healthkathon 2026**
 Kategori: *Efisiensi Risiko pada Fasilitas Kesehatan*
 
+**Demo langsung: <https://pramana-flax.vercel.app>**
+
 > BPJS Kesehatan memeriksa apakah berkas klaim lengkap, bukan apakah layanannya diberikan.
 > PRAMANA membaca citra berkasnya, menjejak alur obatnya, lalu bertanya ke pesertanya —
 > dan menyilangkan ketiganya jadi satu keputusan.
