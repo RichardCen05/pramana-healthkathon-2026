@@ -60,12 +60,7 @@
   {
    "cek": "tanda_ai",
    "kekuatan": "lemah",
-   "region": [
-    0,
-    0,
-    1240,
-    1754
-   ],
+   "region": null,
    "kalimat": "Tidak ada ciri hasil pindai: tanpa derau sensor, tanpa bayangan tepi kertas, dan halaman lurus sempurna."
   },
   {

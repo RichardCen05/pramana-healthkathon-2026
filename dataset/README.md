@@ -54,7 +54,7 @@ Potongan dari `03-angka-disunting/VA-DST-01.json`:
 
 - Nilai `cek` mengikuti enam pemeriksaan di PRD (`kecocokan_klaim`, `berkas_kembar`, `copy_paste`, `tempelan`, `suntingan`, `tanda_ai`), ditambah `kualitas_scan`.
 - `kekuatan` bernilai `kuat`, `sedang`, `lemah`, atau `info` (khusus kualitas scan).
-- `region` berformat `[x, y, lebar, tinggi]` dalam piksel pada `.jpg`, sudah mengikuti kemiringan dan perspektif pindaian.
+- `region` berformat `[x, y, lebar, tinggi]` dalam piksel pada `.jpg`, sudah mengikuti kemiringan dan perspektif pindaian. Nilainya `null` bila temuan berlaku untuk seluruh berkas, misalnya metadata. Temuan suntingan juga punya `area`, yaitu daftar kotak per tambalan.
 - Label mengikuti aturan PRD bagian 9. Dua sinyal kuat, atau satu kuat ditambah sinyal lain, menjadi Prioritas. Satu sinyal sedang menjadi Perlu dicek. Tanda AI tidak pernah menjadi satu-satunya alasan Prioritas.
 - `kemiripan_ttd_rerata` dihitung dari selisih titik kurva tanda tangan. Tanda tangan asli ada di kisaran 0,8, sedangkan tanda tangan tempelan bernilai 1.
 

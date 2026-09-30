@@ -59,12 +59,7 @@
   {
    "cek": "kualitas_scan",
    "kekuatan": "info",
-   "region": [
-    0,
-    0,
-    1500,
-    2000
-   ],
+   "region": null,
    "kalimat": "Foto terlalu gelap, tanda tangan dan tanggal tidak terbaca. Minta rumah sakit memindai ulang."
   }
  ],

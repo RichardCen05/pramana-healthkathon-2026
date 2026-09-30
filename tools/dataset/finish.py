@@ -239,10 +239,10 @@ def manipulasi(s, img, M, kotak, rng, spec):
 
     if jenis == "generator-ai":
         if not r.get("tanpaMeta"):
-            temuan.append({"cek": "tanda_ai", "kekuatan": "sedang", "region": [0, 0, W, 120],
+            temuan.append({"cek": "tanda_ai", "kekuatan": "sedang", "region": None,
                            "kalimat": "Metadata berkas menandai gambar dibuat oleh generator AI (IPTC trainedAlgorithmicMedia)."})
         temuan += [
-            {"cek": "tanda_ai", "kekuatan": "lemah", "region": [0, 0, W, H],
+            {"cek": "tanda_ai", "kekuatan": "lemah", "region": None,
              "kalimat": "Tidak ada ciri hasil pindai: tanpa derau sensor, tanpa bayangan tepi kertas, dan halaman lurus sempurna."},
             {"cek": "tanda_ai", "kekuatan": "lemah", "region": kotak_akhir(dasar["kop"], M),
              "kalimat": "Teks kecil di kop dan kepala tabel janggal: \"Rehabilitsai\", \"Kenagna Rya\", \"Tanda Tanagn\"."}]
@@ -252,7 +252,7 @@ def manipulasi(s, img, M, kotak, rng, spec):
         temuan += [
             {"cek": "copy_paste", "kekuatan": "kuat", "region": ttd_semua(),
              "kalimat": "Delapan tanda tangan pasien identik sampai tingkat piksel. Tangan manusia tidak pernah menulis sepersis ini."},
-            {"cek": "tanda_ai", "kekuatan": "sedang", "region": [0, 0, W, H],
+            {"cek": "tanda_ai", "kekuatan": "sedang", "region": None,
              "kalimat": "Berkas dibuat di aplikasi desain (Producer: Canva), bukan hasil pindai. Tulisan tangannya adalah huruf komputer."}]
         return img, temuan, {"Producer": "Canva", "Creator": "Canva", "Author": "Admin Rehab"}
 
@@ -269,7 +269,7 @@ def kualitas_scan(p, img):
                  "kalimat": "Kolom tanda tangan pasien terpotong di tepi kanan dan tulisan buram. Minta rumah sakit memindai ulang."})
     if alat == "gelap":
         return ({"status": "scan_ulang", "catatan": "Terlalu gelap dan kontras rendah."},
-                {"cek": "kualitas_scan", "kekuatan": "info", "region": [0, 0, w, h],
+                {"cek": "kualitas_scan", "kekuatan": "info", "region": None,
                  "kalimat": "Foto terlalu gelap, tanda tangan dan tanggal tidak terbaca. Minta rumah sakit memindai ulang."})
     if p.get("potongBawah"):
         return ({"status": "scan_ulang", "catatan": "Bagian bawah halaman tidak terpindai."},
@@ -398,6 +398,10 @@ def main():
 
     with open(os.path.join(DATASET, "manifest.json"), "w") as fh:
         json.dump(manifest, fh, ensure_ascii=False, indent=1)
+    # Salinan untuk prototipe web: dimuat lewat <script>, jadi jalan juga tanpa server.
+    with open(os.path.join(DATASET, "manifest.js"), "w") as fh:
+        fh.write("/* Dibangkitkan oleh tools/dataset/finish.py. Jangan disunting manual. */\n")
+        fh.write("window.VEDIKA_BERKAS = " + json.dumps(manifest, ensure_ascii=False) + ";\n")
     tulis_csv(manifest)
 
 
