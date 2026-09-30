@@ -1,0 +1,16 @@
+{
+  "name": "veritas-autentik-demo",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Prototipe sintetis Veritas Autentik untuk Healthkathon 2026",
+  "scripts": {
+    "serve": "python3 -m http.server 8899",
+    "test": "node tests/alur.test.js",
+    "build:corpus": "node tools/dataset/expand-demo.js"
+  },
+  "devDependencies": {
+    "pdf-lib": "1.17.1",
+    "playwright": "1.62.1",
+    "sharp": "0.35.4"
+  }
+}

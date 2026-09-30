@@ -1,0 +1,213 @@
+{
+  "id": "VA-EDT-01",
+  "folder": "06-korpus-demo",
+  "berkas": {
+    "jpg": "VA-EDT-01.jpg",
+    "pdf": "VA-EDT-01.pdf"
+  },
+  "ukuran": [
+    1240,
+    1754
+  ],
+  "demo": false,
+  "peran": "demo_ux",
+  "kategori_demo": "angka_disunting",
+  "synthetic": true,
+  "label_diharapkan": "Prioritas",
+  "ringkasan": "Jumlah kunjungan tampak ditimpa; 6 baris terisi.",
+  "klaim": {
+    "sep": "0901R0410826V704323",
+    "peserta": "Nur Aini",
+    "no_kartu": "0001500013827",
+    "faskes": "RSU Bakti Mulia",
+    "kode_faskes": "0901R041",
+    "periode": "Agustus 2026",
+    "layanan": "Fisioterapi rawat jalan",
+    "sesi_ditagih": 8,
+    "tarif_per_sesi": 207300,
+    "nilai_klaim": 1658400,
+    "nilai_klaim_teks": "Rp1.658.400"
+  },
+  "isi_lembar": {
+    "nama": "Nur Aini",
+    "tanggal_lahir": "01-01-1970",
+    "no_rm": "SIM-0033",
+    "no_kartu": "0001500013827",
+    "no_sep": "0901R0410826V704323",
+    "diagnosis": "Nyeri muskuloskeletal",
+    "icd10": "M79.1",
+    "dpjp": "dr. Bimo Aryasatya, Sp.KFR",
+    "periode": "Agustus 2026",
+    "baris_terisi": 6,
+    "baris_asli": 6,
+    "tanggal_sesi": [
+      "03/08",
+      "06/08",
+      "09/08",
+      "12/08",
+      "15/08",
+      "18/08"
+    ],
+    "jumlah_kunjungan_tertulis": 8,
+    "kemiripan_ttd_rerata": 0.82
+  },
+  "kualitas_scan": {
+    "status": "baik",
+    "catatan": "Foto formulir terbaca."
+  },
+  "temuan": [
+    {
+      "cek": "kecocokan_klaim",
+      "kekuatan": "kuat",
+      "region": [
+        90,
+        980,
+        1060,
+        180
+      ],
+      "kalimat": "Hanya 6 sesi terisi, sedangkan klaim menagih 8 sesi."
+    },
+    {
+      "cek": "suntingan",
+      "kekuatan": "sedang",
+      "region": [
+        870,
+        1210,
+        270,
+        75
+      ],
+      "kalimat": "Angka jumlah kunjungan tampak ditimpa dari 6 menjadi 8."
+    }
+  ],
+  "metadata_file": {
+    "Producer": "Veritas demo corpus",
+    "Creator": "Formulir sintetis"
+  },
+  "pindai": {
+    "alat": "ponsel",
+    "miring": -1
+  },
+  "region_lembar": {
+    "kop": [
+      100,
+      135,
+      1040,
+      125
+    ],
+    "nama": [
+      115,
+      275,
+      500,
+      45
+    ],
+    "sep": [
+      115,
+      320,
+      540,
+      45
+    ],
+    "tabel": [
+      90,
+      455,
+      1060,
+      720
+    ],
+    "total": [
+      870,
+      1210,
+      270,
+      75
+    ]
+  },
+  "caseId": "VA-EDT-01",
+  "overallStatus": "prioritas",
+  "checkResults": [
+    {
+      "check": "kualitas_scan",
+      "result": "tidak_ditemukan",
+      "strength": null
+    },
+    {
+      "check": "kecocokan_klaim",
+      "result": "indikasi",
+      "strength": "kuat"
+    },
+    {
+      "check": "berkas_kembar",
+      "result": "tidak_ditemukan",
+      "strength": null
+    },
+    {
+      "check": "copy_paste",
+      "result": "tidak_ditemukan",
+      "strength": null
+    },
+    {
+      "check": "tempelan",
+      "result": "tidak_ditemukan",
+      "strength": null
+    },
+    {
+      "check": "suntingan",
+      "result": "indikasi",
+      "strength": "sedang"
+    },
+    {
+      "check": "tanda_ai",
+      "result": "tidak_ditemukan",
+      "strength": null
+    }
+  ],
+  "topFindings": [
+    {
+      "cek": "kecocokan_klaim",
+      "kekuatan": "kuat",
+      "region": [
+        90,
+        980,
+        1060,
+        180
+      ],
+      "kalimat": "Hanya 6 sesi terisi, sedangkan klaim menagih 8 sesi."
+    },
+    {
+      "cek": "suntingan",
+      "kekuatan": "sedang",
+      "region": [
+        870,
+        1210,
+        270,
+        75
+      ],
+      "kalimat": "Angka jumlah kunjungan tampak ditimpa dari 6 menjadi 8."
+    }
+  ],
+  "evidenceRegions": [
+    {
+      "check": "kecocokan_klaim",
+      "region": [
+        90,
+        980,
+        1060,
+        180
+      ]
+    },
+    {
+      "check": "suntingan",
+      "region": [
+        870,
+        1210,
+        270,
+        75
+      ]
+    }
+  ],
+  "relatedCaseIds": [],
+  "recommendation": "telaah",
+  "participantConfirmation": null,
+  "auditTrail": [],
+  "fileHashes": {
+    "jpg": "250bdc92a9eb8a37d761c5dca8e91feb32342560ab09ede259765b8c4a62bd74",
+    "pdf": "ab3a38c43a0f2f19aa31309f03492b1b4af020f5d66cc9fc26145c9e6772f036"
+  }
+}

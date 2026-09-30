@@ -1,0 +1,184 @@
+{
+  "id": "VA-SCN-01",
+  "folder": "06-korpus-demo",
+  "berkas": {
+    "jpg": "VA-SCN-01.jpg",
+    "pdf": "VA-SCN-01.pdf"
+  },
+  "ukuran": [
+    1240,
+    1754
+  ],
+  "demo": false,
+  "peran": "demo_ux",
+  "kategori_demo": "scan_buruk",
+  "synthetic": true,
+  "label_diharapkan": "Scan ulang",
+  "ringkasan": "Foto buram; pemeriksaan keaslian belum dapat dilakukan.",
+  "klaim": {
+    "sep": "0901R0140826V705633",
+    "peserta": "Dina Kurniasih",
+    "no_kartu": "0001500018017",
+    "faskes": "RS Melati Sehat",
+    "kode_faskes": "0901R014",
+    "periode": "Agustus 2026",
+    "layanan": "Fisioterapi rawat jalan",
+    "sesi_ditagih": 8,
+    "tarif_per_sesi": 207300,
+    "nilai_klaim": 1658400,
+    "nilai_klaim_teks": "Rp1.658.400"
+  },
+  "isi_lembar": {
+    "nama": "Dina Kurniasih",
+    "tanggal_lahir": "01-01-1970",
+    "no_rm": "SIM-0043",
+    "no_kartu": "0001500018017",
+    "no_sep": "0901R0140826V705633",
+    "diagnosis": "Nyeri muskuloskeletal",
+    "icd10": "M79.1",
+    "dpjp": "dr. Ayu Prameswari, Sp.KFR",
+    "periode": "Agustus 2026",
+    "baris_terisi": 8,
+    "baris_asli": 8,
+    "tanggal_sesi": [
+      "04/08",
+      "07/08",
+      "10/08",
+      "13/08",
+      "16/08",
+      "19/08",
+      "22/08",
+      "25/08"
+    ],
+    "jumlah_kunjungan_tertulis": 8,
+    "kemiripan_ttd_rerata": 0.82
+  },
+  "kualitas_scan": {
+    "status": "scan_ulang",
+    "catatan": "Foto buram; beberapa baris tidak terbaca."
+  },
+  "temuan": [
+    {
+      "cek": "kualitas_scan",
+      "kekuatan": "info",
+      "region": [
+        50,
+        430,
+        1140,
+        900
+      ],
+      "kalimat": "Foto buram dan tepi formulir terpotong. Minta unggahan ulang agar isi dapat dinilai."
+    }
+  ],
+  "metadata_file": {
+    "Producer": "Veritas demo corpus",
+    "Creator": "Formulir sintetis"
+  },
+  "pindai": {
+    "alat": "ponsel-buram",
+    "miring": 0
+  },
+  "region_lembar": {
+    "kop": [
+      100,
+      135,
+      1040,
+      125
+    ],
+    "nama": [
+      115,
+      275,
+      500,
+      45
+    ],
+    "sep": [
+      115,
+      320,
+      540,
+      45
+    ],
+    "tabel": [
+      90,
+      455,
+      1060,
+      720
+    ],
+    "total": [
+      870,
+      1210,
+      270,
+      75
+    ]
+  },
+  "caseId": "VA-SCN-01",
+  "overallStatus": "scan_ulang",
+  "checkResults": [
+    {
+      "check": "kualitas_scan",
+      "result": "indikasi",
+      "strength": "lemah"
+    },
+    {
+      "check": "kecocokan_klaim",
+      "result": "tidak_dapat_dinilai",
+      "strength": null
+    },
+    {
+      "check": "berkas_kembar",
+      "result": "tidak_dapat_dinilai",
+      "strength": null
+    },
+    {
+      "check": "copy_paste",
+      "result": "tidak_dapat_dinilai",
+      "strength": null
+    },
+    {
+      "check": "tempelan",
+      "result": "tidak_dapat_dinilai",
+      "strength": null
+    },
+    {
+      "check": "suntingan",
+      "result": "tidak_dapat_dinilai",
+      "strength": null
+    },
+    {
+      "check": "tanda_ai",
+      "result": "tidak_dapat_dinilai",
+      "strength": null
+    }
+  ],
+  "topFindings": [
+    {
+      "cek": "kualitas_scan",
+      "kekuatan": "info",
+      "region": [
+        50,
+        430,
+        1140,
+        900
+      ],
+      "kalimat": "Foto buram dan tepi formulir terpotong. Minta unggahan ulang agar isi dapat dinilai."
+    }
+  ],
+  "evidenceRegions": [
+    {
+      "check": "kualitas_scan",
+      "region": [
+        50,
+        430,
+        1140,
+        900
+      ]
+    }
+  ],
+  "relatedCaseIds": [],
+  "recommendation": "scanUlang",
+  "participantConfirmation": null,
+  "auditTrail": [],
+  "fileHashes": {
+    "jpg": "8adabfc4a2f3712859d84a1e386c7e1336cbb00959b6977ccced6fe03ea1f7f8",
+    "pdf": "33e496f54bb000382da688123f5876a00fb9873a1509a2f8e93d6cfa0f178359"
+  }
+}

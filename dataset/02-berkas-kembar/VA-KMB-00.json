@@ -1,207 +1,260 @@
 {
- "id": "VA-KMB-00",
- "folder": "02-berkas-kembar",
- "berkas": {
-  "jpg": "VA-KMB-00.jpg",
-  "pdf": "VA-KMB-00.pdf"
- },
- "ukuran": [
-  1240,
-  1754
- ],
- "demo": false,
- "peran": "sumber",
- "label_diharapkan": "Lolos",
- "ringkasan": "Berkas asli milik Bu Siti. Sudah ada di arsip sebelum kembarannya diunggah.",
- "klaim": {
-  "sep": "0901R0140826V447215",
-  "peserta": "Siti Rahmawati",
-  "no_kartu": "0001367702249",
-  "faskes": "RS Melati Sehat",
-  "kode_faskes": "0901R014",
-  "periode": "Agustus 2026",
-  "layanan": "Fisioterapi rawat jalan",
-  "sesi_ditagih": 8,
-  "tarif_per_sesi": 207300,
-  "nilai_klaim": 1658400,
-  "nilai_klaim_teks": "Rp1.658.400"
- },
- "isi_lembar": {
-  "nama": "Siti Rahmawati",
-  "tanggal_lahir": "08-05-1963",
-  "no_rm": "00-40-7719",
-  "no_kartu": "0001367702249",
-  "no_sep": "0901R0140826V447215",
-  "diagnosis": "Low back pain",
-  "icd10": "M54.5",
-  "dpjp": "dr. Ayu Prameswari, Sp.KFR",
-  "periode": "Agustus 2026",
-  "baris_terisi": 8,
-  "baris_asli": 8,
-  "tanggal_sesi": [
-   "04/08",
-   "07/08",
-   "11/08",
-   "14/08",
-   "18/08",
-   "21/08",
-   "25/08",
-   "28/08"
+  "id": "VA-KMB-00",
+  "folder": "02-berkas-kembar",
+  "berkas": {
+    "jpg": "VA-KMB-00.jpg",
+    "pdf": "VA-KMB-00.pdf"
+  },
+  "ukuran": [
+    1240,
+    1754
   ],
-  "jumlah_kunjungan_tertulis": 8,
-  "kemiripan_ttd_rerata": 0.747
- },
- "kualitas_scan": {
-  "status": "baik",
-  "catatan": "Terbaca, miring 0.3 derajat."
- },
- "temuan": [],
- "metadata_file": {
-  "Producer": "Canon iR-ADV C3826 PDF",
-  "Creator": "Canon iR-ADV C3826"
- },
- "pindai": {
-  "alat": "flatbed",
-  "miring": -0.3
- },
- "region_lembar": {
-  "kop": [
-   92,
-   67,
-   1065,
-   121
+  "demo": false,
+  "peran": "sumber",
+  "label_diharapkan": "Lolos",
+  "ringkasan": "Tidak ditemukan anomali pada pemeriksaan yang tersedia.",
+  "klaim": {
+    "sep": "0901R0140826V447215",
+    "peserta": "Siti Rahmawati",
+    "no_kartu": "0001367702249",
+    "faskes": "RS Melati Sehat",
+    "kode_faskes": "0901R014",
+    "periode": "Agustus 2026",
+    "layanan": "Fisioterapi rawat jalan",
+    "sesi_ditagih": 8,
+    "tarif_per_sesi": 207300,
+    "nilai_klaim": 1658400,
+    "nilai_klaim_teks": "Rp1.658.400"
+  },
+  "isi_lembar": {
+    "nama": "Siti Rahmawati",
+    "tanggal_lahir": "08-05-1963",
+    "no_rm": "00-40-7719",
+    "no_kartu": "0001367702249",
+    "no_sep": "0901R0140826V447215",
+    "diagnosis": "Low back pain",
+    "icd10": "M54.5",
+    "dpjp": "dr. Ayu Prameswari, Sp.KFR",
+    "periode": "Agustus 2026",
+    "baris_terisi": 8,
+    "baris_asli": 8,
+    "tanggal_sesi": [
+      "04/08",
+      "07/08",
+      "11/08",
+      "14/08",
+      "18/08",
+      "21/08",
+      "25/08",
+      "28/08"
+    ],
+    "jumlah_kunjungan_tertulis": 8,
+    "kemiripan_ttd_rerata": 0.747
+  },
+  "kualitas_scan": {
+    "status": "baik",
+    "catatan": "Terbaca, miring 0.3 derajat."
+  },
+  "temuan": [],
+  "metadata_file": {
+    "Producer": "Canon iR-ADV C3826 PDF",
+    "Creator": "Canon iR-ADV C3826"
+  },
+  "pindai": {
+    "alat": "flatbed",
+    "miring": -0.3
+  },
+  "region_lembar": {
+    "kop": [
+      92,
+      67,
+      1065,
+      121
+    ],
+    "nama": [
+      271,
+      282,
+      219,
+      29
+    ],
+    "sep": [
+      823,
+      336,
+      257,
+      29
+    ],
+    "periode": [
+      822,
+      435,
+      157,
+      30
+    ],
+    "tabel": [
+      86,
+      542,
+      1068,
+      778
+    ],
+    "baris-1": [
+      90,
+      577,
+      1063,
+      98
+    ],
+    "ttd-1": [
+      903,
+      581,
+      250,
+      93
+    ],
+    "baris-2": [
+      90,
+      669,
+      1063,
+      98
+    ],
+    "ttd-2": [
+      903,
+      673,
+      250,
+      93
+    ],
+    "baris-3": [
+      89,
+      761,
+      1063,
+      98
+    ],
+    "ttd-3": [
+      902,
+      765,
+      250,
+      93
+    ],
+    "baris-4": [
+      89,
+      853,
+      1063,
+      98
+    ],
+    "ttd-4": [
+      902,
+      857,
+      250,
+      93
+    ],
+    "baris-5": [
+      88,
+      945,
+      1063,
+      98
+    ],
+    "ttd-5": [
+      901,
+      949,
+      250,
+      93
+    ],
+    "baris-6": [
+      88,
+      1037,
+      1063,
+      98
+    ],
+    "ttd-6": [
+      901,
+      1041,
+      250,
+      93
+    ],
+    "baris-7": [
+      87,
+      1129,
+      1063,
+      98
+    ],
+    "ttd-7": [
+      900,
+      1133,
+      250,
+      93
+    ],
+    "baris-8": [
+      87,
+      1221,
+      1063,
+      98
+    ],
+    "ttd-8": [
+      900,
+      1225,
+      250,
+      93
+    ],
+    "total": [
+      85,
+      1336,
+      674,
+      86
+    ],
+    "blok-dpjp": [
+      789,
+      1340,
+      361,
+      167
+    ]
+  },
+  "caseId": "VA-KMB-00",
+  "synthetic": true,
+  "overallStatus": "tidak_ada_anomali",
+  "checkResults": [
+    {
+      "check": "kualitas_scan",
+      "result": "tidak_ditemukan",
+      "strength": null
+    },
+    {
+      "check": "kecocokan_klaim",
+      "result": "tidak_ditemukan",
+      "strength": null
+    },
+    {
+      "check": "berkas_kembar",
+      "result": "tidak_ditemukan",
+      "strength": null
+    },
+    {
+      "check": "copy_paste",
+      "result": "tidak_ditemukan",
+      "strength": null
+    },
+    {
+      "check": "tempelan",
+      "result": "tidak_ditemukan",
+      "strength": null
+    },
+    {
+      "check": "suntingan",
+      "result": "tidak_ditemukan",
+      "strength": null
+    },
+    {
+      "check": "tanda_ai",
+      "result": "tidak_ditemukan",
+      "strength": null
+    }
   ],
-  "nama": [
-   271,
-   282,
-   219,
-   29
+  "topFindings": [],
+  "evidenceRegions": [],
+  "relatedCaseIds": [
+    "VA-KMB-01",
+    "VA-KMB-02"
   ],
-  "sep": [
-   823,
-   336,
-   257,
-   29
-  ],
-  "periode": [
-   822,
-   435,
-   157,
-   30
-  ],
-  "tabel": [
-   86,
-   542,
-   1068,
-   778
-  ],
-  "baris-1": [
-   90,
-   577,
-   1063,
-   98
-  ],
-  "ttd-1": [
-   903,
-   581,
-   250,
-   93
-  ],
-  "baris-2": [
-   90,
-   669,
-   1063,
-   98
-  ],
-  "ttd-2": [
-   903,
-   673,
-   250,
-   93
-  ],
-  "baris-3": [
-   89,
-   761,
-   1063,
-   98
-  ],
-  "ttd-3": [
-   902,
-   765,
-   250,
-   93
-  ],
-  "baris-4": [
-   89,
-   853,
-   1063,
-   98
-  ],
-  "ttd-4": [
-   902,
-   857,
-   250,
-   93
-  ],
-  "baris-5": [
-   88,
-   945,
-   1063,
-   98
-  ],
-  "ttd-5": [
-   901,
-   949,
-   250,
-   93
-  ],
-  "baris-6": [
-   88,
-   1037,
-   1063,
-   98
-  ],
-  "ttd-6": [
-   901,
-   1041,
-   250,
-   93
-  ],
-  "baris-7": [
-   87,
-   1129,
-   1063,
-   98
-  ],
-  "ttd-7": [
-   900,
-   1133,
-   250,
-   93
-  ],
-  "baris-8": [
-   87,
-   1221,
-   1063,
-   98
-  ],
-  "ttd-8": [
-   900,
-   1225,
-   250,
-   93
-  ],
-  "total": [
-   85,
-   1336,
-   674,
-   86
-  ],
-  "blok-dpjp": [
-   789,
-   1340,
-   361,
-   167
-  ]
- }
+  "recommendation": "wajar",
+  "participantConfirmation": null,
+  "auditTrail": [],
+  "fileHashes": {
+    "jpg": "94a409cabab516d189fbcd79af097405ad8a053d7d60088527dd9a31d106a18e",
+    "pdf": "47439a57a82f0cb27ed0caa3860a68f630b6bc882d5866d0862642be2112f34b"
+  }
 }

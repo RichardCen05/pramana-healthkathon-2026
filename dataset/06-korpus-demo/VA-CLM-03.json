@@ -1,0 +1,182 @@
+{
+  "id": "VA-CLM-03",
+  "folder": "06-korpus-demo",
+  "berkas": {
+    "jpg": "VA-CLM-03.jpg",
+    "pdf": "VA-CLM-03.pdf"
+  },
+  "ukuran": [
+    1240,
+    1754
+  ],
+  "demo": false,
+  "peran": "demo_ux",
+  "kategori_demo": "klaim_tidak_cocok",
+  "synthetic": true,
+  "label_diharapkan": "Perlu dicek",
+  "ringkasan": "Klaim 8 sesi, berkas mendukung 6 sesi.",
+  "klaim": {
+    "sep": "0901R0270826V701048",
+    "peserta": "Suharto Prabowo",
+    "no_kartu": "0001500003352",
+    "faskes": "RS Cipta Medika",
+    "kode_faskes": "0901R027",
+    "periode": "Agustus 2026",
+    "layanan": "Fisioterapi rawat jalan",
+    "sesi_ditagih": 8,
+    "tarif_per_sesi": 207300,
+    "nilai_klaim": 1658400,
+    "nilai_klaim_teks": "Rp1.658.400"
+  },
+  "isi_lembar": {
+    "nama": "Suharto Prabowo",
+    "tanggal_lahir": "01-01-1970",
+    "no_rm": "SIM-0008",
+    "no_kartu": "0001500003352",
+    "no_sep": "0901R0270826V701048",
+    "diagnosis": "Nyeri muskuloskeletal",
+    "icd10": "M79.1",
+    "dpjp": "dr. H. Suparman, Sp.KFR",
+    "periode": "Agustus 2026",
+    "baris_terisi": 6,
+    "baris_asli": 6,
+    "tanggal_sesi": [
+      "05/08",
+      "08/08",
+      "11/08",
+      "14/08",
+      "17/08",
+      "20/08"
+    ],
+    "jumlah_kunjungan_tertulis": 6,
+    "kemiripan_ttd_rerata": 0.82
+  },
+  "kualitas_scan": {
+    "status": "baik",
+    "catatan": "Foto formulir terbaca."
+  },
+  "temuan": [
+    {
+      "cek": "kecocokan_klaim",
+      "kekuatan": "kuat",
+      "region": [
+        90,
+        980,
+        1060,
+        180
+      ],
+      "kalimat": "Klaim menagih 8 sesi, tetapi hanya 6 baris memiliki tanggal dan tanda tangan. Minta klarifikasi sebelum melanjutkan."
+    }
+  ],
+  "metadata_file": {
+    "Producer": "Veritas demo corpus",
+    "Creator": "Formulir sintetis"
+  },
+  "pindai": {
+    "alat": "ponsel",
+    "miring": 1
+  },
+  "region_lembar": {
+    "kop": [
+      100,
+      135,
+      1040,
+      125
+    ],
+    "nama": [
+      115,
+      275,
+      500,
+      45
+    ],
+    "sep": [
+      115,
+      320,
+      540,
+      45
+    ],
+    "tabel": [
+      90,
+      455,
+      1060,
+      720
+    ],
+    "total": [
+      870,
+      1210,
+      270,
+      75
+    ]
+  },
+  "caseId": "VA-CLM-03",
+  "overallStatus": "perlu_dicek",
+  "checkResults": [
+    {
+      "check": "kualitas_scan",
+      "result": "tidak_ditemukan",
+      "strength": null
+    },
+    {
+      "check": "kecocokan_klaim",
+      "result": "indikasi",
+      "strength": "kuat"
+    },
+    {
+      "check": "berkas_kembar",
+      "result": "tidak_ditemukan",
+      "strength": null
+    },
+    {
+      "check": "copy_paste",
+      "result": "tidak_ditemukan",
+      "strength": null
+    },
+    {
+      "check": "tempelan",
+      "result": "tidak_ditemukan",
+      "strength": null
+    },
+    {
+      "check": "suntingan",
+      "result": "tidak_ditemukan",
+      "strength": null
+    },
+    {
+      "check": "tanda_ai",
+      "result": "tidak_ditemukan",
+      "strength": null
+    }
+  ],
+  "topFindings": [
+    {
+      "cek": "kecocokan_klaim",
+      "kekuatan": "kuat",
+      "region": [
+        90,
+        980,
+        1060,
+        180
+      ],
+      "kalimat": "Klaim menagih 8 sesi, tetapi hanya 6 baris memiliki tanggal dan tanda tangan. Minta klarifikasi sebelum melanjutkan."
+    }
+  ],
+  "evidenceRegions": [
+    {
+      "check": "kecocokan_klaim",
+      "region": [
+        90,
+        980,
+        1060,
+        180
+      ]
+    }
+  ],
+  "relatedCaseIds": [],
+  "recommendation": "klarifikasi",
+  "participantConfirmation": null,
+  "auditTrail": [],
+  "fileHashes": {
+    "jpg": "b25fa3c4d3be41dfcea1ed7b0990e096060faa41a1d22233280bd4e3e3aaeb4f",
+    "pdf": "796039f841bc5dc1d224d68f7b077ebe02af17013c16e6c80d1602e846389803"
+  }
+}

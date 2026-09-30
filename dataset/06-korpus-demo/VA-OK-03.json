@@ -1,0 +1,155 @@
+{
+  "id": "VA-OK-03",
+  "folder": "06-korpus-demo",
+  "berkas": {
+    "jpg": "VA-OK-03.jpg",
+    "pdf": "VA-OK-03.pdf"
+  },
+  "ukuran": [
+    1240,
+    1754
+  ],
+  "demo": false,
+  "peran": "demo_ux",
+  "kategori_demo": "tanpa_anomali",
+  "synthetic": true,
+  "label_diharapkan": "Lolos",
+  "ringkasan": "Tidak ada anomali pada pemeriksaan yang tersedia.",
+  "klaim": {
+    "sep": "0901R0410826V700393",
+    "peserta": "Lilis Wulandari",
+    "no_kartu": "0001500001257",
+    "faskes": "RSU Bakti Mulia",
+    "kode_faskes": "0901R041",
+    "periode": "Agustus 2026",
+    "layanan": "Fisioterapi rawat jalan",
+    "sesi_ditagih": 8,
+    "tarif_per_sesi": 207300,
+    "nilai_klaim": 1658400,
+    "nilai_klaim_teks": "Rp1.658.400"
+  },
+  "isi_lembar": {
+    "nama": "Lilis Wulandari",
+    "tanggal_lahir": "01-01-1970",
+    "no_rm": "SIM-0003",
+    "no_kartu": "0001500001257",
+    "no_sep": "0901R0410826V700393",
+    "diagnosis": "Nyeri muskuloskeletal",
+    "icd10": "M79.1",
+    "dpjp": "dr. Bimo Aryasatya, Sp.KFR",
+    "periode": "Agustus 2026",
+    "baris_terisi": 8,
+    "baris_asli": 8,
+    "tanggal_sesi": [
+      "03/08",
+      "06/08",
+      "09/08",
+      "12/08",
+      "15/08",
+      "18/08",
+      "21/08",
+      "24/08"
+    ],
+    "jumlah_kunjungan_tertulis": 8,
+    "kemiripan_ttd_rerata": 0.82
+  },
+  "kualitas_scan": {
+    "status": "baik",
+    "catatan": "Foto formulir terbaca."
+  },
+  "temuan": [],
+  "metadata_file": {
+    "Producer": "Veritas demo corpus",
+    "Creator": "Formulir sintetis"
+  },
+  "pindai": {
+    "alat": "ponsel",
+    "miring": -1
+  },
+  "region_lembar": {
+    "kop": [
+      100,
+      135,
+      1040,
+      125
+    ],
+    "nama": [
+      115,
+      275,
+      500,
+      45
+    ],
+    "sep": [
+      115,
+      320,
+      540,
+      45
+    ],
+    "tabel": [
+      90,
+      455,
+      1060,
+      720
+    ],
+    "total": [
+      870,
+      1210,
+      270,
+      75
+    ]
+  },
+  "caseId": "VA-OK-03",
+  "overallStatus": "tidak_ada_anomali",
+  "checkResults": [
+    {
+      "check": "kualitas_scan",
+      "result": "tidak_ditemukan",
+      "strength": null
+    },
+    {
+      "check": "kecocokan_klaim",
+      "result": "tidak_ditemukan",
+      "strength": null
+    },
+    {
+      "check": "berkas_kembar",
+      "result": "tidak_ditemukan",
+      "strength": null
+    },
+    {
+      "check": "copy_paste",
+      "result": "tidak_ditemukan",
+      "strength": null
+    },
+    {
+      "check": "tempelan",
+      "result": "tidak_ditemukan",
+      "strength": null
+    },
+    {
+      "check": "suntingan",
+      "result": "tidak_ditemukan",
+      "strength": null
+    },
+    {
+      "check": "tanda_ai",
+      "result": "tidak_ditemukan",
+      "strength": null
+    }
+  ],
+  "topFindings": [],
+  "evidenceRegions": [],
+  "relatedCaseIds": [
+    "VA-DUP-03",
+    "VA-DUP-07",
+    "VA-XDC-01",
+    "VA-XDC-05"
+  ],
+  "recommendation": "wajar",
+  "participantConfirmation": null,
+  "auditTrail": [],
+  "fileHashes": {
+    "jpg": "49cab5a6bd5502507741517fda240ea708495a52cac0f07e35066da8425c719f",
+    "pdf": "381e10f624422f58a345c299a63d24013babc9f81b1c3b0488f8ed55df2b25b4"
+  }
+}

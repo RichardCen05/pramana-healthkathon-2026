@@ -1,4 +1,4 @@
-/* Vedika Autentik: prototipe tab pemeriksaan keaslian berkas di aplikasi verifikasi klaim.
+/* Veritas Autentik: prototipe tab pemeriksaan keaslian berkas di aplikasi verifikasi klaim.
 
    Alur: masuk → beranda → Autentik (unggah berkas, antrean berlabel) → kartu bukti
    (temuan, saran tindakan, konfirmasi peserta, peta hubungan, jejak) → laporan temuan.
@@ -55,16 +55,17 @@
 
   /* ================================================================ status */
 
-  const KUNCI_SIMPAN = "vedika.autentik.v1";
+  const KUNCI_SIMPAN = "veritas.autentik.v2";
 
   function statusAwal() {
     return {
       masuk: false,
       antrean: D.ANTREAN_AWAL.map((a) => ({ id: a[0], tanggal: a[1], jam: a[2] })),
       keputusan: {},
+      audit: [],
       jawaban: {},
       dibuka: [],
-      turSelesai: false
+      bulkUndo: null
     };
   }
 
@@ -85,10 +86,10 @@
 
   /* Status tampilan yang tidak perlu bertahan setelah halaman dimuat ulang. */
   const ui = {
-    filter: "semua", faskes: "", q: "",
+    filter: "semua", faskes: "", q: "", visibleCount: 20, filterBuka: false, demoBuka: false, bulk: false, help: false,
     sorot: true, perbesar: false, fokus: null,
-    pilihLain: false, tindakanLain: null, catatan: null, galat: "",
-    proses: null, menuBuka: false, hash: {}, luarUrut: 0
+    pilihLain: false, tindakanLain: null, catatan: null, galat: "", pendingDecision: null,
+    proses: null, menuBuka: false, hash: {}, luarUrut: 0, crop: null, cropFromFinding: null
   };
 
   const diAntrean = (id) => S.antrean.some((a) => a.id === id);
@@ -98,7 +99,7 @@
 
   function rute() {
     const bagian = (location.hash || "").replace(/^#\/?/, "").split("/").filter(Boolean);
-    return { nama: bagian[0] || "beranda", id: bagian[1] || null, tab: bagian[2] || "bukti" };
+    return { nama: bagian[0] || "beranda", id: bagian[1] || null, tab: bagian[2] || "ringkasan" };
   }
   const ke = (h) => { if (location.hash !== h) location.hash = h; else gambar(true); };
 
@@ -107,31 +108,33 @@
   function kerangka(r, isi, jejak) {
     const prioritasBaru = S.antrean.filter((a) => berkas(a.id).label === "prioritas" && !S.keputusan[a.id]).length;
     const aktif = (nama) => (r.nama === nama || (nama === "autentik" && (r.nama === "berkas" || r.nama === "laporan")) ? ' aria-current="page"' : "");
-    return '<div class="kerangka">' +
-      '<aside class="sisi' + (ui.menuBuka ? " buka" : "") + '" id="sisi">' +
-        '<a class="merek" href="#/beranda"><span class="merek-ikon">' + ikon("perisai") + "</span><span><b>VEDIKA</b><span>Verifikasi Digital Klaim</span></span></a>" +
+    const mobileDrawer = window.matchMedia("(max-width: 960px)").matches;
+    return '<a class="skip-link" href="#isi">Lewati ke konten</a><div class="kerangka">' +
+      (ui.menuBuka ? '<button class="drawer-backdrop" type="button" data-aksi="menu" aria-label="Tutup menu"></button>' : "") +
+      '<aside class="sisi' + (ui.menuBuka ? " buka" : "") + '" id="sisi"' + (mobileDrawer && !ui.menuBuka ? ' inert aria-hidden="true"' : "") + '>' +
+        '<div class="drawer-head"><a class="merek" href="#/beranda"><span class="merek-ikon"><img src="assets/veritas-mark.svg" alt=""></span><span><b>Veritas Autentik</b><span>Fitur Vedika · Powered by PRAMANA</span></span></a><button class="drawer-close" type="button" data-aksi="menu" aria-label="Tutup menu">' + ikon("x") + '</button></div>' +
         '<nav class="nav" aria-label="Menu utama">' +
           '<a href="#/beranda"' + aktif("beranda") + ">" + ikon("rumah") + "Beranda</a>" +
           '<span class="nav-judul kapital">Verifikasi</span>' +
-          '<button class="mati" type="button" aria-disabled="true" title="Menu Vedika yang sudah ada, tidak termasuk prototipe">' + ikon("berkas") + "Verifikasi klaim<small>Sudah ada</small></button>" +
-          '<a class="nav-autentik" href="#/autentik"' + aktif("autentik") + ">" + ikon("perisai") + "Autentik" +
+          '<span class="mati nav-statis" title="Menu Vedika di luar prototipe">' + ikon("berkas") + "Verifikasi klaim<small>Sudah ada</small></span>" +
+          '<a class="nav-autentik" href="#/autentik"' + aktif("autentik") + ">" + ikon("berkas") + "Veritas Autentik" +
             (prioritasBaru ? '<span class="lencana" title="Berkas Prioritas yang belum diputuskan">' + prioritasBaru + "</span>" : '<span class="lencana lencana--halus">Baru</span>') + "</a>" +
           '<a href="#/riwayat"' + aktif("riwayat") + ">" + ikon("riwayat") + "Riwayat keputusan</a>" +
         "</nav>" +
         '<div class="sisi-kaki nav">' +
           '<button type="button" data-aksi="tur-mulai">' + ikon("tanya") + "Panduan demo</button>" +
           '<button type="button" data-aksi="ulang-demo">' + ikon("ulang") + "Mulai ulang demo</button>" +
-          '<p class="catatan-prototipe"><b>Prototipe Healthkathon 2026.</b> Semua nama, nomor, dan rumah sakit fiktif. Deteksi disimulasikan dari dataset uji.</p>' +
+          '<p class="catatan-prototipe"><b>Prototipe · data sintetis.</b> Hasil pemeriksaan disimulasikan. Keputusan klaim tetap melalui verifikasi biasa.</p>' +
         "</div>" +
       "</aside>" +
       '<div class="kolom">' +
         '<header class="atas">' +
-          '<button class="tombol-menu" type="button" data-aksi="menu" aria-label="Buka menu">' + ikon("menu") + "</button>" +
+          '<button class="tombol-menu" type="button" data-aksi="menu" aria-label="' + (ui.menuBuka ? "Tutup" : "Buka") + ' menu" aria-expanded="' + ui.menuBuka + '" aria-controls="sisi">' + ikon("menu") + "</button>" +
           '<div class="jejak-rute">' + jejak + "</div>" +
           '<div class="atas-kanan"><span class="lencana-prototipe">Prototipe · data sintetis</span>' +
             '<div class="pengguna"><span class="avatar">RS</span><div><b>' + D.VERIFIKATOR.nama + "</b><span>" + D.VERIFIKATOR.peran + " · " + D.VERIFIKATOR.kantor + "</span></div></div></div>" +
         "</header>" +
-        '<main class="isi" id="isi">' + isi + "</main>" +
+        '<main class="isi" id="isi">' + isi + (ui.help ? dialogHelp() : '') + "</main>" +
       "</div></div>";
   }
 
@@ -139,8 +142,8 @@
 
   function lamanMasuk() {
     return '<div class="masuk"><div class="masuk-bungkus">' +
-      '<div class="merek-ikon">' + ikon("perisai") + "</div>" +
-      "<h1>VEDIKA</h1><p>Verifikasi Digital Klaim</p>" +
+      '<div class="merek-ikon"><img src="assets/veritas-mark.svg" alt=""></div>' +
+      "<h1>Veritas Autentik</h1><p>Fitur Vedika · Powered by PRAMANA</p>" +
       '<div class="masuk-kartu">' +
         "<h2>Otentikasi pengguna</h2><p>Masuk dengan akun verifikator kantor cabang.</p>" +
         '<div class="medan"><span class="kapital">Username</span><div class="medan-isi">' + ikon("pengguna") + "rsantoso.kc0901</div></div>" +
@@ -148,39 +151,25 @@
         '<button class="btn btn--primer btn--lebar btn--kapital" type="button" data-aksi="masuk">Masuk sebagai verifikator demo</button>' +
         '<p class="masuk-catatan">Ini prototipe. Akunnya fiktif dan tidak ada data yang dikirim ke mana pun.</p>' +
       "</div>" +
-      '<p class="masuk-versi">Prototipe Vedika Autentik · Healthkathon 2026</p>' +
+      '<p class="masuk-versi">PROTOTIPE · DATA SINTETIS · Healthkathon 2026</p>' +
     "</div></div>";
   }
 
   /* ============================================================== beranda */
 
   function lamanBeranda() {
-    const total = D.BATCH.reduce((a, b) => ({ masuk: a.masuk + b.masuk, selesai: a.selesai + b.selesai, prioritas: a.prioritas + b.prioritas, ulang: a.ulang + b.ulang }), { masuk: 0, selesai: 0, prioritas: 0, ulang: 0 });
-    const baris = D.BATCH.map((b) => {
-      const persen = Math.round((b.selesai / b.masuk) * 100);
-      return '<tr class="bisa-klik" data-aksi="buka-antrean" data-faskes="' + esc(b.faskes) + '">' +
-        '<td class="nama-berkas lebar-penuh"><b>' + esc(b.faskes) + '</b><span class="mono">' + b.kode + "</span></td>" +
-        '<td class="angka sembunyi-hp">' + b.masuk.toLocaleString("id-ID") + "</td>" +
-        '<td class="sembunyi-hp"><div style="display:flex;align-items:center;gap:10px"><div class="batang"><i style="width:' + persen + '%"></i></div><span class="angka redup">' + persen + "%</span></div></td>" +
-        '<td class="angka">' + (b.prioritas ? '<span class="label label--prioritas">' + b.prioritas + "</span>" : '<span class="redup">0</span>') + "</td>" +
-        '<td class="angka sembunyi-hp">' + b.cek + "</td>" +
-        '<td class="angka sembunyi-hp">' + b.ulang + "</td>" +
-        '<td class="kanan sembunyi-hp"><span class="btn btn--kecil btn--hantu">Buka antrean</span></td></tr>';
-    }).join("");
-
+    const pending = S.antrean.filter((a) => !S.keputusan[a.id]);
+    const prioritas = pending.filter((a) => berkas(a.id).label === "prioritas").length;
+    const perlu = pending.filter((a) => berkas(a.id).label === "cek").length;
     return '<div class="kepala"><div><h1>Beranda</h1><p>' + D.HARI_INI + " · " + D.VERIFIKATOR.kantor + "</p></div></div>" +
-      '<div class="pengumuman"><span class="merek-ikon">' + ikon("perisai") + "</span>" +
-        "<div><b>Autentik sekarang aktif untuk klaim fisioterapi</b><p>Setiap berkas yang masuk ke JKN Drive diperiksa keasliannya lebih dulu. Hasilnya muncul sebagai label di antrean Anda. Keputusan tetap di tangan Anda.</p></div>" +
-        '<a class="btn btn--primer" href="#/autentik">Buka Autentik</a></div>' +
-      '<section class="panel"><div class="panel-kepala"><h2>Klaim fisioterapi masuk, 7 hari terakhir</h2><span class="kanan redup">Batas verifikasi 10 hari kerja</span></div>' +
-        '<div class="ringkas">' +
-          "<div><b>" + total.masuk.toLocaleString("id-ID") + "</b><span>Berkas masuk</span></div>" +
-          "<div><b>" + total.selesai.toLocaleString("id-ID") + "</b><span>Sudah diverifikasi</span></div>" +
-          "<div><b>" + total.prioritas + "</b><span>Label Prioritas</span></div>" +
-          "<div><b>" + total.ulang + "</b><span>Diminta scan ulang</span></div>" +
-        "</div>" +
-        '<div class="tabel-bungkus"><table class="tabel tabel--kartu"><thead><tr><th>Fasilitas kesehatan</th><th>Berkas masuk</th><th>Progres verifikasi</th><th>Prioritas</th><th>Perlu dicek</th><th>Scan ulang</th><th></th></tr></thead><tbody>' + baris + "</tbody></table></div>" +
-      "</section>";
+      '<section class="pengumuman"><span class="merek-ikon"><img src="assets/veritas-mark.svg" alt=""></span>' +
+        '<div><b>Periksa berkas yang membutuhkan perhatian</b><p>Veritas menampilkan indikasi pada dokumen fisioterapi dan area buktinya. Verifikator menentukan langkah berikutnya.</p></div>' +
+        '<a class="btn btn--primer" href="#/autentik">Buka antrean</a></section>' +
+      '<section class="panel beranda-ringkas"><div class="panel-kepala"><h2>Antrean saat ini</h2></div><div class="ringkas">' +
+        '<div><b>' + pending.length + '</b><span>Belum diputuskan</span></div>' +
+        '<div><b>' + prioritas + '</b><span>Prioritas</span></div>' +
+        '<div><b>' + perlu + '</b><span>Perlu dicek</span></div></div>' +
+        '<p class="beranda-catatan">Hasil pada layar ini berasal dari data sintetis. Tidak ada model deteksi yang berjalan dalam prototipe.</p></section>';
   }
 
   /* ============================================================== autentik */
@@ -197,7 +186,7 @@
   }
 
   function alasanSingkat(b) {
-    if (b.label === "lolos") return "Semua pemeriksaan bersih.";
+    if (b.label === "lolos") return "Tidak ditemukan anomali pada pemeriksaan yang tersedia.";
     const utama = b.temuan.find((t) => t.kekuatan === "kuat") || b.temuan[0];
     return utama ? utama.kalimat.split(". ")[0].replace(/\.$/, "") + "." : "";
   }
@@ -217,12 +206,12 @@
 
     return '<section class="panel unggah" id="panelUnggah">' +
       '<label class="unggah-jatuh" id="jatuh" for="pilihBerkas">' + ikon("unggah") +
-        "<b>Tarik berkas klaim ke sini</b><p>PDF, JPG, atau PNG. Berkas dari folder dataset langsung dikenali. Di produksi, berkas diambil otomatis dari JKN Drive.</p>" +
+        "<b>Tarik berkas demo ke sini</b><p>PDF, JPG, atau PNG dari corpus sintetis. Berkas lain tidak dianalisis oleh prototipe.</p>" +
         '<span class="btn btn--kecil">Pilih berkas</span>' +
         '<input class="sr" type="file" id="pilihBerkas" accept=".pdf,.jpg,.jpeg,.png" multiple></label>' +
       '<div class="unggah-demo">' +
         '<div class="unggah-demo-kepala"><div><b>Coba lima berkas contoh</b><p>Satu berkas untuk setiap jenis hasil. Klik satu kartu, atau masukkan kelimanya sekaligus.</p></div>' +
-          '<button class="btn btn--primer" type="button" id="tombolDemo" data-aksi="demo"' + (jalan ? " disabled" : "") + ">" + ikon("main") + (semuaAda ? "Jalankan ulang demo" : "Jalankan demo") + "</button></div>" +
+          '<button class="btn" type="button" id="tombolDemo" data-aksi="demo"' + (jalan ? " disabled" : "") + ">" + ikon("main") + (semuaAda ? "Jalankan ulang demo" : "Jalankan demo") + "</button></div>" +
         '<div class="skenario">' + kartu + "</div>" +
       "</div>" +
       (ui.proses ? tampilanProses() : "") +
@@ -261,41 +250,60 @@
     const semua = S.antrean.map((a) => berkas(a.id));
     const hitung = (k) => semua.filter((b) => b.label === k).length;
     const segmen = [["semua", "Semua", semua.length, ""], ["prioritas", "Prioritas", hitung("prioritas"), "var(--prioritas)"], ["cek", "Perlu dicek", hitung("cek"), "var(--cek)"],
-      ["ulang", "Scan ulang", hitung("ulang"), "var(--ulang)"], ["lolos", "Lolos", hitung("lolos"), "var(--lolos)"]]
+      ["ulang", "Scan ulang", hitung("ulang"), "var(--ulang)"], ["lolos", "Tanpa anomali", hitung("lolos"), "var(--lolos)"]]
       .map((s) => '<button type="button" data-aksi="saring" data-nilai="' + s[0] + '" aria-pressed="' + (ui.filter === s[0]) + '">' +
         (s[3] ? '<i class="titik" style="background:' + s[3] + '"></i>' : "") + s[1] + " <b>" + s[2] + "</b></button>").join("");
     const faskes = [...new Set(semua.map((b) => b.klaim.faskes))].sort();
     const lolosTerbuka = S.antrean.filter((a) => berkas(a.id).label === "lolos" && !S.keputusan[a.id]).length;
+    const bisaUndo = S.bulkUndo?.entries.filter((x) => S.keputusan[x.id]?.batchId === S.bulkUndo.id).length || 0;
 
-    const baris = barisAntrean().map((a) => {
+    const tersaring = barisAntrean();
+    const baris = tersaring.slice(0, ui.visibleCount).map((a) => {
       const b = a.b, k = S.keputusan[a.id];
       const jawab = S.jawaban[a.id];
-      const sesi = b.label === "ulang" ? '<span class="redup">Belum terbaca</span>'
-        : b.klaim.sesi_ditagih + " / " + (b.isi_lembar ? b.isi_lembar.baris_asli : "–");
-      return '<tr class="bisa-klik' + (a.baru ? " baru" : "") + '" data-aksi="buka-berkas" data-id="' + a.id + '">' +
-        "<td>" + labelChip(b.label) + "</td>" +
-        '<td class="nama-berkas"><b>' + esc(b.klaim.peserta) + (a.baru ? '<span class="tanda-baru">BARU</span>' : "") + '</b><span class="mono">' + a.id + "</span></td>" +
-        '<td class="alasan lebar-penuh">' + esc(alasanSingkat(b)) + (jawab ? ' <b style="color:var(--prioritas-fg)">Peserta: ' + D.JAWABAN[jawab].teks + ".</b>" : "") + "</td>" +
-        '<td class="sembunyi-hp">' + esc(b.klaim.faskes) + "</td>" +
-        '<td class="mono sembunyi-hp">' + esc(b.klaim.sep) + "</td>" +
-        '<td class="angka sembunyi-hp" title="Sesi ditagih / sesi yang didukung berkas">' + sesi + "</td>" +
-        '<td class="angka kanan sembunyi-hp">' + (b.klaim.nilai_klaim ? rp(b.klaim.nilai_klaim) : "–") + "</td>" +
-        '<td class="sembunyi-hp redup">' + a.tanggal + ", " + a.jam + "</td>" +
-        '<td class="lebar-penuh">' + (k ? '<span class="status-keputusan">' + ikon("cek") + D.TINDAKAN[k.tindakan].status + "</span>" : '<span class="redup">Belum diputuskan</span>') + "</td>" +
+      return '<tr class="' + (a.baru ? "baru" : "") + '">' +
+        '<td class="nama-berkas"><a class="queue-case-link" href="#/berkas/' + a.id + '"><b>' + esc(b.klaim.peserta) + '</b><span class="mono">' + a.id + "</span></a></td>" +
+        '<td class="queue-status">' + labelChip(b.label) + "</td>" +
+        '<td class="alasan">' + esc(alasanSingkat(b)) + (jawab ? ' <b class="peserta-sinyal">Peserta: ' + D.JAWABAN[jawab].teks + ".</b>" : "") + "</td>" +
+        '<td class="queue-faskes">' + esc(b.klaim.faskes) + "</td>" +
+        '<td class="queue-time redup">' + a.tanggal + ", " + a.jam + "</td>" +
+        '<td class="queue-action">' + (k ? '<span class="status-keputusan">' + D.TINDAKAN[k.tindakan].status + '</span>' : '<a class="btn btn--hantu" href="#/berkas/' + a.id + '">Buka bukti</a>') + "</td>" +
       "</tr>";
     }).join("");
 
-    return '<div class="kepala"><div><h1>Autentik</h1><p>Pemeriksaan keaslian berkas fisioterapi dari JKN Drive. Berkas yang perlu dicek sudah ada di urutan atas.</p></div></div>' +
-      panelUnggah() +
-      '<section class="panel tabel-antrean"><div class="saringan"><div class="segmen" role="group" aria-label="Saring menurut label">' + segmen + "</div>" +
-        '<select class="pilih" data-aksi="saring-faskes" aria-label="Saring menurut fasilitas kesehatan"><option value="">Semua rumah sakit</option>' +
-          faskes.map((f) => "<option" + (ui.faskes === f ? " selected" : "") + ">" + esc(f) + "</option>").join("") + "</select>" +
-        '<div class="kanan"><input class="cari" type="search" data-aksi="cari" placeholder="Cari nama, SEP, atau ID berkas" value="' + esc(ui.q) + '" aria-label="Cari berkas">' +
-          (lolosTerbuka ? '<button class="btn btn--kecil" type="button" data-aksi="setujui-lolos">' + ikon("cek") + "Setujui " + lolosTerbuka + " yang lolos</button>" : "") + "</div></div>" +
+    return '<div class="kepala"><div><h1>Veritas Autentik</h1><p>Temukan anomali pada berkas fisioterapi, lihat buktinya, lalu tentukan tindak lanjut.</p></div>' +
+      '<div class="kepala-aksi"><a class="btn btn--primer" href="#/berkas/VA-KMB-02">Lihat contoh bukti</a></div></div>' +
+      '<div class="status-strip" aria-label="Ringkasan antrean"><div><b>' + hitung("prioritas") + '</b><span>Prioritas</span></div><div><b>' + hitung("cek") + '</b><span>Perlu dicek</span></div><div><b>' + hitung("ulang") + '</b><span>Scan ulang</span></div><div><b>' + hitung("lolos") + '</b><span>Tanpa anomali</span></div></div>' +
+      (bisaUndo ? '<div class="undo-banner" role="status"><span>' + bisaUndo + ' berkas diteruskan ke verifikasi biasa. Keputusan kelompok masih dapat dibatalkan.</span><button class="btn" type="button" data-aksi="undo-bulk">Urungkan keputusan kelompok</button><small class="undo-mobile-note">Buka di desktop untuk membatalkan keputusan kelompok.</small></div>' : '') +
+      '<section class="panel tabel-antrean"><div class="queue-toolbar"><label class="queue-search"><span>Cari berkas</span><input class="cari" type="search" data-aksi="cari" placeholder="Nama, SEP, atau ID" value="' + esc(ui.q) + '"></label>' +
+        '<button class="btn" type="button" data-aksi="toggle-filter" aria-expanded="' + ui.filterBuka + '" aria-controls="filter-lanjutan">Filter' + (ui.filter !== "semua" || ui.faskes ? ' aktif' : '') + '</button></div>' +
+        (ui.filterBuka ? '<div class="filter-lanjutan" id="filter-lanjutan"><div class="segmen" role="group" aria-label="Saring menurut status">' + segmen + '</div><label class="filter-faskes"><span>Rumah sakit</span><select class="pilih" data-aksi="saring-faskes"><option value="">Semua rumah sakit</option>' +
+          faskes.map((f) => '<option value="' + esc(f) + '"' + (ui.faskes === f ? " selected" : "") + ">" + esc(f) + "</option>").join("") + '</select></label>' +
+          (lolosTerbuka ? '<button class="btn bulk-trigger" type="button" data-aksi="setujui-lolos">Tinjau ' + lolosTerbuka + ' berkas tanpa anomali</button>' : '') + '</div>' : '') +
         (baris
-          ? '<div class="tabel-bungkus"><table class="tabel tabel--kartu"><thead><tr><th>Label</th><th>Peserta</th><th>Alasan</th><th>Rumah sakit</th><th>SEP</th><th>Sesi</th><th class="kanan">Nilai klaim</th><th>Masuk</th><th>Keputusan</th></tr></thead><tbody>' + baris + "</tbody></table></div>"
-          : '<div class="kosong"><b>Tidak ada berkas yang cocok</b>Ubah saringan label atau rumah sakit, atau kosongkan pencarian.</div>') +
-      "</section>";
+          ? '<div class="tabel-bungkus"><table class="tabel tabel--kartu queue-table"><thead><tr><th>Berkas</th><th>Status</th><th>Alasan utama</th><th>Rumah sakit</th><th>Masuk</th><th>Tindak lanjut</th></tr></thead><tbody>' + baris + "</tbody></table></div>"
+          : '<div class="kosong"><b>Tidak ada berkas yang cocok</b><p>Ubah kata pencarian atau filter untuk melihat kasus lain.</p><button class="btn" type="button" data-aksi="reset-filter">Hapus filter</button></div>') +
+        (tersaring.length > ui.visibleCount ? '<div class="queue-more"><span>Menampilkan ' + ui.visibleCount + ' dari ' + tersaring.length + ' berkas</span><button class="btn" type="button" data-aksi="lihat-lagi">Lihat 20 berikutnya</button></div>' : '') +
+      '</section><div class="mode-demo"><button type="button" data-aksi="toggle-demo" aria-expanded="' + ui.demoBuka + '" aria-controls="panelUnggah">' + (ui.demoBuka ? 'Tutup mode demo' : 'Mode demo dan unggah berkas') + '</button><p>Seluruh hasil pada halaman ini disimulasikan dari data sintetis.</p></div>' +
+      (ui.demoBuka ? panelUnggah() : '') +
+      (ui.bulk ? dialogBulk() : '');
+  }
+
+  function dialogBulk() {
+    const daftar = S.antrean.filter((a) => berkas(a.id).label === "lolos" && !S.keputusan[a.id]);
+    return '<div class="dialog-shade"><section class="dialog-bulk" role="dialog" aria-modal="true" aria-labelledby="judul-bulk" aria-describedby="dampak-bulk">' +
+      '<h2 id="judul-bulk">Tinjau ' + daftar.length + ' berkas tanpa anomali</h2>' +
+      '<p id="dampak-bulk">Berkas ini akan kembali ke verifikasi klaim biasa. Hasil Veritas tidak menetapkan klaim valid atau layanan sudah terjadi.</p>' +
+      '<ul class="bulk-list">' + daftar.map((a) => '<li><b>' + esc(berkas(a.id).klaim.peserta) + '</b><span class="mono">' + a.id + '</span></li>').join('') + '</ul>' +
+      '<div class="dialog-actions"><button class="btn" type="button" data-aksi="batal-bulk">Batal</button><button class="btn btn--primer" type="button" data-aksi="konfirmasi-bulk">Lanjutkan ' + daftar.length + ' berkas ke verifikasi biasa</button></div>' +
+      '</section></div>';
+  }
+
+  function dialogHelp() {
+    return '<div class="dialog-shade"><section class="dialog-bulk" role="dialog" aria-modal="true" aria-labelledby="judul-panduan">' +
+      '<h2 id="judul-panduan">Cara membaca Veritas</h2><ol class="panduan-ringkas"><li>Pilih kasus di antrean. Prioritas berada di atas.</li><li>Baca tiga temuan utama, lalu buka area bukti di dokumen.</li><li>Di desktop, tinjau akibat tindakan sebelum menyimpan keputusan.</li></ol>' +
+      '<p>Seluruh hasil adalah simulasi dari data sintetis. Status Veritas tidak menentukan hasil akhir klaim.</p>' +
+      '<div class="dialog-actions"><button class="btn btn--primer" type="button" data-aksi="tutup-panduan">Tutup panduan</button></div></section></div>';
   }
 
   /* ============================================================ kartu bukti */
@@ -336,20 +344,31 @@
 
   function daftarTemuan(b) {
     const jawab = S.jawaban[b.id];
-    let li = b.temuan.map((t, i) => {
-      const fokus = t.region ? ' data-aksi="fokus" data-i="' + i + '" data-fokus' : "";
-      return '<li class="' + (ui.fokus === i ? "fokus" : "") + '"' + fokus + ">" +
-        '<span class="nomor nomor--' + t.kekuatan + '">' + (i + 1) + "</span>" +
-        '<div><div class="atas-temuan"><b>' + D.CEK[t.cek] + '</b><span class="kekuatan kekuatan--' + t.kekuatan + '">' + D.KEKUATAN[t.kekuatan] + "</span>" +
-          (t.region ? "" : '<span class="redup" style="font-size:12px">seluruh berkas</span>') + "</div><p>" + esc(t.kalimat) + "</p></div></li>";
-    }).join("");
+    const renderTemuan = (t, i) => '<li class="' + (ui.fokus === i ? "fokus" : "") + '"><span class="nomor nomor--' + t.kekuatan + '">' + (i + 1) + '</span><div><div class="atas-temuan"><b>' + D.CEK[t.cek] + '</b><span class="kekuatan kekuatan--' + t.kekuatan + '">' + D.KEKUATAN[t.kekuatan] + '</span></div><p>' + esc(t.kalimat) + '</p>' +
+      (t.region ? '<button class="temuan-link" type="button" data-aksi="fokus" data-i="' + i + '">Lihat area bukti ' + (i + 1) + '</button>' : '') + '</div></li>';
+    const awal = jawab ? 2 : 3;
+    let li = b.temuan.slice(0, awal).map(renderTemuan).join("");
     if (jawab) {
       li += '<li><span class="nomor nomor--tanpa">P</span><div><div class="atas-temuan"><b>Konfirmasi peserta</b></div><p>Peserta menjawab: <b>' +
         D.JAWABAN[jawab].teks + "</b>. " + esc(D.JAWABAN[jawab].akibat) + "</p></div></li>";
     }
-    if (!b.temuan.length) li = '<li class="bersih">' + ikon("lencanaCek") + "<span>Enam pemeriksaan keaslian bersih. Tidak ada temuan.</span></li>";
-    return '<section class="panel"><div class="panel-kepala"><h3>Temuan</h3><span class="kanan redup">' + (b.label === "ulang" ? "Belum dinilai" : b.temuan.filter((t) => t.kekuatan !== "info").length + " sinyal") + "</span></div>" +
-      '<ul class="daftar-temuan">' + li + "</ul></section>";
+    if (!b.temuan.length) li = '<li class="bersih">' + ikon("lencanaCek") + "<span>Tidak ditemukan anomali pada pemeriksaan yang tersedia.</span></li>";
+    return '<section class="panel"><div class="panel-kepala"><h3>Temuan utama</h3><span class="kanan redup">' + (b.label === "ulang" ? "Belum dinilai" : b.temuan.filter((t) => t.kekuatan !== "info").length + " indikasi") + "</span></div>" +
+      '<ul class="daftar-temuan">' + li + '</ul>' +
+      (b.temuan.length > awal ? '<details class="temuan-lain"><summary>Lihat ' + (b.temuan.length - awal) + ' temuan lain</summary><ul class="daftar-temuan">' + b.temuan.slice(awal).map((t, i) => renderTemuan(t, i + awal)).join('') + '</ul></details>' : '') + '</section>';
+  }
+
+  function kelompokPemeriksaan(b) {
+    const kelompok = [
+      ["Kualitas dokumen", ["kualitas_scan"]],
+      ["Keaslian elemen", ["berkas_kembar", "copy_paste", "tempelan", "suntingan", "tanda_ai"]],
+      ["Konsistensi klaim", ["kecocokan_klaim"]]
+    ];
+    return '<details class="panel kelompok-cek"><summary>Lihat semua pemeriksaan</summary><div class="kelompok-cek-isi">' + kelompok.map(([nama, keys]) => {
+      const hasil = b.checkResults.filter((x) => keys.includes(x.check));
+      const indikasi = hasil.filter((x) => x.result === "indikasi").length;
+      return '<section><h4>' + nama + '</h4><p>' + (indikasi ? indikasi + ' indikasi' : hasil.every((x) => x.result === "tidak_dapat_dinilai") ? 'Belum dapat dinilai' : 'Tidak ada indikasi') + '</p><ul>' + hasil.map((x) => '<li><span>' + D.CEK[x.check] + '</span><b>' + ({ indikasi: 'Indikasi', tidak_ditemukan: 'Tidak ditemukan', tidak_dapat_dinilai: 'Belum dinilai' }[x.result]) + '</b></li>').join('') + '</ul></section>';
+    }).join('') + '</div></details>';
   }
 
   function tabelBanding(b) {
@@ -392,14 +411,14 @@
         '<div class="putusan"><b>' + ikon("lencanaCek") + t.status + "</b>" +
         "<p>" + esc(k.oleh) + " memilih <b>" + t.nama.toLowerCase() + "</b> pada " + esc(k.waktu) + (k.ikutSaran ? ", sesuai saran sistem." : ", berbeda dari saran sistem.") + "</p>" +
         (k.catatan ? "<blockquote>" + esc(k.catatan) + "</blockquote>" : "") +
-        '<div class="aksi">' + (t.laporan ? '<a class="btn btn--primer btn--kecil" href="#/laporan/' + b.id + '">' + ikon("berkas") + "Buka laporan temuan</a>" : "") +
-          '<button class="btn btn--kecil" type="button" data-aksi="batal-putusan">Ubah keputusan</button></div></div></section>';
+        '<div class="aksi">' + (t.laporan ? '<a class="btn" href="#/laporan/' + b.id + '">' + ikon("berkas") + "Buka laporan temuan</a>" : "") +
+          '<button class="btn" type="button" data-aksi="batal-putusan">Batalkan keputusan</button></div></div></section>';
     }
 
     const catatan = ui.catatan != null ? ui.catatan : saran.laporan ? ringkasCatatan(b) : "";
     const lain = Object.keys(D.TINDAKAN).filter((x) => x !== saranKey);
     const pesertaInfo = b.label === "prioritas"
-      ? '<p style="margin-top:10px;font-size:12.5px"><a href="#/berkas/' + b.id + '/peserta">Konfirmasi peserta</a>: ' + (jawab ? "menjawab <b>" + D.JAWABAN[jawab].teks + "</b>" : "terkirim, menunggu jawaban") + "</p>"
+      ? '<p class="peserta-info-inline">Konfirmasi peserta: ' + (jawab ? "menjawab <b>" + D.JAWABAN[jawab].teks + "</b>" : "menunggu jawaban") + '. <a href="#/berkas/' + b.id + '/bukti">Lihat detail di Bukti</a></p>'
       : "";
 
     let bawah;
@@ -407,7 +426,7 @@
       bawah = (saran.laporan
         ? '<label class="catatan-medan" style="display:block;margin-top:14px"><span class="kapital">Catatan untuk tim telaah</span><textarea data-aksi="catatan" rows="3">' + esc(catatan) + "</textarea></label>"
         : "") +
-        '<div class="saran-tombol"><button class="btn btn--primer" type="button" data-aksi="setujui">' + ikon("cek") + "Setujui saran</button>" +
+        '<div class="saran-tombol decision-actions"><button class="btn btn--primer" type="button" data-aksi="setujui">' + ikon("cek") + saran.nama + "</button>" +
         '<button class="btn btn--hantu" type="button" data-aksi="pilih-lain">Pilih tindakan lain</button></div>';
     } else {
       bawah = '<div class="pilihan-lain" role="radiogroup" aria-label="Tindakan lain">' +
@@ -415,23 +434,32 @@
           "<span><b>" + D.TINDAKAN[x].nama + "</b><span>" + D.TINDAKAN[x].akibat + "</span></span></label>").join("") +
         '<label class="catatan-medan"><span class="kapital">Alasan tidak mengikuti saran</span><textarea data-aksi="catatan" rows="3" placeholder="Contoh: pasien memang tanda tangan sekali untuk semua sesi, sudah dikonfirmasi ke RS.">' + esc(catatan) + "</textarea>" +
           (ui.galat ? '<p class="galat" role="alert">' + esc(ui.galat) + "</p>" : "") + "</label>" +
-        '<div class="saran-tombol"><button class="btn btn--primer" type="button" data-aksi="simpan-lain">Simpan keputusan</button>' +
+        '<div class="saran-tombol decision-actions"><button class="btn btn--primer" type="button" data-aksi="simpan-lain">Tinjau keputusan</button>' +
         '<button class="btn btn--hantu" type="button" data-aksi="batal-lain">Kembali ke saran</button></div></div>';
     }
 
     return '<section class="panel saran"><div class="saran-isi"><span class="kapital">Langkah yang disarankan</span>' +
-      "<h3>" + saran.nama + "</h3><p>" + D.ALASAN_SARAN[b.label] + " " + saran.akibat + "</p>" + pesertaInfo + bawah + "</div></section>";
+      "<h3>" + saran.nama + "</h3><p>" + D.ALASAN_SARAN[b.label] + " " + saran.akibat + "</p>" + pesertaInfo + bawah +
+      '<p class="mobile-decision-note">Buka di desktop untuk keputusan. Ringkasan dan bukti tetap dapat dilihat di ponsel.</p></div></section>';
   }
 
   function tabBerkas(b, tab) {
-    const keluarga = D.keluargaBerkas(b.id);
-    const daftar = [["bukti", "Bukti"]];
-    if (keluarga) daftar.push(["peta", "Peta hubungan berkas"]);
-    if (b.label === "prioritas") daftar.push(["peserta", "Konfirmasi peserta"]);
-    daftar.push(["jejak", "Jejak keputusan"]);
+    const daftar = [["ringkasan", "Ringkasan"], ["bukti", "Bukti"], ["jejak", "Jejak"]];
     return '<nav class="tab" aria-label="Bagian kartu bukti">' + daftar.map((d) =>
       '<a href="#/berkas/' + b.id + "/" + d[0] + '"' + (tab === d[0] ? ' aria-current="page"' : "") + ">" + d[1] +
-      (d[0] === "peserta" && !S.jawaban[b.id] ? '<i class="titik-merah" title="Menunggu jawaban"></i>' : "") + "</a>").join("") + "</nav>";
+      "</a>").join("") + "</nav>";
+  }
+
+  function cuplikanBukti(b, banyak = 2) {
+    const temuan = b.temuan.filter((t) => t.region).slice(0, banyak);
+    if (!temuan.length) return '<div class="cuplikan-tunggal"><img src="' + b.jpg + '" alt="Pratinjau berkas ' + b.id + '" loading="lazy"><p>Tidak ada area bukti yang ditandai. Dokumen lengkap dapat ditinjau di desktop.</p></div>';
+    return '<div class="cuplikan-grid">' + temuan.map((t, i) => '<figure><button class="crop-trigger" type="button" data-aksi="lihat-crop" data-i="' + i + '" aria-label="Perbesar potongan bukti ' + (i + 1) + '"><canvas data-potong="' + b.id + '" data-region="' + t.region.join(',') + '" width="10" height="10" aria-hidden="true"></canvas><span>Perbesar bukti ' + (i + 1) + '</span></button><figcaption><b>' + (i + 1) + '. ' + D.CEK[t.cek] + '</b><span>' + esc(t.kalimat.split('. ')[0]) + '</span></figcaption></figure>').join('') + '</div>';
+  }
+
+  function dialogCrop(b) {
+    const t = b.temuan.filter((x) => x.region)[ui.crop];
+    if (!t) return '';
+    return '<div class="dialog-shade"><section class="dialog-bulk crop-dialog" role="dialog" aria-modal="true" aria-labelledby="judul-crop"><h2 id="judul-crop">Bukti ' + (ui.crop + 1) + ': ' + D.CEK[t.cek] + '</h2><p>' + esc(t.kalimat) + '</p><canvas data-potong="' + b.id + '" data-region="' + t.region.join(',') + '" width="10" height="10" aria-label="Area dokumen yang ditandai"></canvas><div class="dialog-actions"><button class="btn btn--primer" type="button" data-aksi="tutup-crop">Tutup bukti</button></div></section></div>';
   }
 
   function lamanBerkas(id, tab) {
@@ -442,17 +470,30 @@
     const a = S.antrean.find((x) => x.id === id);
     const kepala = '<div class="berkas-kepala"><div>' +
       '<div class="berkas-judul">' + labelChip(b.label, true) + "<h1>" + esc(b.klaim.peserta) + '</h1><span class="mono redup">' + b.id + "</span></div>" +
-      '<div class="berkas-meta"><span><b>SEP</b><span class="mono">' + esc(b.klaim.sep) + "</span></span><span><b>Rumah sakit</b>" + esc(b.klaim.faskes) + "</span>" +
-        "<span><b>Periode</b>" + esc(b.klaim.periode) + "</span><span><b>Nilai klaim</b>" + (b.klaim.nilai_klaim ? rp(b.klaim.nilai_klaim) : "–") + "</span>" +
-        "<span><b>Masuk</b>" + a.tanggal + ", " + a.jam + "</span></div>" +
-      '<p class="berkas-alasan">' + esc(b.ringkasan) + "</p></div></div>";
+      '<p class="berkas-alasan">' + esc(alasanSingkat(b)) + '</p>' +
+      '<div class="berkas-meta"><span><b>Rumah sakit</b>' + esc(b.klaim.faskes) + '</span><span><b>Masuk</b>' + a.tanggal + ', ' + a.jam + '</span></div></div></div>';
 
     let isi;
-    if (tab === "peta" && D.keluargaBerkas(b.id)) isi = tabPeta(b);
-    else if (tab === "peserta" && b.label === "prioritas") isi = tabPeserta(b);
-    else if (tab === "jejak") isi = tabJejak(b, a);
-    else isi = '<div class="bukti">' + penampil(b) + '<div class="samping">' + kartuSaran(b) + daftarTemuan(b) + tabelBanding(b) + "</div></div>";
-    return kepala + tabBerkas(b, tab) + isi;
+    if (tab === "jejak") isi = tabJejak(b, a);
+    else if (tab === "bukti" || tab === "peta" || tab === "peserta") {
+      isi = '<div class="evidence-page"><div class="mobile-evidence"><h2>Potongan bukti</h2>' + cuplikanBukti(b, 3) + '</div>' + penampil(b) +
+        '<div class="evidence-details">' + tabelBanding(b) +
+        (D.keluargaBerkas(b.id) ? '<details class="evidence-extra"' + (tab === "peta" ? ' open' : '') + '><summary>Peta hubungan berkas</summary>' + tabPeta(b) + '</details>' : '') +
+        (b.label === "prioritas" ? '<details class="evidence-extra" id="peserta"' + (tab === "peserta" ? ' open' : '') + '><summary>Konfirmasi peserta</summary>' + tabPeserta(b) + '</details>' : '') + '</div></div>';
+    } else {
+      isi = '<div class="bukti case-layout"><div class="case-primary">' + daftarTemuan(b) +
+        '<section class="panel bukti-ringkas"><div class="panel-kepala"><h2>Bukti utama</h2><a href="#/berkas/' + b.id + '/bukti">Buka dokumen lengkap</a></div>' + cuplikanBukti(b) + '</section>' + kelompokPemeriksaan(b) + '</div><aside class="samping">' + kartuSaran(b) + '</aside></div>';
+    }
+    return kepala + tabBerkas(b, tab === "peta" || tab === "peserta" ? "bukti" : tab) + isi + (ui.pendingDecision ? dialogKeputusan() : '') + (ui.crop !== null ? dialogCrop(b) : '');
+  }
+
+  function dialogKeputusan() {
+    const p = ui.pendingDecision;
+    const t = D.TINDAKAN[p.tindakan];
+    return '<div class="dialog-shade"><section class="dialog-bulk" role="dialog" aria-modal="true" aria-labelledby="judul-putusan" aria-describedby="dampak-putusan">' +
+      '<h2 id="judul-putusan">Tinjau keputusan untuk ' + esc(p.id) + '</h2><p id="dampak-putusan">' + esc(t.akibat) + '</p>' +
+      (p.catatan ? '<blockquote>' + esc(p.catatan) + '</blockquote>' : '') +
+      '<div class="dialog-actions"><button class="btn" type="button" data-aksi="batal-konfirmasi">Kembali</button><button class="btn btn--primer" type="button" data-aksi="konfirmasi-putusan">' + t.nama + '</button></div></section></div>';
   }
 
   function tabPeta(b) {
@@ -461,47 +502,26 @@
     const pasien = new Set(kel.anggota.map((x) => x.klaim.peserta)).size;
     const bulan = new Set(kel.anggota.map((x) => x.klaim.periode)).size;
     const cabang = kel.anggota.map((x) => {
-      const dipakai = x.id === kel.akar ? "Lembar asli, masuk lebih dulu" : "Memakai lembar " + kel.akar;
+      const dipakai = x.id === kel.akar ? "Berkas pembanding" : x.temuan.some((t) => t.cek === "berkas_kembar") ? "Lembar serupa dengan " + kel.akar : "Area serupa dengan " + kel.akar;
       const ada = diAntrean(x.id);
       return '<li><a class="peta-simpul' + (x.id === b.id ? " ini" : "") + '" href="' + (ada ? "#/berkas/" + x.id : "#/berkas/" + b.id + "/peta") + '">' +
         "<b>" + esc(x.klaim.peserta) + (x.id === b.id ? ' <span class="redup" style="font-weight:600">· berkas ini</span>' : "") + "</b>" +
         '<span><span class="mono">SEP ' + esc(x.klaim.sep) + "</span> · " + esc(x.klaim.periode) + " · " + dipakai + "</span>" + labelChip(x.label) + "</a></li>";
     }).join("");
-    return '<section class="panel"><div class="panel-kepala"><h3>Satu lembar, ' + kel.anggota.length + " klaim</h3><span class=\"kanan redup\">" + pasien + " peserta · " + bulan + " periode</span></div>" +
+    return '<section class="panel"><div class="panel-kepala"><h3>Hubungan ' + kel.anggota.length + " berkas</h3><span class=\"kanan redup\">" + pasien + " peserta · " + bulan + " periode</span></div>" +
       '<div class="peta"><div class="peta-akar"><img src="' + akar.jpg + '" alt="Lembar ' + akar.id + '">' +
-        "<div><b>Lembar " + akar.id + "</b><p>Lembar bukti pelayanan fisioterapi " + esc(akar.klaim.faskes) + ". Setelah kolom identitas dan tanggal ditutup, isinya sama dengan setiap klaim di bawah ini.</p></div></div>" +
+        "<div><b>Lembar " + akar.id + "</b><p>Berkas pembanding dari " + esc(akar.klaim.faskes) + ". Area yang ditandai memiliki pola serupa dan perlu ditinjau bersama dokumen asal.</p></div></div>" +
         '<ul class="peta-cabang">' + cabang + "</ul></div></section>";
   }
 
   function tabPeserta(b) {
     const p = D.pesanPeserta(b);
     const jawab = S.jawaban[b.id];
-    const inisial = p.sapaan === "Bapak" ? "Pak" : "Bu";
-    const obrolan = '<span class="tanggal-obrolan">Hari ini</span>' +
-      '<div class="gelembung dari-bpjs"><p>' + esc(p.teks) + "</p><p>" + esc(p.tanya) + "</p><p>" + esc(p.pilihan) + "</p><small>09.14</small></div>" +
-      (jawab ? '<div class="gelembung dari-peserta"><p>' + jawab + "</p><small>" + jam() + " ✓✓</small></div>" +
-        '<div class="gelembung dari-bpjs"><p>Terima kasih, ' + p.sapaan + ". Jawaban " + p.sapaan + " sudah kami catat.</p><small>" + jam() + "</small></div>" : "");
-    const balas = jawab
-      ? '<div class="ponsel-balas"><button type="button" data-aksi="hapus-jawaban" style="grid-column:1/-1">Ulangi simulasi jawaban</button></div>'
-      : '<div class="ponsel-balas"><span class="petunjuk">Simulasikan jawaban peserta</span>' +
-        ["1", "2", "3"].map((n) => '<button type="button" data-aksi="jawab" data-nilai="' + n + '">' + n + " · " + D.JAWABAN[n].teks + "</button>").join("") + "</div>";
-
-    const status = jawab
-      ? '<div class="jawaban-kartu"><span class="kapital">Jawaban peserta</span><b>' + jawab + " · " + D.JAWABAN[jawab].teks + "</b><p>" + D.JAWABAN[jawab].akibat + "</p></div>"
-      : '<div class="jawaban-kartu"><span class="kapital">Status</span><b>Terkirim otomatis pukul 09.14</b><p>Menunggu jawaban. Kalau peserta tidak menjawab, label berkas tidak berubah.</p></div>';
-
-    return '<div class="peserta"><div class="ponsel" aria-label="Simulasi layar WhatsApp peserta"><div class="ponsel-layar">' +
-      '<div class="ponsel-kepala"><span class="foto">BPJS</span><div><b>BPJS Kesehatan ' + ikon("lencanaCek") + "</b><span>PANDAWA · 0811 8 165 165</span></div></div>" +
-      '<div class="obrolan">' + obrolan + "</div>" + balas + "</div></div>" +
-      '<div class="peserta-info"><div><h2 style="font-size:18px;font-weight:800">Konfirmasi ke ' + inisial + " " + esc(b.klaim.peserta.split(" ")[0]) + '</h2><p class="redup" style="margin-top:4px">Hanya untuk label Prioritas. Peserta menjadi saksi dari luar rumah sakit.</p></div>' +
-        status +
-        '<section class="panel"><div class="panel-kepala"><h3>Aturan pesan</h3></div><div class="panel-isi"><ul class="aturan">' +
-          ["Dikirim lewat PANDAWA, WhatsApp resmi BPJS Kesehatan.", "Tanpa tautan, karena penipu sering menyamar sebagai BPJS.", "Tidak menyebut dugaan kecurangan atau nama pihak yang dicurigai.",
-            "Satu pesan untuk satu klaim.", "Jawaban menaikkan urutan pemeriksaan, tidak pernah menjadi vonis."]
-            .map((t) => "<li>" + ikon("cek") + "<span>" + t + "</span></li>").join("") +
-        "</ul></div></section>" +
-        '<p class="redup" style="font-size:12.5px">Di prototipe ini jawaban peserta disimulasikan. Di produksi, pesan dikirim lewat WhatsApp Business API resmi BPJS.</p>' +
-      "</div></div>";
+    return '<section class="panel konfirmasi-ringkas"><div class="panel-kepala"><h3>Konfirmasi peserta</h3><span class="kanan redup">Simulasi, tidak ada pesan terkirim</span></div><div class="panel-isi">' +
+      '<p>Pesan netral yang dapat dikirim melalui kanal resmi:</p><blockquote>' + esc(p.teks + ' ' + p.tanya + ' ' + p.pilihan) + '</blockquote>' +
+      (jawab ? '<div class="jawaban-kartu"><b>Jawaban simulasi: ' + D.JAWABAN[jawab].teks + '</b><p>' + D.JAWABAN[jawab].akibat + '</p></div><button class="btn" type="button" data-aksi="hapus-jawaban">Ulangi simulasi</button>'
+        : '<div class="jawaban-pilihan"><span>Simulasikan jawaban</span>' + ["1", "2", "3"].map((n) => '<button class="btn" type="button" data-aksi="jawab" data-nilai="' + n + '">' + D.JAWABAN[n].teks + '</button>').join('') + '</div>') +
+      '<p class="konfirmasi-catatan">Jawaban peserta menambah konteks pemeriksaan. Veritas tidak menetapkan kecurangan.</p></div></section>';
   }
 
   function tabJejak(b, a) {
@@ -510,17 +530,16 @@
     const langkah = D.langkah(b);
     const item = [
       { waktu: a.jam, judul: "Diunggah rumah sakit ke JKN Drive", teks: b.klaim.faskes + " · " + (b.berkas ? b.berkas.pdf : b.nama) },
-      { waktu: a.jam, judul: "Diperiksa Vedika Autentik", teks: langkah.length + " langkah selesai. Label " + D.LABEL[b.label].nama + ". " + (b.temuan.length ? b.temuan.length + " temuan." : "Tanpa temuan.") }
+      { waktu: a.jam, judul: "Diperiksa Veritas Autentik", teks: langkah.length + " langkah simulasi selesai. Status " + D.LABEL[b.label].nama + ". " + (b.temuan.length ? b.temuan.length + " temuan." : "Tanpa temuan.") }
     ];
     if (b.label === "prioritas") {
-      item.push({ waktu: "09.14", judul: "Pertanyaan dikirim ke peserta lewat PANDAWA", teks: "Satu pesan netral tanpa tautan." });
+      item.push({ waktu: "Simulasi", judul: "Contoh pesan konfirmasi peserta disiapkan", teks: "Tidak ada pesan yang dikirim dari prototipe." });
       item.push(jawab ? { waktu: "Hari ini", judul: "Peserta menjawab: " + D.JAWABAN[jawab].teks, teks: D.JAWABAN[jawab].akibat }
         : { menunggu: true, waktu: "", judul: "Menunggu jawaban peserta", teks: "Label tidak berubah kalau peserta tidak menjawab." });
     }
-    if (k) {
-      item.push({ waktu: k.waktu.split(", ")[1] || k.waktu, judul: k.oleh + ": " + D.TINDAKAN[k.tindakan].nama, teks: (k.ikutSaran ? "Sesuai saran sistem." : "Berbeda dari saran sistem.") + (k.catatan ? " Catatan: " + k.catatan : "") });
-      if (D.TINDAKAN[k.tindakan].laporan) item.push({ waktu: k.waktu.split(", ")[1] || k.waktu, judul: "Laporan temuan terbit", teks: '<a href="#/laporan/' + b.id + '">Buka laporan</a>', html: true });
-    } else {
+    (S.audit || []).filter((x) => x.id === b.id).forEach((x) => item.push({ waktu: x.waktu, judul: x.jenis === "batal" ? "Keputusan dibatalkan" : D.VERIFIKATOR.nama + ": " + D.TINDAKAN[x.tindakan].nama, teks: x.jenis === "batal" ? "Kasus kembali ke antrean untuk ditinjau." : (x.catatan || "Tindakan tercatat dalam prototipe.") }));
+    if (k && D.TINDAKAN[k.tindakan].laporan) item.push({ waktu: k.waktu.split(", ")[1] || k.waktu, judul: "Laporan temuan tersedia", teks: '<a href="#/laporan/' + b.id + '">Buka laporan</a>', html: true });
+    if (!k) {
       item.push({ menunggu: true, waktu: "", judul: "Menunggu keputusan verifikator", teks: "Saran sistem: " + D.TINDAKAN[D.SARAN[b.label]].nama.toLowerCase() + "." });
     }
     return '<section class="panel"><div class="panel-kepala"><h3>Jejak keputusan</h3><span class="kanan redup">Setiap langkah tercatat: siapa, kapan, dan alasannya</span></div><ol class="linimasa">' +
@@ -547,8 +566,8 @@
         '<button class="btn btn--primer" type="button" data-aksi="unduh-pdf" data-id="' + id + '">' + ikon("unduh") + "Unduh PDF</button>" +
         '<button class="btn" type="button" data-aksi="cetak">' + ikon("cetak") + "Cetak</button></div>" +
       '<article class="kertas-laporan">' +
-        '<header><span class="merek-ikon">' + ikon("perisai") + "</span><div><b>VEDIKA AUTENTIK</b><span>" + D.VERIFIKATOR.kantor + ' · Tim Pencegahan Kecurangan JKN</span></div><div class="kanan"><span>' + D.HARI_INI + "</span></div></header>" +
-        "<h2>LAPORAN TEMUAN KEASLIAN BERKAS KLAIM</h2>" +
+        '<header><span class="merek-ikon"><img src="assets/veritas-mark.svg" alt=""></span><div><b>VERITAS AUTENTIK</b><span>Fitur Vedika · Powered by PRAMANA · ' + D.VERIFIKATOR.kantor + '</span></div><div class="kanan"><span>' + D.HARI_INI + "</span></div></header>" +
+        "<h2>LAPORAN TEMUAN DOKUMEN KLAIM</h2>" +
         '<p class="nomor-laporan">Nomor ' + nomorLaporan(b) + (k ? "" : " · DRAF, belum ada keputusan verifikator") + "</p>" +
         "<h3>Identitas klaim</h3><dl>" +
           "<dt>Peserta</dt><dd>" + esc(b.klaim.peserta) + " · No. kartu " + esc(b.klaim.no_kartu) + "</dd>" +
@@ -560,7 +579,7 @@
         "<h3>Hasil pemeriksaan</h3><p>" + labelChip(b.label) + " " + esc(b.ringkasan) + "</p>" +
         "<h3>Temuan</h3>" + (b.temuan.length ? "<ol>" + b.temuan.map((t) => "<li><b>" + D.CEK[t.cek] + "</b> (" + D.KEKUATAN[t.kekuatan].toLowerCase() + "). " + esc(t.kalimat) + "</li>").join("") + "</ol>" : "<p>Tidak ada temuan.</p>") +
         (potongan ? "<h3>Potongan bukti</h3><div class=\"potongan\">" + potongan + "</div>" : "") +
-        (b.label === "prioritas" ? "<h3>Konfirmasi peserta</h3><p>" + (jawab ? "Peserta menjawab <b>" + D.JAWABAN[jawab].teks + "</b> melalui PANDAWA." : "Pertanyaan terkirim melalui PANDAWA, belum ada jawaban.") + "</p>" : "") +
+        (b.label === "prioritas" ? "<h3>Konfirmasi peserta</h3><p>" + (jawab ? "Jawaban simulasi peserta: <b>" + D.JAWABAN[jawab].teks + "</b>." : "Belum ada jawaban simulasi peserta.") + "</p>" : "") +
         "<h3>Jejak berkas</h3><dl>" +
           '<dt>SHA-256 berkas asli</dt><dd class="mono">' + (hash ? esc(hash) : hash === null ? "Tersedia saat prototipe dibuka lewat server" : "Menghitung…") + "</dd>" +
           "<dt>Pembuat berkas</dt><dd>" + esc([b.metadata_file.Creator, b.metadata_file.Producer].filter(Boolean).join(" · ")) + "</dd>" +
@@ -569,7 +588,7 @@
           ? "<dl><dt>Tindakan</dt><dd><b>" + D.TINDAKAN[k.tindakan].nama + "</b>" + (k.ikutSaran ? ", sesuai saran sistem" : ", berbeda dari saran sistem") + "</dd><dt>Oleh</dt><dd>" + esc(k.oleh) + ", " + esc(k.waktu) + "</dd>" + (k.catatan ? "<dt>Catatan</dt><dd>" + esc(k.catatan) + "</dd>" : "") + "</dl>"
           : "<p class=\"redup\">Belum ada keputusan.</p>") +
         '<div class="ttd-laporan"><div>Verifikator<span></span><b>' + D.VERIFIKATOR.nama + "</b></div><div>Kepala Bidang Penjaminan Manfaat<span></span><b>......................................</b></div></div>" +
-        '<p class="kaki-laporan">Laporan ini berisi prioritas pemeriksaan beserta buktinya, bukan penetapan kecurangan. Rumah sakit berhak memberi klarifikasi sebelum kasus dinaikkan. Penetapan tetap wewenang Tim Pencegahan dan Penanganan Kecurangan JKN sesuai Permenkes 16/2019. Prototipe Healthkathon 2026, seluruh data sintetis.</p>' +
+        '<p class="kaki-laporan">PROTOTIPE · DATA SINTETIS. Hasil pemeriksaan disimulasikan. Laporan ini menampilkan indikasi pada dokumen; keputusan akhir klaim dan penetapan kecurangan berada di luar Veritas Autentik.</p>' +
       "</article>";
   }
 
@@ -633,11 +652,11 @@
       doc.setFont("helvetica", "normal"); doc.setTextColor("#1a1a19"); const isi = doc.splitTextToSize(bersihPdf(r[1]), 118); doc.text(isi, L + 52, y); y += 5.2 * isi.length; });
 
     const k = S.keputusan[id], jawab = S.jawaban[id];
-    doc.setFillColor("#2b6f7c"); doc.rect(0, 0, 210, 3, "F");
-    teks("VEDIKA AUTENTIK", { tebal: true, ukuran: 12 });
-    teks(D.VERIFIKATOR.kantor + " - Tim Pencegahan Kecurangan JKN", { ukuran: 8.5, warna: "#6b6a66" });
+    doc.setFillColor("#15324A"); doc.rect(0, 0, 210, 3, "F");
+    teks("VERITAS AUTENTIK", { tebal: true, ukuran: 12 });
+    teks("Fitur Vedika - Powered by PRAMANA - " + D.VERIFIKATOR.kantor, { ukuran: 8.5, warna: "#6b6a66" });
     y += 6;
-    teks("LAPORAN TEMUAN KEASLIAN BERKAS KLAIM", { tebal: true, ukuran: 12, x: 105, align: "center" });
+    teks("LAPORAN TEMUAN DOKUMEN KLAIM", { tebal: true, ukuran: 12, x: 105, align: "center" });
     teks("Nomor " + nomorLaporan(b) + (k ? "" : " - DRAF"), { ukuran: 8.5, warna: "#6b6a66", x: 105, align: "center" });
 
     judul("Identitas klaim");
@@ -668,7 +687,7 @@
         }
       }
     }
-    if (b.label === "prioritas") { judul("Konfirmasi peserta"); teks(jawab ? "Peserta menjawab " + D.JAWABAN[jawab].teks + " melalui PANDAWA." : "Pertanyaan terkirim melalui PANDAWA, belum ada jawaban."); }
+    if (b.label === "prioritas") { judul("Konfirmasi peserta"); teks(jawab ? "Jawaban simulasi peserta: " + D.JAWABAN[jawab].teks + "." : "Belum ada jawaban simulasi peserta."); }
     judul("Jejak berkas");
     kv([["SHA-256 berkas asli", ui.hash[id] || "tidak tersedia"], ["Pembuat berkas", [b.metadata_file.Creator, b.metadata_file.Producer].filter(Boolean).join(" - ")], ["Versi aturan", "VA-aturan 2026.09"]]);
     judul("Keputusan verifikator");
@@ -690,7 +709,7 @@
         daftar.reverse().map((x) => '<tr class="bisa-klik" data-aksi="buka-berkas" data-id="' + x.id + '"><td class="redup">' + esc(x.waktu) + '</td><td class="nama-berkas"><b>' + esc(x.b.klaim.peserta) + '</b><span class="mono">' + x.id + "</span></td><td>" + labelChip(x.b.label) + "</td><td><b>" + D.TINDAKAN[x.tindakan].nama + '</b></td><td class="sembunyi-hp">' + (x.ikutSaran ? "Diikuti" : '<b style="color:var(--cek-fg)">Tidak diikuti</b>') + '</td><td class="alasan lebar-penuh">' + esc(x.catatan || "–") + "</td></tr>").join("") +
         "</tbody></table></div>"
       : '<div class="riwayat-kosong"><b>Belum ada keputusan</b><p>Setiap keputusan di kartu bukti tercatat di sini, lengkap dengan waktu, tindakan, dan alasannya.</p><a class="btn btn--primer" href="#/autentik">Buka antrean Autentik</a></div>';
-    return '<div class="kepala"><div><h1>Riwayat keputusan</h1><p>Semua keputusan verifikator atas berkas Autentik. Data ini yang dipakai untuk audit dan kalibrasi ambang label.</p></div></div><section class="panel">' + isi + "</section>";
+    return '<div class="kepala"><div><h1>Riwayat keputusan</h1><p>Keputusan verifikator dan pembatalannya tercatat di sini untuk audit prototipe.</p></div></div><section class="panel">' + isi + "</section>";
   }
 
   /* ============================================================== proses */
@@ -706,7 +725,7 @@
       for (let j = 0; j < jumlah; j++) { ui.proses.langkah = j; perbaruiProses(); await tunggu(260); }
       ui.proses.langkah = jumlah;
       ui.proses.daftar[i].selesai = true;
-      S.antrean.push({ id: ids[i], tanggal: "6 Okt", jam: jam(), baru: true, luar: berkas(ids[i]).luar });
+      S.antrean.push({ id: ids[i], tanggal: "1 Okt", jam: jam(), baru: true, luar: berkas(ids[i]).luar });
       simpan();
       gambar(true);
       await tunggu(380);
@@ -725,37 +744,28 @@
     else gambar(true);
   }
 
-  /* Berkas di luar dataset tidak bisa dinilai prototipe: gagal-aman menjadi Perlu dicek. */
-  function berkasLuar(file) {
-    ui.luarUrut += 1;
-    const id = "UNGGAH-" + String(ui.luarUrut).padStart(2, "0");
-    const gambarUrl = /^image\//.test(file.type) ? URL.createObjectURL(file) : null;
-    const b = {
-      id: id, luar: true, nama: file.name, jpg: gambarUrl, pdf: null, ukuran: [1240, 1754],
-      berkas: { pdf: file.name }, ringkasan: "Prototipe hanya mengenali berkas dari folder dataset. Berkas lain tidak pernah diberi label Lolos.",
-      klaim: { peserta: file.name.replace(/\.[^.]+$/, ""), sep: "Tidak terbaca", faskes: "Tidak diketahui", periode: "–", sesi_ditagih: 0, nilai_klaim: 0, no_kartu: "–", kode_faskes: "–", layanan: "Fisioterapi rawat jalan" },
-      isi_lembar: null, kualitas_scan: { status: "baik", catatan: "Berkas diterima." },
-      temuan: [{ cek: "kualitas_scan", kekuatan: "info", region: null, kalimat: "Isi berkas tidak bisa dibaca oleh prototipe. Sesuai prinsip gagal-aman, berkas yang gagal diproses ditandai Perlu dicek." }],
-      metadata_file: { Creator: file.type || "tidak diketahui" }
-    };
-    b.label = "cek";
-    D.PETA[id] = b;
-    return id;
-  }
-
-  function terimaBerkas(files) {
+  /* Hanya file corpus dengan hash yang cocok yang boleh memakai hasil simulasi. */
+  async function terimaBerkas(files) {
     const ids = [];
-    [...files].forEach((f) => {
-      const cocok = f.name.toUpperCase().match(/VA-(ASL|KMB|DST|AI|BRM)-\d{2}/);
-      ids.push(cocok && berkas(cocok[0]) ? cocok[0] : berkasLuar(f));
-    });
+    let tidakDikenal = 0;
+    for (const f of files) {
+      if (!window.crypto?.subtle) { toast("Pemeriksaan file tidak tersedia di peramban ini."); return; }
+      const bytes = await f.arrayBuffer();
+      const digest = await crypto.subtle.digest("SHA-256", bytes);
+      const hash = [...new Uint8Array(digest)].map((v) => v.toString(16).padStart(2, "0")).join("");
+      const cocok = D.MANIFEST.find((b) => Object.values(b.fileHashes || {}).includes(hash));
+      if (cocok) ids.push(cocok.id); else tidakDikenal++;
+    }
+    if (tidakDikenal) toast(tidakDikenal + " berkas tidak ada dalam corpus demo dan tidak dianalisis.");
     if (ids.length) jalankan([...new Set(ids)]);
   }
 
   /* ============================================================== keputusan */
 
   function putuskan(id, tindakan, catatan, ikutSaran) {
-    S.keputusan[id] = { tindakan: tindakan, catatan: catatan, ikutSaran: ikutSaran, oleh: D.VERIFIKATOR.nama, waktu: "6 Okt 2026, " + jam() };
+    S.keputusan[id] = { tindakan: tindakan, catatan: catatan, ikutSaran: ikutSaran, oleh: D.VERIFIKATOR.nama, waktu: "1 Okt 2026, " + jam() };
+    S.audit.push({ id: id, jenis: "keputusan", tindakan: tindakan, catatan: catatan, waktu: jam() });
+    ui.pendingDecision = null;
     ui.pilihLain = false; ui.tindakanLain = null; ui.catatan = null; ui.galat = "";
     simpan();
     gambar(true);
@@ -763,112 +773,7 @@
     toast(t.status + " · " + id, t.laporan ? "#/laporan/" + id : null);
   }
 
-  /* ============================================================== panduan */
-
-  const TUR = [
-    { tengah: true, judul: "Selamat datang di Vedika Autentik",
-      teks: "Anda berperan sebagai verifikator di KC Jakarta Pusat. Fitur ini memeriksa keaslian berkas fisioterapi sebelum klaim dibayar. Panduannya sekitar dua menit." },
-    { rute: "#/autentik", sel: ".nav-autentik", posisi: "kanan", judul: "Tab baru di Vedika",
-      teks: "Autentik ada di samping menu verifikasi yang sudah Anda pakai. Rumah sakit tidak perlu aplikasi atau dokumen baru." },
-    { rute: "#/autentik", sel: "#panelUnggah", posisi: "bawah", coba: "#tombolDemo", tungguDemo: true, judul: "Masukkan lima berkas contoh",
-      teks: "Anggap rumah sakit baru saja mengunggah lima berkas ke JKN Drive. Setiap berkas melewati tujuh langkah pemeriksaan.", cobaTeks: "Tekan Jalankan demo" },
-    { rute: "#/autentik", sel: ".tabel-antrean", posisi: "atas", siap: pastikanDemo, judul: "Empat label, satu urutan kerja",
-      teks: "Prioritas selalu di atas. Scan yang buram tidak dianggap curang, labelnya Scan ulang. Setiap baris punya alasan satu kalimat." },
-    { rute: "#/berkas/VA-KMB-01/bukti", sel: ".penampil", posisi: "kanan", siap: () => { pastikanDemo(); bukaBerkas("VA-KMB-01"); }, judul: "Buktinya langsung terlihat",
-      teks: "Berkas Pak Budi ternyata lembar milik Bu Siti. Kotak merah menandai bagian yang sama persis, termasuk delapan tanda tangan." },
-    { rute: "#/berkas/VA-KMB-01/bukti", sel: ".daftar-temuan", posisi: "kiri", judul: "Setiap temuan punya kekuatan",
-      teks: "Kuat, sedang, atau lemah. Klik salah satu temuan untuk menyorot bagiannya di berkas." },
-    { rute: "#/berkas/VA-KMB-01/peserta", sel: ".ponsel", posisi: "kanan", coba: ".ponsel-balas button", judul: "Peserta ditanya langsung",
-      teks: "Satu pertanyaan netral lewat PANDAWA, WhatsApp resmi BPJS. Peserta menjadi saksi dari luar rumah sakit.", cobaTeks: "Pilih salah satu jawaban peserta" },
-    { rute: "#/berkas/VA-KMB-01/bukti", sel: ".saran", posisi: "kiri", coba: '[data-aksi="setujui"]', judul: "Sistem menyarankan, Anda memutuskan",
-      teks: "Sarannya: teruskan ke telaah lanjut. Setujui dengan satu klik, atau pilih tindakan lain dengan alasan tertulis.", cobaTeks: "Tekan Setujui saran" },
-    { rute: "#/laporan/VA-KMB-01", sel: ".kertas-laporan", posisi: "kanan", judul: "Laporan temuan terbit",
-      teks: "Identitas klaim, temuan, potongan bukti, sidik berkas, dan keputusan Anda dalam satu dokumen. Bisa diunduh sebagai PDF." },
-    { tengah: true, rute: "#/autentik", akhir: true, judul: "Silakan coba sendiri",
-      teks: "Masih ada empat berkas contoh di antrean: asli, angka disunting, buatan AI, dan scan buram. Panduan bisa diputar ulang dari menu kiri bawah." }
-  ];
-
-  const tur = { aktif: false, i: 0, dengar: false };
-
-  function pastikanDemo() {
-    D.DEMO.forEach((d, i) => { if (!diAntrean(d.id)) S.antrean.push({ id: d.id, tanggal: "6 Okt", jam: jam(), baru: true }); void i; });
-    simpan();
-  }
   function bukaBerkas(id) { if (!S.dibuka.includes(id)) { S.dibuka.push(id); simpan(); } }
-
-  function turMulai() { tur.aktif = true; ui.menuBuka = false; turKe(0); }
-  function turSelesai() {
-    tur.aktif = false; S.turSelesai = true; simpan(); turBersih();
-  }
-  function turKe(i) {
-    if (i < 0) return;
-    if (i >= TUR.length) { turSelesai(); return; }
-    tur.i = i;
-    const s = TUR[i];
-    if (s.siap) s.siap();
-    if (s.rute && location.hash !== s.rute) location.hash = s.rute;
-    else gambar(true);
-  }
-  function turBersih() { document.querySelectorAll(".tur-tirai,.tur-sorot,.tur-kartu").forEach((e) => e.remove()); }
-
-  function turGambar() {
-    turBersih();
-    if (!tur.aktif) return;
-    const s = TUR[tur.i];
-    const el = s.sel ? document.querySelector(s.sel) : null;
-    if (s.sel && !el) return;
-    if (el) {
-      const r0 = el.getBoundingClientRect();
-      if (r0.top < 70 || r0.top > window.innerHeight - 120) window.scrollTo(0, window.scrollY + r0.top - 90);
-    }
-    const kartu = document.createElement("div");
-    kartu.className = "tur-kartu" + (s.tengah || !el ? " tur-kartu--tengah" : "");
-    kartu.setAttribute("role", "dialog");
-    kartu.setAttribute("aria-label", "Panduan demo, langkah " + (tur.i + 1) + " dari " + TUR.length);
-    const akhir = tur.i === TUR.length - 1;
-    const menungguDemo = s.tungguDemo && ui.proses && !ui.proses.selesai;
-    kartu.innerHTML =
-      '<span class="hitung">Langkah ' + (tur.i + 1) + " dari " + TUR.length + "</span><h3>" + esc(s.judul) + "</h3><p>" + esc(s.teks) + "</p>" +
-      (s.cobaTeks ? '<span class="coba">' + ikon("klik") + esc(menungguDemo ? "Tunggu sampai kelima berkas selesai diperiksa" : s.cobaTeks) + "</span>" : "") +
-      '<div class="tur-kaki">' + (akhir ? "" : '<button class="tur-lewati" type="button" data-aksi="tur-tutup">Lewati panduan</button>') +
-        '<span class="kanan">' + (tur.i > 0 ? '<button class="btn btn--kecil" type="button" data-aksi="tur-mundur">Kembali</button>' : "") +
-        '<button class="btn btn--kecil' + (s.coba ? "" : " btn--primer") + '" type="button" data-aksi="tur-maju"' + (menungguDemo ? " disabled" : "") + ">" +
-          (akhir ? "Selesai" : tur.i === 0 ? "Mulai" : s.coba ? "Lewati" : "Lanjut") + "</button></span></div>" +
-      '<div class="tur-titik">' + TUR.map((_, j) => "<i" + (j === tur.i ? ' class="ini"' : "") + "></i>").join("") + "</div>";
-    document.body.appendChild(kartu);
-
-    const tirai = (gaya) => { const d = document.createElement("div"); d.className = "tur-tirai"; d.style.cssText = gaya; document.body.appendChild(d); };
-    if (!el || s.tengah) { tirai("inset:0"); return; }
-
-    const r = el.getBoundingClientRect(), p = 6;
-    const atas = Math.max(0, r.top - p), bawah = Math.min(window.innerHeight, r.bottom + p);
-    tirai("top:0;left:0;right:0;height:" + atas + "px");
-    tirai("top:" + bawah + "px;left:0;right:0;bottom:0");
-    tirai("top:" + atas + "px;left:0;width:" + Math.max(0, r.left - p) + "px;height:" + (bawah - atas) + "px");
-    tirai("top:" + atas + "px;left:" + (r.right + p) + "px;right:0;height:" + (bawah - atas) + "px");
-    const sorot = document.createElement("div");
-    sorot.className = "tur-sorot";
-    sorot.style.cssText = "top:" + atas + "px;left:" + (r.left - p) + "px;width:" + (r.width + p * 2) + "px;height:" + (bawah - atas) + "px";
-    document.body.appendChild(sorot);
-
-    const W = kartu.offsetWidth, H = kartu.offsetHeight, M = 16, vw = window.innerWidth, vh = window.innerHeight;
-    let top, left;
-    if (s.posisi === "kanan" && r.right + 16 + W < vw) { left = r.right + 16; top = r.top; }
-    else if (s.posisi === "kiri" && r.left - 16 - W > 0) { left = r.left - 16 - W; top = r.top; }
-    else if (s.posisi === "atas" && r.top - 16 - H > M) { top = r.top - 16 - H; left = r.left; }
-    else if (r.bottom + 16 + H < vh) { top = r.bottom + 16; left = r.left; }
-    else { top = vh - H - M; left = vw - W - M; }
-    kartu.style.top = Math.max(M, Math.min(top, vh - H - M)) + "px";
-    kartu.style.left = Math.max(M, Math.min(left, vw - W - M)) + "px";
-  }
-
-  function turDengar(e) {
-    if (!tur.aktif) return;
-    const s = TUR[tur.i];
-    if (!s.coba || s.tungguDemo || !e.target.closest || !e.target.closest(s.coba)) return;
-    const i = tur.i;
-    setTimeout(() => { if (tur.aktif && tur.i === i) turKe(i + 1); }, 650);
-  }
 
   /* ============================================================== render */
 
@@ -876,11 +781,10 @@
     const y = window.scrollY;
     const r = rute();
     const akar = document.getElementById("akar");
-    document.body.style.overflow = "";
+    document.body.style.overflow = ui.menuBuka || ui.bulk || ui.pendingDecision || ui.help || ui.crop !== null ? "hidden" : "";
 
     if (!S.masuk) {
       akar.innerHTML = lamanMasuk();
-      turBersih();
       return;
     }
 
@@ -898,18 +802,26 @@
     else { isi = lamanBeranda(); jejak = "<b>Beranda</b>"; }
 
     akar.innerHTML = kerangka(r, isi, jejak);
-    document.title = (r.nama === "beranda" ? "Beranda" : r.nama === "riwayat" ? "Riwayat keputusan" : b ? b.klaim.peserta : "Autentik") + " · Vedika Autentik";
+    document.title = (r.nama === "beranda" ? "Beranda" : r.nama === "riwayat" ? "Riwayat keputusan" : b ? b.klaim.peserta : "Antrean") + " · Veritas Autentik";
     window.scrollTo(0, tetap ? y : 0);
-    if (r.nama === "laporan") isiPotongan();
-    if (ui.fokus != null) { const f = document.querySelector(".sorot.fokus"); if (f && !tetap) f.scrollIntoView({ block: "center" }); }
-    requestAnimationFrame(turGambar);
+    if (document.querySelector("canvas[data-potong]")) isiPotongan();
+    if (ui.fokus != null && !tetap) {
+      const f = window.matchMedia("(max-width: 640px)").matches
+        ? document.querySelector('.mobile-evidence .crop-trigger[data-i="' + ui.fokus + '"]')
+        : document.querySelector(".sorot.fokus");
+      f?.scrollIntoView({ block: "center" });
+    }
   }
 
-  function toast(pesan, tautan) {
+  function toast(pesan, tautan, aksi) {
     const w = document.getElementById("toast");
+    while (w.children.length >= 2) {
+      const biasa = [...w.children].find((x) => !x.querySelector('button'));
+      (biasa || w.firstElementChild).remove();
+    }
     const t = document.createElement("div");
     t.className = "toast";
-    t.innerHTML = ikon("lencanaCek") + "<span>" + esc(pesan) + (tautan ? ' <a href="' + tautan + '">Buka laporan</a>' : "") + "</span>";
+    t.innerHTML = ikon("lencanaCek") + "<span>" + esc(pesan) + (tautan ? ' <a href="' + tautan + '">Buka laporan</a>' : "") + (aksi ? ' <button type="button" data-aksi="' + aksi + '">Urungkan</button>' : '') + "</span>";
     w.appendChild(t);
     setTimeout(() => { t.style.transition = "opacity .3s"; t.style.opacity = "0"; setTimeout(() => t.remove(), 320); }, 4200);
   }
@@ -917,8 +829,8 @@
   /* ============================================================== peristiwa */
 
   const AKSI = {
-    masuk() { S.masuk = true; simpan(); ke("#/beranda"); if (!S.turSelesai) setTimeout(turMulai, 350); },
-    menu() { ui.menuBuka = !ui.menuBuka; gambar(true); },
+    masuk() { S.masuk = true; simpan(); ke("#/autentik"); },
+    menu() { ui.menuBuka = !ui.menuBuka; gambar(true); (document.querySelector(ui.menuBuka ? '.drawer-close' : '.tombol-menu') || document.body).focus(); },
     "buka-antrean"(el) {
       const ada = S.antrean.some((a) => berkas(a.id).klaim.faskes === el.dataset.faskes);
       ui.faskes = ada ? el.dataset.faskes : "";
@@ -926,41 +838,78 @@
       ke("#/autentik");
     },
     "buka-berkas"(el) { ui.fokus = null; ke("#/berkas/" + el.dataset.id); },
-    saring(el) { ui.filter = el.dataset.nilai; gambar(true); },
+    saring(el) { ui.filter = el.dataset.nilai; ui.visibleCount = 20; gambar(true); document.querySelector('[data-aksi="saring"][data-nilai="' + ui.filter + '"]')?.focus(); },
+    "toggle-filter"() { ui.filterBuka = !ui.filterBuka; gambar(true); document.querySelector('[data-aksi="toggle-filter"]')?.focus(); },
+    "toggle-demo"() { ui.demoBuka = !ui.demoBuka; gambar(true); document.querySelector('[data-aksi="toggle-demo"]')?.focus(); },
+    "reset-filter"() { ui.filter = "semua"; ui.faskes = ""; ui.q = ""; ui.visibleCount = 20; gambar(true); document.querySelector('[data-aksi="cari"]')?.focus(); },
+    "lihat-lagi"() { const jumlahAwal = ui.visibleCount; ui.visibleCount += 20; gambar(true); (document.querySelector('[data-aksi="lihat-lagi"]') || document.querySelectorAll('.queue-case-link')[jumlahAwal])?.focus(); },
     demo() { jalankan(D.DEMO.map((d) => d.id)); },
     skenario(el) { const id = el.dataset.id; if (diAntrean(id)) ke("#/berkas/" + id); else jalankan([id]); },
-    "setujui-lolos"() {
+    "setujui-lolos"() { if (window.matchMedia("(max-width: 640px)").matches) return; ui.bulk = true; gambar(true); document.querySelector('.dialog-bulk [data-aksi="batal-bulk"]')?.focus(); },
+    "batal-bulk"() { ui.bulk = false; gambar(true); document.querySelector('[data-aksi="setujui-lolos"]')?.focus(); },
+    "konfirmasi-bulk"() {
+      if (window.matchMedia("(max-width: 640px)").matches) return;
       const ids = S.antrean.filter((a) => berkas(a.id).label === "lolos" && !S.keputusan[a.id]).map((a) => a.id);
-      ids.forEach((id) => { S.keputusan[id] = { tindakan: "wajar", catatan: "Disetujui bersama: semua pemeriksaan bersih.", ikutSaran: true, oleh: D.VERIFIKATOR.nama, waktu: "6 Okt 2026, " + jam() }; });
-      simpan(); gambar(true); toast(ids.length + " berkas lolos dikembalikan ke verifikasi biasa.");
+      const batchId = Date.now().toString(36);
+      S.bulkUndo = { id: batchId, entries: ids.map((id) => ({ id: id, sebelum: S.keputusan[id] || null })) };
+      ids.forEach((id) => {
+        S.keputusan[id] = { tindakan: "wajar", catatan: "Tidak ada anomali terdeteksi pada pemeriksaan yang tersedia.", ikutSaran: true, oleh: D.VERIFIKATOR.nama, waktu: "1 Okt 2026, " + jam(), batchId: batchId };
+        S.audit.push({ id: id, jenis: "keputusan", tindakan: "wajar", catatan: "Keputusan kelompok", waktu: jam() });
+      });
+      ui.bulk = false; simpan(); gambar(true); toast(ids.length + " berkas diteruskan ke verifikasi biasa.", null, "undo-bulk");
     },
-    fokus(el) { const i = Number(el.dataset.i); ui.fokus = ui.fokus === i ? null : i; ui.sorot = true; gambar(true); const f = document.querySelector(".sorot.fokus"); if (f) f.scrollIntoView({ block: "center", behavior: "smooth" }); },
+    "undo-bulk"() {
+      if (window.matchMedia("(max-width: 640px)").matches) return;
+      if (!S.bulkUndo) return;
+      const entries = S.bulkUndo.entries.filter((x) => S.keputusan[x.id]?.batchId === S.bulkUndo.id);
+      entries.forEach((x) => { if (x.sebelum) S.keputusan[x.id] = x.sebelum; else delete S.keputusan[x.id]; S.audit.push({ id: x.id, jenis: "batal", waktu: jam() }); });
+      S.bulkUndo = null; simpan(); gambar(true); toast(entries.length + " keputusan kelompok dibatalkan.");
+    },
+    fokus(el) {
+      const i = Number(el.dataset.i); ui.fokus = i; ui.fokusCase = rute().id; ui.sorot = true;
+      if (window.matchMedia("(max-width: 640px)").matches && i >= 3) {
+        ui.crop = berkas(rute().id).temuan.slice(0, i + 1).filter((t) => t.region).length - 1;
+        ui.cropFromFinding = i;
+        gambar(true); document.querySelector('[data-aksi="tutup-crop"]')?.focus(); return;
+      }
+      if (rute().tab !== "bukti") ke("#/berkas/" + rute().id + "/bukti"); else gambar(true);
+      requestAnimationFrame(() => {
+        const target = window.matchMedia("(max-width: 640px)").matches
+          ? document.querySelector('.mobile-evidence .crop-trigger[data-i="' + i + '"]')
+          : document.querySelector(".sorot.fokus");
+        target?.scrollIntoView({ block: "center", behavior: "smooth" });
+      });
+    },
+    "lihat-crop"(el) { ui.crop = Number(el.dataset.i); ui.cropFromFinding = null; gambar(true); document.querySelector('[data-aksi="tutup-crop"]')?.focus(); },
+    "tutup-crop"() { const i = ui.crop, finding = ui.cropFromFinding; ui.crop = null; ui.cropFromFinding = null; gambar(true); document.querySelector(finding === null ? '.crop-trigger[data-i="' + i + '"]' : '.temuan-link[data-i="' + finding + '"]')?.focus(); },
     perbesar() { ui.perbesar = !ui.perbesar; gambar(true); },
     setujui() {
+      if (window.matchMedia("(max-width: 640px)").matches) { toast("Buka di desktop untuk mengambil keputusan."); return; }
       const r = rute(), b = berkas(r.id), saran = D.SARAN[b.label];
       const catatan = D.TINDAKAN[saran].laporan ? (ui.catatan != null ? ui.catatan : ringkasCatatan(b)) : "";
-      putuskan(b.id, saran, catatan.trim(), true);
+      ui.pendingDecision = { id: b.id, tindakan: saran, catatan: catatan.trim(), ikutSaran: true }; gambar(true); document.querySelector('[data-aksi="batal-konfirmasi"]')?.focus();
     },
     "pilih-lain"() { ui.pilihLain = true; ui.catatan = ""; ui.galat = ""; gambar(true); },
     "batal-lain"() { ui.pilihLain = false; ui.tindakanLain = null; ui.catatan = null; ui.galat = ""; gambar(true); },
     "simpan-lain"() {
+      if (window.matchMedia("(max-width: 640px)").matches) { toast("Buka di desktop untuk mengambil keputusan."); return; }
       if (!ui.tindakanLain) { ui.galat = "Pilih salah satu tindakan dulu."; gambar(true); return; }
       if (!ui.catatan || !ui.catatan.trim()) { ui.galat = "Tulis alasan singkat. Catatan ini masuk ke jejak keputusan dan laporan."; gambar(true); return; }
-      putuskan(rute().id, ui.tindakanLain, ui.catatan.trim(), false);
+      ui.pendingDecision = { id: rute().id, tindakan: ui.tindakanLain, catatan: ui.catatan.trim(), ikutSaran: false }; gambar(true); document.querySelector('[data-aksi="batal-konfirmasi"]')?.focus();
     },
-    "batal-putusan"() { delete S.keputusan[rute().id]; simpan(); gambar(true); },
+    "batal-konfirmasi"() { ui.pendingDecision = null; gambar(true); document.querySelector('[data-aksi="setujui"]')?.focus(); },
+    "konfirmasi-putusan"() { if (window.matchMedia("(max-width: 640px)").matches) return; const p = ui.pendingDecision; if (p) putuskan(p.id, p.tindakan, p.catatan, p.ikutSaran); },
+    "batal-putusan"() { if (window.matchMedia("(max-width: 640px)").matches) return; const id = rute().id; delete S.keputusan[id]; S.audit.push({ id: id, jenis: "batal", waktu: jam() }); simpan(); gambar(true); toast("Keputusan dibatalkan. Berkas kembali ke antrean."); },
     jawab(el) { const id = rute().id; S.jawaban[id] = el.dataset.nilai; ui.catatan = null; simpan(); gambar(true); toast("Jawaban peserta tercatat: " + D.JAWABAN[el.dataset.nilai].teks + "."); },
     "hapus-jawaban"() { delete S.jawaban[rute().id]; simpan(); gambar(true); },
     "unduh-pdf"(el) { unduhPdf(el.dataset.id); },
     cetak() { window.print(); },
-    "tur-mulai"() { turMulai(); },
-    "tur-maju"() { turKe(tur.i + 1); },
-    "tur-mundur"() { turKe(tur.i - 1); },
-    "tur-tutup"() { turSelesai(); },
+    "tur-mulai"() { ui.menuBuka = false; ui.help = true; gambar(true); document.querySelector('[data-aksi="tutup-panduan"]')?.focus(); },
+    "tutup-panduan"() { ui.help = false; gambar(true); document.querySelector('[data-aksi="tur-mulai"]')?.focus(); },
     "ulang-demo"() {
       const tetapMasuk = S.masuk;
-      S = statusAwal(); S.masuk = tetapMasuk; S.turSelesai = true;
-      ui.proses = null; ui.filter = "semua"; ui.faskes = ""; ui.q = ""; ui.fokus = null; ui.pilihLain = false; ui.catatan = null;
+      S = statusAwal(); S.masuk = tetapMasuk;
+      ui.proses = null; ui.filter = "semua"; ui.faskes = ""; ui.q = ""; ui.fokus = null; ui.pilihLain = false; ui.catatan = null; ui.bulk = false;
       simpan(); ke("#/autentik"); toast("Demo dimulai ulang. Antrean kembali ke keadaan awal.");
     }
   };
@@ -975,7 +924,7 @@
 
   document.addEventListener("change", (e) => {
     const a = e.target.dataset && e.target.dataset.aksi;
-    if (a === "saring-faskes") { ui.faskes = e.target.value; gambar(true); }
+    if (a === "saring-faskes") { ui.faskes = e.target.value; ui.visibleCount = 20; gambar(true); document.querySelector('[data-aksi="saring-faskes"]')?.focus(); }
     else if (a === "saklar-sorot") { ui.sorot = e.target.checked; gambar(true); }
     else if (a === "tindakan-lain") { ui.tindakanLain = e.target.value; ui.galat = ""; gambar(true); }
     else if (e.target.id === "pilihBerkas" && e.target.files.length) terimaBerkas(e.target.files);
@@ -986,6 +935,7 @@
     if (a === "catatan") ui.catatan = e.target.value;
     else if (a === "cari") {
       ui.q = e.target.value;
+      ui.visibleCount = 20;
       const pos = e.target.selectionStart;
       gambar(true);
       const baru = document.querySelector('[data-aksi="cari"]');
@@ -1006,17 +956,40 @@
     if (e.dataTransfer && e.dataTransfer.files.length) terimaBerkas(e.dataTransfer.files);
   });
 
-  document.addEventListener("click", turDengar, true);
-  document.addEventListener("demo-selesai", () => { if (tur.aktif && TUR[tur.i].tungguDemo) setTimeout(() => turKe(tur.i + 1), 500); });
   document.addEventListener("keydown", (e) => {
-    if (!tur.aktif) return;
-    if (e.key === "Escape") turSelesai();
-    else if (e.key === "ArrowRight" && !TUR[tur.i].tungguDemo) turKe(tur.i + 1);
-    else if (e.key === "ArrowLeft") turKe(tur.i - 1);
+    const dialog = document.querySelector('[role="dialog"][aria-modal="true"]');
+    if (dialog) {
+      if (e.key === "Escape") {
+        e.preventDefault();
+        const target = ui.crop !== null ? ui.cropFromFinding === null ? '.crop-trigger[data-i="' + ui.crop + '"]' : '.temuan-link[data-i="' + ui.cropFromFinding + '"]'
+          : ui.bulk ? '[data-aksi="setujui-lolos"]' : ui.pendingDecision ? ui.pilihLain ? '[data-aksi="simpan-lain"]' : '[data-aksi="setujui"]' : window.matchMedia("(max-width: 960px)").matches ? '.tombol-menu' : '[data-aksi="tur-mulai"]';
+        ui.bulk = false; ui.pendingDecision = null; ui.help = false; ui.crop = null; ui.cropFromFinding = null;
+        gambar(true); document.querySelector(target)?.focus(); return;
+      }
+      if (e.key === "Tab") {
+        const nodes = [...dialog.querySelectorAll('button, a[href], input, textarea, select')].filter((x) => !x.disabled);
+        if (nodes.length) {
+          const first = nodes[0], last = nodes[nodes.length - 1];
+          if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+          else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+        }
+      }
+      return;
+    }
+    if (ui.menuBuka) {
+      if (e.key === "Escape") { e.preventDefault(); ui.menuBuka = false; gambar(true); document.querySelector('.tombol-menu')?.focus(); return; }
+      if (e.key === "Tab") {
+        const nodes = [...document.querySelectorAll('#sisi a[href], #sisi button:not([disabled])')];
+        const first = nodes[0], last = nodes[nodes.length - 1];
+        if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+        else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+      }
+      return;
+    }
   });
-  window.addEventListener("hashchange", () => { ui.pilihLain = false; ui.tindakanLain = null; ui.catatan = null; ui.galat = ""; ui.fokus = null; ui.menuBuka = false; gambar(false); });
-  window.addEventListener("resize", () => { if (tur.aktif) turGambar(); });
-  window.addEventListener("scroll", () => { if (tur.aktif) turGambar(); }, { passive: true });
+  window.addEventListener("hashchange", () => { ui.pilihLain = false; ui.tindakanLain = null; ui.catatan = null; ui.galat = ""; if (ui.fokusCase !== rute().id) ui.fokus = null; ui.menuBuka = false; ui.pendingDecision = null; ui.bulk = false; ui.help = false; ui.crop = null; ui.cropFromFinding = null; gambar(false); });
+  let wasMobile = window.matchMedia("(max-width: 960px)").matches;
+  window.addEventListener("resize", () => { const mobile = window.matchMedia("(max-width: 960px)").matches; if (mobile !== wasMobile) { wasMobile = mobile; ui.menuBuka = false; gambar(true); } });
 
   gambar(false);
 })();

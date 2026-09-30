@@ -1,245 +1,351 @@
 {
- "id": "VA-DST-02",
- "folder": "03-angka-disunting",
- "berkas": {
-  "jpg": "VA-DST-02.jpg",
-  "pdf": "VA-DST-02.pdf"
- },
- "ukuran": [
-  1240,
-  1754
- ],
- "demo": false,
- "peran": "uji",
- "label_diharapkan": "Prioritas",
- "ringkasan": "Baris 7 dan 8 hasil salin-tempel baris 1 dan 2, lengkap dengan tanda tangannya.",
- "klaim": {
-  "sep": "0901R0270826V590117",
-  "peserta": "Bambang Nugroho",
-  "no_kartu": "0002304418862",
-  "faskes": "RS Cipta Medika",
-  "kode_faskes": "0901R027",
-  "periode": "Agustus 2026",
-  "layanan": "Fisioterapi rawat jalan",
-  "sesi_ditagih": 8,
-  "tarif_per_sesi": 207300,
-  "nilai_klaim": 1658400,
-  "nilai_klaim_teks": "Rp1.658.400"
- },
- "isi_lembar": {
-  "nama": "Bambang Nugroho",
-  "tanggal_lahir": "05-12-1970",
-  "no_rm": "07-56-0071",
-  "no_kartu": "0002304418862",
-  "no_sep": "0901R0270826V590117",
-  "diagnosis": "Carpal tunnel syndrome",
-  "icd10": "G56.0",
-  "dpjp": "dr. H. Suparman, Sp.KFR",
-  "periode": "Agustus 2026",
-  "baris_terisi": 8,
-  "baris_asli": 6,
-  "tanggal_sesi": [
-   "05/08",
-   "08/08",
-   "12/08",
-   "15/08",
-   "19/08",
-   "22/08",
-   "26/08",
-   "29/08"
-  ],
-  "jumlah_kunjungan_tertulis": 8,
-  "kemiripan_ttd_rerata": 0.791
- },
- "kualitas_scan": {
-  "status": "baik",
-  "catatan": "Terbaca, miring 0.5 derajat."
- },
- "temuan": [
-  {
-   "cek": "copy_paste",
-   "kekuatan": "kuat",
-   "area": [
-    [
-     134,
-     1128,
-     1016,
-     101
-    ],
-    [
-     133,
-     1220,
-     1016,
-     101
-    ]
-   ],
-   "region": [
-    133,
-    1128,
-    1017,
-    193
-   ],
-   "kalimat": "Baris 7 dan 8 identik dengan baris 1 dan 2, termasuk paraf terapis dan tanda tangan pasien. Hanya tanggalnya yang berbeda."
+  "id": "VA-DST-02",
+  "folder": "03-angka-disunting",
+  "berkas": {
+    "jpg": "VA-DST-02.jpg",
+    "pdf": "VA-DST-02.pdf"
   },
-  {
-   "cek": "kecocokan_klaim",
-   "kekuatan": "kuat",
-   "region": [
-    133,
-    1128,
-    1017,
-    193
-   ],
-   "kalimat": "Ditagih 8 sesi. Setelah baris salinan dikeluarkan, berkas hanya mendukung 6."
+  "ukuran": [
+    1240,
+    1754
+  ],
+  "demo": false,
+  "peran": "uji",
+  "label_diharapkan": "Prioritas",
+  "ringkasan": "Baris 7 dan 8 hasil salin-tempel baris 1 dan 2, lengkap dengan tanda tangannya.",
+  "klaim": {
+    "sep": "0901R0270826V590117",
+    "peserta": "Bambang Nugroho",
+    "no_kartu": "0002304418862",
+    "faskes": "RS Cipta Medika",
+    "kode_faskes": "0901R027",
+    "periode": "Agustus 2026",
+    "layanan": "Fisioterapi rawat jalan",
+    "sesi_ditagih": 8,
+    "tarif_per_sesi": 207300,
+    "nilai_klaim": 1658400,
+    "nilai_klaim_teks": "Rp1.658.400"
+  },
+  "isi_lembar": {
+    "nama": "Bambang Nugroho",
+    "tanggal_lahir": "05-12-1970",
+    "no_rm": "07-56-0071",
+    "no_kartu": "0002304418862",
+    "no_sep": "0901R0270826V590117",
+    "diagnosis": "Carpal tunnel syndrome",
+    "icd10": "G56.0",
+    "dpjp": "dr. H. Suparman, Sp.KFR",
+    "periode": "Agustus 2026",
+    "baris_terisi": 8,
+    "baris_asli": 6,
+    "tanggal_sesi": [
+      "05/08",
+      "08/08",
+      "12/08",
+      "15/08",
+      "19/08",
+      "22/08",
+      "26/08",
+      "29/08"
+    ],
+    "jumlah_kunjungan_tertulis": 8,
+    "kemiripan_ttd_rerata": 0.791
+  },
+  "kualitas_scan": {
+    "status": "baik",
+    "catatan": "Terbaca, miring 0.5 derajat."
+  },
+  "temuan": [
+    {
+      "cek": "copy_paste",
+      "kekuatan": "kuat",
+      "area": [
+        [
+          134,
+          1128,
+          1016,
+          101
+        ],
+        [
+          133,
+          1220,
+          1016,
+          101
+        ]
+      ],
+      "region": [
+        133,
+        1128,
+        1017,
+        193
+      ],
+      "kalimat": "Baris 7 dan 8 identik dengan baris 1 dan 2, termasuk paraf terapis dan tanda tangan pasien. Hanya tanggalnya yang berbeda."
+    },
+    {
+      "cek": "kecocokan_klaim",
+      "kekuatan": "kuat",
+      "region": [
+        133,
+        1128,
+        1017,
+        193
+      ],
+      "kalimat": "Ditagih 8 sesi. Setelah baris salinan dikeluarkan, berkas hanya mendukung 6."
+    }
+  ],
+  "metadata_file": {
+    "Producer": "Microsoft: Print To PDF",
+    "Creator": "GIMP 2.10",
+    "ModDate": "2026-09-03T20:31:00"
+  },
+  "pindai": {
+    "alat": "flatbed",
+    "miring": -0.5
+  },
+  "region_lembar": {
+    "kop": [
+      94,
+      65,
+      1065,
+      124
+    ],
+    "nama": [
+      273,
+      278,
+      258,
+      33
+    ],
+    "sep": [
+      861,
+      337,
+      251,
+      31
+    ],
+    "periode": [
+      861,
+      436,
+      157,
+      29
+    ],
+    "tabel": [
+      84,
+      540,
+      1071,
+      781
+    ],
+    "baris-1": [
+      91,
+      575,
+      1064,
+      101
+    ],
+    "ttd-1": [
+      904,
+      582,
+      251,
+      94
+    ],
+    "baris-2": [
+      90,
+      667,
+      1064,
+      101
+    ],
+    "ttd-2": [
+      903,
+      674,
+      251,
+      94
+    ],
+    "baris-3": [
+      89,
+      759,
+      1064,
+      101
+    ],
+    "ttd-3": [
+      902,
+      766,
+      251,
+      94
+    ],
+    "baris-4": [
+      88,
+      851,
+      1064,
+      101
+    ],
+    "ttd-4": [
+      901,
+      858,
+      251,
+      94
+    ],
+    "baris-5": [
+      88,
+      943,
+      1064,
+      101
+    ],
+    "ttd-5": [
+      901,
+      950,
+      251,
+      94
+    ],
+    "baris-6": [
+      87,
+      1035,
+      1064,
+      101
+    ],
+    "ttd-6": [
+      900,
+      1042,
+      251,
+      94
+    ],
+    "baris-7": [
+      86,
+      1127,
+      1064,
+      101
+    ],
+    "ttd-7": [
+      899,
+      1134,
+      251,
+      94
+    ],
+    "baris-8": [
+      85,
+      1219,
+      1064,
+      101
+    ],
+    "ttd-8": [
+      898,
+      1226,
+      251,
+      94
+    ],
+    "total": [
+      83,
+      1334,
+      675,
+      88
+    ],
+    "blok-dpjp": [
+      787,
+      1340,
+      361,
+      168
+    ]
+  },
+  "caseId": "VA-DST-02",
+  "synthetic": true,
+  "overallStatus": "prioritas",
+  "checkResults": [
+    {
+      "check": "kualitas_scan",
+      "result": "tidak_ditemukan",
+      "strength": null
+    },
+    {
+      "check": "kecocokan_klaim",
+      "result": "indikasi",
+      "strength": "kuat"
+    },
+    {
+      "check": "berkas_kembar",
+      "result": "tidak_ditemukan",
+      "strength": null
+    },
+    {
+      "check": "copy_paste",
+      "result": "indikasi",
+      "strength": "kuat"
+    },
+    {
+      "check": "tempelan",
+      "result": "tidak_ditemukan",
+      "strength": null
+    },
+    {
+      "check": "suntingan",
+      "result": "tidak_ditemukan",
+      "strength": null
+    },
+    {
+      "check": "tanda_ai",
+      "result": "tidak_ditemukan",
+      "strength": null
+    }
+  ],
+  "topFindings": [
+    {
+      "cek": "copy_paste",
+      "kekuatan": "kuat",
+      "area": [
+        [
+          134,
+          1128,
+          1016,
+          101
+        ],
+        [
+          133,
+          1220,
+          1016,
+          101
+        ]
+      ],
+      "region": [
+        133,
+        1128,
+        1017,
+        193
+      ],
+      "kalimat": "Baris 7 dan 8 identik dengan baris 1 dan 2, termasuk paraf terapis dan tanda tangan pasien. Hanya tanggalnya yang berbeda."
+    },
+    {
+      "cek": "kecocokan_klaim",
+      "kekuatan": "kuat",
+      "region": [
+        133,
+        1128,
+        1017,
+        193
+      ],
+      "kalimat": "Ditagih 8 sesi. Setelah baris salinan dikeluarkan, berkas hanya mendukung 6."
+    }
+  ],
+  "evidenceRegions": [
+    {
+      "check": "copy_paste",
+      "region": [
+        133,
+        1128,
+        1017,
+        193
+      ]
+    },
+    {
+      "check": "kecocokan_klaim",
+      "region": [
+        133,
+        1128,
+        1017,
+        193
+      ]
+    }
+  ],
+  "relatedCaseIds": [],
+  "recommendation": "telaah",
+  "participantConfirmation": null,
+  "auditTrail": [],
+  "fileHashes": {
+    "jpg": "997090d839256baba35016a71a5275997a8f78f0e3f8605bc369faad7c9476c3",
+    "pdf": "e7d785f3a3ecd2ac35e842669adabf862723c8931ffbf9cfcedb0d84d58fea8d"
   }
- ],
- "metadata_file": {
-  "Producer": "Microsoft: Print To PDF",
-  "Creator": "GIMP 2.10",
-  "ModDate": "2026-09-03T20:31:00"
- },
- "pindai": {
-  "alat": "flatbed",
-  "miring": -0.5
- },
- "region_lembar": {
-  "kop": [
-   94,
-   65,
-   1065,
-   124
-  ],
-  "nama": [
-   273,
-   278,
-   258,
-   33
-  ],
-  "sep": [
-   861,
-   337,
-   251,
-   31
-  ],
-  "periode": [
-   861,
-   436,
-   157,
-   29
-  ],
-  "tabel": [
-   84,
-   540,
-   1071,
-   781
-  ],
-  "baris-1": [
-   91,
-   575,
-   1064,
-   101
-  ],
-  "ttd-1": [
-   904,
-   582,
-   251,
-   94
-  ],
-  "baris-2": [
-   90,
-   667,
-   1064,
-   101
-  ],
-  "ttd-2": [
-   903,
-   674,
-   251,
-   94
-  ],
-  "baris-3": [
-   89,
-   759,
-   1064,
-   101
-  ],
-  "ttd-3": [
-   902,
-   766,
-   251,
-   94
-  ],
-  "baris-4": [
-   88,
-   851,
-   1064,
-   101
-  ],
-  "ttd-4": [
-   901,
-   858,
-   251,
-   94
-  ],
-  "baris-5": [
-   88,
-   943,
-   1064,
-   101
-  ],
-  "ttd-5": [
-   901,
-   950,
-   251,
-   94
-  ],
-  "baris-6": [
-   87,
-   1035,
-   1064,
-   101
-  ],
-  "ttd-6": [
-   900,
-   1042,
-   251,
-   94
-  ],
-  "baris-7": [
-   86,
-   1127,
-   1064,
-   101
-  ],
-  "ttd-7": [
-   899,
-   1134,
-   251,
-   94
-  ],
-  "baris-8": [
-   85,
-   1219,
-   1064,
-   101
-  ],
-  "ttd-8": [
-   898,
-   1226,
-   251,
-   94
-  ],
-  "total": [
-   83,
-   1334,
-   675,
-   88
-  ],
-  "blok-dpjp": [
-   787,
-   1340,
-   361,
-   168
-  ]
- }
 }

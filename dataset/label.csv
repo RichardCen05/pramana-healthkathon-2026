@@ -1,18 +1,61 @@
 id_berkas,folder,berkas_pdf,label_diharapkan,cek_terpicu,baris_terisi,sesi_ditagih,ringkasan
-VA-ASL-01,01-berkas-asli,01-berkas-asli/VA-ASL-01.pdf,Lolos,,8,8,"Berkas asli, 8 sesi tercatat dan cocok dengan klaim."
-VA-ASL-02,01-berkas-asli,01-berkas-asli/VA-ASL-02.pdf,Lolos,,8,8,Berkas asli. Menjadi sumber berkas kembar VA-KMB-03.
-VA-ASL-03,01-berkas-asli,01-berkas-asli/VA-ASL-03.pdf,Lolos,,6,6,"Berkas asli, 6 sesi, klaim juga 6 sesi."
-VA-ASL-04,01-berkas-asli,01-berkas-asli/VA-ASL-04.pdf,Lolos,,8,8,Berkas asli difoto dengan HP. Bayangan dan perspektif tidak boleh dianggap temuan.
-VA-KMB-00,02-berkas-kembar,02-berkas-kembar/VA-KMB-00.pdf,Lolos,,8,8,Berkas asli milik Bu Siti. Sudah ada di arsip sebelum kembarannya diunggah.
-VA-KMB-01,02-berkas-kembar,02-berkas-kembar/VA-KMB-01.pdf,Prioritas,berkas_kembar:kuat suntingan:sedang tempelan:kuat,8,8,Lembar Bu Siti dipakai untuk klaim Pak Budi. Hanya identitas yang diganti.
-VA-KMB-02,02-berkas-kembar,02-berkas-kembar/VA-KMB-02.pdf,Prioritas,berkas_kembar:kuat suntingan:sedang tempelan:kuat,8,8,Lembar Agustus Bu Siti dipakai lagi untuk klaim September. Tanggal dan SEP diganti.
-VA-KMB-03,02-berkas-kembar,02-berkas-kembar/VA-KMB-03.pdf,Prioritas,berkas_kembar:kuat suntingan:sedang tempelan:kuat,8,8,Lembar Bu Sri (VA-ASL-02) dipakai untuk klaim Bu Yuliana di RS yang sama.
-VA-DST-01,03-angka-disunting,03-angka-disunting/VA-DST-01.pdf,Prioritas,kecocokan_klaim:kuat suntingan:sedang,5,8,"Hanya 5 baris terisi, angka jumlah kunjungan diubah dari 5 menjadi 8."
-VA-DST-02,03-angka-disunting,03-angka-disunting/VA-DST-02.pdf,Prioritas,copy_paste:kuat kecocokan_klaim:kuat,8,8,"Baris 7 dan 8 hasil salin-tempel baris 1 dan 2, lengkap dengan tanda tangannya."
-VA-DST-03,03-angka-disunting,03-angka-disunting/VA-DST-03.pdf,Perlu dicek,suntingan:sedang,8,8,Lembar Juli. Angka bulan pada delapan tanggal dan periode diubah ke Agustus.
-VA-AI-01,04-buatan-ai,04-buatan-ai/VA-AI-01.pdf,Perlu dicek,tanda_ai:lemah tanda_ai:sedang,8,8,"Isi cocok dengan klaim, tetapi tidak ada ciri hasil pindai dan metadatanya menandai gambar buatan AI."
-VA-AI-02,04-buatan-ai,04-buatan-ai/VA-AI-02.pdf,Prioritas,copy_paste:kuat tanda_ai:sedang,8,8,Disusun di aplikasi desain. Delapan tanda tangan adalah satu gambar yang ditempel berulang.
-VA-AI-03,04-buatan-ai,04-buatan-ai/VA-AI-03.pdf,Perlu dicek,tanda_ai:lemah,8,8,Metadata dihapus. Sinyal yang tersisa hanya tidak adanya ciri hasil pindai dan teks kecil yang janggal.
-VA-BRM-01,05-scan-buram,05-scan-buram/VA-BRM-01.pdf,Scan ulang,kualitas_scan:info,8,8,"Buram, miring 4 derajat, dan kolom tanda tangan pasien terpotong di tepi kanan."
-VA-BRM-02,05-scan-buram,05-scan-buram/VA-BRM-02.pdf,Scan ulang,kualitas_scan:info,8,8,"Foto HP terlalu gelap dan kontrasnya rendah, tanda tangan tidak terbaca."
-VA-BRM-03,05-scan-buram,05-scan-buram/VA-BRM-03.pdf,Scan ulang,kualitas_scan:info,8,8,"Bagian bawah halaman tidak ikut terpindai: baris 7 dan 8, jumlah kunjungan, dan tanda tangan DPJP hilang."
+VA-ASL-01,01-berkas-asli,01-berkas-asli/VA-ASL-01.pdf,Lolos,,8,8,Tidak ditemukan anomali pada pemeriksaan yang tersedia.
+VA-ASL-02,01-berkas-asli,01-berkas-asli/VA-ASL-02.pdf,Lolos,,8,8,Tidak ditemukan anomali pada pemeriksaan yang tersedia.
+VA-ASL-03,01-berkas-asli,01-berkas-asli/VA-ASL-03.pdf,Lolos,,6,6,Tidak ditemukan anomali pada pemeriksaan yang tersedia.
+VA-ASL-04,01-berkas-asli,01-berkas-asli/VA-ASL-04.pdf,Lolos,,8,8,Tidak ditemukan anomali pada pemeriksaan yang tersedia.
+VA-KMB-00,02-berkas-kembar,02-berkas-kembar/VA-KMB-00.pdf,Lolos,,8,8,Tidak ditemukan anomali pada pemeriksaan yang tersedia.
+VA-KMB-01,02-berkas-kembar,02-berkas-kembar/VA-KMB-01.pdf,Prioritas,berkas_kembar;tempelan;suntingan,8,8,Ada indikasi bagian dokumen digunakan ulang untuk klaim berbeda; periksa berkas pembanding.
+VA-KMB-02,02-berkas-kembar,02-berkas-kembar/VA-KMB-02.pdf,Prioritas,berkas_kembar;tempelan;suntingan,8,8,Ada indikasi bagian dokumen digunakan ulang untuk klaim berbeda; periksa berkas pembanding.
+VA-KMB-03,02-berkas-kembar,02-berkas-kembar/VA-KMB-03.pdf,Prioritas,berkas_kembar;tempelan;suntingan,8,8,Ada indikasi bagian dokumen digunakan ulang untuk klaim berbeda; periksa berkas pembanding.
+VA-DST-01,03-angka-disunting,03-angka-disunting/VA-DST-01.pdf,Prioritas,kecocokan_klaim;suntingan,5,8,Ada indikasi bagian dokumen disunting; cocokkan dengan data klaim dan berkas asal.
+VA-DST-02,03-angka-disunting,03-angka-disunting/VA-DST-02.pdf,Prioritas,copy_paste;kecocokan_klaim,8,8,"Baris 7 dan 8 hasil salin-tempel baris 1 dan 2, lengkap dengan tanda tangannya."
+VA-DST-03,03-angka-disunting,03-angka-disunting/VA-DST-03.pdf,Perlu dicek,suntingan,8,8,Ada indikasi bagian dokumen disunting; cocokkan dengan data klaim dan berkas asal.
+VA-AI-01,04-buatan-ai,04-buatan-ai/VA-AI-01.pdf,Perlu dicek,tanda_ai;tanda_ai;tanda_ai,8,8,"Isi cocok dengan klaim, tetapi tidak ada ciri hasil pindai dan metadata memuat tag asal digital yang perlu diverifikasi."
+VA-AI-02,04-buatan-ai,04-buatan-ai/VA-AI-02.pdf,Prioritas,copy_paste;tanda_ai,8,8,Metadata mencantumkan aplikasi desain. Delapan tanda tangan adalah satu gambar yang ditempel berulang.
+VA-AI-03,04-buatan-ai,04-buatan-ai/VA-AI-03.pdf,Perlu dicek,tanda_ai;tanda_ai,8,8,Metadata dihapus. Sinyal yang tersisa hanya tidak adanya ciri hasil pindai dan teks kecil yang janggal.
+VA-BRM-01,05-scan-buram,05-scan-buram/VA-BRM-01.pdf,Scan ulang,kualitas_scan,8,8,"Buram, miring 4 derajat, dan kolom tanda tangan pasien terpotong di tepi kanan."
+VA-BRM-02,05-scan-buram,05-scan-buram/VA-BRM-02.pdf,Scan ulang,kualitas_scan,8,8,"Foto HP terlalu gelap dan kontrasnya rendah, tanda tangan tidak terbaca."
+VA-BRM-03,05-scan-buram,05-scan-buram/VA-BRM-03.pdf,Scan ulang,kualitas_scan,8,8,"Bagian bawah halaman tidak ikut terpindai: baris 7 dan 8, jumlah kunjungan, dan tanda tangan DPJP hilang."
+VA-OK-01,06-korpus-demo,06-korpus-demo/VA-OK-01.pdf,Lolos,,8,8,Tidak ada anomali pada pemeriksaan yang tersedia.
+VA-OK-02,06-korpus-demo,06-korpus-demo/VA-OK-02.pdf,Lolos,,8,8,Tidak ada anomali pada pemeriksaan yang tersedia.
+VA-OK-03,06-korpus-demo,06-korpus-demo/VA-OK-03.pdf,Lolos,,8,8,Tidak ada anomali pada pemeriksaan yang tersedia.
+VA-OK-04,06-korpus-demo,06-korpus-demo/VA-OK-04.pdf,Lolos,,8,8,Tidak ada anomali pada pemeriksaan yang tersedia.
+VA-OK-05,06-korpus-demo,06-korpus-demo/VA-OK-05.pdf,Lolos,,6,6,Tidak ada anomali pada pemeriksaan yang tersedia.
+VA-CLM-01,06-korpus-demo,06-korpus-demo/VA-CLM-01.pdf,Perlu dicek,kecocokan_klaim,6,8,"Klaim 8 sesi, berkas mendukung 6 sesi."
+VA-CLM-02,06-korpus-demo,06-korpus-demo/VA-CLM-02.pdf,Perlu dicek,kecocokan_klaim,5,8,"Klaim 8 sesi, berkas mendukung 5 sesi."
+VA-CLM-03,06-korpus-demo,06-korpus-demo/VA-CLM-03.pdf,Perlu dicek,kecocokan_klaim,6,8,"Klaim 8 sesi, berkas mendukung 6 sesi."
+VA-CLM-04,06-korpus-demo,06-korpus-demo/VA-CLM-04.pdf,Perlu dicek,kecocokan_klaim,5,8,"Klaim 8 sesi, berkas mendukung 5 sesi."
+VA-CLM-05,06-korpus-demo,06-korpus-demo/VA-CLM-05.pdf,Perlu dicek,kecocokan_klaim,6,8,"Klaim 8 sesi, berkas mendukung 6 sesi."
+VA-CLM-06,06-korpus-demo,06-korpus-demo/VA-CLM-06.pdf,Perlu dicek,kecocokan_klaim,5,8,"Klaim 8 sesi, berkas mendukung 5 sesi."
+VA-CLM-07,06-korpus-demo,06-korpus-demo/VA-CLM-07.pdf,Perlu dicek,kecocokan_klaim,6,8,"Klaim 8 sesi, berkas mendukung 6 sesi."
+VA-CLM-08,06-korpus-demo,06-korpus-demo/VA-CLM-08.pdf,Perlu dicek,kecocokan_klaim,5,8,"Klaim 8 sesi, berkas mendukung 5 sesi."
+VA-DUP-01,06-korpus-demo,06-korpus-demo/VA-DUP-01.pdf,Prioritas,berkas_kembar;tempelan,8,8,Susunan sesi serupa dengan VA-OK-01; identitas berbeda.
+VA-DUP-02,06-korpus-demo,06-korpus-demo/VA-DUP-02.pdf,Prioritas,berkas_kembar;tempelan,6,6,Susunan sesi serupa dengan VA-OK-02; identitas berbeda.
+VA-DUP-03,06-korpus-demo,06-korpus-demo/VA-DUP-03.pdf,Prioritas,berkas_kembar;tempelan,8,8,Susunan sesi serupa dengan VA-OK-03; identitas berbeda.
+VA-DUP-04,06-korpus-demo,06-korpus-demo/VA-DUP-04.pdf,Prioritas,berkas_kembar;tempelan,8,8,Susunan sesi serupa dengan VA-OK-04; identitas berbeda.
+VA-DUP-05,06-korpus-demo,06-korpus-demo/VA-DUP-05.pdf,Prioritas,berkas_kembar;tempelan,8,8,Susunan sesi serupa dengan VA-OK-01; identitas berbeda.
+VA-DUP-06,06-korpus-demo,06-korpus-demo/VA-DUP-06.pdf,Prioritas,berkas_kembar;tempelan,8,8,Susunan sesi serupa dengan VA-OK-02; identitas berbeda.
+VA-DUP-07,06-korpus-demo,06-korpus-demo/VA-DUP-07.pdf,Prioritas,berkas_kembar;tempelan,6,6,Susunan sesi serupa dengan VA-OK-03; identitas berbeda.
+VA-COP-01,06-korpus-demo,06-korpus-demo/VA-COP-01.pdf,Prioritas,copy_paste;kecocokan_klaim,8,8,Dua baris layanan mengulang isi dan tanda tangan baris sebelumnya.
+VA-COP-02,06-korpus-demo,06-korpus-demo/VA-COP-02.pdf,Prioritas,copy_paste;kecocokan_klaim,8,8,Dua baris layanan mengulang isi dan tanda tangan baris sebelumnya.
+VA-COP-03,06-korpus-demo,06-korpus-demo/VA-COP-03.pdf,Prioritas,copy_paste;kecocokan_klaim,8,8,Dua baris layanan mengulang isi dan tanda tangan baris sebelumnya.
+VA-COP-04,06-korpus-demo,06-korpus-demo/VA-COP-04.pdf,Prioritas,copy_paste;kecocokan_klaim,8,8,Dua baris layanan mengulang isi dan tanda tangan baris sebelumnya.
+VA-COP-05,06-korpus-demo,06-korpus-demo/VA-COP-05.pdf,Prioritas,copy_paste;kecocokan_klaim,6,6,Dua baris layanan mengulang isi dan tanda tangan baris sebelumnya.
+VA-COP-06,06-korpus-demo,06-korpus-demo/VA-COP-06.pdf,Prioritas,copy_paste;kecocokan_klaim,8,8,Dua baris layanan mengulang isi dan tanda tangan baris sebelumnya.
+VA-XDC-01,06-korpus-demo,06-korpus-demo/VA-XDC-01.pdf,Prioritas,tempelan;copy_paste,8,8,Tanda tangan serupa dengan berkas VA-OK-03.
+VA-XDC-02,06-korpus-demo,06-korpus-demo/VA-XDC-02.pdf,Prioritas,tempelan;copy_paste,8,8,Tanda tangan serupa dengan berkas VA-OK-04.
+VA-XDC-03,06-korpus-demo,06-korpus-demo/VA-XDC-03.pdf,Prioritas,tempelan;copy_paste,8,8,Tanda tangan serupa dengan berkas VA-OK-01.
+VA-XDC-04,06-korpus-demo,06-korpus-demo/VA-XDC-04.pdf,Prioritas,tempelan;copy_paste,6,6,Tanda tangan serupa dengan berkas VA-OK-02.
+VA-XDC-05,06-korpus-demo,06-korpus-demo/VA-XDC-05.pdf,Prioritas,tempelan;copy_paste,8,8,Tanda tangan serupa dengan berkas VA-OK-03.
+VA-XDC-06,06-korpus-demo,06-korpus-demo/VA-XDC-06.pdf,Prioritas,tempelan;copy_paste,8,8,Tanda tangan serupa dengan berkas VA-OK-04.
+VA-EDT-01,06-korpus-demo,06-korpus-demo/VA-EDT-01.pdf,Prioritas,kecocokan_klaim;suntingan,6,8,Jumlah kunjungan tampak ditimpa; 6 baris terisi.
+VA-EDT-02,06-korpus-demo,06-korpus-demo/VA-EDT-02.pdf,Prioritas,kecocokan_klaim;suntingan,5,8,Jumlah kunjungan tampak ditimpa; 5 baris terisi.
+VA-EDT-03,06-korpus-demo,06-korpus-demo/VA-EDT-03.pdf,Prioritas,kecocokan_klaim;suntingan,6,8,Jumlah kunjungan tampak ditimpa; 6 baris terisi.
+VA-EDT-04,06-korpus-demo,06-korpus-demo/VA-EDT-04.pdf,Prioritas,kecocokan_klaim;suntingan,5,8,Jumlah kunjungan tampak ditimpa; 5 baris terisi.
+VA-EDT-05,06-korpus-demo,06-korpus-demo/VA-EDT-05.pdf,Prioritas,kecocokan_klaim;suntingan,6,8,Jumlah kunjungan tampak ditimpa; 6 baris terisi.
+VA-EDT-06,06-korpus-demo,06-korpus-demo/VA-EDT-06.pdf,Prioritas,kecocokan_klaim;suntingan,5,8,Jumlah kunjungan tampak ditimpa; 5 baris terisi.
+VA-SYN-01,06-korpus-demo,06-korpus-demo/VA-SYN-01.pdf,Perlu dicek,tanda_ai,8,8,Ada indikasi elemen digital yang perlu diperiksa.
+VA-SYN-02,06-korpus-demo,06-korpus-demo/VA-SYN-02.pdf,Perlu dicek,tanda_ai,6,6,Ada indikasi elemen digital yang perlu diperiksa.
+VA-SYN-03,06-korpus-demo,06-korpus-demo/VA-SYN-03.pdf,Perlu dicek,tanda_ai,8,8,Ada indikasi elemen digital yang perlu diperiksa.
+VA-SYN-04,06-korpus-demo,06-korpus-demo/VA-SYN-04.pdf,Perlu dicek,tanda_ai,8,8,Ada indikasi elemen digital yang perlu diperiksa.
+VA-SCN-01,06-korpus-demo,06-korpus-demo/VA-SCN-01.pdf,Scan ulang,kualitas_scan,8,8,Foto buram; pemeriksaan keaslian belum dapat dilakukan.
