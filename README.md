@@ -1,62 +1,61 @@
-# PRAMANA: Konsol Telaah Klaim JKN
+# Vedika Autentik
 
-Prototipe untuk **BPJS Kesehatan Healthkathon 2026**
-Kategori: *Efisiensi Risiko pada Fasilitas Kesehatan*
+*Lengkap belum tentu asli.* Ditenagai PRAMANA.
+
+Prototipe untuk **BPJS Kesehatan Healthkathon 2026**, kategori *Efisiensi Risiko pada Fasilitas Kesehatan*.
 
 **Demo langsung: <https://pramana-flax.vercel.app>**
 
-> BPJS Kesehatan memeriksa apakah berkas klaim lengkap, bukan apakah layanannya diberikan.
-> PRAMANA membaca citra berkasnya, menjejak alur obatnya, lalu bertanya ke pesertanya,
-> dan menyilangkan ketiganya jadi satu keputusan.
+Vedika Autentik adalah tab baru di aplikasi verifikasi klaim BPJS Kesehatan. Tab ini memeriksa keaslian berkas klaim fisioterapi yang diunggah rumah sakit ke JKN Drive: apakah berkasnya dipakai ulang, disunting, atau dibuat dengan AI, dan apakah isinya cocok dengan jumlah sesi yang ditagih. Setiap berkas mendapat satu dari empat label beserta buktinya. Keputusan tetap di tangan verifikator.
 
----
+## Mencoba demo
 
-## Masalah
+1. Buka tautan demo, lalu tekan **Masuk sebagai verifikator demo**. Panduan singkat langsung terbuka.
+2. Di tab **Autentik**, tekan **Jalankan demo**. Lima berkas contoh diperiksa satu per satu dan masuk ke antrean:
 
-Modus kecurangan yang paling terbukti di Indonesia bukan klaim mahal yang rumit, melainkan klaim
-kecil yang berulang. Pada temuan KPK di tiga rumah sakit, **3.269 dari 4.341 tagihan fisioterapi
-tidak punya catatan medis pendukung** . Sekitar 75% kasus phantom billing berasal dari satu jenis
-layanan saja.
+   | Berkas | Isi | Label |
+   |---|---|---|
+   | VA-ASL-01 | Berkas asli, 8 sesi | Lolos |
+   | VA-KMB-01 | Lembar Bu Siti dipakai untuk klaim Pak Budi | Prioritas |
+   | VA-DST-01 | 5 sesi, angka jumlah kunjungan diubah jadi 8 | Prioritas |
+   | VA-AI-01 | Gambar dari generator AI | Perlu dicek |
+   | VA-BRM-01 | Scan buram dan terpotong | Scan ulang |
 
-Bukti kunci pada klaim seperti ini berbentuk lembaran hasil pindai: jadwal terapi, lembar bukti
-pelayanan bertanda tangan pasien, bukti serah terima obat. Justru bentuk bukti inilah yang paling
-mudah digandakan dan paling jarang diperiksa keasliannya. Audit konvensional hanya menyentuh
-5–10% klaim lewat sampling.
+3. Buka salah satu berkas. Kartu bukti menampilkan area yang disorot, temuan beserta kekuatannya, dan langkah yang disarankan. Tekan **Setujui saran**, atau pilih tindakan lain dengan alasan tertulis.
+4. Untuk berkas Prioritas, buka **Konfirmasi peserta** dan simulasikan jawaban lewat PANDAWA. Setelah diteruskan ke telaah lanjut, **laporan temuan** bisa diunduh sebagai PDF.
 
-## Modus yang disasar
+Berkas di folder `dataset/` juga bisa diseret langsung ke kotak unggah. Berkas lain ditandai Perlu dicek, karena sistem tidak pernah memberi label Lolos pada berkas yang gagal diproses.
 
-| No. | Jenis kecurangan (Permenkes 16/2019) |
-|-----|--------------------------------------|
-| 5   | Cloning (penjiplakan klaim) |
-| 6   | Phantom billing (klaim palsu) |
-| 14  | Menagihkan tindakan yang tidak dilakukan |
-| 17  | Klaim fiktif obat/alkes/tindakan |
-| 18  | Pengurangan jumlah obat |
-| 20  | Manipulasi hasil pemeriksaan |
+## Aturan label
 
-## Tiga lapisan bukti , kerangka Tri Pramana
+Label dihitung ulang di peramban dari temuan setiap berkas (`data.js`, fungsi `hitungLabel`), mengikuti PRD bagian 9:
 
-| Lapisan | Makna | Yang diperiksa |
-|---------|-------|----------------|
-| **Pratyaksa** · Bukti Lihat | kebenaran dari pengamatan langsung | Keragaman tanda tangan, kloning lembar antar pasien, jejak tulisan & media, nilai klinis pada lembar monitoring, selisih penyerahan obat |
-| **Anumana** · Bukti Jejak | kebenaran dari penalaran atas tanda | Denyut ritme perawatan, ketimpangan antar-obat dalam satu resep, uji kehadiran terapi, beban kapasitas pelaksana |
-| **Sabda** · Bukti Saksi | kebenaran dari kesaksian yang tepercaya | Konfirmasi mikro satu ketuk kepada peserta lewat Mobile JKN |
+| Label | Kapan | Saran tindakan |
+|---|---|---|
+| Lolos | Tidak ada temuan dan isi cocok dengan klaim | Tutup sebagai wajar |
+| Scan ulang | Berkas tidak terbaca atau terpotong | Minta scan ulang |
+| Perlu dicek | Ada sinyal yang masih mungkin kelalaian | Minta klarifikasi rumah sakit |
+| Prioritas | Dua sinyal kuat, atau satu kuat ditambah sinyal lain | Teruskan ke telaah lanjut |
 
-Keduanya disilangkan pada **Matriks Bukti Ganda** menjadi empat rute tindak lanjut yang berbeda:
+Tanda buatan AI tidak pernah menjadi satu-satunya alasan Prioritas. Scan yang jelek tidak pernah dianggap tanda kecurangan.
 
-|                              | Bukti visual sahih            | Bukti visual cacat / gandaan     |
-|------------------------------|-------------------------------|----------------------------------|
-| **Jejak konsisten**          | K1 lolos cepat              | K2 cacat administrasi          |
-| **Jejak janggal / kosong**   | K3 audit penyerahan obat    | K4 dugaan phantom / cloning    |
+## Struktur
 
-Kuadran K2 adalah alasan produk ini ada: berkas yang sekadar berantakan tidak boleh diperlakukan
-sama seperti klaim fiktif.
+| Berkas | Isi |
+|---|---|
+| `index.html` | Kerangka halaman, ditulis tanpa `<!doctype>/<html>/<head>/<body>` supaya bisa dipublikasikan sebagai artifact |
+| `app.css` | Token warna dan komponen. Bahasa visual mengikuti JKN Drive v2: Plus Jakarta Sans, teal gelap, tombol 40px bersudut 6px |
+| `data.js` | Aturan label, urutan langkah pemeriksaan, empat tindakan, pesan PANDAWA |
+| `app.js` | Perute, tujuh layar, demo otomatis, panduan, laporan PDF |
+| `dataset/` | 17 berkas uji beserta ground truth. Lihat [dataset/README.md](dataset/README.md) |
+| `tools/dataset/` | Pembangkit dataset: render lembar di Chromium, lalu efek pindai dan manipulasi di Python |
+| `tests/alur.test.js` | Uji alur dari masuk sampai unduh PDF, termasuk layar ponsel |
 
----
+Tidak ada AI yang berjalan di prototipe ini. Temuan dibaca dari ground truth dataset (`dataset/manifest.js`), jadi yang ditunjukkan adalah alur kerja dan cara bukti disajikan ke verifikator. Rancangan teknis mesin analisisnya ada di PRD bagian 12.
 
 ## Menjalankan secara lokal
 
-Tidak ada build step dan tidak ada dependensi npm. Cukup layani foldernya:
+Tidak ada build step. Cukup layani foldernya:
 
 ```bash
 python3 -m http.server 8899
@@ -64,47 +63,17 @@ python3 -m http.server 8899
 
 Lalu buka <http://localhost:8899>.
 
-## Menguji tur
-
-Tur produk punya uji regresi Playwright: 98 pemeriksaan meliputi dua belas langkah,
-tombol kembali, lewati, ulang, papan tik, empat langkah interaktif, kurungan kartu
-di dalam layar, layar ponsel, dan kebersihan konsol.
+## Menguji
 
 ```bash
 npm i playwright && npx playwright install chromium
-PW_HEADLESS=true TARGET_URL=https://pramana-flax.vercel.app/ node tests/tur.test.js
+node tests/alur.test.js
 ```
 
-Hilangkan `TARGET_URL` untuk menguji berkas lokal.
-
-## Struktur
-
-| Berkas | Isi |
-|--------|-----|
-| `index.html` | Kerangka halaman. Ditulis tanpa `<!doctype>/<html>/<head>/<body>` supaya satu berkas jalan lokal sekaligus bisa dipublikasikan sebagai artifact |
-| `app.css` | Token warna monokrom hangat, tipografi, komponen, gaya cetak |
-| `data.js` | PRNG berbenih, 1.184 klaim sintetis, perakit bukti, enam kasus yang ditulis tangan |
-| `docs.js` | Pembangkit tanda tangan dan lembar klaim sebagai SVG |
-| `app.js` | Perute, tampilan, indikator, mesin tur, pembuat PDF |
-| `tests/tur.test.js` | Uji regresi tur produk |
-
-### Catatan teknis yang tidak terlihat dari kode
-
-Tanda tangan dan lembar klaim **digenerate runtime sebagai SVG**, bukan gambar jadi. Konsekuensinya:
-skor kemiripan yang muncul di layar benar-benar dihitung dari selisih titik pada kurva Bézier-nya,
-bukan angka yang ditulis tangan di berkas data.
-
-- `jitter = 0` → goresan identik, dengan variasi pemindaian 0,004 → **berkas gandaan**
-- `jitter ≈ 0,15` → variasi alami manusia → **berkas asli**
-
-Ambang variasi alami tanda tangan manusia diletakkan pada 0,90.
-
----
+Tambahkan `TARGET_URL=https://pramana-flax.vercel.app/` untuk menguji hasil deploy.
 
 ## Batasan
 
-- Seluruh data bersifat **sintetis**. Tidak ada data peserta JKN yang nyata, sesuai ketentuan
-  kerahasiaan pada panduan Healthkathon 2026.
-- Sistem menghasilkan **prioritas audit beserta alasannya**, bukan penetapan kecurangan. Keputusan
-  akhir tetap pada Tim Pencegahan dan Penanganan Kecurangan JKN sesuai Permenkes 16/2019.
-- Ambang setiap indikator perlu dikalibrasi bersama BPJS Kesehatan menggunakan data riil.
+- Seluruh data **sintetis**: nama, nomor kartu, SEP, rumah sakit, dan dokter semuanya fiktif. Tidak ada data peserta JKN yang nyata.
+- Tampilan aplikasi verifikasi internal BPJS tidak tersedia untuk publik. Bingkai aplikasi di sini mengikuti bahasa desain JKN Drive v2 yang halaman masuknya publik, dan tidak memakai logo resmi BPJS Kesehatan.
+- Sistem memberi prioritas pemeriksaan beserta alasannya, bukan penetapan kecurangan. Penetapan tetap wewenang Tim Pencegahan dan Penanganan Kecurangan JKN sesuai Permenkes 16/2019.
