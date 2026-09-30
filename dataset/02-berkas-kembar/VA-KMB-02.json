@@ -1,312 +1,497 @@
 {
- "id": "VA-KMB-02",
- "folder": "02-berkas-kembar",
- "berkas": {
-  "jpg": "VA-KMB-02.jpg",
-  "pdf": "VA-KMB-02.pdf"
- },
- "ukuran": [
-  1240,
-  1754
- ],
- "demo": false,
- "peran": "uji",
- "label_diharapkan": "Prioritas",
- "ringkasan": "Lembar Agustus Bu Siti dipakai lagi untuk klaim September. Tanggal dan SEP diganti.",
- "klaim": {
-  "sep": "0901R0140926V612004",
-  "peserta": "Siti Rahmawati",
-  "no_kartu": "0001367702249",
-  "faskes": "RS Melati Sehat",
-  "kode_faskes": "0901R014",
-  "periode": "September 2026",
-  "layanan": "Fisioterapi rawat jalan",
-  "sesi_ditagih": 8,
-  "tarif_per_sesi": 207300,
-  "nilai_klaim": 1658400,
-  "nilai_klaim_teks": "Rp1.658.400"
- },
- "isi_lembar": {
-  "nama": "Siti Rahmawati",
-  "tanggal_lahir": "08-05-1963",
-  "no_rm": "00-40-7719",
-  "no_kartu": "0001367702249",
-  "no_sep": "0901R0140926V612004",
-  "diagnosis": "Low back pain",
-  "icd10": "M54.5",
-  "dpjp": "dr. Ayu Prameswari, Sp.KFR",
-  "periode": "September 2026",
-  "baris_terisi": 8,
-  "baris_asli": 8,
-  "tanggal_sesi": [
-   "01/09",
-   "04/09",
-   "08/09",
-   "11/09",
-   "15/09",
-   "18/09",
-   "22/09",
-   "25/09"
+  "id": "VA-KMB-02",
+  "folder": "02-berkas-kembar",
+  "berkas": {
+    "jpg": "VA-KMB-02.jpg",
+    "pdf": "VA-KMB-02.pdf"
+  },
+  "ukuran": [
+    1240,
+    1754
   ],
-  "jumlah_kunjungan_tertulis": 8,
-  "kemiripan_ttd_rerata": 0.747
- },
- "kualitas_scan": {
-  "status": "baik",
-  "catatan": "Berkas digital, bukan hasil pindai."
- },
- "temuan": [
-  {
-   "cek": "berkas_kembar",
-   "kekuatan": "kuat",
-   "pasangan": "VA-KMB-00",
-   "kemiripan": 0.97,
-   "kalimat": "Isi berkas 97% sama dengan berkas Siti Rahmawati (SEP 0901R0140826V447215). Yang berbeda hanya SEP, periode, dan tanggal sesi.",
-   "region": [
-    86,
-    542,
-    1068,
-    778
-   ]
+  "demo": false,
+  "peran": "uji",
+  "label_diharapkan": "Prioritas",
+  "ringkasan": "Ada indikasi bagian dokumen digunakan ulang untuk klaim berbeda; periksa berkas pembanding.",
+  "klaim": {
+    "sep": "0901R0140926V612004",
+    "peserta": "Siti Rahmawati",
+    "no_kartu": "0001367702249",
+    "faskes": "RS Melati Sehat",
+    "kode_faskes": "0901R014",
+    "periode": "September 2026",
+    "layanan": "Fisioterapi rawat jalan",
+    "sesi_ditagih": 8,
+    "tarif_per_sesi": 207300,
+    "nilai_klaim": 1658400,
+    "nilai_klaim_teks": "Rp1.658.400"
   },
-  {
-   "cek": "tempelan",
-   "kekuatan": "kuat",
-   "pasangan": "VA-KMB-00",
-   "kalimat": "Delapan tanda tangan pasien identik sampai tingkat piksel dengan tanda tangan di berkas Siti Rahmawati.",
-   "region": [
-    900,
-    581,
-    253,
-    737
-   ]
+  "isi_lembar": {
+    "nama": "Siti Rahmawati",
+    "tanggal_lahir": "08-05-1963",
+    "no_rm": "00-40-7719",
+    "no_kartu": "0001367702249",
+    "no_sep": "0901R0140926V612004",
+    "diagnosis": "Low back pain",
+    "icd10": "M54.5",
+    "dpjp": "dr. Ayu Prameswari, Sp.KFR",
+    "periode": "September 2026",
+    "baris_terisi": 8,
+    "baris_asli": 8,
+    "tanggal_sesi": [
+      "01/09",
+      "04/09",
+      "08/09",
+      "11/09",
+      "15/09",
+      "18/09",
+      "22/09",
+      "25/09"
+    ],
+    "jumlah_kunjungan_tertulis": 8,
+    "kemiripan_ttd_rerata": 0.747
   },
-  {
-   "cek": "suntingan",
-   "kekuatan": "sedang",
-   "area": [
-    [
-     817,
-     332,
-     269,
-     37
+  "kualitas_scan": {
+    "status": "baik",
+    "catatan": "Berkas digital, bukan hasil pindai."
+  },
+  "temuan": [
+    {
+      "cek": "berkas_kembar",
+      "kekuatan": "kuat",
+      "pasangan": "VA-KMB-00",
+      "kemiripan": 0.97,
+      "kalimat": "Susunan sesi dan tanda tangan berulang seperti berkas Siti Rahmawati (SEP 0901R0140826V447215). Yang berbeda hanya SEP, periode, dan tanggal sesi.",
+      "region": [
+        86,
+        542,
+        1068,
+        778
+      ]
+    },
+    {
+      "cek": "tempelan",
+      "kekuatan": "kuat",
+      "pasangan": "VA-KMB-00",
+      "kalimat": "Delapan tanda tangan pasien identik sampai tingkat piksel dengan tanda tangan di berkas Siti Rahmawati.",
+      "region": [
+        900,
+        581,
+        253,
+        737
+      ]
+    },
+    {
+      "cek": "suntingan",
+      "kekuatan": "sedang",
+      "area": [
+        [
+          817,
+          332,
+          269,
+          37
+        ],
+        [
+          816,
+          431,
+          197,
+          39
+        ],
+        [
+          143,
+          582,
+          118,
+          83
+        ],
+        [
+          143,
+          674,
+          118,
+          83
+        ],
+        [
+          142,
+          766,
+          118,
+          83
+        ],
+        [
+          142,
+          858,
+          118,
+          83
+        ],
+        [
+          141,
+          950,
+          118,
+          83
+        ],
+        [
+          141,
+          1042,
+          118,
+          83
+        ],
+        [
+          140,
+          1134,
+          118,
+          83
+        ],
+        [
+          140,
+          1226,
+          118,
+          83
+        ],
+        [
+          899,
+          1339,
+          187,
+          32
+        ]
+      ],
+      "region": [
+        140,
+        332,
+        946,
+        1039
+      ],
+      "kalimat": "Kolom SEP, periode, dan tanggal sesi ditimpa. Tekstur kertasnya lebih halus daripada bagian lain."
+    }
+  ],
+  "metadata_file": {
+    "Producer": "Adobe Acrobat Pro (64-bit) 24.2",
+    "Creator": "Canon iR-ADV C3826",
+    "ModDate": "2026-09-02T21:47:00"
+  },
+  "pindai": {
+    "alat": "tidak ada, berkas digital"
+  },
+  "region_lembar": {
+    "kop": [
+      92,
+      67,
+      1065,
+      121
     ],
-    [
-     816,
-     431,
-     197,
-     39
+    "nama": [
+      271,
+      282,
+      219,
+      29
     ],
-    [
-     143,
-     582,
-     118,
-     83
+    "sep": [
+      823,
+      336,
+      253,
+      29
     ],
-    [
-     143,
-     674,
-     118,
-     83
+    "periode": [
+      822,
+      435,
+      185,
+      31
     ],
-    [
-     142,
-     766,
-     118,
-     83
+    "tabel": [
+      86,
+      542,
+      1068,
+      778
     ],
-    [
-     142,
-     858,
-     118,
-     83
+    "baris-1": [
+      90,
+      577,
+      1063,
+      98
     ],
-    [
-     141,
-     950,
-     118,
-     83
+    "ttd-1": [
+      903,
+      581,
+      250,
+      93
     ],
-    [
-     141,
-     1042,
-     118,
-     83
+    "baris-2": [
+      90,
+      669,
+      1063,
+      98
     ],
-    [
-     140,
-     1134,
-     118,
-     83
+    "ttd-2": [
+      903,
+      673,
+      250,
+      93
     ],
-    [
-     140,
-     1226,
-     118,
-     83
+    "baris-3": [
+      89,
+      761,
+      1063,
+      98
     ],
-    [
-     899,
-     1339,
-     187,
-     32
+    "ttd-3": [
+      902,
+      765,
+      250,
+      93
+    ],
+    "baris-4": [
+      89,
+      853,
+      1063,
+      98
+    ],
+    "ttd-4": [
+      902,
+      857,
+      250,
+      93
+    ],
+    "baris-5": [
+      88,
+      945,
+      1063,
+      98
+    ],
+    "ttd-5": [
+      901,
+      949,
+      250,
+      93
+    ],
+    "baris-6": [
+      88,
+      1037,
+      1063,
+      98
+    ],
+    "ttd-6": [
+      901,
+      1041,
+      250,
+      93
+    ],
+    "baris-7": [
+      87,
+      1129,
+      1063,
+      98
+    ],
+    "ttd-7": [
+      900,
+      1133,
+      250,
+      93
+    ],
+    "baris-8": [
+      87,
+      1221,
+      1063,
+      98
+    ],
+    "ttd-8": [
+      900,
+      1225,
+      250,
+      93
+    ],
+    "total": [
+      85,
+      1336,
+      674,
+      86
+    ],
+    "blok-dpjp": [
+      789,
+      1340,
+      361,
+      167
     ]
-   ],
-   "region": [
-    140,
-    332,
-    946,
-    1039
-   ],
-   "kalimat": "Kolom SEP, periode, dan tanggal sesi ditimpa. Tekstur kertasnya lebih halus daripada bagian lain."
+  },
+  "caseId": "VA-KMB-02",
+  "synthetic": true,
+  "overallStatus": "prioritas",
+  "checkResults": [
+    {
+      "check": "kualitas_scan",
+      "result": "tidak_ditemukan",
+      "strength": null
+    },
+    {
+      "check": "kecocokan_klaim",
+      "result": "tidak_ditemukan",
+      "strength": null
+    },
+    {
+      "check": "berkas_kembar",
+      "result": "indikasi",
+      "strength": "kuat"
+    },
+    {
+      "check": "copy_paste",
+      "result": "tidak_ditemukan",
+      "strength": null
+    },
+    {
+      "check": "tempelan",
+      "result": "indikasi",
+      "strength": "kuat"
+    },
+    {
+      "check": "suntingan",
+      "result": "indikasi",
+      "strength": "sedang"
+    },
+    {
+      "check": "tanda_ai",
+      "result": "tidak_ditemukan",
+      "strength": null
+    }
+  ],
+  "topFindings": [
+    {
+      "cek": "berkas_kembar",
+      "kekuatan": "kuat",
+      "pasangan": "VA-KMB-00",
+      "kemiripan": 0.97,
+      "kalimat": "Susunan sesi dan tanda tangan berulang seperti berkas Siti Rahmawati (SEP 0901R0140826V447215). Yang berbeda hanya SEP, periode, dan tanggal sesi.",
+      "region": [
+        86,
+        542,
+        1068,
+        778
+      ]
+    },
+    {
+      "cek": "tempelan",
+      "kekuatan": "kuat",
+      "pasangan": "VA-KMB-00",
+      "kalimat": "Delapan tanda tangan pasien identik sampai tingkat piksel dengan tanda tangan di berkas Siti Rahmawati.",
+      "region": [
+        900,
+        581,
+        253,
+        737
+      ]
+    },
+    {
+      "cek": "suntingan",
+      "kekuatan": "sedang",
+      "area": [
+        [
+          817,
+          332,
+          269,
+          37
+        ],
+        [
+          816,
+          431,
+          197,
+          39
+        ],
+        [
+          143,
+          582,
+          118,
+          83
+        ],
+        [
+          143,
+          674,
+          118,
+          83
+        ],
+        [
+          142,
+          766,
+          118,
+          83
+        ],
+        [
+          142,
+          858,
+          118,
+          83
+        ],
+        [
+          141,
+          950,
+          118,
+          83
+        ],
+        [
+          141,
+          1042,
+          118,
+          83
+        ],
+        [
+          140,
+          1134,
+          118,
+          83
+        ],
+        [
+          140,
+          1226,
+          118,
+          83
+        ],
+        [
+          899,
+          1339,
+          187,
+          32
+        ]
+      ],
+      "region": [
+        140,
+        332,
+        946,
+        1039
+      ],
+      "kalimat": "Kolom SEP, periode, dan tanggal sesi ditimpa. Tekstur kertasnya lebih halus daripada bagian lain."
+    }
+  ],
+  "evidenceRegions": [
+    {
+      "check": "berkas_kembar",
+      "region": [
+        86,
+        542,
+        1068,
+        778
+      ]
+    },
+    {
+      "check": "tempelan",
+      "region": [
+        900,
+        581,
+        253,
+        737
+      ]
+    },
+    {
+      "check": "suntingan",
+      "region": [
+        140,
+        332,
+        946,
+        1039
+      ]
+    }
+  ],
+  "relatedCaseIds": [
+    "VA-KMB-00"
+  ],
+  "recommendation": "telaah",
+  "participantConfirmation": null,
+  "auditTrail": [],
+  "fileHashes": {
+    "jpg": "23a26334cd70f219deb77209f06f05f81153e6c24bc1a984172145ee5b99d4ab",
+    "pdf": "eae59ef78b737ee83ab9af4a73500a5f4bff55f807cee46755948c1e609b62bf"
   }
- ],
- "metadata_file": {
-  "Producer": "Adobe Acrobat Pro (64-bit) 24.2",
-  "Creator": "Canon iR-ADV C3826",
-  "ModDate": "2026-09-02T21:47:00"
- },
- "pindai": {
-  "alat": "tidak ada, berkas digital"
- },
- "region_lembar": {
-  "kop": [
-   92,
-   67,
-   1065,
-   121
-  ],
-  "nama": [
-   271,
-   282,
-   219,
-   29
-  ],
-  "sep": [
-   823,
-   336,
-   253,
-   29
-  ],
-  "periode": [
-   822,
-   435,
-   185,
-   31
-  ],
-  "tabel": [
-   86,
-   542,
-   1068,
-   778
-  ],
-  "baris-1": [
-   90,
-   577,
-   1063,
-   98
-  ],
-  "ttd-1": [
-   903,
-   581,
-   250,
-   93
-  ],
-  "baris-2": [
-   90,
-   669,
-   1063,
-   98
-  ],
-  "ttd-2": [
-   903,
-   673,
-   250,
-   93
-  ],
-  "baris-3": [
-   89,
-   761,
-   1063,
-   98
-  ],
-  "ttd-3": [
-   902,
-   765,
-   250,
-   93
-  ],
-  "baris-4": [
-   89,
-   853,
-   1063,
-   98
-  ],
-  "ttd-4": [
-   902,
-   857,
-   250,
-   93
-  ],
-  "baris-5": [
-   88,
-   945,
-   1063,
-   98
-  ],
-  "ttd-5": [
-   901,
-   949,
-   250,
-   93
-  ],
-  "baris-6": [
-   88,
-   1037,
-   1063,
-   98
-  ],
-  "ttd-6": [
-   901,
-   1041,
-   250,
-   93
-  ],
-  "baris-7": [
-   87,
-   1129,
-   1063,
-   98
-  ],
-  "ttd-7": [
-   900,
-   1133,
-   250,
-   93
-  ],
-  "baris-8": [
-   87,
-   1221,
-   1063,
-   98
-  ],
-  "ttd-8": [
-   900,
-   1225,
-   250,
-   93
-  ],
-  "total": [
-   85,
-   1336,
-   674,
-   86
-  ],
-  "blok-dpjp": [
-   789,
-   1340,
-   361,
-   167
-  ]
- }
 }

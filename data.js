@@ -1,4 +1,4 @@
-/* Vedika Autentik: data dan aturan prototipe.
+/* Veritas Autentik: data dan aturan prototipe.
 
    Berkas dan temuannya dibaca dari dataset/manifest.js (window.VEDIKA_BERKAS), yaitu
    ground truth yang sama dengan dataset uji. Label TIDAK disalin dari ground truth:
@@ -18,7 +18,7 @@
     prioritas: { nama: "Prioritas", urut: 0 },
     cek: { nama: "Perlu dicek", urut: 1 },
     ulang: { nama: "Scan ulang", urut: 2 },
-    lolos: { nama: "Lolos", urut: 3 }
+    lolos: { nama: "Tidak ada anomali terdeteksi", urut: 3 }
   };
 
   function hitungLabel(berkas) {
@@ -26,7 +26,7 @@
     const sinyal = berkas.temuan.filter((t) => t.kekuatan !== "info");
     if (!sinyal.length) return "lolos";
     const kuat = sinyal.filter((t) => t.kekuatan === "kuat").length;
-    /* Tanda buatan AI hanya menaikkan urutan, tidak pernah jadi satu-satunya alasan Prioritas. */
+  /* Indikasi elemen sintetis bukan bukti AI dan tidak cukup untuk Prioritas sendirian. */
     const selainAi = sinyal.filter((t) => t.cek !== "tanda_ai").length;
     if (selainAi && (kuat >= 2 || (kuat >= 1 && sinyal.length >= 2))) return "prioritas";
     return "cek";
@@ -38,10 +38,10 @@
     kualitas_scan: "Kualitas scan",
     kecocokan_klaim: "Cocok dengan klaim",
     berkas_kembar: "Berkas kembar",
-    copy_paste: "Copy-paste dalam berkas",
+    copy_paste: "Bagian berkas berulang",
     tempelan: "Tempelan dari berkas lain",
     suntingan: "Suntingan",
-    tanda_ai: "Tanda buatan AI"
+    tanda_ai: "Indikasi elemen sintetis"
   };
 
   const KEKUATAN = { kuat: "Kuat", sedang: "Sedang", lemah: "Lemah", info: "Info" };
@@ -66,7 +66,7 @@
       laporan: true
     },
     wajar: {
-      nama: "Tutup sebagai wajar",
+      nama: "Lanjutkan verifikasi biasa",
       akibat: "Klaim kembali ke verifikasi biasa: administrasi, koding, dan medis.",
       status: "Lanjut verifikasi biasa"
     }
@@ -75,7 +75,7 @@
   const SARAN = { lolos: "wajar", ulang: "scanUlang", cek: "klarifikasi", prioritas: "telaah" };
 
   const ALASAN_SARAN = {
-    lolos: "Semua pemeriksaan bersih dan isi berkas cocok dengan klaim.",
+    lolos: "Tidak ditemukan anomali pada pemeriksaan yang tersedia. Hasil ini bukan keputusan akhir klaim.",
     ulang: "Berkas belum bisa dinilai. Hasil scan yang jelek bukan tanda kecurangan.",
     cek: "Ada sinyal yang masih mungkin kelalaian administrasi. Beri rumah sakit kesempatan menjelaskan.",
     prioritas: "Ada lebih dari satu sinyal kuat. Tim telaah perlu melihat kasus ini lebih dulu."
@@ -83,22 +83,25 @@
 
   /* ---------- waktu dan antrean ---------- */
 
-  const HARI_INI = "Selasa, 6 Oktober 2026";
+  const HARI_INI = "Kamis, 1 Oktober 2026";
   const VERIFIKATOR = { nama: "R. Santoso", peran: "Verifikator", kantor: "KC Jakarta Pusat" };
 
   /* Berkas yang sudah diperiksa sebelum demo dimulai. Lima berkas demo menyusul lewat unggahan. */
   const ANTREAN_AWAL = [
     ["VA-KMB-00", "29 Sep", "08.12"], ["VA-ASL-02", "30 Sep", "10.41"], ["VA-ASL-03", "1 Okt", "09.05"],
-    ["VA-ASL-04", "1 Okt", "13.37"], ["VA-KMB-03", "2 Okt", "08.56"], ["VA-DST-02", "2 Okt", "14.20"],
-    ["VA-DST-03", "5 Okt", "09.18"], ["VA-AI-02", "5 Okt", "11.02"], ["VA-AI-03", "5 Okt", "15.44"],
-    ["VA-BRM-02", "6 Okt", "07.51"], ["VA-BRM-03", "6 Okt", "08.03"], ["VA-KMB-02", "6 Okt", "08.30"]
+    ["VA-ASL-04", "1 Okt", "09.37"], ["VA-KMB-03", "1 Okt", "08.56"], ["VA-DST-02", "1 Okt", "09.20"],
+    ["VA-DST-03", "1 Okt", "09.18"], ["VA-AI-02", "1 Okt", "09.02"], ["VA-AI-03", "1 Okt", "09.44"],
+    ["VA-BRM-02", "1 Okt", "07.51"], ["VA-BRM-03", "1 Okt", "08.03"], ["VA-KMB-02", "1 Okt", "08.30"]
   ];
+  MANIFEST.forEach((b, i) => {
+    if (!ANTREAN_AWAL.some((a) => a[0] === b.id)) ANTREAN_AWAL.push([b.id, "1 Okt", String(8 + Math.floor(i / 12)).padStart(2, "0") + "." + String((i * 7) % 60).padStart(2, "0")]);
+  });
 
   const DEMO = [
-    { id: "VA-ASL-01", judul: "Berkas asli" },
+    { id: "VA-ASL-01", judul: "Tanpa anomali" },
     { id: "VA-KMB-01", judul: "Berkas kembar" },
     { id: "VA-DST-01", judul: "Angka disunting" },
-    { id: "VA-AI-01", judul: "Dibuat dengan AI" },
+    { id: "VA-AI-01", judul: "Indikasi elemen sintetis" },
     { id: "VA-BRM-01", judul: "Scan buram" }
   ];
 
@@ -116,12 +119,25 @@
   const PETA = {};
   MANIFEST.forEach((b) => {
     b.label = hitungLabel(b);
+    b.caseId = b.id;
+    b.synthetic = true;
+    b.overallStatus = { lolos: "tidak_ada_anomali", ulang: "scan_ulang", cek: "perlu_dicek", prioritas: "prioritas" }[b.label];
+    b.checkResults = Object.keys(CEK).map((cek) => {
+      const temuan = b.temuan.filter((t) => t.cek === cek);
+      return { check: cek, result: b.label === "ulang" && cek !== "kualitas_scan" ? "tidak_dapat_dinilai" : temuan.length ? "indikasi" : "tidak_ditemukan", strength: temuan[0] ? (temuan[0].kekuatan === "info" ? "lemah" : temuan[0].kekuatan) : null };
+    });
+    b.topFindings = b.temuan.slice(0, 3);
+    b.evidenceRegions = b.temuan.filter((t) => t.region).map((t) => ({ check: t.cek, region: t.region }));
+    b.relatedCaseIds = b.relatedCaseIds || [...new Set(b.temuan.map((t) => t.pasangan).filter(Boolean))];
+    b.recommendation = SARAN[b.label];
+    b.participantConfirmation = null;
+    b.auditTrail = [];
     b.jpg = "dataset/" + b.folder + "/" + b.berkas.jpg;
     b.pdf = "dataset/" + b.folder + "/" + b.berkas.pdf;
     PETA[b.id] = b;
   });
 
-  const selisihLabel = MANIFEST.filter((b) => LABEL[b.label].nama !== b.label_diharapkan);
+  const selisihLabel = MANIFEST.filter((b) => ({ lolos: "Lolos", ulang: "Scan ulang", cek: "Perlu dicek", prioritas: "Prioritas" }[b.label]) !== b.label_diharapkan);
   if (selisihLabel.length) console.warn("Label tidak sesuai ground truth:", selisihLabel.map((b) => b.id));
 
   const tglPendek = (t) => String(parseInt(t.split("/")[0], 10));
@@ -144,7 +160,7 @@
     const daftar = [
       { nama: "Terima berkas", hasil: "PDF 1 halaman dari JKN Drive", status: "ok" },
       { nama: "Cek kualitas scan", status: ulang ? "henti" : "ok",
-        hasil: ulang ? b.kualitas_scan.catatan + " Pemeriksaan keaslian dihentikan." : b.kualitas_scan.catatan }
+        hasil: ulang ? b.kualitas_scan.catatan + " Pemeriksaan lain belum dapat dilakukan." : b.kualitas_scan.catatan }
     ];
     if (ulang) return daftar;
 
@@ -160,12 +176,12 @@
       { nama: "Cocokkan dengan klaim", status: cocok.length ? "temuan" : "ok",
         hasil: "Ditagih " + klaim.sesi_ditagih + " sesi, berkas mendukung " + (cocok.length ? isi.baris_asli : isi.baris_terisi) },
       { nama: "Cari berkas kembar", status: kembar.length ? "temuan" : "ok",
-        hasil: kembar.length ? "Kembar dengan " + kembar[0].pasangan + " milik " + PETA[kembar[0].pasangan].klaim.peserta : "Tidak ada berkas serupa di arsip" },
+        hasil: kembar.length ? "Area serupa dengan " + kembar[0].pasangan + " milik " + PETA[kembar[0].pasangan].klaim.peserta : "Tidak ada pasangan pada corpus demo" },
       { nama: "Cari copy-paste", status: salin.length ? "temuan" : "ok",
         hasil: salin.length ? salin[0].kalimat.split(". ")[0]
-          : ttd > 0.97 ? "Tanda tangan identik" : "Tanda tangan bervariasi wajar, kemiripan " + ttd.toFixed(2).replace(".", ",") },
+          : ttd > 0.97 ? "Pola tanda tangan berulang pada fixture" : "Tidak ada pola berulang pada fixture" },
       { nama: "Cari suntingan dan tanda AI", status: sunting.length ? "temuan" : "ok",
-        hasil: sunting.length ? sunting.length + " sinyal: " + jenisSunting.join(", ") : "Tidak ada suntingan. Dibuat oleh " + pembuat }
+        hasil: sunting.length ? sunting.length + " indikasi: " + jenisSunting.join(", ") : "Tidak ada indikasi pada fixture. Pembuat berkas: " + pembuat }
     );
     return daftar;
   }
@@ -191,9 +207,9 @@
   /* Semua klaim yang memakai lembar yang sama, untuk peta hubungan berkas. */
   function keluargaBerkas(id) {
     const b = PETA[id];
-    const kembar = b.temuan.find((t) => t.cek === "berkas_kembar");
-    const akar = kembar ? kembar.pasangan : id;
-    const anggota = MANIFEST.filter((x) => x.id === akar || x.temuan.some((t) => t.cek === "berkas_kembar" && t.pasangan === akar));
+    const hubungan = b.temuan.find((t) => (t.cek === "berkas_kembar" || t.cek === "tempelan") && t.pasangan);
+    const akar = hubungan ? hubungan.pasangan : id;
+    const anggota = MANIFEST.filter((x) => x.id === akar || x.temuan.some((t) => (t.cek === "berkas_kembar" || t.cek === "tempelan") && t.pasangan === akar));
     return anggota.length > 1 ? { akar: akar, anggota: anggota } : null;
   }
 

@@ -1,282 +1,416 @@
 {
- "id": "VA-DST-03",
- "folder": "03-angka-disunting",
- "berkas": {
-  "jpg": "VA-DST-03.jpg",
-  "pdf": "VA-DST-03.pdf"
- },
- "ukuran": [
-  1240,
-  1754
- ],
- "demo": false,
- "peran": "uji",
- "label_diharapkan": "Perlu dicek",
- "ringkasan": "Lembar Juli. Angka bulan pada delapan tanggal dan periode diubah ke Agustus.",
- "klaim": {
-  "sep": "0901R0410826V598845",
-  "peserta": "Kartini Lestari",
-  "no_kartu": "0001457720913",
-  "faskes": "RSU Bakti Mulia",
-  "kode_faskes": "0901R041",
-  "periode": "Agustus 2026",
-  "layanan": "Fisioterapi rawat jalan",
-  "sesi_ditagih": 8,
-  "tarif_per_sesi": 207300,
-  "nilai_klaim": 1658400,
-  "nilai_klaim_teks": "Rp1.658.400"
- },
- "isi_lembar": {
-  "nama": "Kartini Lestari",
-  "tanggal_lahir": "11-10-1968",
-  "no_rm": "12-07-8826",
-  "no_kartu": "0001457720913",
-  "no_sep": "0901R0410826V598845",
-  "diagnosis": "Low back pain",
-  "icd10": "M54.5",
-  "dpjp": "dr. Bimo Aryasatya, Sp.KFR",
-  "periode": "Agustus 2026",
-  "baris_terisi": 8,
-  "baris_asli": 8,
-  "tanggal_sesi": [
-   "03/08",
-   "06/08",
-   "10/08",
-   "13/08",
-   "17/08",
-   "20/08",
-   "24/08",
-   "27/08"
+  "id": "VA-DST-03",
+  "folder": "03-angka-disunting",
+  "berkas": {
+    "jpg": "VA-DST-03.jpg",
+    "pdf": "VA-DST-03.pdf"
+  },
+  "ukuran": [
+    1240,
+    1754
   ],
-  "jumlah_kunjungan_tertulis": 8,
-  "kemiripan_ttd_rerata": 0.824
- },
- "kualitas_scan": {
-  "status": "baik",
-  "catatan": "Terbaca, miring 0.2 derajat."
- },
- "temuan": [
-  {
-   "cek": "suntingan",
-   "kekuatan": "sedang",
-   "area": [
-    [
-     203,
-     612,
-     32,
-     33
+  "demo": false,
+  "peran": "uji",
+  "label_diharapkan": "Perlu dicek",
+  "ringkasan": "Ada indikasi bagian dokumen disunting; cocokkan dengan data klaim dan berkas asal.",
+  "klaim": {
+    "sep": "0901R0410826V598845",
+    "peserta": "Kartini Lestari",
+    "no_kartu": "0001457720913",
+    "faskes": "RSU Bakti Mulia",
+    "kode_faskes": "0901R041",
+    "periode": "Agustus 2026",
+    "layanan": "Fisioterapi rawat jalan",
+    "sesi_ditagih": 8,
+    "tarif_per_sesi": 207300,
+    "nilai_klaim": 1658400,
+    "nilai_klaim_teks": "Rp1.658.400"
+  },
+  "isi_lembar": {
+    "nama": "Kartini Lestari",
+    "tanggal_lahir": "11-10-1968",
+    "no_rm": "12-07-8826",
+    "no_kartu": "0001457720913",
+    "no_sep": "0901R0410826V598845",
+    "diagnosis": "Low back pain",
+    "icd10": "M54.5",
+    "dpjp": "dr. Bimo Aryasatya, Sp.KFR",
+    "periode": "Agustus 2026",
+    "baris_terisi": 8,
+    "baris_asli": 8,
+    "tanggal_sesi": [
+      "03/08",
+      "06/08",
+      "10/08",
+      "13/08",
+      "17/08",
+      "20/08",
+      "24/08",
+      "27/08"
     ],
-    [
-     202,
-     703,
-     32,
-     33
+    "jumlah_kunjungan_tertulis": 8,
+    "kemiripan_ttd_rerata": 0.824
+  },
+  "kualitas_scan": {
+    "status": "baik",
+    "catatan": "Terbaca, miring 0.2 derajat."
+  },
+  "temuan": [
+    {
+      "cek": "suntingan",
+      "kekuatan": "sedang",
+      "area": [
+        [
+          203,
+          612,
+          32,
+          33
+        ],
+        [
+          202,
+          703,
+          32,
+          33
+        ],
+        [
+          202,
+          795,
+          32,
+          33
+        ],
+        [
+          202,
+          888,
+          32,
+          33
+        ],
+        [
+          204,
+          980,
+          32,
+          33
+        ],
+        [
+          207,
+          1071,
+          32,
+          33
+        ],
+        [
+          205,
+          1163,
+          32,
+          33
+        ],
+        [
+          206,
+          1255,
+          32,
+          33
+        ],
+        [
+          812,
+          427,
+          169,
+          37
+        ],
+        [
+          904,
+          1334,
+          163,
+          33
+        ]
+      ],
+      "region": [
+        202,
+        427,
+        865,
+        940
+      ],
+      "kalimat": "Angka bulan pada delapan tanggal sesi dan tulisan periode ditimpa. Kedelapan angka 08 identik satu sama lain, tidak seperti tulisan tangan."
+    }
+  ],
+  "metadata_file": {
+    "Producer": "Microsoft: Print To PDF",
+    "Creator": "Adobe Photoshop 25.0",
+    "ModDate": "2026-08-30T23:14:00"
+  },
+  "pindai": {
+    "alat": "flatbed",
+    "miring": 0.25
+  },
+  "region_lembar": {
+    "kop": [
+      84,
+      68,
+      1064,
+      120
     ],
-    [
-     202,
-     795,
-     32,
-     33
+    "nama": [
+      265,
+      287,
+      209,
+      30
     ],
-    [
-     202,
-     888,
-     32,
-     33
+    "sep": [
+      818,
+      334,
+      266,
+      31
     ],
-    [
-     204,
-     980,
-     32,
-     33
+    "periode": [
+      818,
+      433,
+      109,
+      27
     ],
-    [
-     207,
-     1071,
-     32,
-     33
+    "tabel": [
+      87,
+      543,
+      1067,
+      777
     ],
-    [
-     205,
-     1163,
-     32,
-     33
+    "baris-1": [
+      88,
+      578,
+      1063,
+      97
     ],
-    [
-     206,
-     1255,
-     32,
-     33
+    "ttd-1": [
+      901,
+      578,
+      250,
+      93
     ],
-    [
-     812,
-     427,
-     169,
-     37
+    "baris-2": [
+      88,
+      670,
+      1063,
+      97
     ],
-    [
-     904,
-     1334,
-     163,
-     33
+    "ttd-2": [
+      901,
+      670,
+      250,
+      93
+    ],
+    "baris-3": [
+      89,
+      762,
+      1063,
+      97
+    ],
+    "ttd-3": [
+      902,
+      762,
+      250,
+      93
+    ],
+    "baris-4": [
+      89,
+      854,
+      1063,
+      97
+    ],
+    "ttd-4": [
+      902,
+      854,
+      250,
+      93
+    ],
+    "baris-5": [
+      89,
+      946,
+      1063,
+      97
+    ],
+    "ttd-5": [
+      902,
+      946,
+      250,
+      93
+    ],
+    "baris-6": [
+      90,
+      1038,
+      1063,
+      97
+    ],
+    "ttd-6": [
+      903,
+      1038,
+      250,
+      93
+    ],
+    "baris-7": [
+      90,
+      1130,
+      1063,
+      97
+    ],
+    "ttd-7": [
+      903,
+      1130,
+      250,
+      93
+    ],
+    "baris-8": [
+      91,
+      1222,
+      1063,
+      97
+    ],
+    "ttd-8": [
+      904,
+      1222,
+      250,
+      93
+    ],
+    "total": [
+      90,
+      1338,
+      674,
+      85
+    ],
+    "blok-dpjp": [
+      794,
+      1337,
+      361,
+      167
     ]
-   ],
-   "region": [
-    202,
-    427,
-    865,
-    940
-   ],
-   "kalimat": "Angka bulan pada delapan tanggal sesi dan tulisan periode ditimpa. Kedelapan angka 08 identik satu sama lain, tidak seperti tulisan tangan."
+  },
+  "caseId": "VA-DST-03",
+  "synthetic": true,
+  "overallStatus": "perlu_dicek",
+  "checkResults": [
+    {
+      "check": "kualitas_scan",
+      "result": "tidak_ditemukan",
+      "strength": null
+    },
+    {
+      "check": "kecocokan_klaim",
+      "result": "tidak_ditemukan",
+      "strength": null
+    },
+    {
+      "check": "berkas_kembar",
+      "result": "tidak_ditemukan",
+      "strength": null
+    },
+    {
+      "check": "copy_paste",
+      "result": "tidak_ditemukan",
+      "strength": null
+    },
+    {
+      "check": "tempelan",
+      "result": "tidak_ditemukan",
+      "strength": null
+    },
+    {
+      "check": "suntingan",
+      "result": "indikasi",
+      "strength": "sedang"
+    },
+    {
+      "check": "tanda_ai",
+      "result": "tidak_ditemukan",
+      "strength": null
+    }
+  ],
+  "topFindings": [
+    {
+      "cek": "suntingan",
+      "kekuatan": "sedang",
+      "area": [
+        [
+          203,
+          612,
+          32,
+          33
+        ],
+        [
+          202,
+          703,
+          32,
+          33
+        ],
+        [
+          202,
+          795,
+          32,
+          33
+        ],
+        [
+          202,
+          888,
+          32,
+          33
+        ],
+        [
+          204,
+          980,
+          32,
+          33
+        ],
+        [
+          207,
+          1071,
+          32,
+          33
+        ],
+        [
+          205,
+          1163,
+          32,
+          33
+        ],
+        [
+          206,
+          1255,
+          32,
+          33
+        ],
+        [
+          812,
+          427,
+          169,
+          37
+        ],
+        [
+          904,
+          1334,
+          163,
+          33
+        ]
+      ],
+      "region": [
+        202,
+        427,
+        865,
+        940
+      ],
+      "kalimat": "Angka bulan pada delapan tanggal sesi dan tulisan periode ditimpa. Kedelapan angka 08 identik satu sama lain, tidak seperti tulisan tangan."
+    }
+  ],
+  "evidenceRegions": [
+    {
+      "check": "suntingan",
+      "region": [
+        202,
+        427,
+        865,
+        940
+      ]
+    }
+  ],
+  "relatedCaseIds": [],
+  "recommendation": "klarifikasi",
+  "participantConfirmation": null,
+  "auditTrail": [],
+  "fileHashes": {
+    "jpg": "687c4aca9d12cb1780567a9a2a45b7d62866dc6659f27e0a029165ee4a6c6f7e",
+    "pdf": "f454afd28a0b9654e6922b5d2a2fed97d28f9351e1ed5b18eb0d71c26f88c409"
   }
- ],
- "metadata_file": {
-  "Producer": "Microsoft: Print To PDF",
-  "Creator": "Adobe Photoshop 25.0",
-  "ModDate": "2026-08-30T23:14:00"
- },
- "pindai": {
-  "alat": "flatbed",
-  "miring": 0.25
- },
- "region_lembar": {
-  "kop": [
-   84,
-   68,
-   1064,
-   120
-  ],
-  "nama": [
-   265,
-   287,
-   209,
-   30
-  ],
-  "sep": [
-   818,
-   334,
-   266,
-   31
-  ],
-  "periode": [
-   818,
-   433,
-   109,
-   27
-  ],
-  "tabel": [
-   87,
-   543,
-   1067,
-   777
-  ],
-  "baris-1": [
-   88,
-   578,
-   1063,
-   97
-  ],
-  "ttd-1": [
-   901,
-   578,
-   250,
-   93
-  ],
-  "baris-2": [
-   88,
-   670,
-   1063,
-   97
-  ],
-  "ttd-2": [
-   901,
-   670,
-   250,
-   93
-  ],
-  "baris-3": [
-   89,
-   762,
-   1063,
-   97
-  ],
-  "ttd-3": [
-   902,
-   762,
-   250,
-   93
-  ],
-  "baris-4": [
-   89,
-   854,
-   1063,
-   97
-  ],
-  "ttd-4": [
-   902,
-   854,
-   250,
-   93
-  ],
-  "baris-5": [
-   89,
-   946,
-   1063,
-   97
-  ],
-  "ttd-5": [
-   902,
-   946,
-   250,
-   93
-  ],
-  "baris-6": [
-   90,
-   1038,
-   1063,
-   97
-  ],
-  "ttd-6": [
-   903,
-   1038,
-   250,
-   93
-  ],
-  "baris-7": [
-   90,
-   1130,
-   1063,
-   97
-  ],
-  "ttd-7": [
-   903,
-   1130,
-   250,
-   93
-  ],
-  "baris-8": [
-   91,
-   1222,
-   1063,
-   97
-  ],
-  "ttd-8": [
-   904,
-   1222,
-   250,
-   93
-  ],
-  "total": [
-   90,
-   1338,
-   674,
-   85
-  ],
-  "blok-dpjp": [
-   794,
-   1337,
-   361,
-   167
-  ]
- }
 }

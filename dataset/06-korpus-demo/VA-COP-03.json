@@ -1,0 +1,215 @@
+{
+  "id": "VA-COP-03",
+  "folder": "06-korpus-demo",
+  "berkas": {
+    "jpg": "VA-COP-03.jpg",
+    "pdf": "VA-COP-03.pdf"
+  },
+  "ukuran": [
+    1240,
+    1754
+  ],
+  "demo": false,
+  "peran": "demo_ux",
+  "kategori_demo": "copy_paste",
+  "synthetic": true,
+  "label_diharapkan": "Prioritas",
+  "ringkasan": "Dua baris layanan mengulang isi dan tanda tangan baris sebelumnya.",
+  "klaim": {
+    "sep": "0901R0270826V703013",
+    "peserta": "Wulan Anggraini",
+    "no_kartu": "0001500009637",
+    "faskes": "RS Cipta Medika",
+    "kode_faskes": "0901R027",
+    "periode": "Agustus 2026",
+    "layanan": "Fisioterapi rawat jalan",
+    "sesi_ditagih": 8,
+    "tarif_per_sesi": 207300,
+    "nilai_klaim": 1658400,
+    "nilai_klaim_teks": "Rp1.658.400"
+  },
+  "isi_lembar": {
+    "nama": "Wulan Anggraini",
+    "tanggal_lahir": "01-01-1970",
+    "no_rm": "SIM-0023",
+    "no_kartu": "0001500009637",
+    "no_sep": "0901R0270826V703013",
+    "diagnosis": "Nyeri muskuloskeletal",
+    "icd10": "M79.1",
+    "dpjp": "dr. H. Suparman, Sp.KFR",
+    "periode": "Agustus 2026",
+    "baris_terisi": 8,
+    "baris_asli": 8,
+    "tanggal_sesi": [
+      "05/08",
+      "08/08",
+      "11/08",
+      "14/08",
+      "17/08",
+      "20/08",
+      "23/08",
+      "26/08"
+    ],
+    "jumlah_kunjungan_tertulis": 8,
+    "kemiripan_ttd_rerata": 0.99
+  },
+  "kualitas_scan": {
+    "status": "baik",
+    "catatan": "Foto formulir terbaca."
+  },
+  "temuan": [
+    {
+      "cek": "copy_paste",
+      "kekuatan": "kuat",
+      "region": [
+        90,
+        980,
+        1060,
+        180
+      ],
+      "kalimat": "Baris 7 dan 8 mengulang isi dan bentuk tanda tangan baris 1 dan 2."
+    },
+    {
+      "cek": "kecocokan_klaim",
+      "kekuatan": "sedang",
+      "region": [
+        90,
+        980,
+        1060,
+        180
+      ],
+      "kalimat": "Dua sesi terakhir perlu dikonfirmasi karena buktinya berulang."
+    }
+  ],
+  "metadata_file": {
+    "Producer": "Veritas demo corpus",
+    "Creator": "Formulir sintetis"
+  },
+  "pindai": {
+    "alat": "ponsel",
+    "miring": 1
+  },
+  "region_lembar": {
+    "kop": [
+      100,
+      135,
+      1040,
+      125
+    ],
+    "nama": [
+      115,
+      275,
+      500,
+      45
+    ],
+    "sep": [
+      115,
+      320,
+      540,
+      45
+    ],
+    "tabel": [
+      90,
+      455,
+      1060,
+      720
+    ],
+    "total": [
+      870,
+      1210,
+      270,
+      75
+    ]
+  },
+  "caseId": "VA-COP-03",
+  "overallStatus": "prioritas",
+  "checkResults": [
+    {
+      "check": "kualitas_scan",
+      "result": "tidak_ditemukan",
+      "strength": null
+    },
+    {
+      "check": "kecocokan_klaim",
+      "result": "indikasi",
+      "strength": "sedang"
+    },
+    {
+      "check": "berkas_kembar",
+      "result": "tidak_ditemukan",
+      "strength": null
+    },
+    {
+      "check": "copy_paste",
+      "result": "indikasi",
+      "strength": "kuat"
+    },
+    {
+      "check": "tempelan",
+      "result": "tidak_ditemukan",
+      "strength": null
+    },
+    {
+      "check": "suntingan",
+      "result": "tidak_ditemukan",
+      "strength": null
+    },
+    {
+      "check": "tanda_ai",
+      "result": "tidak_ditemukan",
+      "strength": null
+    }
+  ],
+  "topFindings": [
+    {
+      "cek": "copy_paste",
+      "kekuatan": "kuat",
+      "region": [
+        90,
+        980,
+        1060,
+        180
+      ],
+      "kalimat": "Baris 7 dan 8 mengulang isi dan bentuk tanda tangan baris 1 dan 2."
+    },
+    {
+      "cek": "kecocokan_klaim",
+      "kekuatan": "sedang",
+      "region": [
+        90,
+        980,
+        1060,
+        180
+      ],
+      "kalimat": "Dua sesi terakhir perlu dikonfirmasi karena buktinya berulang."
+    }
+  ],
+  "evidenceRegions": [
+    {
+      "check": "copy_paste",
+      "region": [
+        90,
+        980,
+        1060,
+        180
+      ]
+    },
+    {
+      "check": "kecocokan_klaim",
+      "region": [
+        90,
+        980,
+        1060,
+        180
+      ]
+    }
+  ],
+  "relatedCaseIds": [],
+  "recommendation": "telaah",
+  "participantConfirmation": null,
+  "auditTrail": [],
+  "fileHashes": {
+    "jpg": "ccca2812f6ed495e81c4cbe44b1855932c4adad420313fed78b0cf2e731c171b",
+    "pdf": "123c4df4f8925d488080f3cb6ef9ccbc95cca60e48fb701b2a3444ea0ec56ea1"
+  }
+}

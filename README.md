@@ -1,79 +1,45 @@
-# Vedika Autentik
+# Veritas Autentik
 
-*Lengkap belum tentu asli.* Ditenagai PRAMANA.
+Prototipe fitur Vedika/JKN Drive, **Powered by PRAMANA**, untuk BPJS Kesehatan Healthkathon 2026. Veritas membantu verifikator menemukan anomali dokumen fisioterapi, memahami bukti, dan menentukan tindak lanjut. Veritas **tidak** menetapkan fraud, menolak klaim, membuktikan layanan terjadi, atau menggantikan verifikasi klaim biasa.
 
-Prototipe untuk **BPJS Kesehatan Healthkathon 2026**, kategori *Efisiensi Risiko pada Fasilitas Kesehatan*.
+Seluruh data pada prototipe ini sintetis. Hasil pemeriksaan berasal dari fixture yang sudah dikurasi, **bukan dari model AI yang berjalan atau terkalibrasi**. Tampilan selalu memberi label `PROTOTIPE · DATA SINTETIS`.
 
-**Demo langsung: <https://pramana-flax.vercel.app>**
+## Alur demo tiga menit
 
-Vedika Autentik adalah tab baru di aplikasi verifikasi klaim BPJS Kesehatan. Tab ini memeriksa keaslian berkas klaim fisioterapi yang diunggah rumah sakit ke JKN Drive: apakah berkasnya dipakai ulang, disunting, atau dibuat dengan AI, dan apakah isinya cocok dengan jumlah sesi yang ditagih. Setiap berkas mendapat satu dari empat label beserta buktinya. Keputusan tetap di tangan verifikator.
+1. Masuk sebagai verifikator demo. Antrean langsung berisi 60 kasus; buka kasus `VA-KMB-02` untuk melihat indikasi berkas kembar dan dua bukti bernomor.
+2. Di tab **Bukti**, lihat dokumen pembanding dan hubungan antarberkas. Temuan awal dibatasi tiga; pemeriksaan lain tersedia melalui disclosure.
+3. Buka kasus `VA-DST-01` untuk melihat jumlah sesi yang tidak sesuai, lalu lihat konfirmasi peserta sebagai konteks tambahan yang netral.
+4. Di desktop, tinjau konsekuensi tindakan, konfirmasi keputusan manusia, lalu lihat **Jejak** dan laporan temuan. Keputusan dapat dibatalkan.
 
-## Mencoba demo
+Mobile sengaja hanya untuk triage dan monitoring: prioritas, cari/filter, ringkasan kasus, dan potongan bukti yang dapat diperbesar. Perbandingan penuh dan keputusan akhir tersedia di desktop.
 
-1. Buka tautan demo, lalu tekan **Masuk sebagai verifikator demo**. Panduan singkat langsung terbuka.
-2. Di tab **Autentik**, tekan **Jalankan demo**. Lima berkas contoh diperiksa satu per satu dan masuk ke antrean:
+## Corpus demo
 
-   | Berkas | Isi | Label |
-   |---|---|---|
-   | VA-ASL-01 | Berkas asli, 8 sesi | Lolos |
-   | VA-KMB-01 | Lembar Bu Siti dipakai untuk klaim Pak Budi | Prioritas |
-   | VA-DST-01 | 5 sesi, angka jumlah kunjungan diubah jadi 8 | Prioritas |
-   | VA-AI-01 | Gambar dari generator AI | Perlu dicek |
-   | VA-BRM-01 | Scan buram dan terpotong | Scan ulang |
+`dataset/` berisi 60 kasus: 17 berkas sintetis awal dan 43 berkas tambahan yang dibuat dari dua foto kertas kosong hasil image generation, lalu diberi teks, tabel, angka, ID, dan label secara deterministik. Rinciannya: 10 tanpa anomali, 8 klaim tidak cocok, 10 duplikat, 8 copy–paste, 6 tempelan lintas berkas, 8 angka disunting, 6 indikasi elemen sintetis, dan 4 scan buruk. Setiap kasus memiliki gambar, PDF, JSON, relasi kasus, area bukti, rekomendasi, audit awal, dan SHA-256. Lihat [panduan corpus](dataset/README.md).
 
-3. Buka salah satu berkas. Kartu bukti menampilkan area yang disorot, temuan beserta kekuatannya, dan langkah yang disarankan. Tekan **Setujui saran**, atau pilih tindakan lain dengan alasan tertulis.
-4. Untuk berkas Prioritas, buka **Konfirmasi peserta** dan simulasikan jawaban lewat PANDAWA. Setelah diteruskan ke telaah lanjut, **laporan temuan** bisa diunduh sebagai PDF.
+Unggah berkas dalam mode demo hanya mengenali file yang hash-nya cocok dengan corpus. Nama file yang sama tanpa isi yang cocok ditolak. Ini bukan analisis dokumen baru.
 
-Berkas di folder `dataset/` juga bisa diseret langsung ke kotak unggah. Berkas lain ditandai Perlu dicek, karena sistem tidak pernah memberi label Lolos pada berkas yang gagal diproses.
+## Menjalankan dan menguji
 
-## Aturan label
-
-Label dihitung ulang di peramban dari temuan setiap berkas (`data.js`, fungsi `hitungLabel`), mengikuti PRD bagian 9:
-
-| Label | Kapan | Saran tindakan |
-|---|---|---|
-| Lolos | Tidak ada temuan dan isi cocok dengan klaim | Tutup sebagai wajar |
-| Scan ulang | Berkas tidak terbaca atau terpotong | Minta scan ulang |
-| Perlu dicek | Ada sinyal yang masih mungkin kelalaian | Minta klarifikasi rumah sakit |
-| Prioritas | Dua sinyal kuat, atau satu kuat ditambah sinyal lain | Teruskan ke telaah lanjut |
-
-Tanda buatan AI tidak pernah menjadi satu-satunya alasan Prioritas. Scan yang jelek tidak pernah dianggap tanda kecurangan.
-
-## Struktur
-
-| Berkas | Isi |
-|---|---|
-| `index.html` | Kerangka halaman, ditulis tanpa `<!doctype>/<html>/<head>/<body>` supaya bisa dipublikasikan sebagai artifact |
-| `app.css` | Token warna dan komponen. Bahasa visual mengikuti JKN Drive v2: Plus Jakarta Sans, teal gelap, tombol 40px bersudut 6px |
-| `data.js` | Aturan label, urutan langkah pemeriksaan, empat tindakan, pesan PANDAWA |
-| `app.js` | Perute, tujuh layar, demo otomatis, panduan, laporan PDF |
-| `dataset/` | 17 berkas uji beserta ground truth. Lihat [dataset/README.md](dataset/README.md) |
-| `tools/dataset/` | Pembangkit dataset: render lembar di Chromium, lalu efek pindai dan manipulasi di Python |
-| `tests/alur.test.js` | Uji alur dari masuk sampai unduh PDF, termasuk layar ponsel |
-
-Tidak ada AI yang berjalan di prototipe ini. Temuan dibaca dari ground truth dataset (`dataset/manifest.js`), jadi yang ditunjukkan adalah alur kerja dan cara bukti disajikan ke verifikator. Rancangan teknis mesin analisisnya ada di PRD bagian 12.
-
-## Menjalankan secara lokal
-
-Tidak ada build step. Cukup layani foldernya:
+Tidak ada build step untuk UI. Dari folder proyek:
 
 ```bash
-python3 -m http.server 8899
+npm install
+npx playwright install chromium
+npm run serve
 ```
 
-Lalu buka <http://localhost:8899>.
-
-## Menguji
+Buka <http://localhost:8899>. Pengujian browser dan validasi fixture:
 
 ```bash
-npm i playwright && npx playwright install chromium
-node tests/alur.test.js
+npm test
 ```
 
-Tambahkan `TARGET_URL=https://pramana-flax.vercel.app/` untuk menguji hasil deploy.
+Tes mencakup seluruh 60 fixture dan hash file, alur keputusan dan undo, unggah, aksesibilitas drawer, serta viewport 1440×900, 1280×720, 1024×768, 390×844, dan 360×800. Untuk menguji URL lain, gunakan `TARGET_URL=...`.
 
 ## Batasan
 
-- Seluruh data **sintetis**: nama, nomor kartu, SEP, rumah sakit, dan dokter semuanya fiktif. Tidak ada data peserta JKN yang nyata.
-- Tampilan aplikasi verifikasi internal BPJS tidak tersedia untuk publik. Bingkai aplikasi di sini mengikuti bahasa desain JKN Drive v2 yang halaman masuknya publik, dan tidak memakai logo resmi BPJS Kesehatan.
-- Sistem memberi prioritas pemeriksaan beserta alasannya, bukan penetapan kecurangan. Penetapan tetap wewenang Tim Pencegahan dan Penanganan Kecurangan JKN sesuai Permenkes 16/2019.
+- Tidak ada data peserta JKN nyata, integrasi JKN Drive/PANDAWA nyata, atau pengiriman pesan.
+- Corpus ini untuk demo alur dan uji UX, **bukan** data pelatihan atau validasi akurasi model.
+- Saran Veritas adalah urutan kerja berbasis fixture, bukan keputusan medis, pembayaran, atau kecurangan.
+- Evaluasi usability dengan minimal lima verifikator dan audit VoiceOver tetap perlu dilakukan sebelum klaim kesiapan implementasi nyata.

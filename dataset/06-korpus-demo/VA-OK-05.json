@@ -1,0 +1,148 @@
+{
+  "id": "VA-OK-05",
+  "folder": "06-korpus-demo",
+  "berkas": {
+    "jpg": "VA-OK-05.jpg",
+    "pdf": "VA-OK-05.pdf"
+  },
+  "ukuran": [
+    1240,
+    1754
+  ],
+  "demo": false,
+  "peran": "demo_ux",
+  "kategori_demo": "tanpa_anomali",
+  "synthetic": true,
+  "label_diharapkan": "Lolos",
+  "ringkasan": "Tidak ada anomali pada pemeriksaan yang tersedia.",
+  "klaim": {
+    "sep": "0901R0270826V700655",
+    "peserta": "Diah Puspitasari",
+    "no_kartu": "0001500002095",
+    "faskes": "RS Cipta Medika",
+    "kode_faskes": "0901R027",
+    "periode": "Agustus 2026",
+    "layanan": "Fisioterapi rawat jalan",
+    "sesi_ditagih": 6,
+    "tarif_per_sesi": 207300,
+    "nilai_klaim": 1243800,
+    "nilai_klaim_teks": "Rp1.243.800"
+  },
+  "isi_lembar": {
+    "nama": "Diah Puspitasari",
+    "tanggal_lahir": "01-01-1970",
+    "no_rm": "SIM-0005",
+    "no_kartu": "0001500002095",
+    "no_sep": "0901R0270826V700655",
+    "diagnosis": "Nyeri muskuloskeletal",
+    "icd10": "M79.1",
+    "dpjp": "dr. H. Suparman, Sp.KFR",
+    "periode": "Agustus 2026",
+    "baris_terisi": 6,
+    "baris_asli": 6,
+    "tanggal_sesi": [
+      "05/08",
+      "08/08",
+      "11/08",
+      "14/08",
+      "17/08",
+      "20/08"
+    ],
+    "jumlah_kunjungan_tertulis": 6,
+    "kemiripan_ttd_rerata": 0.82
+  },
+  "kualitas_scan": {
+    "status": "baik",
+    "catatan": "Foto formulir terbaca."
+  },
+  "temuan": [],
+  "metadata_file": {
+    "Producer": "Veritas demo corpus",
+    "Creator": "Formulir sintetis"
+  },
+  "pindai": {
+    "alat": "ponsel",
+    "miring": 1
+  },
+  "region_lembar": {
+    "kop": [
+      100,
+      135,
+      1040,
+      125
+    ],
+    "nama": [
+      115,
+      275,
+      500,
+      45
+    ],
+    "sep": [
+      115,
+      320,
+      540,
+      45
+    ],
+    "tabel": [
+      90,
+      455,
+      1060,
+      720
+    ],
+    "total": [
+      870,
+      1210,
+      270,
+      75
+    ]
+  },
+  "caseId": "VA-OK-05",
+  "overallStatus": "tidak_ada_anomali",
+  "checkResults": [
+    {
+      "check": "kualitas_scan",
+      "result": "tidak_ditemukan",
+      "strength": null
+    },
+    {
+      "check": "kecocokan_klaim",
+      "result": "tidak_ditemukan",
+      "strength": null
+    },
+    {
+      "check": "berkas_kembar",
+      "result": "tidak_ditemukan",
+      "strength": null
+    },
+    {
+      "check": "copy_paste",
+      "result": "tidak_ditemukan",
+      "strength": null
+    },
+    {
+      "check": "tempelan",
+      "result": "tidak_ditemukan",
+      "strength": null
+    },
+    {
+      "check": "suntingan",
+      "result": "tidak_ditemukan",
+      "strength": null
+    },
+    {
+      "check": "tanda_ai",
+      "result": "tidak_ditemukan",
+      "strength": null
+    }
+  ],
+  "topFindings": [],
+  "evidenceRegions": [],
+  "relatedCaseIds": [],
+  "recommendation": "wajar",
+  "participantConfirmation": null,
+  "auditTrail": [],
+  "fileHashes": {
+    "jpg": "74616d9fc1734746e7e1ec39f7e286e5c213ab8f4fb1b72064f9e1f061e1a01d",
+    "pdf": "e10dcd7f4c026003067997d8f7a30a907fe2aa11e22cd6895e713bab44bab67a"
+  }
+}

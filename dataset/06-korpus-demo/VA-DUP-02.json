@@ -1,0 +1,219 @@
+{
+  "id": "VA-DUP-02",
+  "folder": "06-korpus-demo",
+  "berkas": {
+    "jpg": "VA-DUP-02.jpg",
+    "pdf": "VA-DUP-02.pdf"
+  },
+  "ukuran": [
+    1240,
+    1754
+  ],
+  "demo": false,
+  "peran": "demo_ux",
+  "kategori_demo": "duplikat",
+  "synthetic": true,
+  "label_diharapkan": "Prioritas",
+  "ringkasan": "Susunan sesi serupa dengan VA-OK-02; identitas berbeda.",
+  "klaim": {
+    "sep": "0901R0270826V701965",
+    "peserta": "Nina Kartika",
+    "no_kartu": "0001500006285",
+    "faskes": "RS Cipta Medika",
+    "kode_faskes": "0901R027",
+    "periode": "Agustus 2026",
+    "layanan": "Fisioterapi rawat jalan",
+    "sesi_ditagih": 6,
+    "tarif_per_sesi": 207300,
+    "nilai_klaim": 1243800,
+    "nilai_klaim_teks": "Rp1.243.800"
+  },
+  "isi_lembar": {
+    "nama": "Nina Kartika",
+    "tanggal_lahir": "01-01-1970",
+    "no_rm": "SIM-0015",
+    "no_kartu": "0001500006285",
+    "no_sep": "0901R0270826V701965",
+    "diagnosis": "Nyeri muskuloskeletal",
+    "icd10": "M79.1",
+    "dpjp": "dr. H. Suparman, Sp.KFR",
+    "periode": "Agustus 2026",
+    "baris_terisi": 6,
+    "baris_asli": 6,
+    "tanggal_sesi": [
+      "05/08",
+      "08/08",
+      "11/08",
+      "14/08",
+      "17/08",
+      "20/08"
+    ],
+    "jumlah_kunjungan_tertulis": 6,
+    "kemiripan_ttd_rerata": 0.99
+  },
+  "kualitas_scan": {
+    "status": "baik",
+    "catatan": "Foto formulir terbaca."
+  },
+  "temuan": [
+    {
+      "cek": "berkas_kembar",
+      "kekuatan": "kuat",
+      "pasangan": "VA-OK-02",
+      "region": [
+        90,
+        455,
+        1060,
+        720
+      ],
+      "kalimat": "Susunan sesi dan tanda tangan berulang seperti berkas VA-OK-02. Identitas dan SEP berbeda."
+    },
+    {
+      "cek": "tempelan",
+      "kekuatan": "kuat",
+      "pasangan": "VA-OK-02",
+      "region": [
+        880,
+        610,
+        260,
+        440
+      ],
+      "kalimat": "Area tanda tangan pada berkas ini memakai pola yang sama dengan VA-OK-02."
+    }
+  ],
+  "metadata_file": {
+    "Producer": "Veritas demo corpus",
+    "Creator": "Formulir sintetis"
+  },
+  "pindai": {
+    "alat": "ponsel",
+    "miring": -1
+  },
+  "region_lembar": {
+    "kop": [
+      100,
+      135,
+      1040,
+      125
+    ],
+    "nama": [
+      115,
+      275,
+      500,
+      45
+    ],
+    "sep": [
+      115,
+      320,
+      540,
+      45
+    ],
+    "tabel": [
+      90,
+      455,
+      1060,
+      720
+    ],
+    "total": [
+      870,
+      1210,
+      270,
+      75
+    ]
+  },
+  "caseId": "VA-DUP-02",
+  "overallStatus": "prioritas",
+  "checkResults": [
+    {
+      "check": "kualitas_scan",
+      "result": "tidak_ditemukan",
+      "strength": null
+    },
+    {
+      "check": "kecocokan_klaim",
+      "result": "tidak_ditemukan",
+      "strength": null
+    },
+    {
+      "check": "berkas_kembar",
+      "result": "indikasi",
+      "strength": "kuat"
+    },
+    {
+      "check": "copy_paste",
+      "result": "tidak_ditemukan",
+      "strength": null
+    },
+    {
+      "check": "tempelan",
+      "result": "indikasi",
+      "strength": "kuat"
+    },
+    {
+      "check": "suntingan",
+      "result": "tidak_ditemukan",
+      "strength": null
+    },
+    {
+      "check": "tanda_ai",
+      "result": "tidak_ditemukan",
+      "strength": null
+    }
+  ],
+  "topFindings": [
+    {
+      "cek": "berkas_kembar",
+      "kekuatan": "kuat",
+      "pasangan": "VA-OK-02",
+      "region": [
+        90,
+        455,
+        1060,
+        720
+      ],
+      "kalimat": "Susunan sesi dan tanda tangan berulang seperti berkas VA-OK-02. Identitas dan SEP berbeda."
+    },
+    {
+      "cek": "tempelan",
+      "kekuatan": "kuat",
+      "pasangan": "VA-OK-02",
+      "region": [
+        880,
+        610,
+        260,
+        440
+      ],
+      "kalimat": "Area tanda tangan pada berkas ini memakai pola yang sama dengan VA-OK-02."
+    }
+  ],
+  "evidenceRegions": [
+    {
+      "check": "berkas_kembar",
+      "region": [
+        90,
+        455,
+        1060,
+        720
+      ]
+    },
+    {
+      "check": "tempelan",
+      "region": [
+        880,
+        610,
+        260,
+        440
+      ]
+    }
+  ],
+  "relatedCaseIds": [
+    "VA-OK-02"
+  ],
+  "recommendation": "telaah",
+  "participantConfirmation": null,
+  "auditTrail": [],
+  "fileHashes": {
+    "jpg": "899604b0f96b5be74321fa82f27d612efec1e8fd504a18d76d71d9fbb5223d98",
+    "pdf": "6829ddf704960b49857b0db8b414f0a513feb20e00e50f42764d14512fe24363"
+  }
+}

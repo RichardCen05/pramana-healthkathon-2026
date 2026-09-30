@@ -1,231 +1,316 @@
 {
- "id": "VA-AI-01",
- "folder": "04-buatan-ai",
- "berkas": {
-  "jpg": "VA-AI-01.jpg",
-  "pdf": "VA-AI-01.pdf",
-  "png": "VA-AI-01.png"
- },
- "ukuran": [
-  1240,
-  1754
- ],
- "demo": true,
- "peran": "uji",
- "label_diharapkan": "Perlu dicek",
- "ringkasan": "Isi cocok dengan klaim, tetapi tidak ada ciri hasil pindai dan metadatanya menandai gambar buatan AI.",
- "klaim": {
-  "sep": "0901R0140826V601552",
-  "peserta": "Joko Prasetyo",
-  "no_kartu": "0001829934470",
-  "faskes": "RS Melati Sehat",
-  "kode_faskes": "0901R014",
-  "periode": "Agustus 2026",
-  "layanan": "Fisioterapi rawat jalan",
-  "sesi_ditagih": 8,
-  "tarif_per_sesi": 207300,
-  "nilai_klaim": 1658400,
-  "nilai_klaim_teks": "Rp1.658.400"
- },
- "isi_lembar": {
-  "nama": "Joko Prasetyo",
-  "tanggal_lahir": "16-04-1974",
-  "no_rm": "00-41-5521",
-  "no_kartu": "0001829934470",
-  "no_sep": "0901R0140826V601552",
-  "diagnosis": "Frozen shoulder kanan",
-  "icd10": "M75.0",
-  "dpjp": "dr. Ayu Prameswari, Sp.KFR",
-  "periode": "Agustus 2026",
-  "baris_terisi": 8,
-  "baris_asli": 8,
-  "tanggal_sesi": [
-   "04/08",
-   "07/08",
-   "11/08",
-   "14/08",
-   "18/08",
-   "21/08",
-   "25/08",
-   "28/08"
+  "id": "VA-AI-01",
+  "folder": "04-buatan-ai",
+  "berkas": {
+    "jpg": "VA-AI-01.jpg",
+    "pdf": "VA-AI-01.pdf",
+    "png": "VA-AI-01.png"
+  },
+  "ukuran": [
+    1240,
+    1754
   ],
-  "jumlah_kunjungan_tertulis": 8,
-  "kemiripan_ttd_rerata": 0.795
- },
- "kualitas_scan": {
-  "status": "baik",
-  "catatan": "Berkas digital, bukan hasil pindai."
- },
- "temuan": [
-  {
-   "cek": "tanda_ai",
-   "kekuatan": "sedang",
-   "region": null,
-   "kalimat": "Metadata berkas menandai gambar dibuat oleh generator AI (IPTC trainedAlgorithmicMedia)."
+  "demo": true,
+  "peran": "uji",
+  "label_diharapkan": "Perlu dicek",
+  "ringkasan": "Isi cocok dengan klaim, tetapi tidak ada ciri hasil pindai dan metadata memuat tag asal digital yang perlu diverifikasi.",
+  "klaim": {
+    "sep": "0901R0140826V601552",
+    "peserta": "Joko Prasetyo",
+    "no_kartu": "0001829934470",
+    "faskes": "RS Melati Sehat",
+    "kode_faskes": "0901R014",
+    "periode": "Agustus 2026",
+    "layanan": "Fisioterapi rawat jalan",
+    "sesi_ditagih": 8,
+    "tarif_per_sesi": 207300,
+    "nilai_klaim": 1658400,
+    "nilai_klaim_teks": "Rp1.658.400"
   },
-  {
-   "cek": "tanda_ai",
-   "kekuatan": "lemah",
-   "region": null,
-   "kalimat": "Tidak ada ciri hasil pindai: tanpa derau sensor, tanpa bayangan tepi kertas, dan halaman lurus sempurna."
+  "isi_lembar": {
+    "nama": "Joko Prasetyo",
+    "tanggal_lahir": "16-04-1974",
+    "no_rm": "00-41-5521",
+    "no_kartu": "0001829934470",
+    "no_sep": "0901R0140826V601552",
+    "diagnosis": "Frozen shoulder kanan",
+    "icd10": "M75.0",
+    "dpjp": "dr. Ayu Prameswari, Sp.KFR",
+    "periode": "Agustus 2026",
+    "baris_terisi": 8,
+    "baris_asli": 8,
+    "tanggal_sesi": [
+      "04/08",
+      "07/08",
+      "11/08",
+      "14/08",
+      "18/08",
+      "21/08",
+      "25/08",
+      "28/08"
+    ],
+    "jumlah_kunjungan_tertulis": 8,
+    "kemiripan_ttd_rerata": 0.795
   },
-  {
-   "cek": "tanda_ai",
-   "kekuatan": "lemah",
-   "region": [
-    88,
-    70,
-    1064,
-    115
-   ],
-   "kalimat": "Teks kecil di kop dan kepala tabel janggal: \"Rehabilitsai\", \"Kenagna Rya\", \"Tanda Tanagn\"."
+  "kualitas_scan": {
+    "status": "baik",
+    "catatan": "Berkas digital, bukan hasil pindai."
+  },
+  "temuan": [
+    {
+      "cek": "tanda_ai",
+      "kekuatan": "sedang",
+      "region": null,
+      "kalimat": "Metadata memuat tag IPTC trainedAlgorithmicMedia. Tag dapat diubah dan bukan bukti akhir asal gambar."
+    },
+    {
+      "cek": "tanda_ai",
+      "kekuatan": "lemah",
+      "region": null,
+      "kalimat": "Tidak ada ciri hasil pindai: tanpa derau sensor, tanpa bayangan tepi kertas, dan halaman lurus sempurna."
+    },
+    {
+      "cek": "tanda_ai",
+      "kekuatan": "lemah",
+      "region": [
+        88,
+        70,
+        1064,
+        115
+      ],
+      "kalimat": "Teks kecil di kop dan kepala tabel janggal: \"Rehabilitsai\", \"Kenagna Rya\", \"Tanda Tanagn\"."
+    }
+  ],
+  "metadata_file": {
+    "Producer": "Microsoft: Print To PDF",
+    "Creator": "Microsoft Photos"
+  },
+  "pindai": {
+    "alat": "tidak ada, berkas digital"
+  },
+  "region_lembar": {
+    "kop": [
+      88,
+      70,
+      1064,
+      115
+    ],
+    "nama": [
+      268,
+      284,
+      204,
+      30
+    ],
+    "sep": [
+      846,
+      332,
+      259,
+      31
+    ],
+    "periode": [
+      846,
+      433,
+      157,
+      29
+    ],
+    "tabel": [
+      88,
+      545,
+      1064,
+      772
+    ],
+    "baris-1": [
+      89,
+      580,
+      1063,
+      92
+    ],
+    "ttd-1": [
+      902,
+      580,
+      250,
+      92
+    ],
+    "baris-2": [
+      89,
+      672,
+      1063,
+      92
+    ],
+    "ttd-2": [
+      902,
+      672,
+      250,
+      92
+    ],
+    "baris-3": [
+      89,
+      764,
+      1063,
+      92
+    ],
+    "ttd-3": [
+      902,
+      764,
+      250,
+      92
+    ],
+    "baris-4": [
+      89,
+      856,
+      1063,
+      92
+    ],
+    "ttd-4": [
+      902,
+      856,
+      250,
+      92
+    ],
+    "baris-5": [
+      89,
+      948,
+      1063,
+      92
+    ],
+    "ttd-5": [
+      902,
+      948,
+      250,
+      92
+    ],
+    "baris-6": [
+      89,
+      1040,
+      1063,
+      92
+    ],
+    "ttd-6": [
+      902,
+      1040,
+      250,
+      92
+    ],
+    "baris-7": [
+      89,
+      1132,
+      1063,
+      92
+    ],
+    "ttd-7": [
+      902,
+      1132,
+      250,
+      92
+    ],
+    "baris-8": [
+      89,
+      1224,
+      1063,
+      92
+    ],
+    "ttd-8": [
+      902,
+      1224,
+      250,
+      92
+    ],
+    "total": [
+      88,
+      1339,
+      674,
+      82
+    ],
+    "blok-dpjp": [
+      792,
+      1339,
+      360,
+      165
+    ]
+  },
+  "caseId": "VA-AI-01",
+  "synthetic": true,
+  "overallStatus": "perlu_dicek",
+  "checkResults": [
+    {
+      "check": "kualitas_scan",
+      "result": "tidak_ditemukan",
+      "strength": null
+    },
+    {
+      "check": "kecocokan_klaim",
+      "result": "tidak_ditemukan",
+      "strength": null
+    },
+    {
+      "check": "berkas_kembar",
+      "result": "tidak_ditemukan",
+      "strength": null
+    },
+    {
+      "check": "copy_paste",
+      "result": "tidak_ditemukan",
+      "strength": null
+    },
+    {
+      "check": "tempelan",
+      "result": "tidak_ditemukan",
+      "strength": null
+    },
+    {
+      "check": "suntingan",
+      "result": "tidak_ditemukan",
+      "strength": null
+    },
+    {
+      "check": "tanda_ai",
+      "result": "indikasi",
+      "strength": "sedang"
+    }
+  ],
+  "topFindings": [
+    {
+      "cek": "tanda_ai",
+      "kekuatan": "sedang",
+      "region": null,
+      "kalimat": "Metadata memuat tag IPTC trainedAlgorithmicMedia. Tag dapat diubah dan bukan bukti akhir asal gambar."
+    },
+    {
+      "cek": "tanda_ai",
+      "kekuatan": "lemah",
+      "region": null,
+      "kalimat": "Tidak ada ciri hasil pindai: tanpa derau sensor, tanpa bayangan tepi kertas, dan halaman lurus sempurna."
+    },
+    {
+      "cek": "tanda_ai",
+      "kekuatan": "lemah",
+      "region": [
+        88,
+        70,
+        1064,
+        115
+      ],
+      "kalimat": "Teks kecil di kop dan kepala tabel janggal: \"Rehabilitsai\", \"Kenagna Rya\", \"Tanda Tanagn\"."
+    }
+  ],
+  "evidenceRegions": [
+    {
+      "check": "tanda_ai",
+      "region": [
+        88,
+        70,
+        1064,
+        115
+      ]
+    }
+  ],
+  "relatedCaseIds": [],
+  "recommendation": "klarifikasi",
+  "participantConfirmation": null,
+  "auditTrail": [],
+  "fileHashes": {
+    "jpg": "a4357a02aa36a9c534a242fb10a55b4d8be1f36ac1703314228d04adb38a3280",
+    "pdf": "84d38a8ed31a3f4949f2018db150cf7a8d8c32e184525a9b224151a42f62535b",
+    "png": "c4a6d00f2c1070feed69ff23eeb59f61ffb309179f18dfd273e8f443539f3514"
   }
- ],
- "metadata_file": {
-  "Producer": "Microsoft: Print To PDF",
-  "Creator": "Microsoft Photos"
- },
- "pindai": {
-  "alat": "tidak ada, berkas digital"
- },
- "region_lembar": {
-  "kop": [
-   88,
-   70,
-   1064,
-   115
-  ],
-  "nama": [
-   268,
-   284,
-   204,
-   30
-  ],
-  "sep": [
-   846,
-   332,
-   259,
-   31
-  ],
-  "periode": [
-   846,
-   433,
-   157,
-   29
-  ],
-  "tabel": [
-   88,
-   545,
-   1064,
-   772
-  ],
-  "baris-1": [
-   89,
-   580,
-   1063,
-   92
-  ],
-  "ttd-1": [
-   902,
-   580,
-   250,
-   92
-  ],
-  "baris-2": [
-   89,
-   672,
-   1063,
-   92
-  ],
-  "ttd-2": [
-   902,
-   672,
-   250,
-   92
-  ],
-  "baris-3": [
-   89,
-   764,
-   1063,
-   92
-  ],
-  "ttd-3": [
-   902,
-   764,
-   250,
-   92
-  ],
-  "baris-4": [
-   89,
-   856,
-   1063,
-   92
-  ],
-  "ttd-4": [
-   902,
-   856,
-   250,
-   92
-  ],
-  "baris-5": [
-   89,
-   948,
-   1063,
-   92
-  ],
-  "ttd-5": [
-   902,
-   948,
-   250,
-   92
-  ],
-  "baris-6": [
-   89,
-   1040,
-   1063,
-   92
-  ],
-  "ttd-6": [
-   902,
-   1040,
-   250,
-   92
-  ],
-  "baris-7": [
-   89,
-   1132,
-   1063,
-   92
-  ],
-  "ttd-7": [
-   902,
-   1132,
-   250,
-   92
-  ],
-  "baris-8": [
-   89,
-   1224,
-   1063,
-   92
-  ],
-  "ttd-8": [
-   902,
-   1224,
-   250,
-   92
-  ],
-  "total": [
-   88,
-   1339,
-   674,
-   82
-  ],
-  "blok-dpjp": [
-   792,
-   1339,
-   360,
-   165
-  ]
- }
 }
