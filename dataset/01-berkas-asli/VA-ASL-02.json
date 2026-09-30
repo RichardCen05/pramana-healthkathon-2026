@@ -1,0 +1,207 @@
+{
+ "id": "VA-ASL-02",
+ "folder": "01-berkas-asli",
+ "berkas": {
+  "jpg": "VA-ASL-02.jpg",
+  "pdf": "VA-ASL-02.pdf"
+ },
+ "ukuran": [
+  1240,
+  1754
+ ],
+ "demo": false,
+ "peran": "uji",
+ "label_diharapkan": "Lolos",
+ "ringkasan": "Berkas asli. Menjadi sumber berkas kembar VA-KMB-03.",
+ "klaim": {
+  "sep": "0901R0410826V452118",
+  "peserta": "Sri Handayani",
+  "no_kartu": "0001390447182",
+  "faskes": "RSU Bakti Mulia",
+  "kode_faskes": "0901R041",
+  "periode": "Agustus 2026",
+  "layanan": "Fisioterapi rawat jalan",
+  "sesi_ditagih": 8,
+  "tarif_per_sesi": 207300,
+  "nilai_klaim": 1658400,
+  "nilai_klaim_teks": "Rp1.658.400"
+ },
+ "isi_lembar": {
+  "nama": "Sri Handayani",
+  "tanggal_lahir": "02-11-1969",
+  "no_rm": "12-08-0931",
+  "no_kartu": "0001390447182",
+  "no_sep": "0901R0410826V452118",
+  "diagnosis": "Gonartrosis bilateral",
+  "icd10": "M17.0",
+  "dpjp": "dr. Bimo Aryasatya, Sp.KFR",
+  "periode": "Agustus 2026",
+  "baris_terisi": 8,
+  "baris_asli": 8,
+  "tanggal_sesi": [
+   "03/08",
+   "06/08",
+   "10/08",
+   "13/08",
+   "17/08",
+   "20/08",
+   "24/08",
+   "27/08"
+  ],
+  "jumlah_kunjungan_tertulis": 8,
+  "kemiripan_ttd_rerata": 0.788
+ },
+ "kualitas_scan": {
+  "status": "baik",
+  "catatan": "Terbaca, miring 0.3 derajat."
+ },
+ "temuan": [],
+ "metadata_file": {
+  "Producer": "Canon iR-ADV C3826 PDF",
+  "Creator": "Canon iR-ADV C3826"
+ },
+ "pindai": {
+  "alat": "flatbed",
+  "miring": 0.3
+ },
+ "region_lembar": {
+  "kop": [
+   84,
+   67,
+   1065,
+   121
+  ],
+  "nama": [
+   265,
+   287,
+   206,
+   29
+  ],
+  "sep": [
+   817,
+   331,
+   255,
+   31
+  ],
+  "periode": [
+   818,
+   433,
+   157,
+   31
+  ],
+  "tabel": [
+   86,
+   542,
+   1068,
+   778
+  ],
+  "baris-1": [
+   87,
+   577,
+   1063,
+   98
+  ],
+  "ttd-1": [
+   900,
+   577,
+   250,
+   93
+  ],
+  "baris-2": [
+   88,
+   669,
+   1063,
+   98
+  ],
+  "ttd-2": [
+   901,
+   669,
+   250,
+   93
+  ],
+  "baris-3": [
+   88,
+   761,
+   1063,
+   98
+  ],
+  "ttd-3": [
+   901,
+   761,
+   250,
+   93
+  ],
+  "baris-4": [
+   89,
+   853,
+   1063,
+   98
+  ],
+  "ttd-4": [
+   902,
+   853,
+   250,
+   93
+  ],
+  "baris-5": [
+   89,
+   945,
+   1063,
+   98
+  ],
+  "ttd-5": [
+   902,
+   945,
+   250,
+   93
+  ],
+  "baris-6": [
+   90,
+   1037,
+   1063,
+   98
+  ],
+  "ttd-6": [
+   903,
+   1037,
+   250,
+   93
+  ],
+  "baris-7": [
+   90,
+   1129,
+   1063,
+   98
+  ],
+  "ttd-7": [
+   903,
+   1129,
+   250,
+   93
+  ],
+  "baris-8": [
+   91,
+   1221,
+   1063,
+   98
+  ],
+  "ttd-8": [
+   904,
+   1221,
+   250,
+   93
+  ],
+  "total": [
+   90,
+   1338,
+   674,
+   86
+  ],
+  "blok-dpjp": [
+   794,
+   1336,
+   361,
+   167
+  ]
+ }
+}

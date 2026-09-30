@@ -1,0 +1,219 @@
+{
+ "id": "VA-BRM-02",
+ "folder": "05-scan-buram",
+ "berkas": {
+  "jpg": "VA-BRM-02.jpg",
+  "pdf": "VA-BRM-02.pdf"
+ },
+ "ukuran": [
+  1500,
+  2000
+ ],
+ "demo": false,
+ "peran": "uji",
+ "label_diharapkan": "Scan ulang",
+ "ringkasan": "Foto HP terlalu gelap dan kontrasnya rendah, tanda tangan tidak terbaca.",
+ "klaim": {
+  "sep": "0901R0270826V592271",
+  "peserta": "Fajar Maulana",
+  "no_kartu": "0002450019786",
+  "faskes": "RS Cipta Medika",
+  "kode_faskes": "0901R027",
+  "periode": "Agustus 2026",
+  "layanan": "Fisioterapi rawat jalan",
+  "sesi_ditagih": 8,
+  "tarif_per_sesi": 207300,
+  "nilai_klaim": 1658400,
+  "nilai_klaim_teks": "Rp1.658.400"
+ },
+ "isi_lembar": {
+  "nama": "Fajar Maulana",
+  "tanggal_lahir": "17-06-1980",
+  "no_rm": "07-56-3318",
+  "no_kartu": "0002450019786",
+  "no_sep": "0901R0270826V592271",
+  "diagnosis": "Low back pain",
+  "icd10": "M54.5",
+  "dpjp": "dr. H. Suparman, Sp.KFR",
+  "periode": "Agustus 2026",
+  "baris_terisi": 8,
+  "baris_asli": 8,
+  "tanggal_sesi": [
+   "05/08",
+   "08/08",
+   "12/08",
+   "15/08",
+   "19/08",
+   "22/08",
+   "26/08",
+   "29/08"
+  ],
+  "jumlah_kunjungan_tertulis": 8,
+  "kemiripan_ttd_rerata": 0.783
+ },
+ "kualitas_scan": {
+  "status": "scan_ulang",
+  "catatan": "Terlalu gelap dan kontras rendah."
+ },
+ "temuan": [
+  {
+   "cek": "kualitas_scan",
+   "kekuatan": "info",
+   "region": [
+    0,
+    0,
+    1500,
+    2000
+   ],
+   "kalimat": "Foto terlalu gelap, tanda tangan dan tanggal tidak terbaca. Minta rumah sakit memindai ulang."
+  }
+ ],
+ "metadata_file": {
+  "Producer": "Android PDF Writer",
+  "Creator": "Galaxy A15 Kamera"
+ },
+ "pindai": {
+  "alat": "gelap",
+  "miring": 2.4
+ },
+ "region_lembar": {
+  "kop": [
+   155,
+   130,
+   1130,
+   170
+  ],
+  "nama": [
+   352,
+   390,
+   220,
+   39
+  ],
+  "sep": [
+   937,
+   421,
+   276,
+   41
+  ],
+  "periode": [
+   939,
+   530,
+   167,
+   38
+  ],
+  "tabel": [
+   172,
+   645,
+   1140,
+   862
+  ],
+  "baris-1": [
+   175,
+   683,
+   1122,
+   141
+  ],
+  "ttd-1": [
+   1030,
+   683,
+   267,
+   109
+  ],
+  "baris-2": [
+   178,
+   782,
+   1121,
+   140
+  ],
+  "ttd-2": [
+   1032,
+   782,
+   266,
+   109
+  ],
+  "baris-3": [
+   181,
+   880,
+   1120,
+   139
+  ],
+  "ttd-3": [
+   1035,
+   880,
+   266,
+   108
+  ],
+  "baris-4": [
+   185,
+   979,
+   1119,
+   139
+  ],
+  "ttd-4": [
+   1037,
+   979,
+   266,
+   108
+  ],
+  "baris-5": [
+   188,
+   1077,
+   1117,
+   138
+  ],
+  "ttd-5": [
+   1040,
+   1077,
+   266,
+   107
+  ],
+  "baris-6": [
+   191,
+   1175,
+   1116,
+   137
+  ],
+  "ttd-6": [
+   1042,
+   1175,
+   265,
+   107
+  ],
+  "baris-7": [
+   195,
+   1273,
+   1115,
+   136
+  ],
+  "ttd-7": [
+   1045,
+   1273,
+   265,
+   107
+  ],
+  "baris-8": [
+   198,
+   1371,
+   1114,
+   135
+  ],
+  "ttd-8": [
+   1047,
+   1371,
+   265,
+   106
+  ],
+  "total": [
+   201,
+   1507,
+   705,
+   110
+  ],
+  "blok-dpjp": [
+   935,
+   1493,
+   381,
+   187
+  ]
+ }
+}

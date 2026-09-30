@@ -1,0 +1,18 @@
+id_berkas,folder,berkas_pdf,label_diharapkan,cek_terpicu,baris_terisi,sesi_ditagih,ringkasan
+VA-ASL-01,01-berkas-asli,01-berkas-asli/VA-ASL-01.pdf,Lolos,,8,8,"Berkas asli, 8 sesi tercatat dan cocok dengan klaim."
+VA-ASL-02,01-berkas-asli,01-berkas-asli/VA-ASL-02.pdf,Lolos,,8,8,Berkas asli. Menjadi sumber berkas kembar VA-KMB-03.
+VA-ASL-03,01-berkas-asli,01-berkas-asli/VA-ASL-03.pdf,Lolos,,6,6,"Berkas asli, 6 sesi, klaim juga 6 sesi."
+VA-ASL-04,01-berkas-asli,01-berkas-asli/VA-ASL-04.pdf,Lolos,,8,8,Berkas asli difoto dengan HP. Bayangan dan perspektif tidak boleh dianggap temuan.
+VA-KMB-00,02-berkas-kembar,02-berkas-kembar/VA-KMB-00.pdf,Lolos,,8,8,Berkas asli milik Bu Siti. Sudah ada di arsip sebelum kembarannya diunggah.
+VA-KMB-01,02-berkas-kembar,02-berkas-kembar/VA-KMB-01.pdf,Prioritas,berkas_kembar:kuat suntingan:sedang tempelan:kuat,8,8,Lembar Bu Siti dipakai untuk klaim Pak Budi. Hanya identitas yang diganti.
+VA-KMB-02,02-berkas-kembar,02-berkas-kembar/VA-KMB-02.pdf,Prioritas,berkas_kembar:kuat suntingan:sedang tempelan:kuat,8,8,Lembar Agustus Bu Siti dipakai lagi untuk klaim September. Tanggal dan SEP diganti.
+VA-KMB-03,02-berkas-kembar,02-berkas-kembar/VA-KMB-03.pdf,Prioritas,berkas_kembar:kuat suntingan:sedang tempelan:kuat,8,8,Lembar Bu Sri (VA-ASL-02) dipakai untuk klaim Bu Yuliana di RS yang sama.
+VA-DST-01,03-angka-disunting,03-angka-disunting/VA-DST-01.pdf,Prioritas,kecocokan_klaim:kuat suntingan:sedang,5,8,"Hanya 5 baris terisi, angka jumlah kunjungan diubah dari 5 menjadi 8."
+VA-DST-02,03-angka-disunting,03-angka-disunting/VA-DST-02.pdf,Prioritas,copy_paste:kuat kecocokan_klaim:kuat,8,8,"Baris 7 dan 8 hasil salin-tempel baris 1 dan 2, lengkap dengan tanda tangannya."
+VA-DST-03,03-angka-disunting,03-angka-disunting/VA-DST-03.pdf,Perlu dicek,suntingan:sedang,8,8,Lembar Juli. Angka bulan pada delapan tanggal dan periode diubah ke Agustus.
+VA-AI-01,04-buatan-ai,04-buatan-ai/VA-AI-01.pdf,Perlu dicek,tanda_ai:lemah tanda_ai:sedang,8,8,"Isi cocok dengan klaim, tetapi tidak ada ciri hasil pindai dan metadatanya menandai gambar buatan AI."
+VA-AI-02,04-buatan-ai,04-buatan-ai/VA-AI-02.pdf,Prioritas,copy_paste:kuat tanda_ai:sedang,8,8,Disusun di aplikasi desain. Delapan tanda tangan adalah satu gambar yang ditempel berulang.
+VA-AI-03,04-buatan-ai,04-buatan-ai/VA-AI-03.pdf,Perlu dicek,tanda_ai:lemah,8,8,Metadata dihapus. Sinyal yang tersisa hanya tidak adanya ciri hasil pindai dan teks kecil yang janggal.
+VA-BRM-01,05-scan-buram,05-scan-buram/VA-BRM-01.pdf,Scan ulang,kualitas_scan:info,8,8,"Buram, miring 4 derajat, dan kolom tanda tangan pasien terpotong di tepi kanan."
+VA-BRM-02,05-scan-buram,05-scan-buram/VA-BRM-02.pdf,Scan ulang,kualitas_scan:info,8,8,"Foto HP terlalu gelap dan kontrasnya rendah, tanda tangan tidak terbaca."
+VA-BRM-03,05-scan-buram,05-scan-buram/VA-BRM-03.pdf,Scan ulang,kualitas_scan:info,8,8,"Bagian bawah halaman tidak ikut terpindai: baris 7 dan 8, jumlah kunjungan, dan tanda tangan DPJP hilang."

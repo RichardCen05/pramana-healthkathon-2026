@@ -1,0 +1,208 @@
+{
+ "id": "VA-BRM-03",
+ "folder": "05-scan-buram",
+ "berkas": {
+  "jpg": "VA-BRM-03.jpg",
+  "pdf": "VA-BRM-03.pdf"
+ },
+ "ukuran": [
+  1240,
+  1227
+ ],
+ "demo": false,
+ "peran": "uji",
+ "label_diharapkan": "Scan ulang",
+ "ringkasan": "Bagian bawah halaman tidak ikut terpindai: baris 7 dan 8, jumlah kunjungan, dan tanda tangan DPJP hilang.",
+ "klaim": {
+  "sep": "0901R0410826V595583",
+  "peserta": "Nurhayati",
+  "no_kartu": "0001334478025",
+  "faskes": "RSU Bakti Mulia",
+  "kode_faskes": "0901R041",
+  "periode": "Agustus 2026",
+  "layanan": "Fisioterapi rawat jalan",
+  "sesi_ditagih": 8,
+  "tarif_per_sesi": 207300,
+  "nilai_klaim": 1658400,
+  "nilai_klaim_teks": "Rp1.658.400"
+ },
+ "isi_lembar": {
+  "nama": "Nurhayati",
+  "tanggal_lahir": "25-04-1959",
+  "no_rm": "12-07-5561",
+  "no_kartu": "0001334478025",
+  "no_sep": "0901R0410826V595583",
+  "diagnosis": "Gonartrosis bilateral",
+  "icd10": "M17.0",
+  "dpjp": "dr. Bimo Aryasatya, Sp.KFR",
+  "periode": "Agustus 2026",
+  "baris_terisi": 8,
+  "baris_asli": 8,
+  "tanggal_sesi": [
+   "03/08",
+   "06/08",
+   "10/08",
+   "13/08",
+   "17/08",
+   "20/08",
+   "24/08",
+   "27/08"
+  ],
+  "jumlah_kunjungan_tertulis": 8,
+  "kemiripan_ttd_rerata": 0.813
+ },
+ "kualitas_scan": {
+  "status": "scan_ulang",
+  "catatan": "Bagian bawah halaman tidak terpindai."
+ },
+ "temuan": [
+  {
+   "cek": "kualitas_scan",
+   "kekuatan": "info",
+   "region": [
+    0,
+    1137,
+    1240,
+    90
+   ],
+   "kalimat": "Bagian bawah halaman tidak ikut terpindai: baris 7 dan 8, jumlah kunjungan, dan tanda tangan DPJP hilang."
+  }
+ ],
+ "metadata_file": {
+  "Producer": "Canon iR-ADV C3826 PDF",
+  "Creator": "Canon iR-ADV C3826"
+ },
+ "pindai": {
+  "alat": "flatbed",
+  "miring": -0.4,
+  "potongBawah": 0.3
+ },
+ "region_lembar": {
+  "kop": [
+   93,
+   66,
+   1065,
+   122
+  ],
+  "nama": [
+   272,
+   283,
+   158,
+   29
+  ],
+  "sep": [
+   824,
+   336,
+   266,
+   29
+  ],
+  "periode": [
+   823,
+   433,
+   157,
+   31
+  ],
+  "tabel": [
+   85,
+   541,
+   1069,
+   779
+  ],
+  "baris-1": [
+   90,
+   576,
+   1064,
+   99
+  ],
+  "ttd-1": [
+   903,
+   582,
+   251,
+   94
+  ],
+  "baris-2": [
+   90,
+   668,
+   1064,
+   99
+  ],
+  "ttd-2": [
+   903,
+   674,
+   251,
+   94
+  ],
+  "baris-3": [
+   89,
+   760,
+   1064,
+   99
+  ],
+  "ttd-3": [
+   902,
+   766,
+   251,
+   94
+  ],
+  "baris-4": [
+   89,
+   852,
+   1064,
+   99
+  ],
+  "ttd-4": [
+   901,
+   858,
+   251,
+   94
+  ],
+  "baris-5": [
+   88,
+   944,
+   1064,
+   99
+  ],
+  "ttd-5": [
+   901,
+   950,
+   251,
+   94
+  ],
+  "baris-6": [
+   87,
+   1036,
+   1064,
+   99
+  ],
+  "ttd-6": [
+   900,
+   1042,
+   251,
+   94
+  ],
+  "baris-7": [
+   87,
+   1128,
+   1064,
+   99
+  ],
+  "ttd-7": [
+   900,
+   1134,
+   251,
+   94
+  ],
+  "baris-8": [
+   86,
+   1220,
+   1064,
+   99
+  ],
+  "ttd-8": [
+   899,
+   1226,
+   251,
+   94
+  ]
+ }
+}

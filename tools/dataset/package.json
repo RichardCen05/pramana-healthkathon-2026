@@ -1,0 +1,7 @@
+{
+  "name": "vedika-autentik-dataset",
+  "private": true,
+  "description": "Pembangkit berkas fisioterapi sintetis untuk uji dan latih Vedika Autentik",
+  "scripts": { "build": "./build.sh" },
+  "devDependencies": { "playwright": "^1.58.0" }
+}

@@ -1,0 +1,230 @@
+{
+ "id": "VA-AI-03",
+ "folder": "04-buatan-ai",
+ "berkas": {
+  "jpg": "VA-AI-03.jpg",
+  "pdf": "VA-AI-03.pdf",
+  "png": "VA-AI-03.png"
+ },
+ "ukuran": [
+  1240,
+  1754
+ ],
+ "demo": false,
+ "peran": "uji",
+ "label_diharapkan": "Perlu dicek",
+ "ringkasan": "Metadata dihapus. Sinyal yang tersisa hanya tidak adanya ciri hasil pindai dan teks kecil yang janggal.",
+ "klaim": {
+  "sep": "0901R0410826V607763",
+  "peserta": "Rudi Hidayat",
+  "no_kartu": "0001690042275",
+  "faskes": "RSU Bakti Mulia",
+  "kode_faskes": "0901R041",
+  "periode": "Agustus 2026",
+  "layanan": "Fisioterapi rawat jalan",
+  "sesi_ditagih": 8,
+  "tarif_per_sesi": 207300,
+  "nilai_klaim": 1658400,
+  "nilai_klaim_teks": "Rp1.658.400"
+ },
+ "isi_lembar": {
+  "nama": "Rudi Hidayat",
+  "tanggal_lahir": "21-01-1976",
+  "no_rm": "12-08-2290",
+  "no_kartu": "0001690042275",
+  "no_sep": "0901R0410826V607763",
+  "diagnosis": "Carpal tunnel syndrome",
+  "icd10": "G56.0",
+  "dpjp": "dr. Bimo Aryasatya, Sp.KFR",
+  "periode": "Agustus 2026",
+  "baris_terisi": 8,
+  "baris_asli": 8,
+  "tanggal_sesi": [
+   "03/08",
+   "06/08",
+   "10/08",
+   "13/08",
+   "17/08",
+   "20/08",
+   "24/08",
+   "27/08"
+  ],
+  "jumlah_kunjungan_tertulis": 8,
+  "kemiripan_ttd_rerata": 0.797
+ },
+ "kualitas_scan": {
+  "status": "baik",
+  "catatan": "Berkas digital, bukan hasil pindai."
+ },
+ "temuan": [
+  {
+   "cek": "tanda_ai",
+   "kekuatan": "lemah",
+   "region": [
+    0,
+    0,
+    1240,
+    1754
+   ],
+   "kalimat": "Tidak ada ciri hasil pindai: tanpa derau sensor, tanpa bayangan tepi kertas, dan halaman lurus sempurna."
+  },
+  {
+   "cek": "tanda_ai",
+   "kekuatan": "lemah",
+   "region": [
+    88,
+    70,
+    1064,
+    115
+   ],
+   "kalimat": "Teks kecil di kop dan kepala tabel janggal: \"Rehabilitsai\", \"Kenagna Rya\", \"Tanda Tanagn\"."
+  }
+ ],
+ "metadata_file": {
+  "Producer": "Microsoft: Print To PDF",
+  "Creator": "Microsoft Photos"
+ },
+ "pindai": {
+  "alat": "tidak ada, berkas digital"
+ },
+ "region_lembar": {
+  "kop": [
+   88,
+   70,
+   1064,
+   115
+  ],
+  "nama": [
+   268,
+   283,
+   194,
+   30
+  ],
+  "sep": [
+   857,
+   336,
+   260,
+   28
+  ],
+  "periode": [
+   857,
+   432,
+   157,
+   30
+  ],
+  "tabel": [
+   88,
+   545,
+   1064,
+   772
+  ],
+  "baris-1": [
+   89,
+   580,
+   1063,
+   92
+  ],
+  "ttd-1": [
+   902,
+   580,
+   250,
+   92
+  ],
+  "baris-2": [
+   89,
+   672,
+   1063,
+   92
+  ],
+  "ttd-2": [
+   902,
+   672,
+   250,
+   92
+  ],
+  "baris-3": [
+   89,
+   764,
+   1063,
+   92
+  ],
+  "ttd-3": [
+   902,
+   764,
+   250,
+   92
+  ],
+  "baris-4": [
+   89,
+   856,
+   1063,
+   92
+  ],
+  "ttd-4": [
+   902,
+   856,
+   250,
+   92
+  ],
+  "baris-5": [
+   89,
+   948,
+   1063,
+   92
+  ],
+  "ttd-5": [
+   902,
+   948,
+   250,
+   92
+  ],
+  "baris-6": [
+   89,
+   1040,
+   1063,
+   92
+  ],
+  "ttd-6": [
+   902,
+   1040,
+   250,
+   92
+  ],
+  "baris-7": [
+   89,
+   1132,
+   1063,
+   92
+  ],
+  "ttd-7": [
+   902,
+   1132,
+   250,
+   92
+  ],
+  "baris-8": [
+   89,
+   1224,
+   1063,
+   92
+  ],
+  "ttd-8": [
+   902,
+   1224,
+   250,
+   92
+  ],
+  "total": [
+   88,
+   1339,
+   674,
+   82
+  ],
+  "blok-dpjp": [
+   792,
+   1339,
+   360,
+   165
+  ]
+ }
+}

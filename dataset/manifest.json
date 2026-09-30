@@ -1,0 +1,4003 @@
+[
+ {
+  "id": "VA-ASL-01",
+  "folder": "01-berkas-asli",
+  "berkas": {
+   "jpg": "VA-ASL-01.jpg",
+   "pdf": "VA-ASL-01.pdf"
+  },
+  "ukuran": [
+   1240,
+   1754
+  ],
+  "demo": true,
+  "peran": "uji",
+  "label_diharapkan": "Lolos",
+  "ringkasan": "Berkas asli, 8 sesi tercatat dan cocok dengan klaim.",
+  "klaim": {
+   "sep": "0901R0140826V441903",
+   "peserta": "Hartono Wijaya",
+   "no_kartu": "0001482215736",
+   "faskes": "RS Melati Sehat",
+   "kode_faskes": "0901R014",
+   "periode": "Agustus 2026",
+   "layanan": "Fisioterapi rawat jalan",
+   "sesi_ditagih": 8,
+   "tarif_per_sesi": 207300,
+   "nilai_klaim": 1658400,
+   "nilai_klaim_teks": "Rp1.658.400"
+  },
+  "isi_lembar": {
+   "nama": "Hartono Wijaya",
+   "tanggal_lahir": "12-03-1965",
+   "no_rm": "00-41-2287",
+   "no_kartu": "0001482215736",
+   "no_sep": "0901R0140826V441903",
+   "diagnosis": "Low back pain",
+   "icd10": "M54.5",
+   "dpjp": "dr. Ayu Prameswari, Sp.KFR",
+   "periode": "Agustus 2026",
+   "baris_terisi": 8,
+   "baris_asli": 8,
+   "tanggal_sesi": [
+    "04/08",
+    "07/08",
+    "11/08",
+    "14/08",
+    "18/08",
+    "21/08",
+    "25/08",
+    "28/08"
+   ],
+   "jumlah_kunjungan_tertulis": 8,
+   "kemiripan_ttd_rerata": 0.845
+  },
+  "kualitas_scan": {
+   "status": "baik",
+   "catatan": "Terbaca, miring 0.5 derajat."
+  },
+  "temuan": [],
+  "metadata_file": {
+   "Producer": "Canon iR-ADV C3826 PDF",
+   "Creator": "Canon iR-ADV C3826"
+  },
+  "pindai": {
+   "alat": "flatbed",
+   "miring": -0.45
+  },
+  "region_lembar": {
+   "kop": [
+    93,
+    66,
+    1065,
+    123
+   ],
+   "nama": [
+    272,
+    281,
+    220,
+    30
+   ],
+   "sep": [
+    824,
+    337,
+    257,
+    33
+   ],
+   "periode": [
+    823,
+    434,
+    157,
+    30
+   ],
+   "tabel": [
+    85,
+    541,
+    1070,
+    780
+   ],
+   "baris-1": [
+    91,
+    576,
+    1064,
+    100
+   ],
+   "ttd-1": [
+    904,
+    582,
+    251,
+    94
+   ],
+   "baris-2": [
+    90,
+    668,
+    1064,
+    100
+   ],
+   "ttd-2": [
+    903,
+    674,
+    251,
+    94
+   ],
+   "baris-3": [
+    89,
+    760,
+    1064,
+    100
+   ],
+   "ttd-3": [
+    902,
+    766,
+    251,
+    94
+   ],
+   "baris-4": [
+    88,
+    852,
+    1064,
+    100
+   ],
+   "ttd-4": [
+    901,
+    858,
+    251,
+    94
+   ],
+   "baris-5": [
+    88,
+    944,
+    1064,
+    100
+   ],
+   "ttd-5": [
+    901,
+    950,
+    251,
+    94
+   ],
+   "baris-6": [
+    87,
+    1036,
+    1064,
+    100
+   ],
+   "ttd-6": [
+    900,
+    1042,
+    251,
+    94
+   ],
+   "baris-7": [
+    86,
+    1128,
+    1064,
+    100
+   ],
+   "ttd-7": [
+    899,
+    1134,
+    251,
+    94
+   ],
+   "baris-8": [
+    86,
+    1220,
+    1064,
+    100
+   ],
+   "ttd-8": [
+    899,
+    1226,
+    251,
+    94
+   ],
+   "total": [
+    84,
+    1335,
+    675,
+    87
+   ],
+   "blok-dpjp": [
+    787,
+    1340,
+    361,
+    168
+   ]
+  }
+ },
+ {
+  "id": "VA-ASL-02",
+  "folder": "01-berkas-asli",
+  "berkas": {
+   "jpg": "VA-ASL-02.jpg",
+   "pdf": "VA-ASL-02.pdf"
+  },
+  "ukuran": [
+   1240,
+   1754
+  ],
+  "demo": false,
+  "peran": "uji",
+  "label_diharapkan": "Lolos",
+  "ringkasan": "Berkas asli. Menjadi sumber berkas kembar VA-KMB-03.",
+  "klaim": {
+   "sep": "0901R0410826V452118",
+   "peserta": "Sri Handayani",
+   "no_kartu": "0001390447182",
+   "faskes": "RSU Bakti Mulia",
+   "kode_faskes": "0901R041",
+   "periode": "Agustus 2026",
+   "layanan": "Fisioterapi rawat jalan",
+   "sesi_ditagih": 8,
+   "tarif_per_sesi": 207300,
+   "nilai_klaim": 1658400,
+   "nilai_klaim_teks": "Rp1.658.400"
+  },
+  "isi_lembar": {
+   "nama": "Sri Handayani",
+   "tanggal_lahir": "02-11-1969",
+   "no_rm": "12-08-0931",
+   "no_kartu": "0001390447182",
+   "no_sep": "0901R0410826V452118",
+   "diagnosis": "Gonartrosis bilateral",
+   "icd10": "M17.0",
+   "dpjp": "dr. Bimo Aryasatya, Sp.KFR",
+   "periode": "Agustus 2026",
+   "baris_terisi": 8,
+   "baris_asli": 8,
+   "tanggal_sesi": [
+    "03/08",
+    "06/08",
+    "10/08",
+    "13/08",
+    "17/08",
+    "20/08",
+    "24/08",
+    "27/08"
+   ],
+   "jumlah_kunjungan_tertulis": 8,
+   "kemiripan_ttd_rerata": 0.788
+  },
+  "kualitas_scan": {
+   "status": "baik",
+   "catatan": "Terbaca, miring 0.3 derajat."
+  },
+  "temuan": [],
+  "metadata_file": {
+   "Producer": "Canon iR-ADV C3826 PDF",
+   "Creator": "Canon iR-ADV C3826"
+  },
+  "pindai": {
+   "alat": "flatbed",
+   "miring": 0.3
+  },
+  "region_lembar": {
+   "kop": [
+    84,
+    67,
+    1065,
+    121
+   ],
+   "nama": [
+    265,
+    287,
+    206,
+    29
+   ],
+   "sep": [
+    817,
+    331,
+    255,
+    31
+   ],
+   "periode": [
+    818,
+    433,
+    157,
+    31
+   ],
+   "tabel": [
+    86,
+    542,
+    1068,
+    778
+   ],
+   "baris-1": [
+    87,
+    577,
+    1063,
+    98
+   ],
+   "ttd-1": [
+    900,
+    577,
+    250,
+    93
+   ],
+   "baris-2": [
+    88,
+    669,
+    1063,
+    98
+   ],
+   "ttd-2": [
+    901,
+    669,
+    250,
+    93
+   ],
+   "baris-3": [
+    88,
+    761,
+    1063,
+    98
+   ],
+   "ttd-3": [
+    901,
+    761,
+    250,
+    93
+   ],
+   "baris-4": [
+    89,
+    853,
+    1063,
+    98
+   ],
+   "ttd-4": [
+    902,
+    853,
+    250,
+    93
+   ],
+   "baris-5": [
+    89,
+    945,
+    1063,
+    98
+   ],
+   "ttd-5": [
+    902,
+    945,
+    250,
+    93
+   ],
+   "baris-6": [
+    90,
+    1037,
+    1063,
+    98
+   ],
+   "ttd-6": [
+    903,
+    1037,
+    250,
+    93
+   ],
+   "baris-7": [
+    90,
+    1129,
+    1063,
+    98
+   ],
+   "ttd-7": [
+    903,
+    1129,
+    250,
+    93
+   ],
+   "baris-8": [
+    91,
+    1221,
+    1063,
+    98
+   ],
+   "ttd-8": [
+    904,
+    1221,
+    250,
+    93
+   ],
+   "total": [
+    90,
+    1338,
+    674,
+    86
+   ],
+   "blok-dpjp": [
+    794,
+    1336,
+    361,
+    167
+   ]
+  }
+ },
+ {
+  "id": "VA-ASL-03",
+  "folder": "01-berkas-asli",
+  "berkas": {
+   "jpg": "VA-ASL-03.jpg",
+   "pdf": "VA-ASL-03.pdf"
+  },
+  "ukuran": [
+   1240,
+   1754
+  ],
+  "demo": false,
+  "peran": "uji",
+  "label_diharapkan": "Lolos",
+  "ringkasan": "Berkas asli, 6 sesi, klaim juga 6 sesi.",
+  "klaim": {
+   "sep": "0901R0270826V463370",
+   "peserta": "Agus Pratama",
+   "no_kartu": "0002218390455",
+   "faskes": "RS Cipta Medika",
+   "kode_faskes": "0901R027",
+   "periode": "Agustus 2026",
+   "layanan": "Fisioterapi rawat jalan",
+   "sesi_ditagih": 6,
+   "tarif_per_sesi": 207300,
+   "nilai_klaim": 1243800,
+   "nilai_klaim_teks": "Rp1.243.800"
+  },
+  "isi_lembar": {
+   "nama": "Agus Pratama",
+   "tanggal_lahir": "27-07-1978",
+   "no_rm": "07-55-1204",
+   "no_kartu": "0002218390455",
+   "no_sep": "0901R0270826V463370",
+   "diagnosis": "Frozen shoulder kanan",
+   "icd10": "M75.0",
+   "dpjp": "dr. H. Suparman, Sp.KFR",
+   "periode": "Agustus 2026",
+   "baris_terisi": 6,
+   "baris_asli": 6,
+   "tanggal_sesi": [
+    "05/08",
+    "08/08",
+    "12/08",
+    "15/08",
+    "19/08",
+    "22/08"
+   ],
+   "jumlah_kunjungan_tertulis": 6,
+   "kemiripan_ttd_rerata": 0.769
+  },
+  "kualitas_scan": {
+   "status": "baik",
+   "catatan": "Terbaca, miring 0.6 derajat."
+  },
+  "temuan": [],
+  "metadata_file": {
+   "Producer": "Canon iR-ADV C3826 PDF",
+   "Creator": "Canon iR-ADV C3826"
+  },
+  "pindai": {
+   "alat": "flatbed",
+   "miring": 0.6
+  },
+  "region_lembar": {
+   "kop": [
+    80,
+    64,
+    1065,
+    126
+   ],
+   "nama": [
+    262,
+    286,
+    206,
+    31
+   ],
+   "sep": [
+    840,
+    326,
+    268,
+    34
+   ],
+   "periode": [
+    841,
+    431,
+    157,
+    31
+   ],
+   "tabel": [
+    85,
+    539,
+    1072,
+    783
+   ],
+   "baris-1": [
+    86,
+    574,
+    1064,
+    103
+   ],
+   "ttd-1": [
+    899,
+    574,
+    251,
+    95
+   ],
+   "baris-2": [
+    87,
+    666,
+    1064,
+    103
+   ],
+   "ttd-2": [
+    900,
+    666,
+    251,
+    95
+   ],
+   "baris-3": [
+    88,
+    758,
+    1064,
+    103
+   ],
+   "ttd-3": [
+    901,
+    758,
+    251,
+    95
+   ],
+   "baris-4": [
+    89,
+    850,
+    1064,
+    103
+   ],
+   "ttd-4": [
+    902,
+    850,
+    251,
+    95
+   ],
+   "baris-5": [
+    90,
+    942,
+    1064,
+    103
+   ],
+   "ttd-5": [
+    903,
+    942,
+    251,
+    95
+   ],
+   "baris-6": [
+    91,
+    1034,
+    1064,
+    103
+   ],
+   "ttd-6": [
+    904,
+    1034,
+    251,
+    95
+   ],
+   "baris-7": [
+    92,
+    1126,
+    1064,
+    103
+   ],
+   "ttd-7": [
+    905,
+    1126,
+    251,
+    95
+   ],
+   "baris-8": [
+    93,
+    1218,
+    1064,
+    103
+   ],
+   "ttd-8": [
+    906,
+    1218,
+    251,
+    95
+   ],
+   "total": [
+    93,
+    1337,
+    675,
+    89
+   ],
+   "blok-dpjp": [
+    797,
+    1333,
+    362,
+    169
+   ]
+  }
+ },
+ {
+  "id": "VA-ASL-04",
+  "folder": "01-berkas-asli",
+  "berkas": {
+   "jpg": "VA-ASL-04.jpg",
+   "pdf": "VA-ASL-04.pdf"
+  },
+  "ukuran": [
+   1500,
+   2000
+  ],
+  "demo": false,
+  "peran": "uji",
+  "label_diharapkan": "Lolos",
+  "ringkasan": "Berkas asli difoto dengan HP. Bayangan dan perspektif tidak boleh dianggap temuan.",
+  "klaim": {
+   "sep": "0901R0140826V471026",
+   "peserta": "Marlina Siregar",
+   "no_kartu": "0001125590318",
+   "faskes": "RS Melati Sehat",
+   "kode_faskes": "0901R014",
+   "periode": "Agustus 2026",
+   "layanan": "Fisioterapi rawat jalan",
+   "sesi_ditagih": 8,
+   "tarif_per_sesi": 207300,
+   "nilai_klaim": 1658400,
+   "nilai_klaim_teks": "Rp1.658.400"
+  },
+  "isi_lembar": {
+   "nama": "Marlina Siregar",
+   "tanggal_lahir": "19-01-1960",
+   "no_rm": "00-39-8812",
+   "no_kartu": "0001125590318",
+   "no_sep": "0901R0140826V471026",
+   "diagnosis": "Sekuele stroke iskemik",
+   "icd10": "I69.4",
+   "dpjp": "dr. Ayu Prameswari, Sp.KFR",
+   "periode": "Agustus 2026",
+   "baris_terisi": 8,
+   "baris_asli": 8,
+   "tanggal_sesi": [
+    "03/08",
+    "06/08",
+    "10/08",
+    "13/08",
+    "17/08",
+    "20/08",
+    "24/08",
+    "27/08"
+   ],
+   "jumlah_kunjungan_tertulis": 8,
+   "kemiripan_ttd_rerata": 0.799
+  },
+  "kualitas_scan": {
+   "status": "baik",
+   "catatan": "Foto HP. Perspektif dan bayangan wajar, semua kolom terbaca."
+  },
+  "temuan": [],
+  "metadata_file": {
+   "Producer": "Android PDF Writer",
+   "Creator": "Galaxy A15 Kamera"
+  },
+  "pindai": {
+   "alat": "ponsel",
+   "miring": 1.1
+  },
+  "region_lembar": {
+   "kop": [
+    187,
+    139,
+    1109,
+    137
+   ],
+   "nama": [
+    381,
+    368,
+    231,
+    34
+   ],
+   "sep": [
+    975,
+    425,
+    263,
+    32
+   ],
+   "periode": [
+    977,
+    530,
+    162,
+    29
+   ],
+   "tabel": [
+    193,
+    641,
+    1131,
+    829
+   ],
+   "baris-1": [
+    194,
+    679,
+    1113,
+    99
+   ],
+   "ttd-1": [
+    1049,
+    681,
+    258,
+    96
+   ],
+   "baris-2": [
+    195,
+    777,
+    1114,
+    98
+   ],
+   "ttd-2": [
+    1051,
+    777,
+    258,
+    96
+   ],
+   "baris-3": [
+    196,
+    873,
+    1116,
+    101
+   ],
+   "ttd-3": [
+    1053,
+    873,
+    258,
+    97
+   ],
+   "baris-4": [
+    197,
+    969,
+    1117,
+    104
+   ],
+   "ttd-4": [
+    1055,
+    969,
+    259,
+    98
+   ],
+   "baris-5": [
+    199,
+    1065,
+    1118,
+    107
+   ],
+   "ttd-5": [
+    1057,
+    1065,
+    259,
+    99
+   ],
+   "baris-6": [
+    200,
+    1161,
+    1119,
+    110
+   ],
+   "ttd-6": [
+    1060,
+    1161,
+    259,
+    99
+   ],
+   "baris-7": [
+    201,
+    1258,
+    1120,
+    113
+   ],
+   "ttd-7": [
+    1062,
+    1258,
+    259,
+    100
+   ],
+   "baris-8": [
+    202,
+    1354,
+    1121,
+    116
+   ],
+   "ttd-8": [
+    1064,
+    1354,
+    260,
+    101
+   ],
+   "total": [
+    202,
+    1482,
+    720,
+    102
+   ],
+   "blok-dpjp": [
+    952,
+    1475,
+    376,
+    182
+   ]
+  }
+ },
+ {
+  "id": "VA-KMB-00",
+  "folder": "02-berkas-kembar",
+  "berkas": {
+   "jpg": "VA-KMB-00.jpg",
+   "pdf": "VA-KMB-00.pdf"
+  },
+  "ukuran": [
+   1240,
+   1754
+  ],
+  "demo": false,
+  "peran": "sumber",
+  "label_diharapkan": "Lolos",
+  "ringkasan": "Berkas asli milik Bu Siti. Sudah ada di arsip sebelum kembarannya diunggah.",
+  "klaim": {
+   "sep": "0901R0140826V447215",
+   "peserta": "Siti Rahmawati",
+   "no_kartu": "0001367702249",
+   "faskes": "RS Melati Sehat",
+   "kode_faskes": "0901R014",
+   "periode": "Agustus 2026",
+   "layanan": "Fisioterapi rawat jalan",
+   "sesi_ditagih": 8,
+   "tarif_per_sesi": 207300,
+   "nilai_klaim": 1658400,
+   "nilai_klaim_teks": "Rp1.658.400"
+  },
+  "isi_lembar": {
+   "nama": "Siti Rahmawati",
+   "tanggal_lahir": "08-05-1963",
+   "no_rm": "00-40-7719",
+   "no_kartu": "0001367702249",
+   "no_sep": "0901R0140826V447215",
+   "diagnosis": "Low back pain",
+   "icd10": "M54.5",
+   "dpjp": "dr. Ayu Prameswari, Sp.KFR",
+   "periode": "Agustus 2026",
+   "baris_terisi": 8,
+   "baris_asli": 8,
+   "tanggal_sesi": [
+    "04/08",
+    "07/08",
+    "11/08",
+    "14/08",
+    "18/08",
+    "21/08",
+    "25/08",
+    "28/08"
+   ],
+   "jumlah_kunjungan_tertulis": 8,
+   "kemiripan_ttd_rerata": 0.747
+  },
+  "kualitas_scan": {
+   "status": "baik",
+   "catatan": "Terbaca, miring 0.3 derajat."
+  },
+  "temuan": [],
+  "metadata_file": {
+   "Producer": "Canon iR-ADV C3826 PDF",
+   "Creator": "Canon iR-ADV C3826"
+  },
+  "pindai": {
+   "alat": "flatbed",
+   "miring": -0.3
+  },
+  "region_lembar": {
+   "kop": [
+    92,
+    67,
+    1065,
+    121
+   ],
+   "nama": [
+    271,
+    282,
+    219,
+    29
+   ],
+   "sep": [
+    823,
+    336,
+    257,
+    29
+   ],
+   "periode": [
+    822,
+    435,
+    157,
+    30
+   ],
+   "tabel": [
+    86,
+    542,
+    1068,
+    778
+   ],
+   "baris-1": [
+    90,
+    577,
+    1063,
+    98
+   ],
+   "ttd-1": [
+    903,
+    581,
+    250,
+    93
+   ],
+   "baris-2": [
+    90,
+    669,
+    1063,
+    98
+   ],
+   "ttd-2": [
+    903,
+    673,
+    250,
+    93
+   ],
+   "baris-3": [
+    89,
+    761,
+    1063,
+    98
+   ],
+   "ttd-3": [
+    902,
+    765,
+    250,
+    93
+   ],
+   "baris-4": [
+    89,
+    853,
+    1063,
+    98
+   ],
+   "ttd-4": [
+    902,
+    857,
+    250,
+    93
+   ],
+   "baris-5": [
+    88,
+    945,
+    1063,
+    98
+   ],
+   "ttd-5": [
+    901,
+    949,
+    250,
+    93
+   ],
+   "baris-6": [
+    88,
+    1037,
+    1063,
+    98
+   ],
+   "ttd-6": [
+    901,
+    1041,
+    250,
+    93
+   ],
+   "baris-7": [
+    87,
+    1129,
+    1063,
+    98
+   ],
+   "ttd-7": [
+    900,
+    1133,
+    250,
+    93
+   ],
+   "baris-8": [
+    87,
+    1221,
+    1063,
+    98
+   ],
+   "ttd-8": [
+    900,
+    1225,
+    250,
+    93
+   ],
+   "total": [
+    85,
+    1336,
+    674,
+    86
+   ],
+   "blok-dpjp": [
+    789,
+    1340,
+    361,
+    167
+   ]
+  }
+ },
+ {
+  "id": "VA-KMB-01",
+  "folder": "02-berkas-kembar",
+  "berkas": {
+   "jpg": "VA-KMB-01.jpg",
+   "pdf": "VA-KMB-01.pdf"
+  },
+  "ukuran": [
+   1240,
+   1754
+  ],
+  "demo": true,
+  "peran": "uji",
+  "label_diharapkan": "Prioritas",
+  "ringkasan": "Lembar Bu Siti dipakai untuk klaim Pak Budi. Hanya identitas yang diganti.",
+  "klaim": {
+   "sep": "0901R0140826V578778",
+   "peserta": "Budi Santoso",
+   "no_kartu": "0001508831967",
+   "faskes": "RS Melati Sehat",
+   "kode_faskes": "0901R014",
+   "periode": "Agustus 2026",
+   "layanan": "Fisioterapi rawat jalan",
+   "sesi_ditagih": 8,
+   "tarif_per_sesi": 207300,
+   "nilai_klaim": 1658400,
+   "nilai_klaim_teks": "Rp1.658.400"
+  },
+  "isi_lembar": {
+   "nama": "Budi Santoso",
+   "tanggal_lahir": "30-09-1961",
+   "no_rm": "00-41-0356",
+   "no_kartu": "0001508831967",
+   "no_sep": "0901R0140826V578778",
+   "diagnosis": "Low back pain",
+   "icd10": "M54.5",
+   "dpjp": "dr. Ayu Prameswari, Sp.KFR",
+   "periode": "Agustus 2026",
+   "baris_terisi": 8,
+   "baris_asli": 8,
+   "tanggal_sesi": [
+    "04/08",
+    "07/08",
+    "11/08",
+    "14/08",
+    "18/08",
+    "21/08",
+    "25/08",
+    "28/08"
+   ],
+   "jumlah_kunjungan_tertulis": 8,
+   "kemiripan_ttd_rerata": 0.747
+  },
+  "kualitas_scan": {
+   "status": "baik",
+   "catatan": "Berkas digital, bukan hasil pindai."
+  },
+  "temuan": [
+   {
+    "cek": "berkas_kembar",
+    "kekuatan": "kuat",
+    "pasangan": "VA-KMB-00",
+    "kemiripan": 0.97,
+    "kalimat": "Isi berkas 97% sama dengan berkas Siti Rahmawati (SEP 0901R0140826V447215). Yang berbeda hanya identitas pasien.",
+    "region": [
+     86,
+     542,
+     1068,
+     778
+    ]
+   },
+   {
+    "cek": "tempelan",
+    "kekuatan": "kuat",
+    "pasangan": "VA-KMB-00",
+    "kalimat": "Delapan tanda tangan pasien identik sampai tingkat piksel dengan tanda tangan di berkas Siti Rahmawati.",
+    "region": [
+     900,
+     581,
+     253,
+     737
+    ]
+   },
+   {
+    "cek": "suntingan",
+    "kekuatan": "sedang",
+    "area": [
+     [
+      953,
+      97,
+      144,
+      37
+     ],
+     [
+      265,
+      278,
+      231,
+      37
+     ],
+     [
+      817,
+      283,
+      145,
+      36
+     ],
+     [
+      265,
+      327,
+      189,
+      39
+     ],
+     [
+      817,
+      332,
+      272,
+      37
+     ]
+    ],
+    "region": [
+     265,
+     97,
+     832,
+     272
+    ],
+    "kalimat": "Kolom nama, tanggal lahir, nomor rekam medis, kartu, dan SEP ditimpa. Tekstur kertasnya lebih halus daripada bagian lain."
+   }
+  ],
+  "metadata_file": {
+   "Producer": "Adobe Acrobat Pro (64-bit) 24.2",
+   "Creator": "Canon iR-ADV C3826",
+   "ModDate": "2026-09-02T21:47:00"
+  },
+  "pindai": {
+   "alat": "tidak ada, berkas digital"
+  },
+  "region_lembar": {
+   "kop": [
+    92,
+    67,
+    1065,
+    121
+   ],
+   "nama": [
+    271,
+    282,
+    198,
+    29
+   ],
+   "sep": [
+    823,
+    336,
+    260,
+    29
+   ],
+   "periode": [
+    822,
+    435,
+    157,
+    30
+   ],
+   "tabel": [
+    86,
+    542,
+    1068,
+    778
+   ],
+   "baris-1": [
+    90,
+    577,
+    1063,
+    98
+   ],
+   "ttd-1": [
+    903,
+    581,
+    250,
+    93
+   ],
+   "baris-2": [
+    90,
+    669,
+    1063,
+    98
+   ],
+   "ttd-2": [
+    903,
+    673,
+    250,
+    93
+   ],
+   "baris-3": [
+    89,
+    761,
+    1063,
+    98
+   ],
+   "ttd-3": [
+    902,
+    765,
+    250,
+    93
+   ],
+   "baris-4": [
+    89,
+    853,
+    1063,
+    98
+   ],
+   "ttd-4": [
+    902,
+    857,
+    250,
+    93
+   ],
+   "baris-5": [
+    88,
+    945,
+    1063,
+    98
+   ],
+   "ttd-5": [
+    901,
+    949,
+    250,
+    93
+   ],
+   "baris-6": [
+    88,
+    1037,
+    1063,
+    98
+   ],
+   "ttd-6": [
+    901,
+    1041,
+    250,
+    93
+   ],
+   "baris-7": [
+    87,
+    1129,
+    1063,
+    98
+   ],
+   "ttd-7": [
+    900,
+    1133,
+    250,
+    93
+   ],
+   "baris-8": [
+    87,
+    1221,
+    1063,
+    98
+   ],
+   "ttd-8": [
+    900,
+    1225,
+    250,
+    93
+   ],
+   "total": [
+    85,
+    1336,
+    674,
+    86
+   ],
+   "blok-dpjp": [
+    789,
+    1340,
+    361,
+    167
+   ]
+  }
+ },
+ {
+  "id": "VA-KMB-02",
+  "folder": "02-berkas-kembar",
+  "berkas": {
+   "jpg": "VA-KMB-02.jpg",
+   "pdf": "VA-KMB-02.pdf"
+  },
+  "ukuran": [
+   1240,
+   1754
+  ],
+  "demo": false,
+  "peran": "uji",
+  "label_diharapkan": "Prioritas",
+  "ringkasan": "Lembar Agustus Bu Siti dipakai lagi untuk klaim September. Tanggal dan SEP diganti.",
+  "klaim": {
+   "sep": "0901R0140926V612004",
+   "peserta": "Siti Rahmawati",
+   "no_kartu": "0001367702249",
+   "faskes": "RS Melati Sehat",
+   "kode_faskes": "0901R014",
+   "periode": "September 2026",
+   "layanan": "Fisioterapi rawat jalan",
+   "sesi_ditagih": 8,
+   "tarif_per_sesi": 207300,
+   "nilai_klaim": 1658400,
+   "nilai_klaim_teks": "Rp1.658.400"
+  },
+  "isi_lembar": {
+   "nama": "Siti Rahmawati",
+   "tanggal_lahir": "08-05-1963",
+   "no_rm": "00-40-7719",
+   "no_kartu": "0001367702249",
+   "no_sep": "0901R0140926V612004",
+   "diagnosis": "Low back pain",
+   "icd10": "M54.5",
+   "dpjp": "dr. Ayu Prameswari, Sp.KFR",
+   "periode": "September 2026",
+   "baris_terisi": 8,
+   "baris_asli": 8,
+   "tanggal_sesi": [
+    "01/09",
+    "04/09",
+    "08/09",
+    "11/09",
+    "15/09",
+    "18/09",
+    "22/09",
+    "25/09"
+   ],
+   "jumlah_kunjungan_tertulis": 8,
+   "kemiripan_ttd_rerata": 0.747
+  },
+  "kualitas_scan": {
+   "status": "baik",
+   "catatan": "Berkas digital, bukan hasil pindai."
+  },
+  "temuan": [
+   {
+    "cek": "berkas_kembar",
+    "kekuatan": "kuat",
+    "pasangan": "VA-KMB-00",
+    "kemiripan": 0.97,
+    "kalimat": "Isi berkas 97% sama dengan berkas Siti Rahmawati (SEP 0901R0140826V447215). Yang berbeda hanya SEP, periode, dan tanggal sesi.",
+    "region": [
+     86,
+     542,
+     1068,
+     778
+    ]
+   },
+   {
+    "cek": "tempelan",
+    "kekuatan": "kuat",
+    "pasangan": "VA-KMB-00",
+    "kalimat": "Delapan tanda tangan pasien identik sampai tingkat piksel dengan tanda tangan di berkas Siti Rahmawati.",
+    "region": [
+     900,
+     581,
+     253,
+     737
+    ]
+   },
+   {
+    "cek": "suntingan",
+    "kekuatan": "sedang",
+    "area": [
+     [
+      817,
+      332,
+      269,
+      37
+     ],
+     [
+      816,
+      431,
+      197,
+      39
+     ],
+     [
+      143,
+      582,
+      118,
+      83
+     ],
+     [
+      143,
+      674,
+      118,
+      83
+     ],
+     [
+      142,
+      766,
+      118,
+      83
+     ],
+     [
+      142,
+      858,
+      118,
+      83
+     ],
+     [
+      141,
+      950,
+      118,
+      83
+     ],
+     [
+      141,
+      1042,
+      118,
+      83
+     ],
+     [
+      140,
+      1134,
+      118,
+      83
+     ],
+     [
+      140,
+      1226,
+      118,
+      83
+     ],
+     [
+      899,
+      1339,
+      187,
+      32
+     ]
+    ],
+    "region": [
+     140,
+     332,
+     946,
+     1039
+    ],
+    "kalimat": "Kolom SEP, periode, dan tanggal sesi ditimpa. Tekstur kertasnya lebih halus daripada bagian lain."
+   }
+  ],
+  "metadata_file": {
+   "Producer": "Adobe Acrobat Pro (64-bit) 24.2",
+   "Creator": "Canon iR-ADV C3826",
+   "ModDate": "2026-09-02T21:47:00"
+  },
+  "pindai": {
+   "alat": "tidak ada, berkas digital"
+  },
+  "region_lembar": {
+   "kop": [
+    92,
+    67,
+    1065,
+    121
+   ],
+   "nama": [
+    271,
+    282,
+    219,
+    29
+   ],
+   "sep": [
+    823,
+    336,
+    253,
+    29
+   ],
+   "periode": [
+    822,
+    435,
+    185,
+    31
+   ],
+   "tabel": [
+    86,
+    542,
+    1068,
+    778
+   ],
+   "baris-1": [
+    90,
+    577,
+    1063,
+    98
+   ],
+   "ttd-1": [
+    903,
+    581,
+    250,
+    93
+   ],
+   "baris-2": [
+    90,
+    669,
+    1063,
+    98
+   ],
+   "ttd-2": [
+    903,
+    673,
+    250,
+    93
+   ],
+   "baris-3": [
+    89,
+    761,
+    1063,
+    98
+   ],
+   "ttd-3": [
+    902,
+    765,
+    250,
+    93
+   ],
+   "baris-4": [
+    89,
+    853,
+    1063,
+    98
+   ],
+   "ttd-4": [
+    902,
+    857,
+    250,
+    93
+   ],
+   "baris-5": [
+    88,
+    945,
+    1063,
+    98
+   ],
+   "ttd-5": [
+    901,
+    949,
+    250,
+    93
+   ],
+   "baris-6": [
+    88,
+    1037,
+    1063,
+    98
+   ],
+   "ttd-6": [
+    901,
+    1041,
+    250,
+    93
+   ],
+   "baris-7": [
+    87,
+    1129,
+    1063,
+    98
+   ],
+   "ttd-7": [
+    900,
+    1133,
+    250,
+    93
+   ],
+   "baris-8": [
+    87,
+    1221,
+    1063,
+    98
+   ],
+   "ttd-8": [
+    900,
+    1225,
+    250,
+    93
+   ],
+   "total": [
+    85,
+    1336,
+    674,
+    86
+   ],
+   "blok-dpjp": [
+    789,
+    1340,
+    361,
+    167
+   ]
+  }
+ },
+ {
+  "id": "VA-KMB-03",
+  "folder": "02-berkas-kembar",
+  "berkas": {
+   "jpg": "VA-KMB-03.jpg",
+   "pdf": "VA-KMB-03.pdf"
+  },
+  "ukuran": [
+   1240,
+   1754
+  ],
+  "demo": false,
+  "peran": "uji",
+  "label_diharapkan": "Prioritas",
+  "ringkasan": "Lembar Bu Sri (VA-ASL-02) dipakai untuk klaim Bu Yuliana di RS yang sama.",
+  "klaim": {
+   "sep": "0901R0410826V455640",
+   "peserta": "Yuliana Kusuma",
+   "no_kartu": "0001772034518",
+   "faskes": "RSU Bakti Mulia",
+   "kode_faskes": "0901R041",
+   "periode": "Agustus 2026",
+   "layanan": "Fisioterapi rawat jalan",
+   "sesi_ditagih": 8,
+   "tarif_per_sesi": 207300,
+   "nilai_klaim": 1658400,
+   "nilai_klaim_teks": "Rp1.658.400"
+  },
+  "isi_lembar": {
+   "nama": "Yuliana Kusuma",
+   "tanggal_lahir": "14-02-1971",
+   "no_rm": "12-08-1102",
+   "no_kartu": "0001772034518",
+   "no_sep": "0901R0410826V455640",
+   "diagnosis": "Gonartrosis bilateral",
+   "icd10": "M17.0",
+   "dpjp": "dr. Bimo Aryasatya, Sp.KFR",
+   "periode": "Agustus 2026",
+   "baris_terisi": 8,
+   "baris_asli": 8,
+   "tanggal_sesi": [
+    "03/08",
+    "06/08",
+    "10/08",
+    "13/08",
+    "17/08",
+    "20/08",
+    "24/08",
+    "27/08"
+   ],
+   "jumlah_kunjungan_tertulis": 8,
+   "kemiripan_ttd_rerata": 0.788
+  },
+  "kualitas_scan": {
+   "status": "baik",
+   "catatan": "Berkas digital, bukan hasil pindai."
+  },
+  "temuan": [
+   {
+    "cek": "berkas_kembar",
+    "kekuatan": "kuat",
+    "pasangan": "VA-ASL-02",
+    "kemiripan": 0.97,
+    "kalimat": "Isi berkas 97% sama dengan berkas Sri Handayani (SEP 0901R0410826V452118). Yang berbeda hanya identitas pasien.",
+    "region": [
+     86,
+     542,
+     1068,
+     778
+    ]
+   },
+   {
+    "cek": "tempelan",
+    "kekuatan": "kuat",
+    "pasangan": "VA-ASL-02",
+    "kalimat": "Delapan tanda tangan pasien identik sampai tingkat piksel dengan tanda tangan di berkas Sri Handayani.",
+    "region": [
+     900,
+     577,
+     254,
+     737
+    ]
+   },
+   {
+    "cek": "suntingan",
+    "kekuatan": "sedang",
+    "area": [
+     [
+      945,
+      95,
+      140,
+      38
+     ],
+     [
+      259,
+      283,
+      240,
+      38
+     ],
+     [
+      811,
+      278,
+      131,
+      37
+     ],
+     [
+      259,
+      332,
+      186,
+      38
+     ],
+     [
+      811,
+      327,
+      276,
+      40
+     ]
+    ],
+    "region": [
+     259,
+     95,
+     828,
+     275
+    ],
+    "kalimat": "Kolom nama, tanggal lahir, nomor rekam medis, kartu, dan SEP ditimpa. Tekstur kertasnya lebih halus daripada bagian lain."
+   }
+  ],
+  "metadata_file": {
+   "Producer": "Adobe Acrobat Pro (64-bit) 24.2",
+   "Creator": "Canon iR-ADV C3826",
+   "ModDate": "2026-09-02T21:47:00"
+  },
+  "pindai": {
+   "alat": "tidak ada, berkas digital"
+  },
+  "region_lembar": {
+   "kop": [
+    84,
+    67,
+    1065,
+    121
+   ],
+   "nama": [
+    265,
+    287,
+    228,
+    30
+   ],
+   "sep": [
+    817,
+    331,
+    264,
+    32
+   ],
+   "periode": [
+    818,
+    433,
+    157,
+    31
+   ],
+   "tabel": [
+    86,
+    542,
+    1068,
+    778
+   ],
+   "baris-1": [
+    87,
+    577,
+    1063,
+    98
+   ],
+   "ttd-1": [
+    900,
+    577,
+    250,
+    93
+   ],
+   "baris-2": [
+    88,
+    669,
+    1063,
+    98
+   ],
+   "ttd-2": [
+    901,
+    669,
+    250,
+    93
+   ],
+   "baris-3": [
+    88,
+    761,
+    1063,
+    98
+   ],
+   "ttd-3": [
+    901,
+    761,
+    250,
+    93
+   ],
+   "baris-4": [
+    89,
+    853,
+    1063,
+    98
+   ],
+   "ttd-4": [
+    902,
+    853,
+    250,
+    93
+   ],
+   "baris-5": [
+    89,
+    945,
+    1063,
+    98
+   ],
+   "ttd-5": [
+    902,
+    945,
+    250,
+    93
+   ],
+   "baris-6": [
+    90,
+    1037,
+    1063,
+    98
+   ],
+   "ttd-6": [
+    903,
+    1037,
+    250,
+    93
+   ],
+   "baris-7": [
+    90,
+    1129,
+    1063,
+    98
+   ],
+   "ttd-7": [
+    903,
+    1129,
+    250,
+    93
+   ],
+   "baris-8": [
+    91,
+    1221,
+    1063,
+    98
+   ],
+   "ttd-8": [
+    904,
+    1221,
+    250,
+    93
+   ],
+   "total": [
+    90,
+    1338,
+    674,
+    86
+   ],
+   "blok-dpjp": [
+    794,
+    1336,
+    361,
+    167
+   ]
+  }
+ },
+ {
+  "id": "VA-DST-01",
+  "folder": "03-angka-disunting",
+  "berkas": {
+   "jpg": "VA-DST-01.jpg",
+   "pdf": "VA-DST-01.pdf"
+  },
+  "ukuran": [
+   1240,
+   1754
+  ],
+  "demo": true,
+  "peran": "uji",
+  "label_diharapkan": "Prioritas",
+  "ringkasan": "Hanya 5 baris terisi, angka jumlah kunjungan diubah dari 5 menjadi 8.",
+  "klaim": {
+   "sep": "0901R0140826V583301",
+   "peserta": "Ratna Kusuma",
+   "no_kartu": "0001611903327",
+   "faskes": "RS Melati Sehat",
+   "kode_faskes": "0901R014",
+   "periode": "Agustus 2026",
+   "layanan": "Fisioterapi rawat jalan",
+   "sesi_ditagih": 8,
+   "tarif_per_sesi": 207300,
+   "nilai_klaim": 1658400,
+   "nilai_klaim_teks": "Rp1.658.400"
+  },
+  "isi_lembar": {
+   "nama": "Ratna Kusuma",
+   "tanggal_lahir": "23-06-1966",
+   "no_rm": "00-41-3380",
+   "no_kartu": "0001611903327",
+   "no_sep": "0901R0140826V583301",
+   "diagnosis": "Gonartrosis bilateral",
+   "icd10": "M17.0",
+   "dpjp": "dr. Ayu Prameswari, Sp.KFR",
+   "periode": "Agustus 2026",
+   "baris_terisi": 5,
+   "baris_asli": 5,
+   "tanggal_sesi": [
+    "04/08",
+    "07/08",
+    "11/08",
+    "14/08",
+    "18/08"
+   ],
+   "jumlah_kunjungan_tertulis": 8,
+   "kemiripan_ttd_rerata": 0.815
+  },
+  "kualitas_scan": {
+   "status": "baik",
+   "catatan": "Terbaca, miring 0.4 derajat."
+  },
+  "temuan": [
+   {
+    "cek": "kecocokan_klaim",
+    "kekuatan": "kuat",
+    "kalimat": "Ditagih 8 sesi, berkas hanya mendukung 5. Baris 6 sampai 8 kosong, tanpa tanggal dan tanda tangan.",
+    "region": [
+     90,
+     1036,
+     1065,
+     283
+    ]
+   },
+   {
+    "cek": "suntingan",
+    "kekuatan": "sedang",
+    "region": [
+     347,
+     1360,
+     29,
+     44
+    ],
+    "kalimat": "Angka 8 di kolom jumlah kunjungan terdeteksi ditempel di atas angka 5."
+   }
+  ],
+  "metadata_file": {
+   "Producer": "Microsoft: Print To PDF",
+   "Creator": "Adobe Photoshop 25.0",
+   "ModDate": "2026-09-01T22:05:00"
+  },
+  "pindai": {
+   "alat": "flatbed",
+   "miring": 0.4
+  },
+  "region_lembar": {
+   "kop": [
+    82,
+    66,
+    1065,
+    122
+   ],
+   "nama": [
+    264,
+    284,
+    212,
+    31
+   ],
+   "sep": [
+    816,
+    332,
+    261,
+    30
+   ],
+   "periode": [
+    817,
+    432,
+    157,
+    30
+   ],
+   "tabel": [
+    86,
+    541,
+    1069,
+    779
+   ],
+   "baris-1": [
+    87,
+    576,
+    1064,
+    99
+   ],
+   "ttd-1": [
+    900,
+    576,
+    251,
+    94
+   ],
+   "baris-2": [
+    88,
+    668,
+    1064,
+    99
+   ],
+   "ttd-2": [
+    901,
+    668,
+    251,
+    94
+   ],
+   "baris-3": [
+    88,
+    760,
+    1064,
+    99
+   ],
+   "ttd-3": [
+    901,
+    760,
+    251,
+    94
+   ],
+   "baris-4": [
+    89,
+    852,
+    1064,
+    99
+   ],
+   "ttd-4": [
+    902,
+    852,
+    251,
+    94
+   ],
+   "baris-5": [
+    90,
+    944,
+    1064,
+    99
+   ],
+   "ttd-5": [
+    902,
+    944,
+    251,
+    94
+   ],
+   "baris-6": [
+    90,
+    1036,
+    1064,
+    99
+   ],
+   "ttd-6": [
+    903,
+    1036,
+    251,
+    94
+   ],
+   "baris-7": [
+    91,
+    1128,
+    1064,
+    99
+   ],
+   "ttd-7": [
+    904,
+    1128,
+    251,
+    94
+   ],
+   "baris-8": [
+    91,
+    1220,
+    1064,
+    99
+   ],
+   "ttd-8": [
+    904,
+    1220,
+    251,
+    94
+   ],
+   "total": [
+    91,
+    1338,
+    675,
+    87
+   ],
+   "blok-dpjp": [
+    795,
+    1335,
+    361,
+    168
+   ]
+  }
+ },
+ {
+  "id": "VA-DST-02",
+  "folder": "03-angka-disunting",
+  "berkas": {
+   "jpg": "VA-DST-02.jpg",
+   "pdf": "VA-DST-02.pdf"
+  },
+  "ukuran": [
+   1240,
+   1754
+  ],
+  "demo": false,
+  "peran": "uji",
+  "label_diharapkan": "Prioritas",
+  "ringkasan": "Baris 7 dan 8 hasil salin-tempel baris 1 dan 2, lengkap dengan tanda tangannya.",
+  "klaim": {
+   "sep": "0901R0270826V590117",
+   "peserta": "Bambang Nugroho",
+   "no_kartu": "0002304418862",
+   "faskes": "RS Cipta Medika",
+   "kode_faskes": "0901R027",
+   "periode": "Agustus 2026",
+   "layanan": "Fisioterapi rawat jalan",
+   "sesi_ditagih": 8,
+   "tarif_per_sesi": 207300,
+   "nilai_klaim": 1658400,
+   "nilai_klaim_teks": "Rp1.658.400"
+  },
+  "isi_lembar": {
+   "nama": "Bambang Nugroho",
+   "tanggal_lahir": "05-12-1970",
+   "no_rm": "07-56-0071",
+   "no_kartu": "0002304418862",
+   "no_sep": "0901R0270826V590117",
+   "diagnosis": "Carpal tunnel syndrome",
+   "icd10": "G56.0",
+   "dpjp": "dr. H. Suparman, Sp.KFR",
+   "periode": "Agustus 2026",
+   "baris_terisi": 8,
+   "baris_asli": 6,
+   "tanggal_sesi": [
+    "05/08",
+    "08/08",
+    "12/08",
+    "15/08",
+    "19/08",
+    "22/08",
+    "26/08",
+    "29/08"
+   ],
+   "jumlah_kunjungan_tertulis": 8,
+   "kemiripan_ttd_rerata": 0.791
+  },
+  "kualitas_scan": {
+   "status": "baik",
+   "catatan": "Terbaca, miring 0.5 derajat."
+  },
+  "temuan": [
+   {
+    "cek": "copy_paste",
+    "kekuatan": "kuat",
+    "area": [
+     [
+      134,
+      1128,
+      1016,
+      101
+     ],
+     [
+      133,
+      1220,
+      1016,
+      101
+     ]
+    ],
+    "region": [
+     133,
+     1128,
+     1017,
+     193
+    ],
+    "kalimat": "Baris 7 dan 8 identik dengan baris 1 dan 2, termasuk paraf terapis dan tanda tangan pasien. Hanya tanggalnya yang berbeda."
+   },
+   {
+    "cek": "kecocokan_klaim",
+    "kekuatan": "kuat",
+    "region": [
+     133,
+     1128,
+     1017,
+     193
+    ],
+    "kalimat": "Ditagih 8 sesi. Setelah baris salinan dikeluarkan, berkas hanya mendukung 6."
+   }
+  ],
+  "metadata_file": {
+   "Producer": "Microsoft: Print To PDF",
+   "Creator": "GIMP 2.10",
+   "ModDate": "2026-09-03T20:31:00"
+  },
+  "pindai": {
+   "alat": "flatbed",
+   "miring": -0.5
+  },
+  "region_lembar": {
+   "kop": [
+    94,
+    65,
+    1065,
+    124
+   ],
+   "nama": [
+    273,
+    278,
+    258,
+    33
+   ],
+   "sep": [
+    861,
+    337,
+    251,
+    31
+   ],
+   "periode": [
+    861,
+    436,
+    157,
+    29
+   ],
+   "tabel": [
+    84,
+    540,
+    1071,
+    781
+   ],
+   "baris-1": [
+    91,
+    575,
+    1064,
+    101
+   ],
+   "ttd-1": [
+    904,
+    582,
+    251,
+    94
+   ],
+   "baris-2": [
+    90,
+    667,
+    1064,
+    101
+   ],
+   "ttd-2": [
+    903,
+    674,
+    251,
+    94
+   ],
+   "baris-3": [
+    89,
+    759,
+    1064,
+    101
+   ],
+   "ttd-3": [
+    902,
+    766,
+    251,
+    94
+   ],
+   "baris-4": [
+    88,
+    851,
+    1064,
+    101
+   ],
+   "ttd-4": [
+    901,
+    858,
+    251,
+    94
+   ],
+   "baris-5": [
+    88,
+    943,
+    1064,
+    101
+   ],
+   "ttd-5": [
+    901,
+    950,
+    251,
+    94
+   ],
+   "baris-6": [
+    87,
+    1035,
+    1064,
+    101
+   ],
+   "ttd-6": [
+    900,
+    1042,
+    251,
+    94
+   ],
+   "baris-7": [
+    86,
+    1127,
+    1064,
+    101
+   ],
+   "ttd-7": [
+    899,
+    1134,
+    251,
+    94
+   ],
+   "baris-8": [
+    85,
+    1219,
+    1064,
+    101
+   ],
+   "ttd-8": [
+    898,
+    1226,
+    251,
+    94
+   ],
+   "total": [
+    83,
+    1334,
+    675,
+    88
+   ],
+   "blok-dpjp": [
+    787,
+    1340,
+    361,
+    168
+   ]
+  }
+ },
+ {
+  "id": "VA-DST-03",
+  "folder": "03-angka-disunting",
+  "berkas": {
+   "jpg": "VA-DST-03.jpg",
+   "pdf": "VA-DST-03.pdf"
+  },
+  "ukuran": [
+   1240,
+   1754
+  ],
+  "demo": false,
+  "peran": "uji",
+  "label_diharapkan": "Perlu dicek",
+  "ringkasan": "Lembar Juli. Angka bulan pada delapan tanggal dan periode diubah ke Agustus.",
+  "klaim": {
+   "sep": "0901R0410826V598845",
+   "peserta": "Kartini Lestari",
+   "no_kartu": "0001457720913",
+   "faskes": "RSU Bakti Mulia",
+   "kode_faskes": "0901R041",
+   "periode": "Agustus 2026",
+   "layanan": "Fisioterapi rawat jalan",
+   "sesi_ditagih": 8,
+   "tarif_per_sesi": 207300,
+   "nilai_klaim": 1658400,
+   "nilai_klaim_teks": "Rp1.658.400"
+  },
+  "isi_lembar": {
+   "nama": "Kartini Lestari",
+   "tanggal_lahir": "11-10-1968",
+   "no_rm": "12-07-8826",
+   "no_kartu": "0001457720913",
+   "no_sep": "0901R0410826V598845",
+   "diagnosis": "Low back pain",
+   "icd10": "M54.5",
+   "dpjp": "dr. Bimo Aryasatya, Sp.KFR",
+   "periode": "Agustus 2026",
+   "baris_terisi": 8,
+   "baris_asli": 8,
+   "tanggal_sesi": [
+    "03/08",
+    "06/08",
+    "10/08",
+    "13/08",
+    "17/08",
+    "20/08",
+    "24/08",
+    "27/08"
+   ],
+   "jumlah_kunjungan_tertulis": 8,
+   "kemiripan_ttd_rerata": 0.824
+  },
+  "kualitas_scan": {
+   "status": "baik",
+   "catatan": "Terbaca, miring 0.2 derajat."
+  },
+  "temuan": [
+   {
+    "cek": "suntingan",
+    "kekuatan": "sedang",
+    "area": [
+     [
+      203,
+      612,
+      32,
+      33
+     ],
+     [
+      202,
+      703,
+      32,
+      33
+     ],
+     [
+      202,
+      795,
+      32,
+      33
+     ],
+     [
+      202,
+      888,
+      32,
+      33
+     ],
+     [
+      204,
+      980,
+      32,
+      33
+     ],
+     [
+      207,
+      1071,
+      32,
+      33
+     ],
+     [
+      205,
+      1163,
+      32,
+      33
+     ],
+     [
+      206,
+      1255,
+      32,
+      33
+     ],
+     [
+      812,
+      427,
+      169,
+      37
+     ],
+     [
+      904,
+      1334,
+      163,
+      33
+     ]
+    ],
+    "region": [
+     202,
+     427,
+     865,
+     940
+    ],
+    "kalimat": "Angka bulan pada delapan tanggal sesi dan tulisan periode ditimpa. Kedelapan angka 08 identik satu sama lain, tidak seperti tulisan tangan."
+   }
+  ],
+  "metadata_file": {
+   "Producer": "Microsoft: Print To PDF",
+   "Creator": "Adobe Photoshop 25.0",
+   "ModDate": "2026-08-30T23:14:00"
+  },
+  "pindai": {
+   "alat": "flatbed",
+   "miring": 0.25
+  },
+  "region_lembar": {
+   "kop": [
+    84,
+    68,
+    1064,
+    120
+   ],
+   "nama": [
+    265,
+    287,
+    209,
+    30
+   ],
+   "sep": [
+    818,
+    334,
+    266,
+    31
+   ],
+   "periode": [
+    818,
+    433,
+    109,
+    27
+   ],
+   "tabel": [
+    87,
+    543,
+    1067,
+    777
+   ],
+   "baris-1": [
+    88,
+    578,
+    1063,
+    97
+   ],
+   "ttd-1": [
+    901,
+    578,
+    250,
+    93
+   ],
+   "baris-2": [
+    88,
+    670,
+    1063,
+    97
+   ],
+   "ttd-2": [
+    901,
+    670,
+    250,
+    93
+   ],
+   "baris-3": [
+    89,
+    762,
+    1063,
+    97
+   ],
+   "ttd-3": [
+    902,
+    762,
+    250,
+    93
+   ],
+   "baris-4": [
+    89,
+    854,
+    1063,
+    97
+   ],
+   "ttd-4": [
+    902,
+    854,
+    250,
+    93
+   ],
+   "baris-5": [
+    89,
+    946,
+    1063,
+    97
+   ],
+   "ttd-5": [
+    902,
+    946,
+    250,
+    93
+   ],
+   "baris-6": [
+    90,
+    1038,
+    1063,
+    97
+   ],
+   "ttd-6": [
+    903,
+    1038,
+    250,
+    93
+   ],
+   "baris-7": [
+    90,
+    1130,
+    1063,
+    97
+   ],
+   "ttd-7": [
+    903,
+    1130,
+    250,
+    93
+   ],
+   "baris-8": [
+    91,
+    1222,
+    1063,
+    97
+   ],
+   "ttd-8": [
+    904,
+    1222,
+    250,
+    93
+   ],
+   "total": [
+    90,
+    1338,
+    674,
+    85
+   ],
+   "blok-dpjp": [
+    794,
+    1337,
+    361,
+    167
+   ]
+  }
+ },
+ {
+  "id": "VA-AI-01",
+  "folder": "04-buatan-ai",
+  "berkas": {
+   "jpg": "VA-AI-01.jpg",
+   "pdf": "VA-AI-01.pdf",
+   "png": "VA-AI-01.png"
+  },
+  "ukuran": [
+   1240,
+   1754
+  ],
+  "demo": true,
+  "peran": "uji",
+  "label_diharapkan": "Perlu dicek",
+  "ringkasan": "Isi cocok dengan klaim, tetapi tidak ada ciri hasil pindai dan metadatanya menandai gambar buatan AI.",
+  "klaim": {
+   "sep": "0901R0140826V601552",
+   "peserta": "Joko Prasetyo",
+   "no_kartu": "0001829934470",
+   "faskes": "RS Melati Sehat",
+   "kode_faskes": "0901R014",
+   "periode": "Agustus 2026",
+   "layanan": "Fisioterapi rawat jalan",
+   "sesi_ditagih": 8,
+   "tarif_per_sesi": 207300,
+   "nilai_klaim": 1658400,
+   "nilai_klaim_teks": "Rp1.658.400"
+  },
+  "isi_lembar": {
+   "nama": "Joko Prasetyo",
+   "tanggal_lahir": "16-04-1974",
+   "no_rm": "00-41-5521",
+   "no_kartu": "0001829934470",
+   "no_sep": "0901R0140826V601552",
+   "diagnosis": "Frozen shoulder kanan",
+   "icd10": "M75.0",
+   "dpjp": "dr. Ayu Prameswari, Sp.KFR",
+   "periode": "Agustus 2026",
+   "baris_terisi": 8,
+   "baris_asli": 8,
+   "tanggal_sesi": [
+    "04/08",
+    "07/08",
+    "11/08",
+    "14/08",
+    "18/08",
+    "21/08",
+    "25/08",
+    "28/08"
+   ],
+   "jumlah_kunjungan_tertulis": 8,
+   "kemiripan_ttd_rerata": 0.795
+  },
+  "kualitas_scan": {
+   "status": "baik",
+   "catatan": "Berkas digital, bukan hasil pindai."
+  },
+  "temuan": [
+   {
+    "cek": "tanda_ai",
+    "kekuatan": "sedang",
+    "region": [
+     0,
+     0,
+     1240,
+     120
+    ],
+    "kalimat": "Metadata berkas menandai gambar dibuat oleh generator AI (IPTC trainedAlgorithmicMedia)."
+   },
+   {
+    "cek": "tanda_ai",
+    "kekuatan": "lemah",
+    "region": [
+     0,
+     0,
+     1240,
+     1754
+    ],
+    "kalimat": "Tidak ada ciri hasil pindai: tanpa derau sensor, tanpa bayangan tepi kertas, dan halaman lurus sempurna."
+   },
+   {
+    "cek": "tanda_ai",
+    "kekuatan": "lemah",
+    "region": [
+     88,
+     70,
+     1064,
+     115
+    ],
+    "kalimat": "Teks kecil di kop dan kepala tabel janggal: \"Rehabilitsai\", \"Kenagna Rya\", \"Tanda Tanagn\"."
+   }
+  ],
+  "metadata_file": {
+   "Producer": "Microsoft: Print To PDF",
+   "Creator": "Microsoft Photos"
+  },
+  "pindai": {
+   "alat": "tidak ada, berkas digital"
+  },
+  "region_lembar": {
+   "kop": [
+    88,
+    70,
+    1064,
+    115
+   ],
+   "nama": [
+    268,
+    284,
+    204,
+    30
+   ],
+   "sep": [
+    846,
+    332,
+    259,
+    31
+   ],
+   "periode": [
+    846,
+    433,
+    157,
+    29
+   ],
+   "tabel": [
+    88,
+    545,
+    1064,
+    772
+   ],
+   "baris-1": [
+    89,
+    580,
+    1063,
+    92
+   ],
+   "ttd-1": [
+    902,
+    580,
+    250,
+    92
+   ],
+   "baris-2": [
+    89,
+    672,
+    1063,
+    92
+   ],
+   "ttd-2": [
+    902,
+    672,
+    250,
+    92
+   ],
+   "baris-3": [
+    89,
+    764,
+    1063,
+    92
+   ],
+   "ttd-3": [
+    902,
+    764,
+    250,
+    92
+   ],
+   "baris-4": [
+    89,
+    856,
+    1063,
+    92
+   ],
+   "ttd-4": [
+    902,
+    856,
+    250,
+    92
+   ],
+   "baris-5": [
+    89,
+    948,
+    1063,
+    92
+   ],
+   "ttd-5": [
+    902,
+    948,
+    250,
+    92
+   ],
+   "baris-6": [
+    89,
+    1040,
+    1063,
+    92
+   ],
+   "ttd-6": [
+    902,
+    1040,
+    250,
+    92
+   ],
+   "baris-7": [
+    89,
+    1132,
+    1063,
+    92
+   ],
+   "ttd-7": [
+    902,
+    1132,
+    250,
+    92
+   ],
+   "baris-8": [
+    89,
+    1224,
+    1063,
+    92
+   ],
+   "ttd-8": [
+    902,
+    1224,
+    250,
+    92
+   ],
+   "total": [
+    88,
+    1339,
+    674,
+    82
+   ],
+   "blok-dpjp": [
+    792,
+    1339,
+    360,
+    165
+   ]
+  }
+ },
+ {
+  "id": "VA-AI-02",
+  "folder": "04-buatan-ai",
+  "berkas": {
+   "jpg": "VA-AI-02.jpg",
+   "pdf": "VA-AI-02.pdf"
+  },
+  "ukuran": [
+   1240,
+   1754
+  ],
+  "demo": false,
+  "peran": "uji",
+  "label_diharapkan": "Prioritas",
+  "ringkasan": "Disusun di aplikasi desain. Delapan tanda tangan adalah satu gambar yang ditempel berulang.",
+  "klaim": {
+   "sep": "0901R0270826V604410",
+   "peserta": "Dewi Anggraini",
+   "no_kartu": "0002117765093",
+   "faskes": "RS Cipta Medika",
+   "kode_faskes": "0901R027",
+   "periode": "Agustus 2026",
+   "layanan": "Fisioterapi rawat jalan",
+   "sesi_ditagih": 8,
+   "tarif_per_sesi": 207300,
+   "nilai_klaim": 1658400,
+   "nilai_klaim_teks": "Rp1.658.400"
+  },
+  "isi_lembar": {
+   "nama": "Dewi Anggraini",
+   "tanggal_lahir": "03-08-1958",
+   "no_rm": "07-55-9930",
+   "no_kartu": "0002117765093",
+   "no_sep": "0901R0270826V604410",
+   "diagnosis": "Sekuele stroke iskemik",
+   "icd10": "I69.4",
+   "dpjp": "dr. H. Suparman, Sp.KFR",
+   "periode": "Agustus 2026",
+   "baris_terisi": 8,
+   "baris_asli": 8,
+   "tanggal_sesi": [
+    "05/08",
+    "08/08",
+    "12/08",
+    "15/08",
+    "19/08",
+    "22/08",
+    "26/08",
+    "29/08"
+   ],
+   "jumlah_kunjungan_tertulis": 8,
+   "kemiripan_ttd_rerata": 1
+  },
+  "kualitas_scan": {
+   "status": "baik",
+   "catatan": "Berkas digital, bukan hasil pindai."
+  },
+  "temuan": [
+   {
+    "cek": "copy_paste",
+    "kekuatan": "kuat",
+    "region": [
+     902,
+     572,
+     250,
+     736
+    ],
+    "kalimat": "Delapan tanda tangan pasien identik sampai tingkat piksel. Tangan manusia tidak pernah menulis sepersis ini."
+   },
+   {
+    "cek": "tanda_ai",
+    "kekuatan": "sedang",
+    "region": [
+     0,
+     0,
+     1240,
+     1754
+    ],
+    "kalimat": "Berkas dibuat di aplikasi desain (Producer: Canva), bukan hasil pindai. Tulisan tangannya adalah huruf komputer."
+   }
+  ],
+  "metadata_file": {
+   "Producer": "Canva",
+   "Creator": "Canva",
+   "Author": "Admin Rehab"
+  },
+  "pindai": {
+   "alat": "tidak ada, berkas digital"
+  },
+  "region_lembar": {
+   "kop": [
+    88,
+    70,
+    1064,
+    115
+   ],
+   "nama": [
+    268,
+    289,
+    213,
+    22
+   ],
+   "sep": [
+    831,
+    339,
+    196,
+    24
+   ],
+   "periode": [
+    831,
+    441,
+    144,
+    20
+   ],
+   "tabel": [
+    88,
+    537,
+    1064,
+    772
+   ],
+   "baris-1": [
+    89,
+    572,
+    1063,
+    92
+   ],
+   "ttd-1": [
+    902,
+    572,
+    250,
+    92
+   ],
+   "baris-2": [
+    89,
+    664,
+    1063,
+    92
+   ],
+   "ttd-2": [
+    902,
+    664,
+    250,
+    92
+   ],
+   "baris-3": [
+    89,
+    756,
+    1063,
+    92
+   ],
+   "ttd-3": [
+    902,
+    756,
+    250,
+    92
+   ],
+   "baris-4": [
+    89,
+    848,
+    1063,
+    92
+   ],
+   "ttd-4": [
+    902,
+    848,
+    250,
+    92
+   ],
+   "baris-5": [
+    89,
+    940,
+    1063,
+    92
+   ],
+   "ttd-5": [
+    902,
+    940,
+    250,
+    92
+   ],
+   "baris-6": [
+    89,
+    1032,
+    1063,
+    92
+   ],
+   "ttd-6": [
+    902,
+    1032,
+    250,
+    92
+   ],
+   "baris-7": [
+    89,
+    1124,
+    1063,
+    92
+   ],
+   "ttd-7": [
+    902,
+    1124,
+    250,
+    92
+   ],
+   "baris-8": [
+    89,
+    1216,
+    1063,
+    92
+   ],
+   "ttd-8": [
+    902,
+    1216,
+    250,
+    92
+   ],
+   "total": [
+    88,
+    1331,
+    674,
+    82
+   ],
+   "blok-dpjp": [
+    792,
+    1331,
+    360,
+    157
+   ]
+  }
+ },
+ {
+  "id": "VA-AI-03",
+  "folder": "04-buatan-ai",
+  "berkas": {
+   "jpg": "VA-AI-03.jpg",
+   "pdf": "VA-AI-03.pdf",
+   "png": "VA-AI-03.png"
+  },
+  "ukuran": [
+   1240,
+   1754
+  ],
+  "demo": false,
+  "peran": "uji",
+  "label_diharapkan": "Perlu dicek",
+  "ringkasan": "Metadata dihapus. Sinyal yang tersisa hanya tidak adanya ciri hasil pindai dan teks kecil yang janggal.",
+  "klaim": {
+   "sep": "0901R0410826V607763",
+   "peserta": "Rudi Hidayat",
+   "no_kartu": "0001690042275",
+   "faskes": "RSU Bakti Mulia",
+   "kode_faskes": "0901R041",
+   "periode": "Agustus 2026",
+   "layanan": "Fisioterapi rawat jalan",
+   "sesi_ditagih": 8,
+   "tarif_per_sesi": 207300,
+   "nilai_klaim": 1658400,
+   "nilai_klaim_teks": "Rp1.658.400"
+  },
+  "isi_lembar": {
+   "nama": "Rudi Hidayat",
+   "tanggal_lahir": "21-01-1976",
+   "no_rm": "12-08-2290",
+   "no_kartu": "0001690042275",
+   "no_sep": "0901R0410826V607763",
+   "diagnosis": "Carpal tunnel syndrome",
+   "icd10": "G56.0",
+   "dpjp": "dr. Bimo Aryasatya, Sp.KFR",
+   "periode": "Agustus 2026",
+   "baris_terisi": 8,
+   "baris_asli": 8,
+   "tanggal_sesi": [
+    "03/08",
+    "06/08",
+    "10/08",
+    "13/08",
+    "17/08",
+    "20/08",
+    "24/08",
+    "27/08"
+   ],
+   "jumlah_kunjungan_tertulis": 8,
+   "kemiripan_ttd_rerata": 0.797
+  },
+  "kualitas_scan": {
+   "status": "baik",
+   "catatan": "Berkas digital, bukan hasil pindai."
+  },
+  "temuan": [
+   {
+    "cek": "tanda_ai",
+    "kekuatan": "lemah",
+    "region": [
+     0,
+     0,
+     1240,
+     1754
+    ],
+    "kalimat": "Tidak ada ciri hasil pindai: tanpa derau sensor, tanpa bayangan tepi kertas, dan halaman lurus sempurna."
+   },
+   {
+    "cek": "tanda_ai",
+    "kekuatan": "lemah",
+    "region": [
+     88,
+     70,
+     1064,
+     115
+    ],
+    "kalimat": "Teks kecil di kop dan kepala tabel janggal: \"Rehabilitsai\", \"Kenagna Rya\", \"Tanda Tanagn\"."
+   }
+  ],
+  "metadata_file": {
+   "Producer": "Microsoft: Print To PDF",
+   "Creator": "Microsoft Photos"
+  },
+  "pindai": {
+   "alat": "tidak ada, berkas digital"
+  },
+  "region_lembar": {
+   "kop": [
+    88,
+    70,
+    1064,
+    115
+   ],
+   "nama": [
+    268,
+    283,
+    194,
+    30
+   ],
+   "sep": [
+    857,
+    336,
+    260,
+    28
+   ],
+   "periode": [
+    857,
+    432,
+    157,
+    30
+   ],
+   "tabel": [
+    88,
+    545,
+    1064,
+    772
+   ],
+   "baris-1": [
+    89,
+    580,
+    1063,
+    92
+   ],
+   "ttd-1": [
+    902,
+    580,
+    250,
+    92
+   ],
+   "baris-2": [
+    89,
+    672,
+    1063,
+    92
+   ],
+   "ttd-2": [
+    902,
+    672,
+    250,
+    92
+   ],
+   "baris-3": [
+    89,
+    764,
+    1063,
+    92
+   ],
+   "ttd-3": [
+    902,
+    764,
+    250,
+    92
+   ],
+   "baris-4": [
+    89,
+    856,
+    1063,
+    92
+   ],
+   "ttd-4": [
+    902,
+    856,
+    250,
+    92
+   ],
+   "baris-5": [
+    89,
+    948,
+    1063,
+    92
+   ],
+   "ttd-5": [
+    902,
+    948,
+    250,
+    92
+   ],
+   "baris-6": [
+    89,
+    1040,
+    1063,
+    92
+   ],
+   "ttd-6": [
+    902,
+    1040,
+    250,
+    92
+   ],
+   "baris-7": [
+    89,
+    1132,
+    1063,
+    92
+   ],
+   "ttd-7": [
+    902,
+    1132,
+    250,
+    92
+   ],
+   "baris-8": [
+    89,
+    1224,
+    1063,
+    92
+   ],
+   "ttd-8": [
+    902,
+    1224,
+    250,
+    92
+   ],
+   "total": [
+    88,
+    1339,
+    674,
+    82
+   ],
+   "blok-dpjp": [
+    792,
+    1339,
+    360,
+    165
+   ]
+  }
+ },
+ {
+  "id": "VA-BRM-01",
+  "folder": "05-scan-buram",
+  "berkas": {
+   "jpg": "VA-BRM-01.jpg",
+   "pdf": "VA-BRM-01.pdf"
+  },
+  "ukuran": [
+   992,
+   1754
+  ],
+  "demo": true,
+  "peran": "uji",
+  "label_diharapkan": "Scan ulang",
+  "ringkasan": "Buram, miring 4 derajat, dan kolom tanda tangan pasien terpotong di tepi kanan.",
+  "klaim": {
+   "sep": "0901R0140826V589920",
+   "peserta": "Dewi Lestari",
+   "no_kartu": "0001278853160",
+   "faskes": "RS Melati Sehat",
+   "kode_faskes": "0901R014",
+   "periode": "Agustus 2026",
+   "layanan": "Fisioterapi rawat jalan",
+   "sesi_ditagih": 8,
+   "tarif_per_sesi": 207300,
+   "nilai_klaim": 1658400,
+   "nilai_klaim_teks": "Rp1.658.400"
+  },
+  "isi_lembar": {
+   "nama": "Dewi Lestari",
+   "tanggal_lahir": "09-09-1962",
+   "no_rm": "00-40-9904",
+   "no_kartu": "0001278853160",
+   "no_sep": "0901R0140826V589920",
+   "diagnosis": "Sekuele stroke iskemik",
+   "icd10": "I69.4",
+   "dpjp": "dr. Ayu Prameswari, Sp.KFR",
+   "periode": "Agustus 2026",
+   "baris_terisi": 8,
+   "baris_asli": 8,
+   "tanggal_sesi": [
+    "03/08",
+    "06/08",
+    "10/08",
+    "13/08",
+    "17/08",
+    "20/08",
+    "24/08",
+    "27/08"
+   ],
+   "jumlah_kunjungan_tertulis": 8,
+   "kemiripan_ttd_rerata": 0.826
+  },
+  "kualitas_scan": {
+   "status": "scan_ulang",
+   "catatan": "Buram, miring 4.2 derajat, kolom tanda tangan pasien terpotong di tepi kanan."
+  },
+  "temuan": [
+   {
+    "cek": "kualitas_scan",
+    "kekuatan": "info",
+    "region": [
+     822,
+     560,
+     170,
+     860
+    ],
+    "kalimat": "Kolom tanda tangan pasien terpotong di tepi kanan dan tulisan buram. Minta rumah sakit memindai ulang."
+   }
+  ],
+  "metadata_file": {
+   "Producer": "Canon iR-ADV C3826 PDF",
+   "Creator": "Canon iR-ADV C3826"
+  },
+  "pindai": {
+   "alat": "buram",
+   "miring": 4.2,
+   "potongKanan": 0.2,
+   "blur": 2.4
+  },
+  "region_lembar": {
+   "kop": [
+    30,
+    33,
+    1070,
+    193
+   ],
+   "nama": [
+    225,
+    297,
+    191,
+    42
+   ],
+   "sep": [
+    795,
+    303,
+    263,
+    47
+   ],
+   "periode": [
+    802,
+    407,
+    159,
+    41
+   ],
+   "tabel": [
+    65,
+    507,
+    1118,
+    848
+   ],
+   "baris-1": [
+    69,
+    542,
+    1067,
+    170
+   ],
+   "ttd-1": [
+    879,
+    542,
+    256,
+    110
+   ],
+   "baris-2": [
+    75,
+    634,
+    1067,
+    170
+   ],
+   "ttd-2": [
+    886,
+    634,
+    256,
+    110
+   ],
+   "baris-3": [
+    82,
+    725,
+    1067,
+    170
+   ],
+   "ttd-3": [
+    893,
+    725,
+    256,
+    110
+   ],
+   "baris-4": [
+    89,
+    817,
+    1067,
+    170
+   ],
+   "ttd-4": [
+    900,
+    817,
+    256,
+    110
+   ],
+   "baris-5": [
+    96,
+    909,
+    1067,
+    170
+   ],
+   "ttd-5": [
+    906,
+    909,
+    256,
+    110
+   ],
+   "baris-6": [
+    102,
+    1001,
+    1067,
+    170
+   ],
+   "ttd-6": [
+    913,
+    1001,
+    256,
+    110
+   ],
+   "baris-7": [
+    109,
+    1092,
+    1067,
+    170
+   ],
+   "ttd-7": [
+    920,
+    1092,
+    256,
+    110
+   ],
+   "baris-8": [
+    116,
+    1184,
+    1067,
+    170
+   ],
+   "ttd-8": [
+    927,
+    1184,
+    256,
+    110
+   ],
+   "total": [
+    123,
+    1327,
+    678,
+    131
+   ],
+   "blok-dpjp": [
+    825,
+    1299,
+    371,
+    191
+   ]
+  }
+ },
+ {
+  "id": "VA-BRM-02",
+  "folder": "05-scan-buram",
+  "berkas": {
+   "jpg": "VA-BRM-02.jpg",
+   "pdf": "VA-BRM-02.pdf"
+  },
+  "ukuran": [
+   1500,
+   2000
+  ],
+  "demo": false,
+  "peran": "uji",
+  "label_diharapkan": "Scan ulang",
+  "ringkasan": "Foto HP terlalu gelap dan kontrasnya rendah, tanda tangan tidak terbaca.",
+  "klaim": {
+   "sep": "0901R0270826V592271",
+   "peserta": "Fajar Maulana",
+   "no_kartu": "0002450019786",
+   "faskes": "RS Cipta Medika",
+   "kode_faskes": "0901R027",
+   "periode": "Agustus 2026",
+   "layanan": "Fisioterapi rawat jalan",
+   "sesi_ditagih": 8,
+   "tarif_per_sesi": 207300,
+   "nilai_klaim": 1658400,
+   "nilai_klaim_teks": "Rp1.658.400"
+  },
+  "isi_lembar": {
+   "nama": "Fajar Maulana",
+   "tanggal_lahir": "17-06-1980",
+   "no_rm": "07-56-3318",
+   "no_kartu": "0002450019786",
+   "no_sep": "0901R0270826V592271",
+   "diagnosis": "Low back pain",
+   "icd10": "M54.5",
+   "dpjp": "dr. H. Suparman, Sp.KFR",
+   "periode": "Agustus 2026",
+   "baris_terisi": 8,
+   "baris_asli": 8,
+   "tanggal_sesi": [
+    "05/08",
+    "08/08",
+    "12/08",
+    "15/08",
+    "19/08",
+    "22/08",
+    "26/08",
+    "29/08"
+   ],
+   "jumlah_kunjungan_tertulis": 8,
+   "kemiripan_ttd_rerata": 0.783
+  },
+  "kualitas_scan": {
+   "status": "scan_ulang",
+   "catatan": "Terlalu gelap dan kontras rendah."
+  },
+  "temuan": [
+   {
+    "cek": "kualitas_scan",
+    "kekuatan": "info",
+    "region": [
+     0,
+     0,
+     1500,
+     2000
+    ],
+    "kalimat": "Foto terlalu gelap, tanda tangan dan tanggal tidak terbaca. Minta rumah sakit memindai ulang."
+   }
+  ],
+  "metadata_file": {
+   "Producer": "Android PDF Writer",
+   "Creator": "Galaxy A15 Kamera"
+  },
+  "pindai": {
+   "alat": "gelap",
+   "miring": 2.4
+  },
+  "region_lembar": {
+   "kop": [
+    155,
+    130,
+    1130,
+    170
+   ],
+   "nama": [
+    352,
+    390,
+    220,
+    39
+   ],
+   "sep": [
+    937,
+    421,
+    276,
+    41
+   ],
+   "periode": [
+    939,
+    530,
+    167,
+    38
+   ],
+   "tabel": [
+    172,
+    645,
+    1140,
+    862
+   ],
+   "baris-1": [
+    175,
+    683,
+    1122,
+    141
+   ],
+   "ttd-1": [
+    1030,
+    683,
+    267,
+    109
+   ],
+   "baris-2": [
+    178,
+    782,
+    1121,
+    140
+   ],
+   "ttd-2": [
+    1032,
+    782,
+    266,
+    109
+   ],
+   "baris-3": [
+    181,
+    880,
+    1120,
+    139
+   ],
+   "ttd-3": [
+    1035,
+    880,
+    266,
+    108
+   ],
+   "baris-4": [
+    185,
+    979,
+    1119,
+    139
+   ],
+   "ttd-4": [
+    1037,
+    979,
+    266,
+    108
+   ],
+   "baris-5": [
+    188,
+    1077,
+    1117,
+    138
+   ],
+   "ttd-5": [
+    1040,
+    1077,
+    266,
+    107
+   ],
+   "baris-6": [
+    191,
+    1175,
+    1116,
+    137
+   ],
+   "ttd-6": [
+    1042,
+    1175,
+    265,
+    107
+   ],
+   "baris-7": [
+    195,
+    1273,
+    1115,
+    136
+   ],
+   "ttd-7": [
+    1045,
+    1273,
+    265,
+    107
+   ],
+   "baris-8": [
+    198,
+    1371,
+    1114,
+    135
+   ],
+   "ttd-8": [
+    1047,
+    1371,
+    265,
+    106
+   ],
+   "total": [
+    201,
+    1507,
+    705,
+    110
+   ],
+   "blok-dpjp": [
+    935,
+    1493,
+    381,
+    187
+   ]
+  }
+ },
+ {
+  "id": "VA-BRM-03",
+  "folder": "05-scan-buram",
+  "berkas": {
+   "jpg": "VA-BRM-03.jpg",
+   "pdf": "VA-BRM-03.pdf"
+  },
+  "ukuran": [
+   1240,
+   1227
+  ],
+  "demo": false,
+  "peran": "uji",
+  "label_diharapkan": "Scan ulang",
+  "ringkasan": "Bagian bawah halaman tidak ikut terpindai: baris 7 dan 8, jumlah kunjungan, dan tanda tangan DPJP hilang.",
+  "klaim": {
+   "sep": "0901R0410826V595583",
+   "peserta": "Nurhayati",
+   "no_kartu": "0001334478025",
+   "faskes": "RSU Bakti Mulia",
+   "kode_faskes": "0901R041",
+   "periode": "Agustus 2026",
+   "layanan": "Fisioterapi rawat jalan",
+   "sesi_ditagih": 8,
+   "tarif_per_sesi": 207300,
+   "nilai_klaim": 1658400,
+   "nilai_klaim_teks": "Rp1.658.400"
+  },
+  "isi_lembar": {
+   "nama": "Nurhayati",
+   "tanggal_lahir": "25-04-1959",
+   "no_rm": "12-07-5561",
+   "no_kartu": "0001334478025",
+   "no_sep": "0901R0410826V595583",
+   "diagnosis": "Gonartrosis bilateral",
+   "icd10": "M17.0",
+   "dpjp": "dr. Bimo Aryasatya, Sp.KFR",
+   "periode": "Agustus 2026",
+   "baris_terisi": 8,
+   "baris_asli": 8,
+   "tanggal_sesi": [
+    "03/08",
+    "06/08",
+    "10/08",
+    "13/08",
+    "17/08",
+    "20/08",
+    "24/08",
+    "27/08"
+   ],
+   "jumlah_kunjungan_tertulis": 8,
+   "kemiripan_ttd_rerata": 0.813
+  },
+  "kualitas_scan": {
+   "status": "scan_ulang",
+   "catatan": "Bagian bawah halaman tidak terpindai."
+  },
+  "temuan": [
+   {
+    "cek": "kualitas_scan",
+    "kekuatan": "info",
+    "region": [
+     0,
+     1137,
+     1240,
+     90
+    ],
+    "kalimat": "Bagian bawah halaman tidak ikut terpindai: baris 7 dan 8, jumlah kunjungan, dan tanda tangan DPJP hilang."
+   }
+  ],
+  "metadata_file": {
+   "Producer": "Canon iR-ADV C3826 PDF",
+   "Creator": "Canon iR-ADV C3826"
+  },
+  "pindai": {
+   "alat": "flatbed",
+   "miring": -0.4,
+   "potongBawah": 0.3
+  },
+  "region_lembar": {
+   "kop": [
+    93,
+    66,
+    1065,
+    122
+   ],
+   "nama": [
+    272,
+    283,
+    158,
+    29
+   ],
+   "sep": [
+    824,
+    336,
+    266,
+    29
+   ],
+   "periode": [
+    823,
+    433,
+    157,
+    31
+   ],
+   "tabel": [
+    85,
+    541,
+    1069,
+    779
+   ],
+   "baris-1": [
+    90,
+    576,
+    1064,
+    99
+   ],
+   "ttd-1": [
+    903,
+    582,
+    251,
+    94
+   ],
+   "baris-2": [
+    90,
+    668,
+    1064,
+    99
+   ],
+   "ttd-2": [
+    903,
+    674,
+    251,
+    94
+   ],
+   "baris-3": [
+    89,
+    760,
+    1064,
+    99
+   ],
+   "ttd-3": [
+    902,
+    766,
+    251,
+    94
+   ],
+   "baris-4": [
+    89,
+    852,
+    1064,
+    99
+   ],
+   "ttd-4": [
+    901,
+    858,
+    251,
+    94
+   ],
+   "baris-5": [
+    88,
+    944,
+    1064,
+    99
+   ],
+   "ttd-5": [
+    901,
+    950,
+    251,
+    94
+   ],
+   "baris-6": [
+    87,
+    1036,
+    1064,
+    99
+   ],
+   "ttd-6": [
+    900,
+    1042,
+    251,
+    94
+   ],
+   "baris-7": [
+    87,
+    1128,
+    1064,
+    99
+   ],
+   "ttd-7": [
+    900,
+    1134,
+    251,
+    94
+   ],
+   "baris-8": [
+    86,
+    1220,
+    1064,
+    99
+   ],
+   "ttd-8": [
+    899,
+    1226,
+    251,
+    94
+   ]
+  }
+ }
+]

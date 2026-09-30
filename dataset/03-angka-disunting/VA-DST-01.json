@@ -1,0 +1,228 @@
+{
+ "id": "VA-DST-01",
+ "folder": "03-angka-disunting",
+ "berkas": {
+  "jpg": "VA-DST-01.jpg",
+  "pdf": "VA-DST-01.pdf"
+ },
+ "ukuran": [
+  1240,
+  1754
+ ],
+ "demo": true,
+ "peran": "uji",
+ "label_diharapkan": "Prioritas",
+ "ringkasan": "Hanya 5 baris terisi, angka jumlah kunjungan diubah dari 5 menjadi 8.",
+ "klaim": {
+  "sep": "0901R0140826V583301",
+  "peserta": "Ratna Kusuma",
+  "no_kartu": "0001611903327",
+  "faskes": "RS Melati Sehat",
+  "kode_faskes": "0901R014",
+  "periode": "Agustus 2026",
+  "layanan": "Fisioterapi rawat jalan",
+  "sesi_ditagih": 8,
+  "tarif_per_sesi": 207300,
+  "nilai_klaim": 1658400,
+  "nilai_klaim_teks": "Rp1.658.400"
+ },
+ "isi_lembar": {
+  "nama": "Ratna Kusuma",
+  "tanggal_lahir": "23-06-1966",
+  "no_rm": "00-41-3380",
+  "no_kartu": "0001611903327",
+  "no_sep": "0901R0140826V583301",
+  "diagnosis": "Gonartrosis bilateral",
+  "icd10": "M17.0",
+  "dpjp": "dr. Ayu Prameswari, Sp.KFR",
+  "periode": "Agustus 2026",
+  "baris_terisi": 5,
+  "baris_asli": 5,
+  "tanggal_sesi": [
+   "04/08",
+   "07/08",
+   "11/08",
+   "14/08",
+   "18/08"
+  ],
+  "jumlah_kunjungan_tertulis": 8,
+  "kemiripan_ttd_rerata": 0.815
+ },
+ "kualitas_scan": {
+  "status": "baik",
+  "catatan": "Terbaca, miring 0.4 derajat."
+ },
+ "temuan": [
+  {
+   "cek": "kecocokan_klaim",
+   "kekuatan": "kuat",
+   "kalimat": "Ditagih 8 sesi, berkas hanya mendukung 5. Baris 6 sampai 8 kosong, tanpa tanggal dan tanda tangan.",
+   "region": [
+    90,
+    1036,
+    1065,
+    283
+   ]
+  },
+  {
+   "cek": "suntingan",
+   "kekuatan": "sedang",
+   "region": [
+    347,
+    1360,
+    29,
+    44
+   ],
+   "kalimat": "Angka 8 di kolom jumlah kunjungan terdeteksi ditempel di atas angka 5."
+  }
+ ],
+ "metadata_file": {
+  "Producer": "Microsoft: Print To PDF",
+  "Creator": "Adobe Photoshop 25.0",
+  "ModDate": "2026-09-01T22:05:00"
+ },
+ "pindai": {
+  "alat": "flatbed",
+  "miring": 0.4
+ },
+ "region_lembar": {
+  "kop": [
+   82,
+   66,
+   1065,
+   122
+  ],
+  "nama": [
+   264,
+   284,
+   212,
+   31
+  ],
+  "sep": [
+   816,
+   332,
+   261,
+   30
+  ],
+  "periode": [
+   817,
+   432,
+   157,
+   30
+  ],
+  "tabel": [
+   86,
+   541,
+   1069,
+   779
+  ],
+  "baris-1": [
+   87,
+   576,
+   1064,
+   99
+  ],
+  "ttd-1": [
+   900,
+   576,
+   251,
+   94
+  ],
+  "baris-2": [
+   88,
+   668,
+   1064,
+   99
+  ],
+  "ttd-2": [
+   901,
+   668,
+   251,
+   94
+  ],
+  "baris-3": [
+   88,
+   760,
+   1064,
+   99
+  ],
+  "ttd-3": [
+   901,
+   760,
+   251,
+   94
+  ],
+  "baris-4": [
+   89,
+   852,
+   1064,
+   99
+  ],
+  "ttd-4": [
+   902,
+   852,
+   251,
+   94
+  ],
+  "baris-5": [
+   90,
+   944,
+   1064,
+   99
+  ],
+  "ttd-5": [
+   902,
+   944,
+   251,
+   94
+  ],
+  "baris-6": [
+   90,
+   1036,
+   1064,
+   99
+  ],
+  "ttd-6": [
+   903,
+   1036,
+   251,
+   94
+  ],
+  "baris-7": [
+   91,
+   1128,
+   1064,
+   99
+  ],
+  "ttd-7": [
+   904,
+   1128,
+   251,
+   94
+  ],
+  "baris-8": [
+   91,
+   1220,
+   1064,
+   99
+  ],
+  "ttd-8": [
+   904,
+   1220,
+   251,
+   94
+  ],
+  "total": [
+   91,
+   1338,
+   675,
+   87
+  ],
+  "blok-dpjp": [
+   795,
+   1335,
+   361,
+   168
+  ]
+ }
+}

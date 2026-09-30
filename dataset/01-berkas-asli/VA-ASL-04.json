@@ -1,0 +1,207 @@
+{
+ "id": "VA-ASL-04",
+ "folder": "01-berkas-asli",
+ "berkas": {
+  "jpg": "VA-ASL-04.jpg",
+  "pdf": "VA-ASL-04.pdf"
+ },
+ "ukuran": [
+  1500,
+  2000
+ ],
+ "demo": false,
+ "peran": "uji",
+ "label_diharapkan": "Lolos",
+ "ringkasan": "Berkas asli difoto dengan HP. Bayangan dan perspektif tidak boleh dianggap temuan.",
+ "klaim": {
+  "sep": "0901R0140826V471026",
+  "peserta": "Marlina Siregar",
+  "no_kartu": "0001125590318",
+  "faskes": "RS Melati Sehat",
+  "kode_faskes": "0901R014",
+  "periode": "Agustus 2026",
+  "layanan": "Fisioterapi rawat jalan",
+  "sesi_ditagih": 8,
+  "tarif_per_sesi": 207300,
+  "nilai_klaim": 1658400,
+  "nilai_klaim_teks": "Rp1.658.400"
+ },
+ "isi_lembar": {
+  "nama": "Marlina Siregar",
+  "tanggal_lahir": "19-01-1960",
+  "no_rm": "00-39-8812",
+  "no_kartu": "0001125590318",
+  "no_sep": "0901R0140826V471026",
+  "diagnosis": "Sekuele stroke iskemik",
+  "icd10": "I69.4",
+  "dpjp": "dr. Ayu Prameswari, Sp.KFR",
+  "periode": "Agustus 2026",
+  "baris_terisi": 8,
+  "baris_asli": 8,
+  "tanggal_sesi": [
+   "03/08",
+   "06/08",
+   "10/08",
+   "13/08",
+   "17/08",
+   "20/08",
+   "24/08",
+   "27/08"
+  ],
+  "jumlah_kunjungan_tertulis": 8,
+  "kemiripan_ttd_rerata": 0.799
+ },
+ "kualitas_scan": {
+  "status": "baik",
+  "catatan": "Foto HP. Perspektif dan bayangan wajar, semua kolom terbaca."
+ },
+ "temuan": [],
+ "metadata_file": {
+  "Producer": "Android PDF Writer",
+  "Creator": "Galaxy A15 Kamera"
+ },
+ "pindai": {
+  "alat": "ponsel",
+  "miring": 1.1
+ },
+ "region_lembar": {
+  "kop": [
+   187,
+   139,
+   1109,
+   137
+  ],
+  "nama": [
+   381,
+   368,
+   231,
+   34
+  ],
+  "sep": [
+   975,
+   425,
+   263,
+   32
+  ],
+  "periode": [
+   977,
+   530,
+   162,
+   29
+  ],
+  "tabel": [
+   193,
+   641,
+   1131,
+   829
+  ],
+  "baris-1": [
+   194,
+   679,
+   1113,
+   99
+  ],
+  "ttd-1": [
+   1049,
+   681,
+   258,
+   96
+  ],
+  "baris-2": [
+   195,
+   777,
+   1114,
+   98
+  ],
+  "ttd-2": [
+   1051,
+   777,
+   258,
+   96
+  ],
+  "baris-3": [
+   196,
+   873,
+   1116,
+   101
+  ],
+  "ttd-3": [
+   1053,
+   873,
+   258,
+   97
+  ],
+  "baris-4": [
+   197,
+   969,
+   1117,
+   104
+  ],
+  "ttd-4": [
+   1055,
+   969,
+   259,
+   98
+  ],
+  "baris-5": [
+   199,
+   1065,
+   1118,
+   107
+  ],
+  "ttd-5": [
+   1057,
+   1065,
+   259,
+   99
+  ],
+  "baris-6": [
+   200,
+   1161,
+   1119,
+   110
+  ],
+  "ttd-6": [
+   1060,
+   1161,
+   259,
+   99
+  ],
+  "baris-7": [
+   201,
+   1258,
+   1120,
+   113
+  ],
+  "ttd-7": [
+   1062,
+   1258,
+   259,
+   100
+  ],
+  "baris-8": [
+   202,
+   1354,
+   1121,
+   116
+  ],
+  "ttd-8": [
+   1064,
+   1354,
+   260,
+   101
+  ],
+  "total": [
+   202,
+   1482,
+   720,
+   102
+  ],
+  "blok-dpjp": [
+   952,
+   1475,
+   376,
+   182
+  ]
+ }
+}
