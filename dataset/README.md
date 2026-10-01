@@ -1,30 +1,82 @@
-# Corpus sintetis Veritas Autentik
+# Dataset uji Vedika Autentik
 
-Corpus ini berisi **60 kasus sintetis** untuk demo dan pengujian UX. Semua nama, nomor kartu, SEP, rumah sakit, dan dokter fiktif. Tidak ada data peserta JKN nyata. Corpus **tidak** dipakai untuk melatih model atau mengukur akurasi deteksi.
+Tujuh belas lembar bukti pelayanan fisioterapi sintetis yang dipakai untuk dua hal:
 
-| Kategori | Jumlah | Tujuan demo |
-|---|---:|---|
-| Tanpa anomali | 10 | Menunjukkan batas pemeriksaan dan verifikasi biasa |
-| Klaim tidak cocok | 8 | Membandingkan sesi ditagih dengan baris pendukung |
-| Dokumen duplikat | 10 | Melihat lembar serupa dipakai untuk klaim berbeda |
-| Copy–paste dalam dokumen | 8 | Melihat baris layanan berulang |
-| Tempelan lintas berkas | 6 | Memeriksa area tanda tangan yang serupa |
-| Edit teks atau angka | 8 | Meninjau jumlah kunjungan yang tampak ditimpa |
-| Indikasi elemen sintetis | 6 | Menandai elemen digital yang perlu diperiksa |
-| Scan buruk | 4 | Meminta scan ulang tanpa menyimpulkan kecurangan |
+1. **Demo prototipe.** Lima berkas bertanda `demo: true` diunggah ke prototipe dan masing-masing menghasilkan label berbeda.
+2. **Bahan awal untuk AI engineer.** Setiap berkas punya ground truth: isi yang seharusnya terbaca OCR, data klaim pembandingnya, jenis manipulasi, dan koordinat area yang dimanipulasi.
 
-Terdapat 17 kasus awal di `01-berkas-asli` sampai `05-scan-buram`, dan 43 kasus tambahan di `06-korpus-demo`. Setiap kasus punya `.jpg`, `.pdf`, dan `.json`; beberapa kasus awal juga punya `.png`. `manifest.json` dan `manifest.js` menjadi indeks yang dibaca prototipe. `klaim.csv` dan `label.csv` adalah tabel pendamping.
+Semua nama, nomor kartu JKN, SEP, rumah sakit, dan dokter di sini fiktif. Tidak ada data peserta JKN yang nyata.
 
-Fixture JSON memuat `caseId`, `synthetic`, `overallStatus`, `checkResults`, `topFindings`, `evidenceRegions`, `relatedCaseIds`, `recommendation`, `participantConfirmation`, `auditTrail`, dan `fileHashes`. Status keseluruhan menggunakan `tidak_ada_anomali`, `scan_ulang`, `perlu_dicek`, atau `prioritas`. Hasil cek menggunakan `tidak_ditemukan`, `indikasi`, atau `tidak_dapat_dinilai`. Kekuatan bukti menggunakan `lemah`, `sedang`, atau `kuat`. Nilai numerik internal pada 17 fixture lama bukan probabilitas model dan tidak ditampilkan di UI.
+## Isi folder
 
-## Aset gambar
+| Folder | Berkas | Label yang diharapkan | Yang diuji |
+|---|---|---|---|
+| `01-berkas-asli` | VA-ASL-01 sampai 04 | Lolos | Berkas jujur, termasuk yang difoto dengan HP (VA-ASL-04). Sistem tidak boleh salah tangkap. |
+| `02-berkas-kembar` | VA-KMB-00 sampai 03 | Prioritas (00 Lolos) | Satu lembar dipakai untuk pasien lain atau bulan lain. VA-KMB-00 adalah lembar asli Bu Siti yang sudah ada di arsip. |
+| `03-angka-disunting` | VA-DST-01 sampai 03 | Prioritas / Perlu dicek | Angka jumlah kunjungan diubah, baris disalin-tempel, bulan pada tanggal diganti. |
+| `04-buatan-ai` | VA-AI-01 sampai 03 | Perlu dicek / Prioritas | Gambar dari generator AI dan berkas dari aplikasi desain. |
+| `05-scan-buram` | VA-BRM-01 sampai 03 | Scan ulang | Buram, gelap, terpotong. Tidak boleh dianggap kecurangan. |
 
-Dua foto kertas kosong di `assets/document-photo-template*.jpg` dibuat dengan image generation, dengan variasi bayangan, lipatan, pencahayaan, dan noda halus. Script `tools/dataset/expand-demo.js` menempatkan teks, tabel delapan baris, nilai klaim, tanda tangan, dan ID secara deterministik di atasnya. Script juga menerapkan variasi kompresi, kecerahan, dan blur untuk kasus scan buruk. Karena itu teks dan metadata dapat diuji secara konsisten, tanpa bergantung pada teks acak hasil image generation.
+Berkas demo: `VA-ASL-01`, `VA-KMB-01`, `VA-DST-01`, `VA-AI-01`, `VA-BRM-01`.
 
-Untuk membangun ulang 43 berkas tambahan setelah `npm install`, jalankan dari root proyek:
+`label.csv` memuat tabel lengkapnya, dan `klaim.csv` memuat data klaim dari sisi E-Klaim (jumlah sesi yang ditagih dan nilainya).
 
-```bash
-npm run build:corpus
+## Format berkas
+
+Setiap sampel punya:
+
+- `.pdf`: berkas seperti yang diunggah rumah sakit ke JKN Drive. Metadata `Producer`, `Creator`, `CreationDate`, dan `ModDate` ikut diisi. Contohnya, berkas kembar dibuka ulang di editor PDF beberapa hari setelah dipindai.
+- `.jpg`: halaman yang sama sebagai gambar, dipakai prototipe dan untuk pelatihan.
+- `.png` (khusus `04-buatan-ai`): VA-AI-01 membawa metadata IPTC `trainedAlgorithmicMedia` tiruan, VA-AI-03 tanpa metadata sama sekali.
+- `.json`: ground truth.
+
+## Ground truth
+
+Potongan dari `03-angka-disunting/VA-DST-01.json`:
+
+```json
+{
+  "id": "VA-DST-01",
+  "label_diharapkan": "Prioritas",
+  "klaim":      { "sep": "0901R0140826V583301", "sesi_ditagih": 8, "nilai_klaim": 1658400 },
+  "isi_lembar": { "nama": "Ratna Kusuma", "baris_terisi": 5, "jumlah_kunjungan_tertulis": 8, "kemiripan_ttd_rerata": 0.815 },
+  "kualitas_scan": { "status": "baik", "catatan": "Terbaca, miring 0.4 derajat." },
+  "temuan": [
+    { "cek": "kecocokan_klaim", "kekuatan": "kuat", "region": [90, 1036, 1065, 283],
+      "kalimat": "Ditagih 8 sesi, berkas hanya mendukung 5. Baris 6 sampai 8 kosong, tanpa tanggal dan tanda tangan." },
+    { "cek": "suntingan", "kekuatan": "sedang", "region": [347, 1360, 29, 44],
+      "kalimat": "Angka 8 di kolom jumlah kunjungan terdeteksi ditempel di atas angka 5." }
+  ],
+  "metadata_file": { "Producer": "Microsoft: Print To PDF", "Creator": "Adobe Photoshop 25.0", "ModDate": "2026-09-01T22:05:00" },
+  "region_lembar": { "tabel": [86, 541, 1069, 779] }
+}
 ```
 
-Pengulangan script memperbarui manifest, CSV, JSON, JPG, dan PDF. Hash SHA-256 dihitung ulang. Jangan menganggap hasil ini setara dokumen dunia nyata: gaya tanda tangan dan variasi formulir masih terbatas. Pengembangan model sungguhan membutuhkan izin, data yang representatif, pemisahan train/test, label adjudikasi, serta validasi eksternal yang terpisah.
+- Nilai `cek` mengikuti enam pemeriksaan di PRD (`kecocokan_klaim`, `berkas_kembar`, `copy_paste`, `tempelan`, `suntingan`, `tanda_ai`), ditambah `kualitas_scan`.
+- `kekuatan` bernilai `kuat`, `sedang`, `lemah`, atau `info` (khusus kualitas scan).
+- `region` berformat `[x, y, lebar, tinggi]` dalam piksel pada `.jpg`, sudah mengikuti kemiringan dan perspektif pindaian. Nilainya `null` bila temuan berlaku untuk seluruh berkas, misalnya metadata. Temuan suntingan juga punya `area`, yaitu daftar kotak per tambalan.
+- Label mengikuti aturan PRD bagian 9. Dua sinyal kuat, atau satu kuat ditambah sinyal lain, menjadi Prioritas. Satu sinyal sedang menjadi Perlu dicek. Tanda AI tidak pernah menjadi satu-satunya alasan Prioritas.
+- `kemiripan_ttd_rerata` dihitung dari selisih titik kurva tanda tangan. Tanda tangan asli ada di kisaran 0,8, sedangkan tanda tangan tempelan bernilai 1.
+
+## Format lembar
+
+Formulir mengikuti lampiran klaim rehabilitasi medik yang umum dipakai rumah sakit: identitas pasien dan SEP, diagnosis medis dan fungsi, program terapi dari DPJP Sp.KFR, satu baris per sesi dengan paraf terapis dan tanda tangan pasien, jumlah kunjungan, serta tanda tangan dan stempel DPJP. Jadwalnya dua kali seminggu, maksimal delapan sesi per bulan, sesuai batas penjaminan rehabilitasi medik di Peraturan Direktur Jaminan Pelayanan Kesehatan BPJS Kesehatan No. 5 Tahun 2018.
+
+Kop, nomor formulir, dan tata letak setiap rumah sakit dibuat sendiri dan tidak meniru formulir rumah sakit tertentu.
+
+## Membangun ulang
+
+```bash
+cd tools/dataset
+npm install && npx playwright install chromium
+pip install -r requirements.txt
+./build.sh
+```
+
+`spec.js` menentukan setiap sampel. Untuk menambah variasi, tambahkan entri baru dengan pasien, benih tanda tangan, dan jenis rekayasa yang berbeda.
+
+## Batasan
+
+- Tulisan tangan memakai huruf tulisan tangan komputer (Kalam, Caveat), dan tanda tangan dibangkitkan dari kurva. Dataset ini cukup untuk demo dan untuk menguji pipeline dari ujung ke ujung. Untuk melatih dan mengukur model, tetap dibutuhkan formulir yang ditulis tangan oleh 20–30 relawan, sesuai rencana di PRD bagian 13.
+- Metadata C2PA di VA-AI-01 hanya teks tiruan, bukan manifes C2PA yang ditandatangani.
+- Semua berkas satu halaman.

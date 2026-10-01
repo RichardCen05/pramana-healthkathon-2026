@@ -1,303 +1,225 @@
 {
-  "id": "VA-AI-02",
-  "folder": "04-buatan-ai",
-  "berkas": {
-    "jpg": "VA-AI-02.jpg",
-    "pdf": "VA-AI-02.pdf"
-  },
-  "ukuran": [
-    1240,
-    1754
+ "id": "VA-AI-02",
+ "folder": "04-buatan-ai",
+ "berkas": {
+  "jpg": "VA-AI-02.jpg",
+  "pdf": "VA-AI-02.pdf"
+ },
+ "ukuran": [
+  1240,
+  1754
+ ],
+ "demo": false,
+ "peran": "uji",
+ "label_diharapkan": "Prioritas",
+ "ringkasan": "Disusun di aplikasi desain. Delapan tanda tangan adalah satu gambar yang ditempel berulang.",
+ "klaim": {
+  "sep": "0901R0270826V604410",
+  "peserta": "Dewi Anggraini",
+  "no_kartu": "0002117765093",
+  "faskes": "RS Cipta Medika",
+  "kode_faskes": "0901R027",
+  "periode": "Agustus 2026",
+  "layanan": "Fisioterapi rawat jalan",
+  "sesi_ditagih": 8,
+  "tarif_per_sesi": 207300,
+  "nilai_klaim": 1658400,
+  "nilai_klaim_teks": "Rp1.658.400"
+ },
+ "isi_lembar": {
+  "nama": "Dewi Anggraini",
+  "tanggal_lahir": "03-08-1958",
+  "no_rm": "07-55-9930",
+  "no_kartu": "0002117765093",
+  "no_sep": "0901R0270826V604410",
+  "diagnosis": "Sekuele stroke iskemik",
+  "icd10": "I69.4",
+  "dpjp": "dr. H. Suparman, Sp.KFR",
+  "periode": "Agustus 2026",
+  "baris_terisi": 8,
+  "baris_asli": 8,
+  "tanggal_sesi": [
+   "05/08",
+   "08/08",
+   "12/08",
+   "15/08",
+   "19/08",
+   "22/08",
+   "26/08",
+   "29/08"
   ],
-  "demo": false,
-  "peran": "uji",
-  "label_diharapkan": "Prioritas",
-  "ringkasan": "Metadata mencantumkan aplikasi desain. Delapan tanda tangan adalah satu gambar yang ditempel berulang.",
-  "klaim": {
-    "sep": "0901R0270826V604410",
-    "peserta": "Dewi Anggraini",
-    "no_kartu": "0002117765093",
-    "faskes": "RS Cipta Medika",
-    "kode_faskes": "0901R027",
-    "periode": "Agustus 2026",
-    "layanan": "Fisioterapi rawat jalan",
-    "sesi_ditagih": 8,
-    "tarif_per_sesi": 207300,
-    "nilai_klaim": 1658400,
-    "nilai_klaim_teks": "Rp1.658.400"
+  "jumlah_kunjungan_tertulis": 8,
+  "kemiripan_ttd_rerata": 1
+ },
+ "kualitas_scan": {
+  "status": "baik",
+  "catatan": "Berkas digital, bukan hasil pindai."
+ },
+ "temuan": [
+  {
+   "cek": "copy_paste",
+   "kekuatan": "kuat",
+   "region": [
+    902,
+    572,
+    250,
+    736
+   ],
+   "kalimat": "Delapan tanda tangan pasien identik sampai tingkat piksel. Tangan manusia tidak pernah menulis sepersis ini."
   },
-  "isi_lembar": {
-    "nama": "Dewi Anggraini",
-    "tanggal_lahir": "03-08-1958",
-    "no_rm": "07-55-9930",
-    "no_kartu": "0002117765093",
-    "no_sep": "0901R0270826V604410",
-    "diagnosis": "Sekuele stroke iskemik",
-    "icd10": "I69.4",
-    "dpjp": "dr. H. Suparman, Sp.KFR",
-    "periode": "Agustus 2026",
-    "baris_terisi": 8,
-    "baris_asli": 8,
-    "tanggal_sesi": [
-      "05/08",
-      "08/08",
-      "12/08",
-      "15/08",
-      "19/08",
-      "22/08",
-      "26/08",
-      "29/08"
-    ],
-    "jumlah_kunjungan_tertulis": 8,
-    "kemiripan_ttd_rerata": 1
-  },
-  "kualitas_scan": {
-    "status": "baik",
-    "catatan": "Berkas digital, bukan hasil pindai."
-  },
-  "temuan": [
-    {
-      "cek": "copy_paste",
-      "kekuatan": "kuat",
-      "region": [
-        902,
-        572,
-        250,
-        736
-      ],
-      "kalimat": "Delapan tanda tangan pasien identik sampai tingkat piksel. Pola berulang ini perlu diperiksa pada berkas asal."
-    },
-    {
-      "cek": "tanda_ai",
-      "kekuatan": "sedang",
-      "region": null,
-      "kalimat": "Metadata mencantumkan Producer: Canva dan huruf menyerupai font komputer. Asal berkas perlu diverifikasi."
-    }
-  ],
-  "metadata_file": {
-    "Producer": "Canva",
-    "Creator": "Canva",
-    "Author": "Admin Rehab"
-  },
-  "pindai": {
-    "alat": "tidak ada, berkas digital"
-  },
-  "region_lembar": {
-    "kop": [
-      88,
-      70,
-      1064,
-      115
-    ],
-    "nama": [
-      268,
-      289,
-      213,
-      22
-    ],
-    "sep": [
-      831,
-      339,
-      196,
-      24
-    ],
-    "periode": [
-      831,
-      441,
-      144,
-      20
-    ],
-    "tabel": [
-      88,
-      537,
-      1064,
-      772
-    ],
-    "baris-1": [
-      89,
-      572,
-      1063,
-      92
-    ],
-    "ttd-1": [
-      902,
-      572,
-      250,
-      92
-    ],
-    "baris-2": [
-      89,
-      664,
-      1063,
-      92
-    ],
-    "ttd-2": [
-      902,
-      664,
-      250,
-      92
-    ],
-    "baris-3": [
-      89,
-      756,
-      1063,
-      92
-    ],
-    "ttd-3": [
-      902,
-      756,
-      250,
-      92
-    ],
-    "baris-4": [
-      89,
-      848,
-      1063,
-      92
-    ],
-    "ttd-4": [
-      902,
-      848,
-      250,
-      92
-    ],
-    "baris-5": [
-      89,
-      940,
-      1063,
-      92
-    ],
-    "ttd-5": [
-      902,
-      940,
-      250,
-      92
-    ],
-    "baris-6": [
-      89,
-      1032,
-      1063,
-      92
-    ],
-    "ttd-6": [
-      902,
-      1032,
-      250,
-      92
-    ],
-    "baris-7": [
-      89,
-      1124,
-      1063,
-      92
-    ],
-    "ttd-7": [
-      902,
-      1124,
-      250,
-      92
-    ],
-    "baris-8": [
-      89,
-      1216,
-      1063,
-      92
-    ],
-    "ttd-8": [
-      902,
-      1216,
-      250,
-      92
-    ],
-    "total": [
-      88,
-      1331,
-      674,
-      82
-    ],
-    "blok-dpjp": [
-      792,
-      1331,
-      360,
-      157
-    ]
-  },
-  "caseId": "VA-AI-02",
-  "synthetic": true,
-  "overallStatus": "prioritas",
-  "checkResults": [
-    {
-      "check": "kualitas_scan",
-      "result": "tidak_ditemukan",
-      "strength": null
-    },
-    {
-      "check": "kecocokan_klaim",
-      "result": "tidak_ditemukan",
-      "strength": null
-    },
-    {
-      "check": "berkas_kembar",
-      "result": "tidak_ditemukan",
-      "strength": null
-    },
-    {
-      "check": "copy_paste",
-      "result": "indikasi",
-      "strength": "kuat"
-    },
-    {
-      "check": "tempelan",
-      "result": "tidak_ditemukan",
-      "strength": null
-    },
-    {
-      "check": "suntingan",
-      "result": "tidak_ditemukan",
-      "strength": null
-    },
-    {
-      "check": "tanda_ai",
-      "result": "indikasi",
-      "strength": "sedang"
-    }
-  ],
-  "topFindings": [
-    {
-      "cek": "copy_paste",
-      "kekuatan": "kuat",
-      "region": [
-        902,
-        572,
-        250,
-        736
-      ],
-      "kalimat": "Delapan tanda tangan pasien identik sampai tingkat piksel. Pola berulang ini perlu diperiksa pada berkas asal."
-    },
-    {
-      "cek": "tanda_ai",
-      "kekuatan": "sedang",
-      "region": null,
-      "kalimat": "Metadata mencantumkan Producer: Canva dan huruf menyerupai font komputer. Asal berkas perlu diverifikasi."
-    }
-  ],
-  "evidenceRegions": [
-    {
-      "check": "copy_paste",
-      "region": [
-        902,
-        572,
-        250,
-        736
-      ]
-    }
-  ],
-  "relatedCaseIds": [],
-  "recommendation": "telaah",
-  "participantConfirmation": null,
-  "auditTrail": [],
-  "fileHashes": {
-    "jpg": "d2d6705814e3fa3b4d81c21392a4a555c910c3ddcb9c9a40f71dfefc3093f4f7",
-    "pdf": "4c56694f74f1abaa0140c7accbd0d6ba1ed18d11c61d5f6db8948a54d4053d39"
+  {
+   "cek": "tanda_ai",
+   "kekuatan": "sedang",
+   "region": null,
+   "kalimat": "Berkas dibuat di aplikasi desain (Producer: Canva), bukan hasil pindai. Tulisan tangannya adalah huruf komputer."
   }
+ ],
+ "metadata_file": {
+  "Producer": "Canva",
+  "Creator": "Canva",
+  "Author": "Admin Rehab"
+ },
+ "pindai": {
+  "alat": "tidak ada, berkas digital"
+ },
+ "region_lembar": {
+  "kop": [
+   88,
+   70,
+   1064,
+   115
+  ],
+  "nama": [
+   268,
+   289,
+   213,
+   22
+  ],
+  "sep": [
+   831,
+   339,
+   196,
+   24
+  ],
+  "periode": [
+   831,
+   441,
+   144,
+   20
+  ],
+  "tabel": [
+   88,
+   537,
+   1064,
+   772
+  ],
+  "baris-1": [
+   89,
+   572,
+   1063,
+   92
+  ],
+  "ttd-1": [
+   902,
+   572,
+   250,
+   92
+  ],
+  "baris-2": [
+   89,
+   664,
+   1063,
+   92
+  ],
+  "ttd-2": [
+   902,
+   664,
+   250,
+   92
+  ],
+  "baris-3": [
+   89,
+   756,
+   1063,
+   92
+  ],
+  "ttd-3": [
+   902,
+   756,
+   250,
+   92
+  ],
+  "baris-4": [
+   89,
+   848,
+   1063,
+   92
+  ],
+  "ttd-4": [
+   902,
+   848,
+   250,
+   92
+  ],
+  "baris-5": [
+   89,
+   940,
+   1063,
+   92
+  ],
+  "ttd-5": [
+   902,
+   940,
+   250,
+   92
+  ],
+  "baris-6": [
+   89,
+   1032,
+   1063,
+   92
+  ],
+  "ttd-6": [
+   902,
+   1032,
+   250,
+   92
+  ],
+  "baris-7": [
+   89,
+   1124,
+   1063,
+   92
+  ],
+  "ttd-7": [
+   902,
+   1124,
+   250,
+   92
+  ],
+  "baris-8": [
+   89,
+   1216,
+   1063,
+   92
+  ],
+  "ttd-8": [
+   902,
+   1216,
+   250,
+   92
+  ],
+  "total": [
+   88,
+   1331,
+   674,
+   82
+  ],
+  "blok-dpjp": [
+   792,
+   1331,
+   360,
+   157
+  ]
+ }
 }

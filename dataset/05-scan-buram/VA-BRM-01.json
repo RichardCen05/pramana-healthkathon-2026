@@ -1,293 +1,221 @@
 {
-  "id": "VA-BRM-01",
-  "folder": "05-scan-buram",
-  "berkas": {
-    "jpg": "VA-BRM-01.jpg",
-    "pdf": "VA-BRM-01.pdf"
-  },
-  "ukuran": [
-    992,
-    1754
+ "id": "VA-BRM-01",
+ "folder": "05-scan-buram",
+ "berkas": {
+  "jpg": "VA-BRM-01.jpg",
+  "pdf": "VA-BRM-01.pdf"
+ },
+ "ukuran": [
+  992,
+  1754
+ ],
+ "demo": true,
+ "peran": "uji",
+ "label_diharapkan": "Scan ulang",
+ "ringkasan": "Buram, miring 4 derajat, dan kolom tanda tangan pasien terpotong di tepi kanan.",
+ "klaim": {
+  "sep": "0901R0140826V589920",
+  "peserta": "Dewi Lestari",
+  "no_kartu": "0001278853160",
+  "faskes": "RS Melati Sehat",
+  "kode_faskes": "0901R014",
+  "periode": "Agustus 2026",
+  "layanan": "Fisioterapi rawat jalan",
+  "sesi_ditagih": 8,
+  "tarif_per_sesi": 207300,
+  "nilai_klaim": 1658400,
+  "nilai_klaim_teks": "Rp1.658.400"
+ },
+ "isi_lembar": {
+  "nama": "Dewi Lestari",
+  "tanggal_lahir": "09-09-1962",
+  "no_rm": "00-40-9904",
+  "no_kartu": "0001278853160",
+  "no_sep": "0901R0140826V589920",
+  "diagnosis": "Sekuele stroke iskemik",
+  "icd10": "I69.4",
+  "dpjp": "dr. Ayu Prameswari, Sp.KFR",
+  "periode": "Agustus 2026",
+  "baris_terisi": 8,
+  "baris_asli": 8,
+  "tanggal_sesi": [
+   "03/08",
+   "06/08",
+   "10/08",
+   "13/08",
+   "17/08",
+   "20/08",
+   "24/08",
+   "27/08"
   ],
-  "demo": true,
-  "peran": "uji",
-  "label_diharapkan": "Scan ulang",
-  "ringkasan": "Buram, miring 4 derajat, dan kolom tanda tangan pasien terpotong di tepi kanan.",
-  "klaim": {
-    "sep": "0901R0140826V589920",
-    "peserta": "Dewi Lestari",
-    "no_kartu": "0001278853160",
-    "faskes": "RS Melati Sehat",
-    "kode_faskes": "0901R014",
-    "periode": "Agustus 2026",
-    "layanan": "Fisioterapi rawat jalan",
-    "sesi_ditagih": 8,
-    "tarif_per_sesi": 207300,
-    "nilai_klaim": 1658400,
-    "nilai_klaim_teks": "Rp1.658.400"
-  },
-  "isi_lembar": {
-    "nama": "Dewi Lestari",
-    "tanggal_lahir": "09-09-1962",
-    "no_rm": "00-40-9904",
-    "no_kartu": "0001278853160",
-    "no_sep": "0901R0140826V589920",
-    "diagnosis": "Sekuele stroke iskemik",
-    "icd10": "I69.4",
-    "dpjp": "dr. Ayu Prameswari, Sp.KFR",
-    "periode": "Agustus 2026",
-    "baris_terisi": 8,
-    "baris_asli": 8,
-    "tanggal_sesi": [
-      "03/08",
-      "06/08",
-      "10/08",
-      "13/08",
-      "17/08",
-      "20/08",
-      "24/08",
-      "27/08"
-    ],
-    "jumlah_kunjungan_tertulis": 8,
-    "kemiripan_ttd_rerata": 0.826
-  },
-  "kualitas_scan": {
-    "status": "scan_ulang",
-    "catatan": "Buram, miring 4.2 derajat, kolom tanda tangan pasien terpotong di tepi kanan."
-  },
-  "temuan": [
-    {
-      "cek": "kualitas_scan",
-      "kekuatan": "info",
-      "region": [
-        822,
-        560,
-        170,
-        860
-      ],
-      "kalimat": "Kolom tanda tangan pasien terpotong di tepi kanan dan tulisan buram. Minta rumah sakit memindai ulang."
-    }
-  ],
-  "metadata_file": {
-    "Producer": "Canon iR-ADV C3826 PDF",
-    "Creator": "Canon iR-ADV C3826"
-  },
-  "pindai": {
-    "alat": "buram",
-    "miring": 4.2,
-    "potongKanan": 0.2,
-    "blur": 2.4
-  },
-  "region_lembar": {
-    "kop": [
-      30,
-      33,
-      1070,
-      193
-    ],
-    "nama": [
-      225,
-      297,
-      191,
-      42
-    ],
-    "sep": [
-      795,
-      303,
-      263,
-      47
-    ],
-    "periode": [
-      802,
-      407,
-      159,
-      41
-    ],
-    "tabel": [
-      65,
-      507,
-      1118,
-      848
-    ],
-    "baris-1": [
-      69,
-      542,
-      1067,
-      170
-    ],
-    "ttd-1": [
-      879,
-      542,
-      256,
-      110
-    ],
-    "baris-2": [
-      75,
-      634,
-      1067,
-      170
-    ],
-    "ttd-2": [
-      886,
-      634,
-      256,
-      110
-    ],
-    "baris-3": [
-      82,
-      725,
-      1067,
-      170
-    ],
-    "ttd-3": [
-      893,
-      725,
-      256,
-      110
-    ],
-    "baris-4": [
-      89,
-      817,
-      1067,
-      170
-    ],
-    "ttd-4": [
-      900,
-      817,
-      256,
-      110
-    ],
-    "baris-5": [
-      96,
-      909,
-      1067,
-      170
-    ],
-    "ttd-5": [
-      906,
-      909,
-      256,
-      110
-    ],
-    "baris-6": [
-      102,
-      1001,
-      1067,
-      170
-    ],
-    "ttd-6": [
-      913,
-      1001,
-      256,
-      110
-    ],
-    "baris-7": [
-      109,
-      1092,
-      1067,
-      170
-    ],
-    "ttd-7": [
-      920,
-      1092,
-      256,
-      110
-    ],
-    "baris-8": [
-      116,
-      1184,
-      1067,
-      170
-    ],
-    "ttd-8": [
-      927,
-      1184,
-      256,
-      110
-    ],
-    "total": [
-      123,
-      1327,
-      678,
-      131
-    ],
-    "blok-dpjp": [
-      825,
-      1299,
-      371,
-      191
-    ]
-  },
-  "caseId": "VA-BRM-01",
-  "synthetic": true,
-  "overallStatus": "scan_ulang",
-  "checkResults": [
-    {
-      "check": "kualitas_scan",
-      "result": "indikasi",
-      "strength": "lemah"
-    },
-    {
-      "check": "kecocokan_klaim",
-      "result": "tidak_dapat_dinilai",
-      "strength": null
-    },
-    {
-      "check": "berkas_kembar",
-      "result": "tidak_dapat_dinilai",
-      "strength": null
-    },
-    {
-      "check": "copy_paste",
-      "result": "tidak_dapat_dinilai",
-      "strength": null
-    },
-    {
-      "check": "tempelan",
-      "result": "tidak_dapat_dinilai",
-      "strength": null
-    },
-    {
-      "check": "suntingan",
-      "result": "tidak_dapat_dinilai",
-      "strength": null
-    },
-    {
-      "check": "tanda_ai",
-      "result": "tidak_dapat_dinilai",
-      "strength": null
-    }
-  ],
-  "topFindings": [
-    {
-      "cek": "kualitas_scan",
-      "kekuatan": "info",
-      "region": [
-        822,
-        560,
-        170,
-        860
-      ],
-      "kalimat": "Kolom tanda tangan pasien terpotong di tepi kanan dan tulisan buram. Minta rumah sakit memindai ulang."
-    }
-  ],
-  "evidenceRegions": [
-    {
-      "check": "kualitas_scan",
-      "region": [
-        822,
-        560,
-        170,
-        860
-      ]
-    }
-  ],
-  "relatedCaseIds": [],
-  "recommendation": "scanUlang",
-  "participantConfirmation": null,
-  "auditTrail": [],
-  "fileHashes": {
-    "jpg": "576703d89033fdc1de8f766cf2b1e2a2d32a60a4eab9bb4d0ab80ff0a30145f8",
-    "pdf": "648a2832acdd3f64fb565b25484a79a03bf10c7f74b7e027c0aff08b6fe93e7e"
+  "jumlah_kunjungan_tertulis": 8,
+  "kemiripan_ttd_rerata": 0.826
+ },
+ "kualitas_scan": {
+  "status": "scan_ulang",
+  "catatan": "Buram, miring 4.2 derajat, kolom tanda tangan pasien terpotong di tepi kanan."
+ },
+ "temuan": [
+  {
+   "cek": "kualitas_scan",
+   "kekuatan": "info",
+   "region": [
+    822,
+    560,
+    170,
+    860
+   ],
+   "kalimat": "Kolom tanda tangan pasien terpotong di tepi kanan dan tulisan buram. Minta rumah sakit memindai ulang."
   }
+ ],
+ "metadata_file": {
+  "Producer": "Canon iR-ADV C3826 PDF",
+  "Creator": "Canon iR-ADV C3826"
+ },
+ "pindai": {
+  "alat": "buram",
+  "miring": 4.2,
+  "potongKanan": 0.2,
+  "blur": 2.4
+ },
+ "region_lembar": {
+  "kop": [
+   30,
+   33,
+   1070,
+   193
+  ],
+  "nama": [
+   225,
+   297,
+   191,
+   42
+  ],
+  "sep": [
+   795,
+   303,
+   263,
+   47
+  ],
+  "periode": [
+   802,
+   407,
+   159,
+   41
+  ],
+  "tabel": [
+   65,
+   507,
+   1118,
+   848
+  ],
+  "baris-1": [
+   69,
+   542,
+   1067,
+   170
+  ],
+  "ttd-1": [
+   879,
+   542,
+   256,
+   110
+  ],
+  "baris-2": [
+   75,
+   634,
+   1067,
+   170
+  ],
+  "ttd-2": [
+   886,
+   634,
+   256,
+   110
+  ],
+  "baris-3": [
+   82,
+   725,
+   1067,
+   170
+  ],
+  "ttd-3": [
+   893,
+   725,
+   256,
+   110
+  ],
+  "baris-4": [
+   89,
+   817,
+   1067,
+   170
+  ],
+  "ttd-4": [
+   900,
+   817,
+   256,
+   110
+  ],
+  "baris-5": [
+   96,
+   909,
+   1067,
+   170
+  ],
+  "ttd-5": [
+   906,
+   909,
+   256,
+   110
+  ],
+  "baris-6": [
+   102,
+   1001,
+   1067,
+   170
+  ],
+  "ttd-6": [
+   913,
+   1001,
+   256,
+   110
+  ],
+  "baris-7": [
+   109,
+   1092,
+   1067,
+   170
+  ],
+  "ttd-7": [
+   920,
+   1092,
+   256,
+   110
+  ],
+  "baris-8": [
+   116,
+   1184,
+   1067,
+   170
+  ],
+  "ttd-8": [
+   927,
+   1184,
+   256,
+   110
+  ],
+  "total": [
+   123,
+   1327,
+   678,
+   131
+  ],
+  "blok-dpjp": [
+   825,
+   1299,
+   371,
+   191
+  ]
+ }
 }
