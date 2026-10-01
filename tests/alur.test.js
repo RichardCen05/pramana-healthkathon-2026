@@ -112,6 +112,7 @@ async function tanpaGeserSamping(page, nama) {
   await page.waitForSelector('tr[data-id="VA-DST-01"]', { timeout: 20000 });
   cek((await labelBaris(page, "VA-DST-01")) === "Prioritas", "berkas dataset yang diunggah dikenali");
   cek((await page.locator('tr[data-id="VA-DST-01"]').innerText()).includes("RS Melati Sehat"), "berkas dataset memakai rumah sakit dari data klaim");
+  await page.waitForSelector(".proses .ringkas-hasil", { timeout: 20000 });
   await page.setInputFiles("#pilihBerkas", { name: "scan-lain.png", mimeType: "image/png", buffer: Buffer.from("89504e47", "hex") });
   await page.waitForSelector('#faskesUnggah[aria-invalid="true"]');
   cek((await page.$('tr[data-id="UNGGAH-01"]')) === null, "berkas luar meminta rumah sakit sebelum diproses");
