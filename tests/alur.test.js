@@ -104,14 +104,26 @@ async function tanpaGeserSamping(page, nama) {
   cek((await page.textContent(".saran h3")).includes("Minta scan ulang"), "saran untuk scan buram adalah minta scan ulang");
 
   console.log("\nUnggah berkas");
-  await page.goto(TARGET + "#/autentik");
+  await page.goto(TARGET + "#/beranda");
+  await page.click('[data-aksi="buka-antrean"][data-faskes="RS Melati Sehat"]');
+  cek((await page.inputValue("#faskesUnggah")) === "RS Melati Sehat", "rumah sakit dari dashboard terpilih saat membuka Autentik");
   await page.click('[data-aksi="ulang-demo"]');
   await page.setInputFiles("#pilihBerkas", path.join(DATASET, "03-angka-disunting", "VA-DST-01.pdf"));
   await page.waitForSelector('tr[data-id="VA-DST-01"]', { timeout: 20000 });
   cek((await labelBaris(page, "VA-DST-01")) === "Prioritas", "berkas dataset yang diunggah dikenali");
+  cek((await page.locator('tr[data-id="VA-DST-01"]').innerText()).includes("RS Melati Sehat"), "berkas dataset memakai rumah sakit dari data klaim");
+  await page.setInputFiles("#pilihBerkas", { name: "scan-lain.png", mimeType: "image/png", buffer: Buffer.from("89504e47", "hex") });
+  await page.waitForSelector('#faskesUnggah[aria-invalid="true"]');
+  cek((await page.$('tr[data-id="UNGGAH-01"]')) === null, "berkas luar meminta rumah sakit sebelum diproses");
+  await page.selectOption("#faskesUnggah", "RS Cipta Medika");
   await page.setInputFiles("#pilihBerkas", { name: "scan-lain.png", mimeType: "image/png", buffer: Buffer.from("89504e47", "hex") });
   await page.waitForSelector('tr[data-id="UNGGAH-01"]', { timeout: 20000 });
   cek((await labelBaris(page, "UNGGAH-01")) === "Perlu dicek", "berkas tak dikenal ditandai Perlu dicek, tidak pernah Lolos");
+  cek((await page.locator('tr[data-id="UNGGAH-01"]').innerText()).includes("RS Cipta Medika"), "berkas luar menampilkan rumah sakit yang dipilih");
+  await page.waitForSelector(".proses .ringkas-hasil", { timeout: 20000 });
+  await page.setInputFiles("#pilihBerkas", { name: "VA-ASL-01.pdf", mimeType: "application/pdf", buffer: Buffer.from("bukan berkas dataset") });
+  await page.waitForSelector('tr[data-id="UNGGAH-02"]', { timeout: 20000 });
+  cek((await labelBaris(page, "UNGGAH-02")) === "Perlu dicek", "nama berkas contoh palsu tidak mewarisi hasil pemeriksaan");
 
   console.log("\nLayar ponsel");
   await page.setViewportSize({ width: 390, height: 844 });

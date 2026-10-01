@@ -128,6 +128,8 @@ p { margin: 0; }
   display: grid; place-items: center; flex: none;
 }
 .merek-ikon svg { width: 20px; height: 20px; }
+.merek-ikon--veritas { background: #fff; border: 1px solid var(--border); }
+.merek-ikon--veritas img { display: block; width: 26px; height: 26px; }
 .merek b { display: block; font-size: 15px; font-weight: 800; letter-spacing: .04em; }
 .merek span { display: block; font-size: 11.5px; color: var(--muted-fg); }
 
@@ -138,6 +140,7 @@ p { margin: 0; }
   color: var(--fg-2); text-decoration: none; font-weight: 600; font-size: 13.5px; border: 0; background: none; text-align: left; width: 100%;
 }
 .nav a svg, .nav button svg { width: 18px; height: 18px; flex: none; color: var(--muted-fg); }
+.nav .nav-autentik img { display: block; width: 20px; height: 20px; flex: none; }
 .nav a:hover, .nav button:hover { background: oklch(94% .012 205); color: var(--fg); }
 .nav a[aria-current="page"] { background: var(--bg); color: var(--primary); box-shadow: var(--shadow); }
 .nav a[aria-current="page"] svg { color: var(--primary); }
@@ -275,6 +278,13 @@ table.tabel { width: 100%; border-collapse: collapse; font-size: 13px; }
 /* ---------- unggah dan demo ---------- */
 
 .unggah { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.3fr); margin-bottom: 20px; }
+.asal-unggah { display: grid; gap: 5px; margin: 16px 16px 0; }
+.asal-unggah label { font-size: 12.5px; font-weight: 700; }
+.asal-unggah label span { color: var(--muted-fg); font-weight: 400; }
+.asal-unggah select { width: 100%; min-height: 44px; border: 1px solid var(--border-strong); border-radius: var(--radius); padding: 0 10px; background: var(--bg); color: var(--fg); }
+.asal-unggah p { font-size: 11.5px; line-height: 1.4; color: var(--muted-fg); }
+.asal-unggah .galat { color: var(--prioritas-fg); }
+.unggah-manual .unggah-jatuh { margin-top: 12px; min-height: 170px; }
 .unggah-jatuh {
   margin: 16px; border: 1.5px dashed var(--border-strong); border-radius: var(--radius-panel); padding: 22px 18px;
   display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; gap: 8px;
