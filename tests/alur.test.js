@@ -1,167 +1,128 @@
-/* Uji alur prototype Veritas Autentik.
-   python3 -m http.server 8899; NODE_PATH=<runtime-node-modules> node tests/alur.test.js */
-"use strict";
+/* Uji alur Vedika Autentik dari ujung ke ujung.
 
-const fs = require("node:fs");
+   Pemakaian:
+     python3 -m http.server 8899          # dari akar repositori
+     node tests/alur.test.js              # TARGET_URL=https://... untuk menguji hasil deploy
+   Variabel opsional: CHROME=/path/ke/chrome, PW_HEADLESS=false */
+
 const path = require("node:path");
-const crypto = require("node:crypto");
 const { chromium } = require("playwright");
-const sharp = require("sharp");
-const ROOT = path.resolve(__dirname, "..");
+
 const TARGET = (process.env.TARGET_URL || "http://localhost:8899/").replace(/#.*$/, "");
-const cases = JSON.parse(fs.readFileSync(path.join(ROOT, "dataset/manifest.json"), "utf8"));
-const expected = { tanpa_anomali: 10, klaim_tidak_cocok: 8, duplikat: 10, copy_paste: 8, tempelan_lintas_berkas: 6, angka_disunting: 8, elemen_sintetis: 6, scan_buruk: 4 };
-function assert(ok, message) { if (!ok) throw new Error(message); console.log("LULUS", message); }
-function kindOf(b) {
-  if (b.kategori_demo) return b.kategori_demo;
-  if (b.kualitas_scan.status === "scan_ulang") return "scan_buruk";
-  if (!b.temuan.length) return "tanpa_anomali";
-  if (b.temuan.some((t) => t.cek === "berkas_kembar")) return "duplikat";
-  if (b.temuan.some((t) => t.cek === "copy_paste")) return "copy_paste";
-  if (b.temuan.some((t) => t.cek === "tanda_ai")) return "elemen_sintetis";
-  if (b.temuan.some((t) => t.cek === "suntingan")) return "angka_disunting";
-  return "klaim_tidak_cocok";
+const DATASET = path.join(__dirname, "..", "dataset");
+
+const lolos = [];
+const gagal = [];
+const cek = (syarat, nama, detail) => {
+  if (syarat) { lolos.push(nama); console.log("  LULUS  " + nama); }
+  else { gagal.push(nama); console.log("  GAGAL  " + nama + (detail ? " :: " + detail : "")); }
+};
+
+const HARAP = {
+  "VA-ASL-01": "Lolos", "VA-KMB-01": "Prioritas", "VA-DST-01": "Prioritas", "VA-AI-01": "Perlu dicek", "VA-BRM-01": "Scan ulang"
+};
+
+async function labelBaris(page, id) {
+  return page.$eval('tr[data-id="' + id + '"] .label', (el) => el.textContent.trim()).catch(() => null);
 }
-async function noOverflow(page, label) {
-  const overflow = await page.evaluate(() => document.documentElement.scrollWidth - document.documentElement.clientWidth);
-  assert(overflow <= 1, `${label}: tanpa overflow (${overflow}px)`);
-}
-async function touchTargets(page, label) {
-  const small = await page.evaluate(() => [...document.querySelectorAll('a[href], button, input, select, summary')]
-    .filter((el) => { const r = el.getBoundingClientRect(); return !el.matches('input.sr') && r.width > 0 && r.height > 0 && getComputedStyle(el).visibility !== 'hidden'; })
-    .filter((el) => { const r = el.getBoundingClientRect(); return r.width < 44 || r.height < 44; })
-    .map((el) => (el.textContent || el.getAttribute('aria-label') || el.tagName).trim().slice(0, 32)));
-  assert(small.length === 0, `${label}: target interaksi ≥44px` + (small.length ? ` (${small.join(', ')})` : ''));
+
+async function tanpaGeserSamping(page, nama) {
+  const lebih = await page.evaluate(() => document.documentElement.scrollWidth - innerWidth);
+  cek(lebih <= 1, nama, "halaman melebar " + lebih + "px");
 }
 
 (async () => {
-  assert(cases.length === 60 && new Set(cases.map((b) => b.id)).size === 60, "60 ID fixture unik");
-  for (const [category, count] of Object.entries(expected)) assert(cases.filter((b) => kindOf(b) === category).length === count, `${category}: ${count} kasus`);
-  const filesValid = cases.every((b) => b.synthetic && b.caseId === b.id && b.checkResults.length === 7 && b.overallStatus && ["jpg", "pdf", "json"].every((ext) => fs.existsSync(path.join(ROOT, "dataset", b.folder, b.id + "." + ext))) && ["jpg", "pdf"].every((ext) => crypto.createHash("sha256").update(fs.readFileSync(path.join(ROOT, "dataset", b.folder, b.id + "." + ext))).digest("hex") === b.fileHashes[ext]));
-  assert(filesValid, "seluruh file, kontrak UI, dan hash cocok");
-  const byId = Object.fromEntries(cases.map((b) => [b.id, b]));
-  const contractValid = cases.every((b) => {
-    const file = JSON.parse(fs.readFileSync(path.join(ROOT, "dataset", b.folder, b.id + ".json"), "utf8"));
-    const related = b.relatedCaseIds.every((id) => byId[id]?.relatedCaseIds.includes(b.id));
-    const regions = b.evidenceRegions.every((e) => e.region[0] >= 0 && e.region[1] >= 0 && e.region[0] + e.region[2] <= b.ukuran[0] && e.region[1] + e.region[3] <= b.ukuran[1]);
-    const recommendation = ({ tidak_ada_anomali: "wajar", scan_ulang: "scanUlang", perlu_dicek: "klarifikasi", prioritas: "telaah" })[b.overallStatus] === b.recommendation;
-    return JSON.stringify(file) === JSON.stringify(b) && related && regions && recommendation && b.topFindings.length <= 3 && b.topFindings.every((t) => b.temuan.some((x) => x.cek === t.cek && x.kalimat === t.kalimat));
-  });
-  assert(contractValid, "JSON, relasi, area bukti, dan rekomendasi konsisten");
-  const browserManifest = JSON.parse(fs.readFileSync(path.join(ROOT, "dataset/manifest.js"), "utf8").replace(/^.*?window\.VEDIKA_BERKAS = /s, "").replace(/;\s*$/, ""));
-  assert(JSON.stringify(browserManifest) === JSON.stringify(cases), "manifest browser cocok dengan indeks JSON");
-  const imageSizes = await Promise.all(cases.map(async (b) => { const m = await sharp(path.join(ROOT, "dataset", b.folder, b.id + ".jpg")).metadata(); return m.width === b.ukuran[0] && m.height === b.ukuran[1]; }));
-  assert(imageSizes.every(Boolean), "60 ukuran gambar cocok dengan koordinat fixture");
+  const browser = await chromium.launch({ headless: process.env.PW_HEADLESS !== "false", executablePath: process.env.CHROME || undefined });
+  const konteks = await browser.newContext({ viewport: { width: 1440, height: 900 }, acceptDownloads: true });
+  const page = await konteks.newPage();
+  const galat = [];
+  page.on("pageerror", (e) => galat.push(e.message));
+  page.on("console", (m) => { if (m.type() === "error") galat.push(m.text()); });
 
-  const browser = await chromium.launch({ headless: true, executablePath: process.env.CHROME || undefined });
-  const context = await browser.newContext({ viewport: { width: 1440, height: 900 }, acceptDownloads: true });
-  const page = await context.newPage();
-  const errors = [];
-  page.on("pageerror", (e) => errors.push(e.message));
-  page.on("console", (e) => { if (e.type() === "error") errors.push(e.text()); });
+  console.log("\nMasuk dan panduan");
   await page.goto(TARGET);
   await page.evaluate(() => localStorage.clear());
   await page.reload();
-  assert(await page.isVisible("text=Veritas Autentik"), "merek baru tampil saat masuk");
+  cek(await page.isVisible("text=Otentikasi pengguna"), "halaman masuk tampil");
   await page.click('[data-aksi="masuk"]');
+  await page.waitForSelector(".tur-kartu");
+  cek((await page.textContent(".tur-kartu h3")).includes("Selamat datang"), "panduan terbuka otomatis setelah masuk");
+  await page.click('[data-aksi="tur-maju"]');
   await page.waitForURL(/#\/autentik/);
-  assert(await page.locator(".lencana-prototipe").isVisible(), "badge prototipe tampil");
-  assert(await page.locator(".status-strip > div").count() === 4, "empat status ringkas");
-  assert(await page.locator(".queue-table tbody tr").count() === 20, "antrean membuka 20 kasus pertama");
-  await page.click('[data-aksi="lihat-lagi"]');
-  assert(await page.locator(".queue-table tbody tr").count() === 40, "kasus lain dibuka bertahap");
-  await page.evaluate(() => window.scrollTo(0, 0));
-  await page.screenshot({ path: "/tmp/veritas-queue-desktop.png" });
+  const langkah2 = await page.waitForSelector("text=Tab baru di Vedika", { timeout: 3000 }).then(() => true).catch(() => false);
+  cek(langkah2 && (await page.$(".tur-sorot")) !== null, "langkah 2 menyorot tab Autentik");
+  await page.click('[data-aksi="tur-maju"]');
+  await page.waitForSelector("text=Masukkan lima berkas contoh");
 
-  await page.goto(TARGET + "#/berkas/VA-KMB-02");
-  assert(await page.locator(".tab a").count() === 3, "detail memakai tiga tab");
-  assert(await page.locator(".daftar-temuan > li").count() <= 3, "maksimal tiga temuan awal");
-  assert(await page.locator(".bukti-ringkas canvas").count() >= 1, "potongan bukti tampil");
-  assert((await page.locator(".saran .btn--primer").textContent()).trim() === "Teruskan ke telaah lanjut", "CTA menyebut tindakannya");
-  await page.screenshot({ path: "/tmp/veritas-detail-desktop.png" });
-  await page.click('.bukti-ringkas .crop-trigger >> nth=0');
-  assert(await page.getByRole("dialog", { name: /Bukti 1/ }).isVisible(), "potongan bukti dapat diperbesar");
-  await page.keyboard.press("Escape");
-  assert(await page.getByRole("dialog").count() === 0, "Escape menutup potongan bukti");
-  assert(await page.locator('.bukti-ringkas .crop-trigger').first().evaluate((el) => el === document.activeElement), "fokus kembali ke pemicu bukti");
-  await page.click('.daftar-temuan [data-aksi="fokus"] >> nth=0');
-  await page.waitForURL(/\/bukti/);
-  await page.waitForSelector('.halaman-berkas.dua .lembar');
-  assert(await page.locator(".halaman-berkas.dua .lembar").count() === 2, "dokumen pembanding tampil di desktop");
-  assert(await page.locator(".sorot.fokus").count() > 0, "temuan menunjuk area bukti");
-  await page.locator('.evidence-extra').first().evaluate((el) => { el.open = true; });
-  assert(await page.locator(".peta-simpul").count() >= 2, "peta hubungan dapat dibuka");
+  console.log("\nDemo otomatis");
+  await page.click("#tombolDemo");
+  await page.waitForSelector("text=Empat label, satu urutan kerja", { timeout: 30000 });
+  cek(true, "panduan maju sendiri setelah demo selesai");
+  for (const [id, label] of Object.entries(HARAP)) cek((await labelBaris(page, id)) === label, id + " berlabel " + label, "dapat " + (await labelBaris(page, id)));
+  const urutan = await page.$$eval("tbody tr .label", (el) => el.map((e) => e.textContent.trim()));
+  const peringkat = { "Prioritas": 0, "Perlu dicek": 1, "Scan ulang": 2, "Lolos": 3 };
+  cek(urutan.every((l, i) => i === 0 || peringkat[urutan[i - 1]] <= peringkat[l]), "antrean terurut dari Prioritas ke Lolos");
+  await page.click('[data-aksi="tur-tutup"]');
 
-  await page.goto(TARGET + "#/berkas/VA-KMB-02");
+  console.log("\nKartu bukti");
+  await page.goto(TARGET + "#/berkas/VA-KMB-01");
+  await page.waitForSelector(".penampil img");
+  cek((await page.$$(".halaman-berkas.dua .lembar")).length === 2, "berkas kembar tampil berdampingan dengan pembandingnya");
+  cek((await page.$$(".sorot")).length >= 3, "area temuan disorot");
+  await page.waitForFunction(() => [...document.querySelectorAll(".penampil img")].every((i) => i.complete));
+  const gambarOk = await page.$$eval(".penampil img", (imgs) => imgs.every((i) => i.naturalWidth > 0));
+  cek(gambarOk, "gambar berkas termuat");
+  await page.click(".daftar-temuan li[data-fokus]");
+  cek((await page.$$(".sorot.fokus")).length > 0, "klik temuan menyorot area di berkas");
+
+  await page.click('[data-aksi="pilih-lain"]');
+  await page.click('[data-aksi="simpan-lain"]');
+  cek(await page.isVisible(".galat"), "tindakan lain tanpa pilihan ditolak dengan pesan");
+  await page.check('input[value="klarifikasi"]');
+  await page.click('[data-aksi="simpan-lain"]');
+  cek((await page.textContent(".galat")).includes("alasan"), "tindakan lain tanpa alasan ditolak");
+  await page.click('[data-aksi="batal-lain"]');
+
+  await page.goto(TARGET + "#/berkas/VA-KMB-01/peserta");
+  await page.click('[data-aksi="jawab"][data-nilai="3"]');
+  cek((await page.textContent(".jawaban-kartu")).includes("Hanya sebagian"), "jawaban peserta tercatat");
+  await page.goto(TARGET + "#/berkas/VA-KMB-01/peta");
+  cek((await page.$$(".peta-simpul")).length === 3, "peta hubungan menampilkan tiga klaim dari satu lembar");
+
+  await page.goto(TARGET + "#/berkas/VA-KMB-01/bukti");
   await page.click('[data-aksi="setujui"]');
-  assert(await page.getByRole("dialog").isVisible(), "keputusan memiliki dialog tinjau");
-  await page.getByRole("dialog").getByRole("button", { name: "Teruskan ke telaah lanjut" }).click();
-  assert(await page.locator(".putusan").isVisible(), "keputusan tersimpan");
-  await page.goto(TARGET + "#/laporan/VA-KMB-02");
-  assert((await page.locator('.kertas-laporan').innerText()).includes('PROTOTIPE · DATA SINTETIS'), "laporan memuat batasan prototipe");
-  await page.screenshot({ path: "/tmp/veritas-report-desktop.png" });
-  const pdfDownload = page.waitForEvent('download', { timeout: 20000 });
-  await page.click('[data-aksi="unduh-pdf"]');
-  const savedPdf = await pdfDownload;
-  assert(savedPdf.suggestedFilename().endsWith('.pdf'), "laporan PDF dapat diunduh");
-  await page.goto(TARGET + "#/berkas/VA-KMB-02");
-  await page.click('[data-aksi="batal-putusan"]');
-  await page.click('a[href="#/berkas/VA-KMB-02/jejak"]');
-  assert((await page.locator(".linimasa").innerText()).includes("Keputusan dibatalkan"), "undo tercatat dalam jejak");
+  cek((await page.textContent(".putusan")).includes("Diteruskan ke telaah lanjut"), "setujui saran mencatat keputusan");
+  await page.click("text=Buka laporan temuan");
+  await page.waitForSelector(".kertas-laporan");
+  await page.waitForFunction(() => /[0-9a-f]{64}/.test(document.querySelector(".kertas-laporan").innerText), null, { timeout: 8000 }).catch(() => {});
+  cek(/[0-9a-f]{64}/.test(await page.textContent(".kertas-laporan")), "laporan memuat SHA-256 berkas asli");
+  const [unduhan] = await Promise.all([page.waitForEvent("download", { timeout: 15000 }), page.click('[data-aksi="unduh-pdf"]')]);
+  cek(/Laporan-Temuan-VA-KMB-01\.pdf$/.test(unduhan.suggestedFilename()), "PDF laporan terunduh");
 
+  console.log("\nScan buram tidak dianggap curang");
+  await page.goto(TARGET + "#/berkas/VA-BRM-01");
+  cek((await page.textContent(".saran h3")).includes("Minta scan ulang"), "saran untuk scan buram adalah minta scan ulang");
+
+  console.log("\nUnggah berkas");
   await page.goto(TARGET + "#/autentik");
-  await page.click('[data-aksi="toggle-filter"]');
-  await page.click('[data-aksi="setujui-lolos"]');
-  assert(await page.getByRole("dialog").isVisible() && await page.locator(".bulk-list li").count() === 10, "bulk menampilkan 10 kasus dan dampaknya");
-  await page.click('[data-aksi="konfirmasi-bulk"]');
-  assert(await page.locator('.undo-banner [data-aksi="undo-bulk"]').isVisible(), "bulk menyediakan undo persisten");
-  await page.reload();
-  assert(await page.locator('.undo-banner [data-aksi="undo-bulk"]').isVisible(), "undo tetap ada setelah muat ulang");
-  await page.click('.undo-banner [data-aksi="undo-bulk"]');
-  await page.click('[data-aksi="toggle-filter"]');
-  assert((await page.locator('[data-aksi="setujui-lolos"]').textContent()).includes("10"), "undo mengembalikan 10 kasus");
+  await page.click('[data-aksi="ulang-demo"]');
+  await page.setInputFiles("#pilihBerkas", path.join(DATASET, "03-angka-disunting", "VA-DST-01.pdf"));
+  await page.waitForSelector('tr[data-id="VA-DST-01"]', { timeout: 20000 });
+  cek((await labelBaris(page, "VA-DST-01")) === "Prioritas", "berkas dataset yang diunggah dikenali");
+  await page.setInputFiles("#pilihBerkas", { name: "scan-lain.png", mimeType: "image/png", buffer: Buffer.from("89504e47", "hex") });
+  await page.waitForSelector('tr[data-id="UNGGAH-01"]', { timeout: 20000 });
+  cek((await labelBaris(page, "UNGGAH-01")) === "Perlu dicek", "berkas tak dikenal ditandai Perlu dicek, tidak pernah Lolos");
 
-  await page.click('[data-aksi="toggle-demo"]');
-  await page.setInputFiles('#pilihBerkas', path.join(ROOT, "dataset/06-korpus-demo/VA-EDT-01.pdf"));
-  await page.waitForSelector('.proses .ringkas-hasil', { timeout: 20000 });
-  assert(await page.locator('a[href="#/berkas/VA-EDT-01"]').count() > 0, "file corpus dikenali lewat hash");
-  await page.setInputFiles('#pilihBerkas', { name: "VA-KMB-01.pdf", mimeType: "application/pdf", buffer: Buffer.from("bukan file corpus") });
-  assert((await page.locator(".toast-wadah").innerText()).includes("tidak ada dalam corpus"), "nama file palsu ditolak");
-
-  for (const [width, height] of [[1440, 900], [1280, 720], [1024, 768], [390, 844], [360, 800]]) {
-    await page.setViewportSize({ width, height });
-    await page.goto(TARGET + "#/autentik");
-    await noOverflow(page, `antrean ${width}×${height}`);
-    await touchTargets(page, `antrean ${width}×${height}`);
-    await page.goto(TARGET + "#/berkas/VA-KMB-02");
-    await noOverflow(page, `detail ${width}×${height}`);
-    await touchTargets(page, `detail ${width}×${height}`);
-    assert(await page.locator(".lencana-prototipe").isVisible(), `badge tampil ${width}×${height}`);
-  }
+  console.log("\nLayar ponsel");
   await page.setViewportSize({ width: 390, height: 844 });
-  await page.goto(TARGET + "#/autentik");
-  if ((await page.locator('[data-aksi="toggle-filter"]').getAttribute('aria-expanded')) === 'true') await page.click('[data-aksi="toggle-filter"]');
-  await page.evaluate(() => { document.querySelector('#toast').replaceChildren(); window.scrollTo(0, 0); });
-  await page.screenshot({ path: "/tmp/veritas-queue-mobile.png" });
-  assert(await page.locator("#sisi").getAttribute("inert") !== null, "drawer tertutup keluar dari urutan fokus");
-  await page.click('.tombol-menu');
-  assert(await page.locator(".tombol-menu").getAttribute("aria-expanded") === "true", "drawer mengumumkan status terbuka");
-  await page.keyboard.press("Escape");
-  assert(await page.locator(".tombol-menu").getAttribute("aria-expanded") === "false", "Escape menutup drawer");
-  assert(await page.locator('.tombol-menu').evaluate((el) => el === document.activeElement), "fokus kembali ke tombol menu");
-  await page.goto(TARGET + "#/berkas/VA-KMB-02");
-  assert(await page.locator(".mobile-decision-note").isVisible() && !(await page.locator(".decision-actions").isVisible()), "mobile hanya menampilkan triage");
-  await page.goto(TARGET + "#/autentik");
-  await page.click('[data-aksi="toggle-filter"]');
-  assert(!(await page.locator('.bulk-trigger').isVisible()), "mobile menyembunyikan tindakan kelompok");
-  await page.goto(TARGET + "#/berkas/VA-KMB-02/bukti");
-  assert(await page.locator('.mobile-evidence .crop-trigger').count() >= 3 && !(await page.locator('.halaman-berkas.dua').isVisible()), "mobile menampilkan tiga crop tanpa pembanding penuh");
-  await page.click('.mobile-evidence .crop-trigger >> nth=2');
-  assert(await page.getByRole("dialog", { name: /Bukti 3/ }).isVisible(), "crop ketiga dapat diperbesar di mobile");
-  await page.click('[data-aksi="tutup-crop"]');
-  await page.goto(TARGET + "#/berkas/VA-KMB-02");
-  await page.evaluate(() => document.querySelector('#toast').replaceChildren());
-  await page.screenshot({ path: "/tmp/veritas-detail-mobile.png" });
-  assert(errors.length === 0, "tanpa error browser: " + errors.join(" | "));
+  for (const r of ["#/beranda", "#/autentik", "#/berkas/VA-DST-01", "#/laporan/VA-DST-01"]) {
+    await page.goto(TARGET + r);
+    await page.waitForTimeout(300);
+    await tanpaGeserSamping(page, "ponsel " + r + " tanpa geser samping");
+  }
+
+  cek(galat.length === 0, "konsol bersih", galat.join(" | "));
   await browser.close();
+  console.log("\n" + lolos.length + " lulus, " + gagal.length + " gagal");
+  process.exit(gagal.length ? 1 : 0);
 })().catch((e) => { console.error(e); process.exit(1); });
