@@ -24,7 +24,7 @@ Vedika Autentik adalah tab baru di aplikasi verifikasi klaim BPJS Kesehatan. Tab
 3. Buka salah satu berkas. Kartu bukti menampilkan area yang disorot, temuan beserta kekuatannya, dan langkah yang disarankan. Tekan **Setujui saran**, atau pilih tindakan lain dengan alasan tertulis.
 4. Untuk berkas Prioritas, buka **Konfirmasi peserta** dan simulasikan jawaban lewat PANDAWA. Setelah diteruskan ke telaah lanjut, **laporan temuan** bisa diunduh sebagai PDF.
 
-Berkas di folder `dataset/` juga bisa diseret langsung ke kotak unggah. Berkas lain ditandai Perlu dicek, karena sistem tidak pernah memberi label Lolos pada berkas yang gagal diproses.
+Berkas di folder `dataset/` juga bisa diseret langsung ke kotak unggah; rumah sakitnya mengikuti data klaim contoh. Untuk berkas di luar dataset, pilih rumah sakit pengirim dari daftar dashboard sebelum unggah. Pilihan manual ini hanya konteks demo, bukan verifikasi asal dokumen. Berkas luar ditandai Perlu dicek, karena sistem tidak pernah memberi label Lolos pada berkas yang gagal diproses.
 
 ## Aturan label
 

@@ -50,6 +50,7 @@
     kaca: '<circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/><path d="M11 8v6"/><path d="M8 11h6"/>'
   };
   const ikon = (n) => '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">' + IKON[n] + "</svg>";
+  const logoVeritas = '<img src="assets/veritas-mark.svg" alt="" aria-hidden="true">';
 
   const labelChip = (kunci, besar) => '<span class="label label--' + kunci + (besar ? " label--besar" : "") + '">' + D.LABEL[kunci].nama + "</span>";
 
@@ -86,6 +87,7 @@
   /* Status tampilan yang tidak perlu bertahan setelah halaman dimuat ulang. */
   const ui = {
     filter: "semua", faskes: "", q: "",
+    asalUnggah: "", asalError: false, unggahMemeriksa: false,
     sorot: true, perbesar: false, fokus: null,
     pilihLain: false, tindakanLain: null, catatan: null, galat: "",
     proses: null, menuBuka: false, hash: {}, luarUrut: 0
@@ -114,7 +116,7 @@
           '<a href="#/beranda"' + aktif("beranda") + ">" + ikon("rumah") + "Beranda</a>" +
           '<span class="nav-judul kapital">Verifikasi</span>' +
           '<button class="mati" type="button" aria-disabled="true" title="Menu Vedika yang sudah ada, tidak termasuk prototipe">' + ikon("berkas") + "Verifikasi klaim<small>Sudah ada</small></button>" +
-          '<a class="nav-autentik" href="#/autentik"' + aktif("autentik") + ">" + ikon("perisai") + "Autentik" +
+          '<a class="nav-autentik" href="#/autentik"' + aktif("autentik") + ">" + logoVeritas + "Autentik" +
             (prioritasBaru ? '<span class="lencana" title="Berkas Prioritas yang belum diputuskan">' + prioritasBaru + "</span>" : '<span class="lencana lencana--halus">Baru</span>') + "</a>" +
           '<a href="#/riwayat"' + aktif("riwayat") + ">" + ikon("riwayat") + "Riwayat keputusan</a>" +
         "</nav>" +
@@ -169,7 +171,7 @@
     }).join("");
 
     return '<div class="kepala"><div><h1>Beranda</h1><p>' + D.HARI_INI + " · " + D.VERIFIKATOR.kantor + "</p></div></div>" +
-      '<div class="pengumuman"><span class="merek-ikon">' + ikon("perisai") + "</span>" +
+      '<div class="pengumuman"><span class="merek-ikon merek-ikon--veritas">' + logoVeritas + "</span>" +
         "<div><b>Autentik sekarang aktif untuk klaim fisioterapi</b><p>Setiap berkas yang masuk ke JKN Drive diperiksa keasliannya lebih dulu. Hasilnya muncul sebagai label di antrean Anda. Keputusan tetap di tangan Anda.</p></div>" +
         '<a class="btn btn--primer" href="#/autentik">Buka Autentik</a></div>' +
       '<section class="panel"><div class="panel-kepala"><h2>Klaim fisioterapi masuk, 7 hari terakhir</h2><span class="kanan redup">Batas verifikasi 10 hari kerja</span></div>' +
@@ -216,10 +218,17 @@
     const semuaAda = D.DEMO.every((d) => diAntrean(d.id));
 
     return '<section class="panel unggah" id="panelUnggah">' +
+      '<div class="unggah-manual"><div class="asal-unggah">' +
+        '<label for="faskesUnggah">Rumah sakit pengirim <span>untuk berkas di luar dataset</span></label>' +
+        '<select id="faskesUnggah" data-aksi="asal-unggah" aria-describedby="asalUnggahBantu"' + (ui.asalError ? ' aria-invalid="true"' : '') + '>' +
+          '<option value="">Pilih rumah sakit</option>' + D.BATCH.map((r) => '<option value="' + esc(r.faskes) + '"' + (ui.asalUnggah === r.faskes ? ' selected' : '') + '>' + esc(r.faskes) + '</option>').join("") + '</select>' +
+        '<p id="asalUnggahBantu">Berkas contoh memakai rumah sakit dari data klaim. Pilihan manual bukan bukti asal dokumen.</p>' +
+        (ui.asalError ? '<p class="galat" role="alert">Pilih rumah sakit sebelum mengunggah berkas di luar dataset.</p>' : '') +
+      '</div>' +
       '<label class="unggah-jatuh" id="jatuh" for="pilihBerkas">' + ikon("unggah") +
         "<b>Tarik berkas klaim ke sini</b><p>PDF, JPG, atau PNG. Berkas dari folder dataset langsung dikenali. Di produksi, berkas diambil otomatis dari JKN Drive.</p>" +
         '<span class="btn btn--kecil">Pilih berkas</span>' +
-        '<input class="sr" type="file" id="pilihBerkas" accept=".pdf,.jpg,.jpeg,.png" multiple></label>' +
+        '<input class="sr" type="file" id="pilihBerkas" accept=".pdf,.jpg,.jpeg,.png" multiple></label></div>' +
       '<div class="unggah-demo">' +
         '<div class="unggah-demo-kepala"><div><b>Coba lima berkas contoh</b><p>Satu berkas untuk setiap jenis hasil. Klik satu kartu, atau masukkan kelimanya sekaligus.</p></div>' +
           '<button class="btn btn--primer" type="button" id="tombolDemo" data-aksi="demo"' + (jalan ? " disabled" : "") + ">" + ikon("main") + (semuaAda ? "Jalankan ulang demo" : "Jalankan demo") + "</button></div>" +
@@ -252,7 +261,7 @@
       const hasil = kelas === "menunggu" ? "" : kelas === "jalan" ? "Memeriksa…" : esc(l.hasil);
       return '<li class="' + kelas + '"><span class="ikon">' + tanda + "</span><b>" + l.nama + '</b><span class="hasil">' + hasil + "</span></li>";
     }).join("");
-    const judul = "Memeriksa " + b.klaim.peserta + " · " + b.id;
+    const judul = "Memeriksa " + b.klaim.peserta + " · " + b.klaim.faskes + " · " + b.id;
     return '<div class="proses" id="proses" aria-live="polite"><div class="proses-antre"><span class="kapital">Berkas masuk</span>' + antre + "</div>" +
       '<div><p style="font-weight:700;margin-bottom:8px">' + esc(judul) + '</p><ol class="langkah">' + langkah + "</ol></div></div>";
   }
@@ -442,7 +451,7 @@
     const a = S.antrean.find((x) => x.id === id);
     const kepala = '<div class="berkas-kepala"><div>' +
       '<div class="berkas-judul">' + labelChip(b.label, true) + "<h1>" + esc(b.klaim.peserta) + '</h1><span class="mono redup">' + b.id + "</span></div>" +
-      '<div class="berkas-meta"><span><b>SEP</b><span class="mono">' + esc(b.klaim.sep) + "</span></span><span><b>Rumah sakit</b>" + esc(b.klaim.faskes) + "</span>" +
+      '<div class="berkas-meta"><span><b>SEP</b><span class="mono">' + esc(b.klaim.sep) + "</span></span><span><b>Rumah sakit</b>" + esc(b.klaim.faskes) + (b.luar ? ' <small class="redup">(dipilih saat unggah)</small>' : '') + "</span>" +
         "<span><b>Periode</b>" + esc(b.klaim.periode) + "</span><span><b>Nilai klaim</b>" + (b.klaim.nilai_klaim ? rp(b.klaim.nilai_klaim) : "–") + "</span>" +
         "<span><b>Masuk</b>" + a.tanggal + ", " + a.jam + "</span></div>" +
       '<p class="berkas-alasan">' + esc(b.ringkasan) + "</p></div></div>";
@@ -509,7 +518,7 @@
     const jawab = S.jawaban[b.id];
     const langkah = D.langkah(b);
     const item = [
-      { waktu: a.jam, judul: "Diunggah rumah sakit ke JKN Drive", teks: b.klaim.faskes + " · " + (b.berkas ? b.berkas.pdf : b.nama) },
+      { waktu: a.jam, judul: b.luar ? "Diunggah manual untuk demo" : "Diunggah rumah sakit ke JKN Drive", teks: b.klaim.faskes + (b.luar ? " (dipilih saat unggah)" : "") + " · " + (b.berkas ? b.berkas.pdf : b.nama) },
       { waktu: a.jam, judul: "Diperiksa Vedika Autentik", teks: langkah.length + " langkah selesai. Label " + D.LABEL[b.label].nama + ". " + (b.temuan.length ? b.temuan.length + " temuan." : "Tanpa temuan.") }
     ];
     if (b.label === "prioritas") {
@@ -547,7 +556,7 @@
         '<button class="btn btn--primer" type="button" data-aksi="unduh-pdf" data-id="' + id + '">' + ikon("unduh") + "Unduh PDF</button>" +
         '<button class="btn" type="button" data-aksi="cetak">' + ikon("cetak") + "Cetak</button></div>" +
       '<article class="kertas-laporan">' +
-        '<header><span class="merek-ikon">' + ikon("perisai") + "</span><div><b>VEDIKA AUTENTIK</b><span>" + D.VERIFIKATOR.kantor + ' · Tim Pencegahan Kecurangan JKN</span></div><div class="kanan"><span>' + D.HARI_INI + "</span></div></header>" +
+        '<header><span class="merek-ikon merek-ikon--veritas">' + logoVeritas + "</span><div><b>VEDIKA AUTENTIK</b><span>" + D.VERIFIKATOR.kantor + ' · Tim Pencegahan Kecurangan JKN</span></div><div class="kanan"><span>' + D.HARI_INI + "</span></div></header>" +
         "<h2>LAPORAN TEMUAN KEASLIAN BERKAS KLAIM</h2>" +
         '<p class="nomor-laporan">Nomor ' + nomorLaporan(b) + (k ? "" : " · DRAF, belum ada keputusan verifikator") + "</p>" +
         "<h3>Identitas klaim</h3><dl>" +
@@ -726,14 +735,14 @@
   }
 
   /* Berkas di luar dataset tidak bisa dinilai prototipe: gagal-aman menjadi Perlu dicek. */
-  function berkasLuar(file) {
+  function berkasLuar(file, asal) {
     ui.luarUrut += 1;
     const id = "UNGGAH-" + String(ui.luarUrut).padStart(2, "0");
     const gambarUrl = /^image\//.test(file.type) ? URL.createObjectURL(file) : null;
     const b = {
       id: id, luar: true, nama: file.name, jpg: gambarUrl, pdf: null, ukuran: [1240, 1754],
       berkas: { pdf: file.name }, ringkasan: "Prototipe hanya mengenali berkas dari folder dataset. Berkas lain tidak pernah diberi label Lolos.",
-      klaim: { peserta: file.name.replace(/\.[^.]+$/, ""), sep: "Tidak terbaca", faskes: "Tidak diketahui", periode: "–", sesi_ditagih: 0, nilai_klaim: 0, no_kartu: "–", kode_faskes: "–", layanan: "Fisioterapi rawat jalan" },
+      klaim: { peserta: file.name.replace(/\.[^.]+$/, ""), sep: "Tidak terbaca", faskes: asal.faskes, periode: "–", sesi_ditagih: 0, nilai_klaim: 0, no_kartu: "–", kode_faskes: asal.kode, layanan: "Fisioterapi rawat jalan" },
       isi_lembar: null, kualitas_scan: { status: "baik", catatan: "Berkas diterima." },
       temuan: [{ cek: "kualitas_scan", kekuatan: "info", region: null, kalimat: "Isi berkas tidak bisa dibaca oleh prototipe. Sesuai prinsip gagal-aman, berkas yang gagal diproses ditandai Perlu dicek." }],
       metadata_file: { Creator: file.type || "tidak diketahui" }
@@ -743,13 +752,45 @@
     return id;
   }
 
-  function terimaBerkas(files) {
-    const ids = [];
-    [...files].forEach((f) => {
-      const cocok = f.name.toUpperCase().match(/VA-(ASL|KMB|DST|AI|BRM)-\d{2}/);
-      ids.push(cocok && berkas(cocok[0]) ? cocok[0] : berkasLuar(f));
-    });
-    if (ids.length) jalankan([...new Set(ids)]);
+  async function idDataset(file) {
+    const cocok = /^((?:VA-(?:ASL|KMB|DST|AI|BRM)-\d{2}))\.(PDF|JPG|JPEG|PNG)$/i.exec(file.name);
+    if (!cocok) return null;
+    const id = cocok[1].toUpperCase(), contoh = berkas(id);
+    if (!contoh || contoh.luar) return null;
+    const ekstensi = cocok[2].toLowerCase() === "jpeg" ? "jpg" : cocok[2].toLowerCase();
+    try {
+      const respons = await fetch("dataset/" + contoh.folder + "/" + id + "." + ekstensi);
+      if (!respons.ok) return null;
+      const [asli, unggahan] = await Promise.all([respons.arrayBuffer(), file.arrayBuffer()]);
+      if (asli.byteLength !== unggahan.byteLength) return null;
+      const a = new Uint8Array(asli), b = new Uint8Array(unggahan);
+      return a.every((nilai, i) => nilai === b[i]) ? id : null;
+    } catch (e) { return null; }
+  }
+
+  async function terimaBerkas(files) {
+    const daftar = [...files];
+    if (!daftar.length) return;
+    if (ui.unggahMemeriksa || (ui.proses && !ui.proses.selesai)) {
+      toast("Tunggu pemeriksaan sebelumnya selesai, lalu unggah berkas berikutnya.");
+      return;
+    }
+    ui.unggahMemeriksa = true;
+    const asalDipilih = ui.asalUnggah;
+    try {
+      toast("Mencocokkan berkas dengan data contoh…");
+      const dikenal = await Promise.all(daftar.map(idDataset));
+      const asal = D.BATCH.find((r) => r.faskes === asalDipilih);
+      if (dikenal.some((id) => !id) && !asal) {
+        ui.asalError = true;
+        gambar(true);
+        document.querySelector("#faskesUnggah")?.focus();
+        return;
+      }
+      ui.asalError = false;
+      const ids = daftar.map((file, i) => dikenal[i] || berkasLuar(file, asal));
+      jalankan([...new Set(ids)]);
+    } finally { ui.unggahMemeriksa = false; }
   }
 
   /* ============================================================== keputusan */
@@ -922,6 +963,7 @@
     "buka-antrean"(el) {
       const ada = S.antrean.some((a) => berkas(a.id).klaim.faskes === el.dataset.faskes);
       ui.faskes = ada ? el.dataset.faskes : "";
+      ui.asalUnggah = el.dataset.faskes;
       if (!ada) toast("Belum ada berkas Autentik dari " + el.dataset.faskes + " di antrean demo.");
       ke("#/autentik");
     },
@@ -960,7 +1002,7 @@
     "ulang-demo"() {
       const tetapMasuk = S.masuk;
       S = statusAwal(); S.masuk = tetapMasuk; S.turSelesai = true;
-      ui.proses = null; ui.filter = "semua"; ui.faskes = ""; ui.q = ""; ui.fokus = null; ui.pilihLain = false; ui.catatan = null;
+      ui.proses = null; ui.filter = "semua"; ui.faskes = ""; ui.q = ""; ui.asalUnggah = ""; ui.asalError = false; ui.fokus = null; ui.pilihLain = false; ui.catatan = null;
       simpan(); ke("#/autentik"); toast("Demo dimulai ulang. Antrean kembali ke keadaan awal.");
     }
   };
@@ -976,9 +1018,10 @@
   document.addEventListener("change", (e) => {
     const a = e.target.dataset && e.target.dataset.aksi;
     if (a === "saring-faskes") { ui.faskes = e.target.value; gambar(true); }
+    else if (a === "asal-unggah") { ui.asalUnggah = e.target.value; ui.asalError = false; gambar(true); document.querySelector("#faskesUnggah")?.focus(); }
     else if (a === "saklar-sorot") { ui.sorot = e.target.checked; gambar(true); }
     else if (a === "tindakan-lain") { ui.tindakanLain = e.target.value; ui.galat = ""; gambar(true); }
-    else if (e.target.id === "pilihBerkas" && e.target.files.length) terimaBerkas(e.target.files);
+    else if (e.target.id === "pilihBerkas" && e.target.files.length) { const files = [...e.target.files]; e.target.value = ""; terimaBerkas(files); }
   });
 
   document.addEventListener("input", (e) => {
